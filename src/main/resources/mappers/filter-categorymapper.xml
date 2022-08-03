@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.shoekream.www.repository.filterDAO.FilterCategoryDAO">
+	<select id="selectCategory" resultType="categoryVO">
+		SELECT
+			category_id
+			, category_name
+		FROM
+			shoe_category
+		WHERE
+			category_id = #{categoryId}
+	</select>
+	<select id="selectCategoryList" resultType="categoryVO">
+		SELECT
+			category_id
+			, category_name
+		FROM
+			shoe_category
+	</select>
+
+	<insert id="insertCategory" parameterType="String">
+		INSERT INTO shoe_category (
+			category_name
+		) VALUES (
+			categoryName
+		)
+	</insert>
+</mapper>
