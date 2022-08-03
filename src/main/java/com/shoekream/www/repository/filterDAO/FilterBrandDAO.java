@@ -7,4 +7,7 @@ import java.util.List;
 public interface FilterBrandDAO {
     FilterBrandVO selectBrand(int brandId);
     List<FilterBrandVO> selectBrandList();
+    int insertBrand(String brandName);
+    int updateBrand(FilterBrandVO brandVO);
+    int deleteBrand(int brandId);
 }

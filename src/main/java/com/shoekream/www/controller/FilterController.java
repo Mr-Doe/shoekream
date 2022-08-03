@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/filter/*")
@@ -61,6 +62,25 @@ public class FilterController {
     @PostMapping(value = "/ctgr")
     public ResponseEntity<String> postCategory(@RequestParam("categoryName")String categoryName) {
         return cService.postCategory(categoryName) > 0 ?
+                new ResponseEntity<String>("1", HttpStatus.OK)
+                : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    // ====================================================================================================
+
+
+    // ====================================================================================================
+    // POST brand
+    @PostMapping(value = "/brand", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
+    public ResponseEntity<String> postBrand(@RequestBody Map<String, String> brandName) {
+        return bService.postBrand(brandName.get("brandName")) > 0 ?
+                new ResponseEntity<String>("1", HttpStatus.OK)
+                : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    // PUT brand
+    @PutMapping(value = "/brand", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
+    public ResponseEntity<String> postBrand(@RequestBody FilterBrandVO brandVO) {
+        return bService.putBrand(brandVO) > 0 ?
                 new ResponseEntity<String>("1", HttpStatus.OK)
                 : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
     }

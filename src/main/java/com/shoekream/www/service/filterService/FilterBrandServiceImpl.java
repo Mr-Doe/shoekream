@@ -21,4 +21,19 @@ public class FilterBrandServiceImpl implements FilterBrandService{
     public List<FilterBrandVO> getBrandList() {
         return brandDAO.selectBrandList();
     }
+
+    @Override
+    public int postBrand(String brandName) {
+        return brandDAO.insertBrand(brandName);
+    }
+
+    @Override
+    public int putBrand(FilterBrandVO brandVO) {
+        return brandDAO.updateBrand(brandVO);
+    }
+
+    @Override
+    public int delBrand(int brandId) {
+        return brandDAO.deleteBrand(brandId);
+    }
 }

@@ -21,7 +21,7 @@
 			shoe_category
 	</select>
 
-	<insert id="insertCategory" parameterType="String">
+	<insert id="insertCategory" parameterType="string">
 		INSERT INTO shoe_category (
 			category_name
 		) VALUES (

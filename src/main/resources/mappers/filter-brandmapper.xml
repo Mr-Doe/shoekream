@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.shoekream.www.repository.filterDAO.FilterBrandDAO">
+	<select id="selectBrand" resultType="brandVO">
+		SELECT
+			brand_id
+			, brand_name
+		FROM
+			shoe_brand
+		WHERE
+			brand_id = #{brandId}
+	</select>
+	<select id="selectBrandList" resultType="brandVO">
+		SELECT
+			brand_id
+			, brand_name
+		FROM
+			shoe_brand
+	</select>
+
+	<insert id="insertBrand" parameterType="string">
+		INSERT INTO shoe_brand(
+			brand_name
+		) VALUES (
+			brandName
+		)
+	</insert>
+
+	<update id="updateBrand" parameterType="brandVO">
+		UPDATE shoe_brand SET
+			brand_name = #{brandName}
+		WHERE brand_id = #{brandId}
+	</update>
+
+	<delete id="deleteBrand" parameterType="int">
+		DELETE FROM shoe_brand
+		WHERE brand_id = #{brandId}
+	</delete>
+</mapper>
