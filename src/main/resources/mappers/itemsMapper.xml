@@ -14,9 +14,12 @@
 	<insert id="insertBuyItem" parameterType="itemsVO">
 		insert into items(pno, shoe_size, price, buyer_email) values(#{pno}, #{shoeSize}, #{price}, #{buyerEmail})
 	</insert>
+	<!-- 사이즈 리스트 -->
+	<!-- 판매 -->
 	<select id="selectSellItemList" resultType="itemsVO">
 		select items_no, price from items where pno = #{pno} and shoe_size = #{shoeSize} and seller_email is null order by reg_at desc limit 1
 	</select>
+	<!-- 구입 -->
 	<select id="selectBuyItemList" resultType="itemsVO">
 		select items_no, price from items where pno = #{pno} and shoe_size = #{shoeSize} and buyer_email is null order by reg_at desc limit 1
 	</select>
