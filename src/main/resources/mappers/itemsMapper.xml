@@ -15,13 +15,13 @@
 		insert into items(pno, shoe_size, price, buyer_email) values(#{pno}, #{shoeSize}, #{price}, #{buyerEmail})
 	</insert>
 	<select id="selectSellItemList" resultType="itemsVO">
-		select items_no, price from items where pno = #{pno} and shoe_size = #{shoeSize} and seller_email is null order by reg_at desc limit 1
+		select items_no, price from items where pno = #{pno} and shoe_size = #{shoeSize} and seller_email is null order by price desc, reg_at limit 1
 	</select>
 	<select id="selectBuyItemList" resultType="itemsVO">
-		select items_no, price from items where pno = #{pno} and shoe_size = #{shoeSize} and buyer_email is null order by reg_at desc limit 1
+		select items_no, price from items where pno = #{pno} and shoe_size = #{shoeSize} and buyer_email is null order by price, reg_at limit 1
 	</select>
 	<select id="currentDeal">
-		select price from items where pno = #{pno} <include refid="sizeCheck" />
+		select price from items where pno = #{pno} <include refid="sizeCheck" /> order by end_at desc
 	</select>
 	<update id="sellUpdate">
 		update items set end_at = now(), is_sold = 1, seller_email = #{sellerEmail}
