@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myweb.www.repository.ItemsDAO">
+	<sql id="sizeCheck">
+		<if test="shoeSize!=null">
+			and shoe_size = #{shoeSize}
+		</if>
+	</sql>
+	<insert id="insertSellItem" parameterType="itemsVO">
+		insert into items(pno, shoe_size, price, seller_email) values(#{pno}, #{shoeSize}, #{price}, #{sellerEmail})
+	</insert>
+	<insert id="insertBuyItem" parameterType="itemsVO">
+		insert into items(pno, shoe_size, price, buyer_email) values(#{pno}, #{shoeSize}, #{price}, #{buyerEmail})
+	</insert>
+	<select id="selectSellItemList" resultType="itemsVO">
+		select items_no, price from items where pno = #{pno} and shoe_size = #{shoeSize} and seller_email is null order by reg_at desc limit 1
+	</select>
+	<select id="selectBuyItemList" resultType="itemsVO">
+		select items_no, price from items where pno = #{pno} and shoe_size = #{shoeSize} and buyer_email is null order by reg_at desc limit 1
+	</select>
+	<select id="currentDeal">
+		select price from items where pno = #{pno} <include refid="sizeCheck" />
+	</select>
+	<update id="sellUpdate">
+		update items set end_at = now(), is_sold = 1, seller_email = #{sellerEmail}
+	</update>
+	<update id="buyUpdate">
+		update items set end_at = now(), is_sold = 1, buyer_email = #{buyerEmail}
+	</update>
+	<delete id="deleteItem">
+		delete from items from item_no = #{itemNo}
+	</delete>
+</mapper>
