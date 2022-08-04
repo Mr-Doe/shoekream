@@ -27,10 +27,10 @@
 		select price from items where pno = #{pno} <include refid="sizeCheck" /> order by end_at desc
 	</select>
 	<update id="sellUpdate">
-		update items set end_at = now(), is_sold = 1, seller_email = #{sellerEmail}
+		update items set end_at = now(), is_sold = 1, seller_email = #{sellerEmail} where item_no = ${itemNO}
 	</update>
 	<update id="buyUpdate">
-		update items set end_at = now(), is_sold = 1, buyer_email = #{buyerEmail}
+		update items set end_at = now(), is_sold = 1, buyer_email = #{buyerEmail} where item_no = ${itemNO}
 	</update>
 	<delete id="deleteItem">
 		delete from items from item_no = #{itemNo}

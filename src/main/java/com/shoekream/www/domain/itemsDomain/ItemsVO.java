@@ -31,11 +31,12 @@ public class ItemsVO {
 		this.sellerEmail = sellerEmail;
 	}
 
-	// sell modify
-	public ItemsVO(int itemNo, int price, String sellerEmail) {
+	// sell complite
+	public ItemsVO(String buyerEmail, int itemNo, int price, int isSold) {
+		this.buyerEmail = buyerEmail;
 		this.itemNo = itemNo;
 		this.price = price;
-		this.sellerEmail = sellerEmail;
+		this.isSold = isSold;
 	}
 
 	
