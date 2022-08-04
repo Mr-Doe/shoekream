@@ -2,6 +2,7 @@ package com.shoekream.www.domain.itemsDomain;
 
 import org.apache.ibatis.type.Alias;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -10,23 +11,32 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
 public class ItemsVO {
 	private int itemNo;
-	private	int pno;
+	private int pno;
 	private int shoeSize;
-	private	int price;
-	private	String regAt;
-	private	String endAt;
-	private	int isSold;
-	private	String sellerEmail;
-	private	String buyerEmail;
-	
+	private int price;
+	private String regAt;
+	private String endAt;
+	private int isSold;
+	private String sellerEmail;
+	private String buyerEmail;
+
+	// sell register
 	public ItemsVO(int pno, int shoeSize, int price, String sellerEmail) {
-		super();
 		this.pno = pno;
 		this.shoeSize = shoeSize;
 		this.price = price;
 		this.sellerEmail = sellerEmail;
 	}
+
+	// sell modify
+	public ItemsVO(int itemNo, int price, String sellerEmail) {
+		this.itemNo = itemNo;
+		this.price = price;
+		this.sellerEmail = sellerEmail;
+	}
+
 	
 }
