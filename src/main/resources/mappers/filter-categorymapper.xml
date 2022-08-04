@@ -21,11 +21,23 @@
 			shoe_category
 	</select>
 
-	<insert id="insertCategory" parameterType="string">
+	<insert id="insertCategory" parameterType="String">
 		INSERT INTO shoe_category (
 			category_name
 		) VALUES (
-			categoryName
+			#{categoryName}
 		)
 	</insert>
+
+	<update id="updateCategory" parameterType="categoryVO">
+		UPDATE shoe_category SET
+			category_name = #{categoryName}
+		WHERE
+			category_id = #{categoryId}
+	</update>
+
+	<delete id="deleteCategory">
+		DELETE FROM shoe_category
+		WHERE category_id = #{categoryId}
+	</delete>
 </mapper>

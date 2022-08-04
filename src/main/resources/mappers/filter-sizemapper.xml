@@ -20,4 +20,24 @@
 		FROM
 			shoe_size
 	</select>
+
+	<insert id="insertSize" parameterType="String">
+		INSERT INTO shoe_size (
+			size_value
+		) VALUES (
+			#{sizeValue}
+		)
+	</insert>
+
+	<update id="updateSize" parameterType="sizeVO">
+		UPDATE shoe_size SET
+			size_value = #{sizeValue}
+		WHERE
+			size_id = #{sizeId}
+	</update>
+
+	<delete id="deleteSize">
+		DELETE FROM shoe_size
+		WHERE size_id = #{sizeId}
+	</delete>
 </mapper>

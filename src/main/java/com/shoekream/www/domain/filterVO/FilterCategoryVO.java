@@ -13,4 +13,12 @@ import org.apache.ibatis.type.Alias;
 public class FilterCategoryVO {
     private int categoryId;
     private String categoryName;
+
+    public FilterCategoryVO(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public FilterCategoryVO(String categoryName) {
+        this.categoryName = categoryName;
+    }
 }

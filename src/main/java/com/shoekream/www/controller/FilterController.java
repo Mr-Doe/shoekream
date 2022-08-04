@@ -25,7 +25,6 @@ public class FilterController {
     @Autowired private FilterSizeService sService;
 
     // ====================================================================================================
-    // GET category
     @GetMapping(value = "/ctgr/{categoryId}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<FilterCategoryVO> getCategory(@PathVariable("categoryId")int categoryId) {
         return new ResponseEntity<FilterCategoryVO>(cService.getCategory(categoryId), HttpStatus.OK);
@@ -35,7 +34,6 @@ public class FilterController {
         return new ResponseEntity<>(cService.getCategoryList(), HttpStatus.OK);
     }
 
-    // GET brand
     @GetMapping(value = "/brand/{brandId}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<FilterBrandVO> getBrand(@PathVariable("brandId")int brandId) {
         return new ResponseEntity<>(bService.getBrand(brandId), HttpStatus.OK);
@@ -45,7 +43,6 @@ public class FilterController {
         return new ResponseEntity<List<FilterBrandVO>>(bService.getBrandList(),HttpStatus.OK);
     }
 
-    // GET size
     @GetMapping(value = "/size/{sizeId}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<FilterSizeVO> getSize(@PathVariable("sizeId")int sizeId) {
         return new ResponseEntity<FilterSizeVO>(sService.getSize(sizeId), HttpStatus.OK);
@@ -58,31 +55,66 @@ public class FilterController {
 
 
     // ====================================================================================================
-    // POST category
-    @PostMapping(value = "/ctgr")
-    public ResponseEntity<String> postCategory(@RequestParam("categoryName")String categoryName) {
-        return cService.postCategory(categoryName) > 0 ?
+    @PostMapping(value = "/ctgr", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
+    public ResponseEntity<String> postCategory(@RequestBody FilterCategoryVO categoryVO) {
+        return cService.postCategory(categoryVO.getCategoryName()) > 0 ?
                 new ResponseEntity<String>("1", HttpStatus.OK)
                 : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
+    @PutMapping(value = "/ctgr", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
+    public ResponseEntity<String> putCategory(@RequestBody FilterCategoryVO categoryVO) {
+        return cService.putCategory(categoryVO) > 0 ?
+                new ResponseEntity<String>("1", HttpStatus.OK)
+                : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    @DeleteMapping(value = "/ctgr", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
+    public ResponseEntity<String> delCategory(@RequestBody FilterCategoryVO categoryVO) {
+        return cService.delCategory(categoryVO.getCategoryId()) > 0 ?
+                new ResponseEntity<String>("1", HttpStatus.OK)
+                : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
     // ====================================================================================================
 
 
     // ====================================================================================================
-    // POST brand
     @PostMapping(value = "/brand", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
-    public ResponseEntity<String> postBrand(@RequestBody Map<String, String> brandName) {
-        return bService.postBrand(brandName.get("brandName")) > 0 ?
+    public ResponseEntity<String> postBrand(@RequestBody FilterBrandVO brandVO ) {
+        return bService.postBrand(brandVO.getBrandName()) > 0 ?
                 new ResponseEntity<String>("1", HttpStatus.OK)
                 : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
-    // PUT brand
     @PutMapping(value = "/brand", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
-    public ResponseEntity<String> postBrand(@RequestBody FilterBrandVO brandVO) {
+    public ResponseEntity<String> putBrand(@RequestBody FilterBrandVO brandVO) {
         return bService.putBrand(brandVO) > 0 ?
                 new ResponseEntity<String>("1", HttpStatus.OK)
                 : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
+    @DeleteMapping(value = "/brand", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
+    public ResponseEntity<String> delBrand(@RequestBody FilterBrandVO brandVO) {
+        return bService.delBrand(brandVO.getBrandId()) > 0 ?
+                new ResponseEntity<String>("1", HttpStatus.OK)
+                : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    // ====================================================================================================
 
+    // ====================================================================================================
+    @PostMapping(value = "/size", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
+    public ResponseEntity<String> postBrand(@RequestBody FilterSizeVO sizeVO ) {
+        return sService.postSize(sizeVO.getSizeValue()) > 0 ?
+                new ResponseEntity<String>("1", HttpStatus.OK)
+                : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    @PutMapping(value = "/size", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
+    public ResponseEntity<String> putBrand(@RequestBody FilterSizeVO sizeVO) {
+        return sService.putSize(sizeVO) > 0 ?
+                new ResponseEntity<String>("1", HttpStatus.OK)
+                : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    @DeleteMapping(value = "/size", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
+    public ResponseEntity<String> delBrand(@RequestBody FilterSizeVO sizeVO) {
+        return sService.delSize(sizeVO.getSizeId()) > 0 ?
+                new ResponseEntity<String>("1", HttpStatus.OK)
+                : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    // ====================================================================================================
 }

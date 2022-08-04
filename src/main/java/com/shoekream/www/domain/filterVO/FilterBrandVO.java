@@ -13,4 +13,12 @@ import org.apache.ibatis.type.Alias;
 public class FilterBrandVO {
     private int brandId;
     private String brandName;
+
+    public FilterBrandVO(int brandId) {
+        this.brandId = brandId;
+    }
+
+    public FilterBrandVO(String brandName) {
+        this.brandName = brandName;
+    }
 }

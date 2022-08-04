@@ -11,4 +11,12 @@ import org.apache.ibatis.type.Alias;
 public class FilterSizeVO {
     private int sizeId;
     private String sizeValue;
+
+    public FilterSizeVO(int sizeId) {
+        this.sizeId = sizeId;
+    }
+
+    public FilterSizeVO(String sizeValue) {
+        this.sizeValue = sizeValue;
+    }
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class FilterSizeImpl implements FilterSizeService {
+public class FilterSizeServiceImpl implements FilterSizeService {
 
     @Autowired private FilterSizeDAO sizeDAO;
 
@@ -20,5 +20,20 @@ public class FilterSizeImpl implements FilterSizeService {
     @Override
     public List<FilterSizeVO> getSizeList() {
         return sizeDAO.selectSizeList();
+    }
+
+    @Override
+    public int postSize(String sizeValue) {
+        return sizeDAO.insertSize(sizeValue);
+    }
+
+    @Override
+    public int putSize(FilterSizeVO sizeVO) {
+        return sizeDAO.updateSize(sizeVO);
+    }
+
+    @Override
+    public int delSize(int sizeId) {
+        return sizeDAO.deleteSize(sizeId);
     }
 }
