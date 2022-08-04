@@ -9,10 +9,11 @@ import com.shoekream.www.domain.itemsDomain.ItemsVO;
 public interface ItemsDAO {
 	int insertSellItem(ItemsVO itemsVO);
 	int insertBuyItem(ItemsVO itemsVO);
-	List<ItemsVO> selectSellPrice(@Param("pno") int pno, @Param("i") int i);
-	List<ItemsVO> selectBuyPrice(@Param("pno") int pno, @Param("i") int i);
-	int recentDeal(@Param("pno") int pno, @Param("size") int size);
-	ItemsVO selectBuyItem(@Param("pno") int pno, @Param("i") int i);
+	List<ItemsVO> selectSellPrice(@Param("pno") int pno, @Param("shoeSize") int shoeSize);
+	List<ItemsVO> selectBuyPrice(@Param("pno") int pno, @Param("shoeSize") int shoeSize);
+	int recentDeal(@Param("pno") int pno, @Param("shoeSize") int shoeSize);
+	ItemsVO selectBuyItem(@Param("pno") int pno, @Param("shoeSize") int shoeSize);
+	ItemsVO selectSellItem(@Param("pno") int pno, @Param("shoeSize") int shoeSize);
 	int sellUpdate(ItemsVO itemsVO);
 	int buyUpdate(ItemsVO itemsVO);
 	int deleteItem(int itemNo);
