@@ -10,6 +10,6 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 public class ItemsDTO {
-	private ItemsVO itemsVO;
+	private int price;
 //	private ShoeSizeVO shoeSizeVO;
 }

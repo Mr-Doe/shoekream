@@ -27,24 +27,29 @@ public class ItemsServiceImpl implements ItemsService {
 	}
 
 	@Override
-	public List<ItemsDTO> getSellItemList(int pno) {
+	public List<ItemsDTO> getSellItemPriceList(int pno) {
 //		List<ShoeSizeVO> sizeList = sdao.selectSizeList();
 		List<ItemsDTO> itemList = new ArrayList<>();
-//		for(ShoeSizeVO i : sizeList) {
-//			itemList.add(idao.selectSellItemList(pno, i.getSsid()), i);
+//		for(ShoeSizeVO svo : sizeList) {
+//			itemList.add(idao.selectSellItem(pno, svo.getSizeId()), svo);
 //		}
 		return itemList;
 	}
 
 	@Override
-	public List<ItemsDTO> getBuyItemList(int pno) {
+	public List<ItemsDTO> getBuyItemPriceList(int pno) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int currentDealPrice(int pno, int size) {
-		return idao.currentDeal(pno, size);
+	public int recentDealPrice(int pno, int size) {
+		return idao.recentDeal(pno, size);
+	}
+
+	@Override
+	public ItemsVO selectbuyItem(int pno, int shoeSize) {
+		return idao.selectBuyItem(pno, shoeSize);
 	}
 
 	@Override
@@ -61,5 +66,6 @@ public class ItemsServiceImpl implements ItemsService {
 	public int removeItem(int itemNo) {
 		return idao.deleteItem(itemNo);
 	}
+
 
 }

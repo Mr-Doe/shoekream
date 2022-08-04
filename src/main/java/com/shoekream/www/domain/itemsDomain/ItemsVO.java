@@ -38,6 +38,4 @@ public class ItemsVO {
 		this.price = price;
 		this.isSold = isSold;
 	}
-
-	
 }
