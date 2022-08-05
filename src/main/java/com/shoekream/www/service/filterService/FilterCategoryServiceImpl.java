@@ -20,7 +20,7 @@ public class FilterCategoryServiceImpl implements FilterCategoryService{
 
     @Override
     public List<FilterCategoryVO> getCategoryList() {
-        return categoryDAO.selectCategoryist();
+        return categoryDAO.selectCategoryList();
     }
 
     @Override

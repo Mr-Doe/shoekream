@@ -38,7 +38,7 @@ public class FilterController {
     public ResponseEntity<FilterBrandVO> getBrand(@PathVariable("brandId")int brandId) {
         return new ResponseEntity<>(bService.getBrand(brandId), HttpStatus.OK);
     }
-    @GetMapping(value = "/brad", produces = {MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping(value = "/brand", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<List<FilterBrandVO>> getBrandList() {
         return new ResponseEntity<List<FilterBrandVO>>(bService.getBrandList(),HttpStatus.OK);
     }
@@ -99,8 +99,8 @@ public class FilterController {
 
     // ====================================================================================================
     @PostMapping(value = "/size", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
-    public ResponseEntity<String> postBrand(@RequestBody FilterSizeVO sizeVO ) {
-        return sService.postSize(sizeVO.getSizeValue()) > 0 ?
+    public ResponseEntity<String> postBrand(@RequestBody Map<String, String> test) {
+        return sService.postSize(test.get("sizeValue")) > 0 ?
                 new ResponseEntity<String>("1", HttpStatus.OK)
                 : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -117,4 +117,5 @@ public class FilterController {
                 : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
     // ====================================================================================================
+    
 }

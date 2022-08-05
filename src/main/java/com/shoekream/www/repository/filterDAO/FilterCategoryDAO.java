@@ -8,9 +8,8 @@ import java.util.List;
 
 public interface FilterCategoryDAO {
     FilterCategoryVO selectCategory(int categoryId);
-    List<FilterCategoryVO> selectCategoryist();
+    List<FilterCategoryVO> selectCategoryList();
     int insertCategory(String categoryName);
     int updateCategory(FilterCategoryVO categoryVO);
-
     int deleteCategory(int categoryId);
 }
