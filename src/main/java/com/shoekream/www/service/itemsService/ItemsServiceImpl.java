@@ -44,6 +44,7 @@ public class ItemsServiceImpl implements ItemsService {
 	public List<ItemsDTO> getBuyItemPriceList(int pno) {
 //		List<FilterSizeVO> sizeList = sizeDAO.selectSizeList();
 		List<ItemsDTO> itemList = new ArrayList<>();
+		
 //		for(FilterSizeVO sizeVO : sizeList) {
 //			itemList.add(itemDAO.selectBuyPrice(pno, sizeVO.getSizeId), sizeVO);
 //		}
