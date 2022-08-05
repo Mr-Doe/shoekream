@@ -21,43 +21,66 @@ import com.shoekream.www.service.itemsService.ItemsService;
 @RequestMapping("/items/*")
 public class ItemsController {
 	@Inject
-	private ItemsService isv;
+	private ItemsService itemsService;
 	
 //	@Inject
-//	private ProductService psv;
+//	private ProductService productService;
 	
 	@GetMapping("/detail")
-	public void detail(@RequestParam("pno") int pno, Model model) {
-//		model.addAttribute("pdto", psv.selectProduct(pno));
-		model.addAttribute("recentPrice", isv.recentDealPrice(pno, 0));
-		model.addAttribute("list", isv.getBuyItemPriceList(pno));
+	public void detail(@RequestParam("productNo") int productNo, Model model) {
+//		model.addAttribute("productDTO", productService.selectProduct(productNo));
+		model.addAttribute("recentPrice", itemsService.recentDealPrice(productNo, 0));
+		model.addAttribute("list", itemsService.getBuyItemPriceList(productNo));
 	}
 	
-	@GetMapping(value = "/{pno}/{shoeSize}", produces= {MediaType.TEXT_PLAIN_VALUE})
-	public ResponseEntity<Integer> recentPrice(@PathVariable("pno") int pno, @PathVariable("shoeSize") int shoeSize) {
-		return new ResponseEntity<Integer>(isv.recentDealPrice(pno, shoeSize), HttpStatus.OK);
+	@GetMapping(value = "/{productNo}/{shoeSize}", produces= {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<Integer> recentPrice(@PathVariable("productNo") int productNo, @PathVariable("shoeSize") int shoeSize) {
+		return new ResponseEntity<Integer>(itemsService.recentDealPrice(productNo, shoeSize), HttpStatus.OK);
 	}
 	
 	@GetMapping("/buy")
-	public void buy(@RequestParam("pno") int pno, Model model) {
-//		model.addAttribute("pdto", psv.selectProduct(pno));
-		model.addAttribute("list", isv.getBuyItemPriceList(pno));
+	public void buy(@RequestParam("productNo") int productNo, Model model) {
+//		model.addAttribute("productDTO", productService.selectProduct(productNo));
+		model.addAttribute("list", itemsService.getBuyItemPriceList(productNo));
+	}
+	
+	@GetMapping("/sell")
+	public void sell(@RequestParam("productNo") int productNo, Model model) {
+//		model.addAttribute("productDTO", productSercvice.selectProduct(productNo));
+		model.addAttribute("list", itemsService.getSellItemPriceList(productNo));
 	}
 
 	@GetMapping("/buyItem")
 	public void buyItem(ItemsVO itemsVO, Model model) {
 		model.addAttribute("itemsVO", itemsVO);
 	}
+	
+	@GetMapping("/sellItem")
+	public void sellItem(ItemsVO itemsVO, Model model) {
+		model.addAttribute("itemsVO", itemsVO);
+	}
 
 	@PostMapping("/buyBid")
 	public String buyBid(ItemsVO itemsVO, RedirectAttributes rttr) {
-		isv.registerBuyItem(itemsVO);
-		return "redirect:/";
+		itemsService.registerBuyItem(itemsVO);
+		return "/member/mypage";
+	}
+	
+	@PostMapping("/sellBid")
+	public String sellBid(ItemsVO itemsVO, RedirectAttributes rttr) {
+		itemsService.registerSellItem(itemsVO);
+		return "/member/mypage";
 	}
 	
 	@PostMapping("/buyItem")
 	public String buyItem(ItemsVO itemsVO, RedirectAttributes rttr) {
-		isv.buyEnd(itemsVO);
-		return "redirect:/";
+		itemsService.buyEnd(itemsVO);
+		return "/member/mypage";
+	}
+	
+	@PostMapping("/sellItem")
+	public String sellItem(ItemsVO itemsVO, RedirectAttributes rttr) {
+		itemsService.buyEnd(itemsVO);
+		return "/member/mypage";
 	}
 }

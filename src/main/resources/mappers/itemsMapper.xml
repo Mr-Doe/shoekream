@@ -24,7 +24,7 @@
 		select min(price) from items where pno = #{pno} and shoe_size = #{shoeSize} and buyer_email is null
 	</select>
 	<select id="recentDeal" resultType="int">
-		select price from items where pno = #{pno} and is_sold = 1 <include refid="sizeCheck" /> order by item_no desc limit 1;
+		select price from items where pno = #{pno} and is_sold = 1 <include refid="sizeCheck" /> order by item_no desc limit 1
 	</select>
 	<select id="selectSellItem" resultType="itemsVO">
 		select item_no, price from items where pno = #{pno} and shoe_size = #{shoeSize} and price = #{price}
