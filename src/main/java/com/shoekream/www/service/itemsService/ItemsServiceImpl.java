@@ -33,6 +33,7 @@ public class ItemsServiceImpl implements ItemsService {
 	public List<ItemsDTO> getSellItemPriceList(int pno) {
 //		List<FilterSizeVO> sizeList = sizeDAO.selectSizeList();
 		List<ItemsDTO> itemList = new ArrayList<>();
+
 //		for(FilterSizeVO sizeVO : sizeList) {
 //			itemList.add(itemDAO.selectSellPrice(pno, sizeVO.getSizeId), sizeVO);
 //		}
@@ -73,6 +74,4 @@ public class ItemsServiceImpl implements ItemsService {
 	public int removeItem(int itemNo) {
 		return itemDAO.deleteItem(itemNo);
 	}
-
-
 }
