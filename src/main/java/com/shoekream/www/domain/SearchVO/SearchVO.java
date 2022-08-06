@@ -12,13 +12,23 @@ import org.apache.ibatis.type.Alias;
 @Alias("searchVO")
 public class SearchVO {
     private String keyword;
-    private String kw2product;
-    private String kw2item;
+
+    private int identityNumber;
+    private String englishName;
+    private String kreanName;
 
     public SearchVO(String keyword) {
         this.keyword = keyword;
+    }
 
-        this.kw2product = keyword;
-        this.kw2item = keyword;
+    public SearchVO(int identityNumber, String englishName) {
+        this.identityNumber = identityNumber;
+        this.englishName = englishName;
+    }
+
+    public SearchVO(int identityNumber, String englishName, String kreanName) {
+        this.identityNumber = identityNumber;
+        this.englishName = englishName;
+        this.kreanName = kreanName;
     }
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.shoekream.www.repository.searchDAO.SearchDAO">
+	<select id="selectToProducts" parameterType="String" resultType="searchVO">
+		SELECT
+			pno as identityNumber
+			, e_name as englishName
+			, k_name as kreanName
+		FROM
+			product
+		WHERE model like CONCAT("%", #{keyword}, "%")
+			OR e_name like CONCAT("%", #{keyword}, "%")
+			OR k_name like CONCAT("%", #{keyword}, "%")
+	</select>
+	<select id="selectToBrands" parameterType="String" resultType="searchVO">
+		SELECT
+			brand_id as identityNumber
+			, brand_name as englishName
+		FROM
+			shoe_brand
+		WHERE
+			brand_name like CONCAT("%", #{keyword}, "%")
+	</select>
+</mapper>
