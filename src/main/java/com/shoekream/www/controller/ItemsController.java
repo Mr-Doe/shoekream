@@ -38,13 +38,13 @@ public class ItemsController {
 		return new ResponseEntity<Integer>(itemsService.recentDealPrice(pno, shoeSize), HttpStatus.OK);
 	}
 	
-	@GetMapping("/buy")
+	@GetMapping("/buySelect")
 	public void buy(@RequestParam("pno") int pno, Model model) {
 //		model.addAttribute("productDTO", productService.selectProduct(pno));
 		model.addAttribute("list", itemsService.getBuyItemPriceList(pno));
 	}
 	
-	@GetMapping("/sell")
+	@GetMapping("/sellSelect")
 	public void sell(@RequestParam("pno") int pno, Model model) {
 //		model.addAttribute("productDTO", productSercvice.selectProduct(pno));
 		model.addAttribute("list", itemsService.getSellItemPriceList(pno));
