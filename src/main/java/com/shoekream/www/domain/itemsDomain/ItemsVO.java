@@ -22,6 +22,8 @@ public class ItemsVO {
 	private int isSold;
 	private String sellerEmail;
 	private String buyerEmail;
+	
+	public ItemsVO() {}
 
 	// sell register
 	public ItemsVO(int pno, int shoeSize, int price, String sellerEmail) {

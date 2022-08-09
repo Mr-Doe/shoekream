@@ -27,27 +27,27 @@ public class ItemsController {
 //	private ProductService productService;
 	
 	@GetMapping("/detail")
-	public void detail(@RequestParam("productNo") int productNo, Model model) {
-//		model.addAttribute("productDTO", productService.selectProduct(productNo));
-		model.addAttribute("recentPrice", itemsService.recentDealPrice(productNo, 0));
-		model.addAttribute("list", itemsService.getBuyItemPriceList(productNo));
+	public void detail(@RequestParam("pno") int pno, Model model) {
+//		model.addAttribute("productDTO", productService.selectProduct(pno));
+		model.addAttribute("recentPrice", itemsService.recentDealPrice(pno, 0));
+		model.addAttribute("list", itemsService.getBuyItemPriceList(pno));
 	}
 	
-	@GetMapping(value = "/{productNo}/{shoeSize}", produces= {MediaType.TEXT_PLAIN_VALUE})
-	public ResponseEntity<Integer> recentPrice(@PathVariable("productNo") int productNo, @PathVariable("shoeSize") int shoeSize) {
-		return new ResponseEntity<Integer>(itemsService.recentDealPrice(productNo, shoeSize), HttpStatus.OK);
+	@GetMapping(value = "/{pno}/{shoeSize}", produces= {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<Integer> recentPrice(@PathVariable("pno") int pno, @PathVariable("shoeSize") int shoeSize) {
+		return new ResponseEntity<Integer>(itemsService.recentDealPrice(pno, shoeSize), HttpStatus.OK);
 	}
 	
 	@GetMapping("/buy")
-	public void buy(@RequestParam("productNo") int productNo, Model model) {
-//		model.addAttribute("productDTO", productService.selectProduct(productNo));
-		model.addAttribute("list", itemsService.getBuyItemPriceList(productNo));
+	public void buy(@RequestParam("pno") int pno, Model model) {
+//		model.addAttribute("productDTO", productService.selectProduct(pno));
+		model.addAttribute("list", itemsService.getBuyItemPriceList(pno));
 	}
 	
 	@GetMapping("/sell")
-	public void sell(@RequestParam("productNo") int productNo, Model model) {
-//		model.addAttribute("productDTO", productSercvice.selectProduct(productNo));
-		model.addAttribute("list", itemsService.getSellItemPriceList(productNo));
+	public void sell(@RequestParam("pno") int pno, Model model) {
+//		model.addAttribute("productDTO", productSercvice.selectProduct(pno));
+		model.addAttribute("list", itemsService.getSellItemPriceList(pno));
 	}
 
 	@GetMapping("/buyItem")
