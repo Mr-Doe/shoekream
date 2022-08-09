@@ -4,10 +4,13 @@
 <jsp:include page="../commons/header.jsp" />
 
 <div id="__layout">
-	<div data-v-7ffb34f7="" tabindex="0" class="wrap lg win_os">
+	<div data-v-7ffb34f7="" tabindex="0" class="wrap lg win_os pt-0">
 		<div data-v-6657f7cc="" data-v-7ffb34f7="" class="container buy lg">
 			<!---->
 			<div data-v-6657f7cc="" class="content">
+				<div class="container pb-3 text-center">
+					<h3>구매하기</h3>
+				</div>
 				<div data-v-68b558fb="" data-v-6657f7cc="" class="buy_immediate">
 					<div data-v-1643775e="" data-v-68b558fb=""
 						class="product_info_area">
@@ -28,14 +31,32 @@
 								<!---->
 							</div>
 							<div data-v-1643775e="" class="product_detail">
-								<strong data-v-1643775e="" class="model_number"> <!---->315122-111/CW2288-111
+								<!-- <strong data-v-1643775e="" class="model_number">315122-111/CW2288-111
 								</strong>
 								<p data-v-1643775e="" class="model_title">Nike Air Force 1
 									'07 Low White</p>
 								<p data-v-1643775e="" class="model_ko">나이키 에어포스 1 '07 로우 화이트</p>
 								<div data-v-1643775e="" class="model_desc">
 									<p data-v-1643775e="" class="size_txt">260</p>
-									<!---->
+									
+								</div> -->
+								<div data-v-299f50cf="" class="product_detail">
+									<p data-v-299f50cf="" class="code">
+										<%-- ${product.model } --%>
+										모델명
+									</p>
+									<p data-v-299f50cf="" class="name">
+										<%-- ${product.eName } --%>
+										영어이름
+									</p>
+									<p data-v-299f50cf="" class="translated_name">
+										<%-- ${product.kName } --%>
+										한글이름
+									</p>
+									<p data-v-299f50cf="" class="size">
+										<%-- ${product.size } --%>
+										사이즈
+									</p>
 								</div>
 							</div>
 						</div>
@@ -145,8 +166,8 @@
 								style="display: none;"><em data-v-679d7250="">주의! </em></span>
 						</div>
 						<div data-v-65a8cedc="" class="btn_confirm">
-							<a data-v-3d1bcc82="" data-v-65a8cedc="" href="#"
-								class="btn full solid false"> 즉시 구매 계속 </a>
+							<button data-v-3d1bcc82="" data-v-65a8cedc=""
+								class="full solid"> 즉시 구매 </button>
 						</div>
 					</div>
 				</div>
@@ -154,5 +175,12 @@
 		</div>
 	</div>
 </div>
-
+<form action="" method="post">
+	<input type="hidden" name="itemNo">
+	<input type="hidden" name="buyerEmail">
+	<input type="hidden" name="pno">
+	<input type="hidden" name="shoeSize">
+	<input type="hidden" name="price">
+	
+</form>
 <jsp:include page="../commons/footer.jsp" />

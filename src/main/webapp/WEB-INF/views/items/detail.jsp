@@ -216,7 +216,6 @@
 												data-v-23bbaa82="" class="desc">즉시 판매가</span>
 										</div></a>
 								</div>
-
 							</div>
 						</div>
 						
