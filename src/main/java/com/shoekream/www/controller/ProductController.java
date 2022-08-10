@@ -32,14 +32,14 @@ public class ProductController {
 	
 	@GetMapping("/list")
 	public void list(Model model, PagingVO pgvo) {
-		log.info("지금 보내온 pgvo : {}", pgvo.toString());
 		List<Map<String, String>> map = psv.getList(pgvo);
-		log.info(map.toString());
+//		log.info("지금 보내온 pageVO : {}", pgvo.toString());
+//		log.info(">>> product controller list : {}", map.toString());
 		model.addAttribute("map", map);
-		model.addAttribute("minPrice", psv.getMinPrice(pgvo));
 		model.addAttribute("pgn", new PagingHandler(pgvo, psv.getTotalCount(pgvo)));
 	}
-	
+
+	// 미구현 밑 맵 대신 카테고리와 합쳐지면 vo사용하기
 	@GetMapping("/register")
 	public void register(Model model) {
 		List<Map<String, String>> brandList= psv.getBrandList();
@@ -47,11 +47,11 @@ public class ProductController {
 		model.addAttribute("brandList", brandList);
 		model.addAttribute("categoryList", categoryList);
 	}
-	@GetMapping("/home")
-	public void homepage() {
-		
+	@PostMapping("/register")
+	public String register (ProductVO pvo) {
+		log.info("생성된 프로덕트 : {}", pvo);
+		return "redirect:/product/list";
 	}
-	
 }
 
 // 예상 url : www.shoekream.com/list?shoe_brand=31,33,41&shoe_size=55,60&pageNo=1&qty=10

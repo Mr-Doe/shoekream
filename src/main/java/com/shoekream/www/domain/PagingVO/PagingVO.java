@@ -20,7 +20,7 @@ public class PagingVO {
     private String keyword;
 
     public PagingVO() {
-        this(1, 10); // 최초 값은 1 page, 10개
+        this(1, 12); // 최초 값은 1 page, 12개
     }
 
     public PagingVO(int pageNo, int qty) {

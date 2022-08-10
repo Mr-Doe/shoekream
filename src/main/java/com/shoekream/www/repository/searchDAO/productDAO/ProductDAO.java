@@ -1,4 +1,4 @@
-package com.shoekream.www.repository.productDAO;
+package com.shoekream.www.repository.searchDAO.productDAO;
 
 import java.util.List;
 import java.util.Map;
