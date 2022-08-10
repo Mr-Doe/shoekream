@@ -13,49 +13,49 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 
         <!-- Css Styles -->
-        <link rel="stylesheet" href="../../../resources/dist-temp/css/bootstrap.min.css" type="text/css" />
-        <link rel="stylesheet" href="../../../resources/dist-temp/css/font-awesome.min.css" type="text/css" />
-        <link rel="stylesheet" href="../../../resources/dist-temp/css/elegant-icons.css" type="text/css" />
-        <link rel="stylesheet" href="../../../resources/dist-temp/css/magnific-popup.css" type="text/css" />
-        <link rel="stylesheet" href="../../../resources/dist-temp/css/nice-select.css" type="text/css" />
-        <link rel="stylesheet" href="../../../resources/dist-temp/css/owl.carousel.min.css" type="text/css" />
-        <link rel="stylesheet" href="../../../resources/dist-temp/css/slicknav.min.css" type="text/css" />
-        <link rel="stylesheet" href="../../../resources/dist-temp/css/style.css" type="text/css" />
+        <link rel="stylesheet" href="/resources/dist-temp/css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="/resources/dist-temp/css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="/resources/dist-temp/css/elegant-icons.css" type="text/css" />
+        <link rel="stylesheet" href="/resources/dist-temp/css/magnific-popup.css" type="text/css" />
+        <link rel="stylesheet" href="/resources/dist-temp/css/nice-select.css" type="text/css" />
+        <link rel="stylesheet" href="/resources/dist-temp/css/owl.carousel.min.css" type="text/css" />
+        <link rel="stylesheet" href="/resources/dist-temp/css/slicknav.min.css" type="text/css" />
+        <link rel="stylesheet" href="/resources/dist-temp/css/style.css" type="text/css" />
 
         <!-- 리스트 페이지 -->
-        <link rel="stylesheet" href="../../resources/dist-kream/921e499.css">
-        <link rel="stylesheet" href="../../resources/dist-kream/7588f4c.css">
-        <link rel="stylesheet" href="../../resources/dist-kream/468cd0d.css">
+        <link rel="stylesheet" href="/resources/dist-kream/921e499.css">
+        <link rel="stylesheet" href="/resources/dist-kream/7588f4c.css">
+        <link rel="stylesheet" href="/resources/dist-kream/468cd0d.css">
 
 		<!-- 로그인 페이지 -->
-		<link rel="stylesheet" href="../../resources/dist-kream/0f788f7.css">
+		<link rel="stylesheet" href="/resources/dist-kream/0f788f7.css">
 
         <!-- 상세 페이지 -->
-        <link rel="stylesheet" href="../../resources/dist-kream/979f3ae.css">
-        <link rel="stylesheet" href="../../resources/dist-kream/d3a96a9.css">
+        <link rel="stylesheet" href="/resources/dist-kream/979f3ae.css">
+        <link rel="stylesheet" href="/resources/dist-kream/d3a96a9.css">
 
 
         <!-- 마이페이지 -->
-        <link rel="stylesheet" href="../../resources/dist-kream/fc8ba0e.css">
-        <link rel="stylesheet" href="../../resources/dist-kream/d1a5384.css">
-        <link rel="stylesheet" href="../../resources/dist-kream/862267a.css">
-        <link rel="stylesheet" href="../../resources/dist-kream/5691821.css">
-        <link rel="stylesheet" href="../../resources/dist-kream/1afe7d3.css">
+        <link rel="stylesheet" href="/resources/dist-kream/fc8ba0e.css">
+        <link rel="stylesheet" href="/resources/dist-kream/d1a5384.css">
+        <link rel="stylesheet" href="/resources/dist-kream/862267a.css">
+        <link rel="stylesheet" href="/resources/dist-kream/5691821.css">
+        <link rel="stylesheet" href="/resources/dist-kream/1afe7d3.css">
 
         <!-- 리스트 + 상세 페이지 공통 -->
-        <link rel="stylesheet" href="../../resources/dist-kream/734fa9a.css">
-        <link rel="stylesheet" href="../../resources/dist-kream/a3c2917.css">
-        <link rel="stylesheet" href="../../resources/dist-kream/9c5ecb4.css">
+        <link rel="stylesheet" href="/resources/dist-kream/734fa9a.css">
+        <link rel="stylesheet" href="/resources/dist-kream/a3c2917.css">
+        <link rel="stylesheet" href="/resources/dist-kream/9c5ecb4.css">
 
 
         <!-- 상세 + 마이 페이지 공통 -->
-        <link rel="stylesheet" href="../../resources/dist-kream/efe06bc.css">
+        <link rel="stylesheet" href="/resources/dist-kream/efe06bc.css">
 
 
         <!-- 공통 -->
-        <link rel="stylesheet" href="../../resources/dist-kream/1381ce9.css">
-        <link rel="stylesheet" href="../../resources/dist-kream/ed926a7.css">
-        <link rel="stylesheet" href="../../resources/dist-kream/b50e50e.css">
+        <link rel="stylesheet" href="/resources/dist-kream/1381ce9.css">
+        <link rel="stylesheet" href="/resources/dist-kream/ed926a7.css">
+        <link rel="stylesheet" href="/resources/dist-kream/b50e50e.css">
 
 		<!-- 아이템 -->
 		<link rel="stylesheet" href="/resources/dist-kream/e907f22.css">
