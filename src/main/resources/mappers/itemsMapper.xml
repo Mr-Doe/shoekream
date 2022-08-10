@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shoekream.www.repository.itemsRepository.ItemsDAO">
+	<sql id="sizeCheck">
+		<if test="shoeSize!=0">
+			and shoe_size = #{shoeSize}
+		</if>
+	</sql>
+	<insert id="insertSellItem" parameterType="itemsVO">
+		insert into items(pno, shoe_size, price, seller_email) values(#{pno}, #{shoeSize}, #{price}, #{sellerEmail})
+	</insert>
+	<insert id="insertBuyItem" parameterType="itemsVO">
+		insert into items(pno, shoe_size, price, buyer_email) values(#{pno}, #{shoeSize}, #{price}, #{buyerEmail})
+	</insert>
+	<!-- 사이즈 리스트 -->
+	<!-- 판매 -->
+	<select id="selectSellPrice" resultType="int">
+		select max(price) from items where pno = #{pno} and shoe_size = #{shoeSize} and seller_email is null
+	</select>
+	<!-- 구입 -->
+	<select id="selectBuyPrice" resultType="int">
+		select min(price) from items where pno = #{pno} and shoe_size = #{shoeSize} and buyer_email is null
+	</select>
+	<select id="recentDeal" resultType="int">
+		select price from items where pno = #{pno} and is_sold = 1 <include refid="sizeCheck" /> order by item_no desc limit 1
+	</select>
+	<select id="selectSellItem" resultType="itemsVO">
+		select item_no, pno, price from items where pno = #{pno} and shoe_size = #{shoeSize} and seller_email is null order by price desc, item_no limit 1
+	</select>
+	<select id="selectBuyItem" resultType="itemsVO">
+		select item_no, pno, price from items where pno = #{pno} and shoe_size = #{shoeSize} and buyer_email is null order by price, item_no limit 1
+	</select>
+	<update id="sellUpdate">
+		update items set end_at = now(), is_sold = 1, seller_email = #{sellerEmail} where item_no = #{itemNO}
+	</update>
+	<update id="buyUpdate">
+		update items set end_at = now(), is_sold = 1, buyer_email = #{buyerEmail} where item_no = #{itemNO}
+	</update>
+	<delete id="deleteItem">
+		delete from items from item_no = #{itemNo}
+	</delete>
+</mapper>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.shoekream.www.repository.productDAO.ProductDAO">
+
+	<sql id="whereSize">
+		<if test="sizeToArray != null">
+			and ss.size_id in
+			<foreach collection="sizeToArray" item="sizeID" separator=","
+				open="(" close=")">
+				#{sizeID}
+			</foreach>
+		</if>
+	</sql>
+	
+	<sql id="whereBrandCategory">
+		<if test="brandToArray != null">
+			and sb.brand_id in
+			<foreach collection="brandToArray" item="brandID"
+				separator="," open="(" close=")">
+				#{brandID}
+			</foreach>
+		</if>
+		<if test="categoryToArray != null">
+			and p.category in
+			<foreach collection="categoryToArray" item="categoryID"
+				separator="," open="(" close=")">
+				#{categoryID}
+			</foreach>
+		</if>
+	</sql>
+	
+	<sql id="keyword">
+		like CONCAT('%',#{keyword},'%')
+	</sql>
+	<sql id="search">
+		<if test="keyword != null">
+			and (e_name <include refid="keyword"/>
+				or k_name <include refid="keyword"/>
+				or model <include refid="keyword"/>
+				or sb.brand_name <include refid="keyword"/>)  
+		</if>
+	</sql>
+	
+	<insert id="insert" parameterType="productVO">
+		insert into product(model,
+		brand, e_name, k_name, retail_price, category)
+		values (#{model},
+		#{brand}, #{eName}, #{kName}, #{retailPrice}, #{category})
+	</insert>
+
+	<select id="selectList" parameterType="pageVO" resultType="hashMap">
+		select p.pno, e_name, k_name, sb.brand_name, sc.category_name, th_img
+		from
+		product p
+		left join shoe_brand sb
+		on p.brand = sb.brand_id
+		join
+		shoe_category sc
+		on p.category = sc.category_id
+		where 1=1
+		<include refid="whereBrandCategory" />
+		<include refid="search"/>
+		order by pno desc
+		limit #{pageStart}, #{qty}
+	</select>
+	<select id="selectMinPrice" parameterType="pageVO" resultType="hashMap">
+		select pno, min(price) as
+		min_price
+		from items i
+		join shoe_size ss
+		on i.shoe_size = ss.size_id
+		where 1=1 and buyer_email is null
+		<include refid="whereSize" />
+		group by pno
+	</select>
+	<select id="totalCount" parameterType="pageVO" resultType="int">
+		select count(pno)
+		from product p
+			join shoe_brand sb
+				on p.brand = sb.brand_id
+			join shoe_category sc
+				on p.category = sc.category_id
+		where 1=1
+		<include refid="whereBrandCategory"/>
+		<include refid="search"/>
+	</select>
+	<select id="selectBrandList" resultType="hashMap">
+		select * from shoe_brand
+	</select>
+	<select id="selectCategoryList" resultType="hashMap">
+		select * from
+		shoe_category
+	</select>
+</mapper>
+

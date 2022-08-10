@@ -87,7 +87,7 @@ document.querySelector('.btn_search_delete').addEventListener('click', (e)=> {
 
 async function getTheItemFromServer(href_value) {
     try {
-        const resp = await fetch(href_value);
+        // const resp = await fetch(href_value);
     } catch (error) {
         console.log(error);
     }

@@ -70,7 +70,7 @@ function getFilter_Size() {
 }
 
 document.addEventListener('click', (e)=> {
-    e.preventDefault();
+    // e.preventDefault();
     const the_button = e.target;
 
     if(the_button.parentNode.getAttribute('id') === 'filter-size') {
