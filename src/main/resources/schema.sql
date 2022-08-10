@@ -19,6 +19,7 @@ create table if not exists product(
     read_count int default 0,
     reg_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     retail_price int,
+    category int
     primary key(pno)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
