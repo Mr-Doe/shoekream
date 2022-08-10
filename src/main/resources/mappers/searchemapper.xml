@@ -8,7 +8,7 @@
 		SELECT
 			pno as identityNumber
 			, e_name as englishName
-			, k_name as kreanName
+			, k_name as koreanName
 		FROM
 			product
 		WHERE model like CONCAT("%", #{keyword}, "%")

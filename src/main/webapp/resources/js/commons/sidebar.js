@@ -62,9 +62,20 @@ function getFilter_Size() {
         let html = '';
         if(result.length > 0) {
             result.forEach((index) => {
-                html += `<label><input type="radio">${index.sizeValue}</label>`;
+                html += `<label><input type="checkbox">${index.sizeValue}</label>`;
             });
         }
         document.getElementById('filter-size').innerHTML = html;
     });
 }
+
+document.addEventListener('click', (e)=> {
+    e.preventDefault();
+    const the_button = e.target;
+
+    if(the_button.parentNode.getAttribute('id') === 'filter-size') {
+        !the_button.classList.contains('active') ? the_button.classList.add('active') : the_button.classList.remove('active');
+    }
+
+    
+});

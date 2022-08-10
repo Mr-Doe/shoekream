@@ -24,16 +24,16 @@
         <!-- Footer Section End -->
 
         <!-- Js Plugins -->
-        <script src="../../resources/dist-temp/js/jquery-3.3.1.min.js"></script>
-        <script src="../../resources/dist-temp/js/bootstrap.min.js"></script>
-        <script src="../../resources/dist-temp/js/jquery.nice-select.min.js"></script>
-        <script src="../../resources/dist-temp/js/jquery.nicescroll.min.js"></script>
-        <script src="../../resources/dist-temp/js/jquery.magnific-popup.min.js"></script>
-        <script src="../../resources/dist-temp/js/jquery.countdown.min.js"></script>
-        <script src="../../resources/dist-temp/js/jquery.slicknav.js"></script>
-        <script src="../../resources/dist-temp/js/mixitup.min.js"></script>
-        <script src="../../resources/dist-temp/js/owl.carousel.min.js"></script>
-        <script src="../../resources/dist-temp/js/main.js"></script>
+        <script src="../../../resources/dist-temp/js/jquery-3.3.1.min.js"></script>
+        <script src="../../../resources/dist-temp/js/bootstrap.min.js"></script>
+        <script src="../../../resources/dist-temp/js/jquery.nice-select.min.js"></script>
+        <script src="../../../resources/dist-temp/js/jquery.nicescroll.min.js"></script>
+        <script src="../../../resources/dist-temp/js/jquery.magnific-popup.min.js"></script>
+        <script src="../../../resources/dist-temp/js/jquery.countdown.min.js"></script>
+        <script src="../../../resources/dist-temp/js/jquery.slicknav.js"></script>
+        <script src="../../../resources/dist-temp/js/mixitup.min.js"></script>
+        <script src="../../../resources/dist-temp/js/owl.carousel.min.js"></script>
+        <script src="../../../resources/dist-temp/js/main.js"></script>
 
     </body>
 
