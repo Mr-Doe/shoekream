@@ -100,13 +100,13 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-3">
                         <div class="header__logo">
-                            <a href="#">
+                            <a href="/product/list">
                                 <img src="../../resources/dist-temp/img/logo.png" alt="">
                             </a>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        <nav class="header__menu mobile-menu">
+                        <nav class="header__menu mobile-menu" style="margin-top: 30px;">
                             <ul>
                                 <li><a href="/product/list">Home</a></li>
                                 <li class="active"><a href="/product/list">Shop</a></li>
@@ -115,7 +115,7 @@
                         </nav>
                     </div>
                     <div class="col-lg-3 col-md-3">
-                        <div class="header__nav__option">
+                        <div class="header__nav__option" style="margin-top: 30px;">
                             <button class="search-switch" id="search-button"><img src="../../resources/dist-temp/img/icon/search.png" alt=""></button>
                         </div>
                     </div>
