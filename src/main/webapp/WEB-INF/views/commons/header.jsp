@@ -55,6 +55,11 @@
         <link rel="stylesheet" href="../../resources/dist-kream/ed926a7.css">
         <link rel="stylesheet" href="../../resources/dist-kream/b50e50e.css">
 
+		<!-- 아이템 -->
+		<link rel="stylesheet" href="/resources/dist-kream/e907f22.css">
+		<link rel="stylesheet" href="/resources/dist-kream/b676d9d.css">
+		<link rel="stylesheet" href="/resources/dist-kream/55ae018.css">
+		<link rel="stylesheet" href="/resources/dist-kream/19dbfc1.css">
     </head>
 
     <body>
