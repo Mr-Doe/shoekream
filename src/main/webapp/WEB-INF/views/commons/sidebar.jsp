@@ -36,7 +36,7 @@
                                         <div class="card-body">
                                             <div class="shop__sidebar__brand" style="overflow-y: scroll; height:256px;">
                                                 <ul id="filter-brand">
-                                                    <li><a href="#">Louis Vuitton</a></li>
+                                                    <li><a href="#" class="active">Louis Vuitton</a></li>
                                                 </ul>
                                             </div>
                                         </div>

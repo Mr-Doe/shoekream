@@ -94,7 +94,7 @@ document.querySelector('.btn_search_delete').addEventListener('click', (e)=> {
 // };
 
 // document.addEventListener('click', (e)=> {
-//     // e.preventDefault();
+//     e.preventDefault();
 //     const clicked = e.target;
 //     let href_value = null;
 

@@ -79,16 +79,18 @@
                         </div>
                         <div class="col-lg-6 col-md-5">
                             <div class="header__top__right">
-                                <c:choose>
-									<c:when test="${ses.email eq null }">
-										<a href="/member/register">join</a>
-										<a href="/member/login">log in</a>
-									</c:when>
-									<c:otherwise>
-										<a href="/member/mypage?email=${ses.email }">my page</a>
-										<a href="/member/logout">log out</a>
-									</c:otherwise>
-								</c:choose>
+                                <div class="header__top__links">
+                                    <c:choose>
+                                        <c:when test="${ses.email eq null }">
+                                            <a href="/member/register">join</a>
+                                            <a href="/member/login">log in</a>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <a href="/member/mypage?email=${ses.email }">my page</a>
+                                            <a href="/member/logout">log out</a>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
                             </div>
                         </div>
                     </div>
