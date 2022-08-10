@@ -1,5 +1,7 @@
 package com.shoekream.www.domain.itemsDomain;
 
+import com.shoekream.www.domain.filterVO.FilterSizeVO;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,6 +12,6 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 public class ItemsDTO {
-	private int price;
-//	private ShoeSizeVO shoeSizeVO;
+	private Integer price;
+	private FilterSizeVO sizeVO;
 }

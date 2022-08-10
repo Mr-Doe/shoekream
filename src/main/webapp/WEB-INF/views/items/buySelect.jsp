@@ -63,7 +63,7 @@
 							</ul>
 						</div>
 						<div data-v-28c27354="" data-v-03c9a74b="" class="order_btn_area">
-							<a data-v-57f23419="" data-v-28c27354="" href="/itmes/buyItem"
+							<a data-v-57f23419="" data-v-28c27354="" href="/items/buyItem"
 								class="btn_order order_buy buy_100 clickable"><div
 									data-v-57f23419="" class="box">
 									<!---->
@@ -81,7 +81,6 @@
 </div>
 
 <input type="hidden" name="pno" value="1">
-<input type="hidden" name="sizeValue" value="4">
+<input type="hidden" name="shoeSize" value="4">
 
-<script src="/resources/js/items/itemSelect.js"></script>
 <jsp:include page="../commons/footer.jsp" />

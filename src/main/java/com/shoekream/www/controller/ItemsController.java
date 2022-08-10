@@ -1,5 +1,7 @@
 package com.shoekream.www.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.http.HttpStatus;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.shoekream.www.domain.itemsDomain.ItemsDTO;
 import com.shoekream.www.domain.itemsDomain.ItemsVO;
 import com.shoekream.www.service.itemsService.ItemsService;
 
@@ -23,14 +26,23 @@ public class ItemsController {
 	@Inject
 	private ItemsService itemsService;
 	
-//	@Inject
-//	private ProductService productService;
-	
 	@GetMapping("/detail")
 	public void detail(@RequestParam("pno") int pno, Model model) {
-//		model.addAttribute("productDTO", productService.selectProduct(pno));
+		int min = 999999999;
+//		model.addAttribute("productDTO", itemsService.selectProduct(pno));
+		model.addAttribute("pdto", itemsService.selectProduct(pno));
 		model.addAttribute("recentPrice", itemsService.recentDealPrice(pno, 0));
-		model.addAttribute("list", itemsService.getBuyItemPriceList(pno));
+		List<ItemsDTO> priceList = itemsService.getBuyItemPriceList(pno);
+		model.addAttribute("list", priceList);
+		for (ItemsDTO p : priceList) {
+			if(p.getPrice()!=null) {
+				if(p.getPrice()<min) {
+					min = p.getPrice();
+				}
+			}
+		}
+		model.addAttribute("min", (min==999999999 ? 0 : min));
+		model.addAttribute("max",  itemsService.sellPrice(pno));
 	}
 	
 	@GetMapping(value = "/{pno}/{shoeSize}", produces= {MediaType.TEXT_PLAIN_VALUE})

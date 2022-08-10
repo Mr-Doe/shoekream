@@ -2,6 +2,7 @@ package com.shoekream.www.service.itemsService;
 
 import java.util.List;
 
+import com.shoekream.www.domain.itemsDomain.BrandDTO;
 import com.shoekream.www.domain.itemsDomain.ItemsDTO;
 import com.shoekream.www.domain.itemsDomain.ItemsVO;
 
@@ -15,4 +16,6 @@ public interface ItemsService {
 	int sellEnd(ItemsVO itemsVO);
 	int buyEnd(ItemsVO itemsVO);
 	int removeItem(int itemNo);
+	BrandDTO selectProduct(int pno);
+	Integer sellPrice(int pno);
 }

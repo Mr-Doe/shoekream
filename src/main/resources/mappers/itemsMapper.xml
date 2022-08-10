@@ -19,9 +19,12 @@
 	<select id="selectSellPrice" resultType="int">
 		select max(price) from items where pno = #{pno} and shoe_size = #{shoeSize} and seller_email is null
 	</select>
+	<select id="maxSellPrice" resultType="int">
+		select max(price) from items where pno = #{pno} and seller_email is null
+	</select>
 	<!-- 구입 -->
 	<select id="selectBuyPrice" resultType="int">
-		select min(price) from items where pno = #{pno} and shoe_size = #{shoeSize} and buyer_email is null
+		select min(price) from items where pno = #{pno} and shoe_size = #{sizeId} and buyer_email is null
 	</select>
 	<select id="recentDeal" resultType="int">
 		select price from items where pno = #{pno} and is_sold = 1 <include refid="sizeCheck" /> order by item_no desc limit 1
@@ -31,6 +34,15 @@
 	</select>
 	<select id="selectBuyItem" resultType="itemsVO">
 		select item_no, pno, price from items where pno = #{pno} and shoe_size = #{shoeSize} and buyer_email is null order by price, item_no limit 1
+	</select>
+	<select id="selectProduct" resultType="productVO">
+		select pno, model, e_name, k_name, reg_at, retail_price, brand brand from product where pno = #{pno}
+	</select>
+	<select id="selectSizeList" resultType="sizeVO">
+		select * from shoe_size
+	</select>
+	<select id="selectBrandName" resultType="string">
+		select brand_name from shoe_brand where brand_id = #{brand}
 	</select>
 	<update id="sellUpdate">
 		update items set end_at = now(), is_sold = 1, seller_email = #{sellerEmail} where item_no = #{itemNO}

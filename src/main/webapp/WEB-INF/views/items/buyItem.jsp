@@ -176,11 +176,10 @@
 	</div>
 </div>
 <form action="" method="post">
-	<input type="hidden" name="itemNo">
-	<input type="hidden" name="buyerEmail">
-	<input type="hidden" name="pno">
-	<input type="hidden" name="shoeSize">
-	<input type="hidden" name="price">
-	
+	<input type="hidden" name="itemNo" value="">
+	<input type="hidden" name="buyerEmail" value="">
+	<input type="hidden" name="pno" value="">
+	<input type="hidden" name="shoeSize" value="">
+	<input type="hidden" name="price" value="">
 </form>
 <jsp:include page="../commons/footer.jsp" />

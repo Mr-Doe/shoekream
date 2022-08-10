@@ -5,8 +5,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.shoekream.www.domain.filterVO.FilterSizeVO;
+import com.shoekream.www.domain.itemsDomain.BrandDTO;
 import com.shoekream.www.domain.itemsDomain.ItemsDTO;
 import com.shoekream.www.domain.itemsDomain.ItemsVO;
+import com.shoekream.www.domain.productVO.ProductVO;
 import com.shoekream.www.repository.itemsRepository.ItemsDAO;
 
 import org.springframework.stereotype.Service;
@@ -15,9 +18,6 @@ import org.springframework.stereotype.Service;
 public class ItemsServiceImpl implements ItemsService {
 	@Inject
 	private ItemsDAO itemDAO;
-	
-//	@Inject
-//	private FilterSizeDAO sizeDAO;
 	
 	@Override
 	public int registerSellItem(ItemsVO itemsVO) {
@@ -42,12 +42,13 @@ public class ItemsServiceImpl implements ItemsService {
 
 	@Override
 	public List<ItemsDTO> getBuyItemPriceList(int pno) {
-//		List<FilterSizeVO> sizeList = sizeDAO.selectSizeList();
+		List<FilterSizeVO> sizeList = itemDAO.selectSizeList();
 		List<ItemsDTO> itemList = new ArrayList<>();
 		
-//		for(FilterSizeVO sizeVO : sizeList) {
-//			itemList.add(itemDAO.selectBuyPrice(pno, sizeVO.getSizeId), sizeVO);
-//		}
+		for(FilterSizeVO sizeVO : sizeList) {
+			itemDAO.selectBuyPrice(pno, sizeVO.getSizeId());
+			itemList.add(new ItemsDTO(itemDAO.selectBuyPrice(pno, sizeVO.getSizeId()), sizeVO));
+		}
 		return itemList;
 	}
 
@@ -74,5 +75,17 @@ public class ItemsServiceImpl implements ItemsService {
 	@Override
 	public int removeItem(int itemNo) {
 		return itemDAO.deleteItem(itemNo);
+	}
+
+	@Override
+	public BrandDTO selectProduct(int pno) {
+		ProductVO pvo = itemDAO.selectProduct(pno);
+		pvo.setRegAt(pvo.getRegAt().substring(0, pvo.getRegAt().indexOf(" ")));
+		return new BrandDTO(pvo, itemDAO.selectBrandName(pvo.getBrand()));
+	}
+
+	@Override
+	public Integer sellPrice(int pno) {
+		return itemDAO.maxSellPrice(pno);
 	}
 }
