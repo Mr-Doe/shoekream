@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+
+            </div>
+        </div>
+
         <!-- Footer Section Begin -->
-        <footer class="footer">
+        <footer class="footer" style="margin-top: 100px;">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
@@ -12,8 +16,7 @@
                                 <script>
                                     document.write(new Date().getFullYear());
                                 </script>
-                                All rights reserved | This template is made with <i class="fa fa-heart-o"
-                                aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a>Colorlib</a>
                             </p>
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </div>
