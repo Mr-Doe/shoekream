@@ -84,9 +84,9 @@ public class MemberController {
 		return "redirect:/member/detail?email=" + memberVO.getEmail();
 	}
 
-	@PostMapping(value = "/remove", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
-	public String remove(HttpSession ses, @RequestBody HashMap<String, String> map) {
-		int isUp = msv.remove(map.get("email"));
+	@PostMapping("/remove")
+	public String remove(HttpSession ses, @RequestParam("email") String email) {
+		int isUp = msv.remove(email);
 		log.info(">>> MemberController > Remove - POST : {}", isUp > 0 ? "OK" : "FAIL");
 		ses.removeAttribute("ses");
 		ses.invalidate();

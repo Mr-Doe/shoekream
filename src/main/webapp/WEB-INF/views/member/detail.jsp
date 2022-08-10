@@ -7,7 +7,7 @@
 <div data-v-3d7f7af7="" class="container my md">
 	<div data-v-3d7f7af7="">
 		<div data-v-3d7f7af7="" class="snb_area">
-			<a data-v-3d7f7af7="" href="#" class="nuxt-link-active"><h2
+			<a data-v-3d7f7af7="" href="/member/mypage" class="nuxt-link-active"><h2
 					data-v-3d7f7af7="" class="snb_main_title">마이 페이지</h2></a>
 			<nav data-v-7bcac446="" data-v-3d7f7af7="" class="snb">
 				<div data-v-7bcac446="" class="snb_list">

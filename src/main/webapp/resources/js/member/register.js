@@ -31,5 +31,6 @@ document.getElementById('registerBtn').addEventListener('click', (e) => {
 
     insertToServer(registerObj).then(result => {
         alert("회원가입이 완료됐습니다");
+        window.location.href = "/member/login";
     });
 });

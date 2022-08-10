@@ -28,7 +28,7 @@ document.getElementById('loginBtn').addEventListener('click', (e) => {
     }
 
     loginToServer(loginObj).then(result => {
-        console.log(result);
         alert("로그인 성공!");
+        window.location.href = "/";
     });
 });
