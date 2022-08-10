@@ -83,4 +83,5 @@
 <input type="hidden" name="pno" value="1">
 <input type="hidden" name="sizeValue" value="4">
 
+<script src="/resources/js/items/itemSelect.js"></script>
 <jsp:include page="../commons/footer.jsp" />

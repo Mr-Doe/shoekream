@@ -59,6 +59,16 @@
 												</span>
 											</div>
 										</button></li>
+									<li data-v-02c63ee6="" class="select_item "><button
+											data-v-02c63ee6="" role="button" aria-selected="true"
+											class="select_link sell">
+											<div data-v-02c63ee6="" class="link_inner">
+												<span data-v-02c63ee6="" class="size"> <!-- ${idto.sizeValue} -->
+													240
+												</span><span data-v-02c63ee6="" class="price"> <!-- ${items.price} -->310,000
+												</span>
+											</div>
+									</button></li>
 								</c:forEach>
 							</ul>
 						</div>
@@ -85,5 +95,5 @@
 <input type="hidden" id="pnoValue" name="pno" value="1">
 <input type="hidden" id="sizeValue" name="sizeValue" value="4">
 
-
+<script src="/resources/js/items/itemSelect.js"></script>
 <jsp:include page="../commons/footer.jsp" />
