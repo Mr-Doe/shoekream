@@ -66,4 +66,5 @@
 <script>
     getFilter_Category();
     getFilter_Brand();
+    getFilter_Size();
 </script>

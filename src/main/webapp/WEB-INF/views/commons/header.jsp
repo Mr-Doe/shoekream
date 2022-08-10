@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-        <title>Shoe Kream</title>
+        <title>ShoeKream</title>
 
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
@@ -93,9 +93,9 @@
                     <div class="col-lg-6 col-md-6">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li><a href="./">Home</a></li>
-                                <li class="active"><a href="/">Shop</a></li>
-                                <li><a href="./">Blog</a></li>
+                                <li><a href="/product/list">Home</a></li>
+                                <li class="active"><a href="/product/list">Shop</a></li>
+                                <li><a href="">Blog</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -120,7 +120,7 @@
                         <div class="breadcrumb__text">
                             <h4>Shop</h4>
                             <div class="breadcrumb__links">
-                                <a href="./">Home</a>
+                                <a href="/product/list">Home</a>
                                 <span>Shop</span>
                             </div>
                         </div>
@@ -131,3 +131,6 @@
         <!-- Breadcrumb Section End -->
 
 <script src="../../../resources/js/commons/header.js"></script>
+<script>
+    show_page_path();
+</script>

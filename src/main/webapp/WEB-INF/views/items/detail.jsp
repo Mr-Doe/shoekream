@@ -207,7 +207,7 @@
 												data-v-23bbaa82="" class="num">150,000</em><span
 												data-v-23bbaa82="" class="won">원</span></span><span
 												data-v-23bbaa82="" class="desc">즉시 구매가</span>
-										</div></a><a data-v-23bbaa82="" href="/items/sellSelect?pno=" class="btn_division sell"><strong
+										</div></a><a data-v-23bbaa82="" href="/items/sellSelect?pno=1" class="btn_division sell"><strong
 										data-v-23bbaa82="" class="title">판매</strong>
 										<div data-v-23bbaa82="" class="price">
 											<span data-v-23bbaa82="" class="amount"><em

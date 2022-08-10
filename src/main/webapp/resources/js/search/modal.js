@@ -85,26 +85,26 @@ document.querySelector('.btn_search_delete').addEventListener('click', (e)=> {
     document.querySelector('.btn_search_delete').style.display = 'none';
 });
 
-async function getTheItemFromServer(href_value) {
-    try {
-        // const resp = await fetch(href_value);
-    } catch (error) {
-        console.log(error);
-    }
-};
+// async function getTheItemFromServer(href_value) {
+//     try {
+//         const resp = await fetch(href_value);
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
 
-document.addEventListener('click', (e)=> {
-    e.preventDefault();
-    const clicked = e.target;
-    let href_value = null;
+// document.addEventListener('click', (e)=> {
+//     // e.preventDefault();
+//     const clicked = e.target;
+//     let href_value = null;
 
-    if(clicked.tagName == 'A' && clicked.getAttribute('class') == 'suggest_link') href_value = clicked.getAttribute('href');
-    if(clicked.tagName == 'svg' && clicked.parentNode.getAttribute('class') == 'more_link') href_value = clicked.parentNode.getAttribute('href');
-    if(clicked.tagName == 'IMG' && clicked.parentNode.parentNode.getAttribute('class') == 'suggest_link') href_value = clicked.parentNode.parentNode.getAttribute('href');
-    if(clicked.tagName == 'P' && clicked.parentNode.parentNode.getAttribute('class') == 'suggest_link') href_value = clicked.parentNode.parentNode.getAttribute('href');
+//     if(clicked.tagName == 'A' && clicked.getAttribute('class') == 'suggest_link') href_value = clicked.getAttribute('href');
+//     if(clicked.tagName == 'svg' && clicked.parentNode.getAttribute('class') == 'more_link') href_value = clicked.parentNode.getAttribute('href');
+//     if(clicked.tagName == 'IMG' && clicked.parentNode.parentNode.getAttribute('class') == 'suggest_link') href_value = clicked.parentNode.parentNode.getAttribute('href');
+//     if(clicked.tagName == 'P' && clicked.parentNode.parentNode.getAttribute('class') == 'suggest_link') href_value = clicked.parentNode.parentNode.getAttribute('href');
 
-    if(href_value != null || clicked.getAttribute('href') != null) {
-        getTheItemFromServer(href_value).then();
-        console.log(href_value);
-    }
-});
+//     if(href_value != null || clicked.getAttribute('href') != null) {
+//         getTheItemFromServer(href_value).then();
+//         console.log(href_value);
+//     }
+// });
