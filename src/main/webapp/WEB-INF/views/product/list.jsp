@@ -6,6 +6,25 @@
 <jsp:include page="../commons/sidebar.jsp" />
 <style>
 
+p {
+    font-size: 13px;
+    font-family: -apple-system,BlinkMacSystemFont,Roboto,AppleSDGothicNeo-Regular,NanumBarunGothic,NanumGothic,나눔고딕,Segoe UI,Helveica,Arial,Malgun Gothic,Dotum,sans-serif;
+    color: #3d3d3d;
+    margin: 0;
+}
+
+.product__item__pic {
+	height: 180px;
+	position: relative;
+	background-position: center center;
+}
+
+#imggg {
+	border-radius: 0.5em;
+	background-color: #ebf0f5;
+	height: auto;
+	width : auto;
+}
 .product[data-v-75e33658] {
 	padding: 0;
     overflow: hidden;
