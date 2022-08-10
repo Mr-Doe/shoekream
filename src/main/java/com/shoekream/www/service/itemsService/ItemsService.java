@@ -11,7 +11,7 @@ public interface ItemsService {
 	int registerBuyItem(ItemsVO itemsVO);
 	List<ItemsDTO> getSellItemPriceList(int pno);
 	List<ItemsDTO> getBuyItemPriceList(int pno);
-	int recentDealPrice(int pno, int size);
+	Integer recentDealPrice(int pno, int size);
 	ItemsVO selectbuyItem(int pno, int shoeSize);
 	int sellEnd(ItemsVO itemsVO);
 	int buyEnd(ItemsVO itemsVO);

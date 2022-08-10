@@ -13,7 +13,7 @@ public interface ItemsDAO {
 	int insertBuyItem(ItemsVO itemsVO);
 	int selectSellPrice(@Param("pno") int pno, @Param("shoeSize") int shoeSize);
 	Integer selectBuyPrice(@Param("pno") int pno, @Param("sizeId") int sizeId);
-	int recentDeal(@Param("pno") int pno, @Param("shoeSize") int shoeSize);
+	Integer recentDeal(@Param("pno") int pno, @Param("shoeSize") int shoeSize);
 	ItemsVO selectBuyItem(@Param("pno") int pno, @Param("shoeSize") int shoeSize);
 	ItemsVO selectSellItem(@Param("pno") int pno, @Param("shoeSize") int shoeSize);
 	int sellUpdate(ItemsVO itemsVO);

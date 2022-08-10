@@ -77,7 +77,10 @@
 									</div>
 									<div data-v-5943a237="" class="price">
 										<div data-v-5943a237="" class="amount">
-											<span data-v-5943a237="" class="num">${recentPrice }</span><span
+											<span data-v-5943a237="" class="num">
+											<c:if test="${recentPrice!=null }">${recentPrice }</c:if>
+											<c:if test="${recentPrice==null }">ㅡ</c:if>
+											</span><span
 												data-v-5943a237="" class="won">원</span>
 										</div>
 										<!-- <div data-v-5943a237="" class="fluctuation increase">

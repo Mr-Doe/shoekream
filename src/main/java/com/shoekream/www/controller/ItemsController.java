@@ -41,7 +41,7 @@ public class ItemsController {
 				}
 			}
 		}
-		model.addAttribute("min", (min==999999999 ? 0 : min));
+		model.addAttribute("min", (min==999999999 ? "-" : min));
 		model.addAttribute("max",  itemsService.sellPrice(pno));
 	}
 	

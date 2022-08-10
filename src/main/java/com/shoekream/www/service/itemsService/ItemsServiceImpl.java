@@ -53,7 +53,7 @@ public class ItemsServiceImpl implements ItemsService {
 	}
 
 	@Override
-	public int recentDealPrice(int pno, int size) {
+	public Integer recentDealPrice(int pno, int size) {
 		return itemDAO.recentDeal(pno, size);
 	}
 
