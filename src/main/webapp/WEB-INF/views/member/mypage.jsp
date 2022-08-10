@@ -19,7 +19,7 @@
 						<li data-v-4d11470e="" class="menu_item"><a
 							data-v-4d11470e="" href="#" class="menu_link"> 판매 내역 </a></li>
 						<li data-v-4d11470e="" class="menu_item"><a
-							data-v-4d11470e="" href="#" class="menu_link"> 프로필 정보 </a></li>
+							data-v-4d11470e="" href="/member/detail?email=${memberVO.email }" class="menu_link"> 프로필 정보 </a></li>
 					</ul>
 				</div>
 			</nav>
@@ -36,9 +36,9 @@
 					</div>
 					<div data-v-5acef129="" class="user_info">
 						<div data-v-5acef129="" class="info_box">
-							<strong data-v-5acef129="" class="name">qpfmqp20</strong>
-							<p data-v-5acef129="" class="email">q******0@naver.com</p>
-							<a data-v-3d1bcc82="" data-v-5acef129="" href="#"
+							<strong data-v-5acef129="" class="name">${initEmail }</strong>
+							<p data-v-5acef129="" class="email">${memberVO.email }</p>
+							<a data-v-3d1bcc82="" data-v-5acef129="" href="/member/modify?email=${memberVO.email }"
 								class="btn btn outlinegrey small" type="button"> 프로필 수정 </a> <a
 								data-v-3d1bcc82="" data-v-5acef129="" href="#"
 								class="btn btn btn_my_style outlinegrey small" type="button">

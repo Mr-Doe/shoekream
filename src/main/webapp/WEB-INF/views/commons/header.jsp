@@ -27,6 +27,8 @@
         <link rel="stylesheet" href="../../resources/dist-kream/7588f4c.css">
         <link rel="stylesheet" href="../../resources/dist-kream/468cd0d.css">
 
+		<!-- 로그인 페이지 -->
+		<link rel="stylesheet" href="../../resources/dist-kream/0f788f7.css">
 
         <!-- 상세 페이지 -->
         <link rel="stylesheet" href="../../resources/dist-kream/979f3ae.css">
@@ -38,7 +40,7 @@
         <link rel="stylesheet" href="../../resources/dist-kream/d1a5384.css">
         <link rel="stylesheet" href="../../resources/dist-kream/862267a.css">
         <link rel="stylesheet" href="../../resources/dist-kream/5691821.css">
-
+        <link rel="stylesheet" href="../../resources/dist-kream/1afe7d3.css">
 
         <!-- 리스트 + 상세 페이지 공통 -->
         <link rel="stylesheet" href="../../resources/dist-kream/734fa9a.css">
@@ -77,10 +79,16 @@
                         </div>
                         <div class="col-lg-6 col-md-5">
                             <div class="header__top__right">
-                                <div class="header__top__links">
-                                    <a href="/member/mypage">my page</a>
-                                    <a href="/member/login">log in</a>
-                                </div>
+                                <c:choose>
+									<c:when test="${ses.email eq null }">
+										<a href="/member/register">join</a>
+										<a href="/member/login">log in</a>
+									</c:when>
+									<c:otherwise>
+										<a href="/member/mypage?email=${ses.email }">my page</a>
+										<a href="/member/logout">log out</a>
+									</c:otherwise>
+								</c:choose>
                             </div>
                         </div>
                     </div>

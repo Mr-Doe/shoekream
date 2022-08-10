@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -36,8 +35,12 @@ public class MemberController {
 	private final MemberService msv;
 	
 	@GetMapping("/mypage")
-	public void mypage() {
+	public void mypage(@RequestParam("email") String email, Model model) {
 		log.info(">>> MemberController > MyPage - GET");
+		MemberVO memberVO = msv.getDetail(email);
+		String initEmail = memberVO.getEmail().substring(0, memberVO.getEmail().lastIndexOf("@"));
+		model.addAttribute("memberVO", memberVO);
+		model.addAttribute("initEmail", initEmail);
 	}
 
 	@GetMapping("/register")
