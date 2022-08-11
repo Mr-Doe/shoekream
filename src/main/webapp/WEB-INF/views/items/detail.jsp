@@ -16,8 +16,7 @@
 			<div data-v-44d29853="" class="column_bind">
 				<div data-v-44d29853="" class="column is_fixed">
 					<div data-v-44d29853="" class="spread">
-						<img src="${pdto.productVO.thImg }" height=""
-							alt="">
+						<img src="${pdto.productVO.thImg }" height="" alt="">
 					</div>
 					<div data-v-44d29853="" class="column_box" style="width: 560px;">
 						<div data-v-505b03f6="" data-v-44d29853=""
@@ -34,9 +33,11 @@
 							<div data-v-22fed681="" data-v-5622d1e8=""
 								class="detail_main_title lg">
 								<div data-v-22fed681="" class="main_title_box">
-									<a data-v-22fed681="" href="#" class="brand"> ${pdto.brandName } </a>
-									<p data-v-22fed681="" class="title"> ${pdto.productVO.eName }</p>
-									<p data-v-22fed681="" class="sub_title"> ${pdto.productVO.kName }</p>
+									<a data-v-22fed681="" href="#" class="brand">
+										${pdto.brandName } </a>
+									<p data-v-22fed681="" class="title">${pdto.productVO.eName }</p>
+									<p data-v-22fed681="" class="sub_title">
+										${pdto.productVO.kName }</p>
 								</div>
 							</div>
 							<div data-v-5622d1e8="" class="product_info_wrap">
@@ -77,11 +78,10 @@
 									</div>
 									<div data-v-5943a237="" class="price">
 										<div data-v-5943a237="" class="amount">
-											<span data-v-5943a237="" class="num">
-											<c:if test="${recentPrice!=null }">${recentPrice }</c:if>
-											<c:if test="${recentPrice==null }">-&nbsp;</c:if>
-											</span><span
-												data-v-5943a237="" class="won">원</span>
+											<span data-v-5943a237="" class="num"> <c:if
+													test="${recentPrice!=null }">${recentPrice }</c:if> <c:if
+													test="${recentPrice==null }">-&nbsp;</c:if>
+											</span><span data-v-5943a237="" class="won">원</span>
 										</div>
 										<!-- <div data-v-5943a237="" class="fluctuation increase">
 											<p data-v-5943a237="">6,000원 (+4.0%)</p>
@@ -92,7 +92,8 @@
 							<div data-v-5622d1e8="" class="btn_wrap">
 								<div data-v-23bbaa82="" data-v-5622d1e8=""
 									class="division_btn_box lg">
-									<a data-v-23bbaa82="" href="/items/buySelect?pno=${pdto.productVO.pno }"
+									<a data-v-23bbaa82=""
+										href="/items/buySelect?pno=${pdto.productVO.pno }"
 										class="btn_division buy"><strong data-v-23bbaa82=""
 										class="title">구매</strong>
 										<div data-v-23bbaa82="" class="price">
@@ -100,15 +101,18 @@
 												data-v-23bbaa82="" class="num">${min }</em><span
 												data-v-23bbaa82="" class="won">원</span></span><span
 												data-v-23bbaa82="" class="desc">즉시 구매가</span>
-										</div></a><a data-v-23bbaa82="" href="/items/sellSelect?pno=${pdto.productVO.pno }"
+										</div></a> <a data-v-23bbaa82=""
+										href="/items/sellSelect?pno=${pdto.productVO.pno }"
 										class="btn_division sell"><strong data-v-23bbaa82=""
 										class="title">판매</strong>
 										<div data-v-23bbaa82="" class="price">
-											<span data-v-23bbaa82="" class="amount"><em
-												data-v-23bbaa82="" class="num"><c:if test="${max!=null }">${max }</c:if><c:if test="${max==null }">-&nbsp;</c:if></em><span
-												data-v-23bbaa82="" class="won">원</span></span><span
+											<span data-v-23bbaa82="" class="amount"> <em
+												data-v-23bbaa82="" class="num"> <c:if
+														test="${max!=null }">${max }</c:if> <c:if
+														test="${max==null }">-&nbsp;</c:if>
+											</em> <span data-v-23bbaa82="" class="won">원</span></span> <span
 												data-v-23bbaa82="" class="desc">즉시 판매가</span>
-										</div></a>
+										</div> </a>
 								</div>
 							</div>
 						</div>
@@ -143,8 +147,12 @@
 															<span data-v-02c63ee6="" class="size"> <!---->
 																${idto.sizeVO.sizeValue }
 															</span>
-															<c:if test="${idto.price ne null }"><span data-v-02c63ee6="" class="price">${idto.price }</span></c:if>
-															<c:if test="${idto.price eq null }"><span data-v-02c63ee6="" class="price">구매입찰</span></c:if>
+															<c:if test="${idto.price ne null }">
+																<span data-v-02c63ee6="" class="price">${idto.price }</span>
+															</c:if>
+															<c:if test="${idto.price eq null }">
+																<span data-v-02c63ee6="" class="price">구매입찰</span>
+															</c:if>
 														</div>
 													</button></li>
 											</c:forEach>
