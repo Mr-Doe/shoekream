@@ -12,8 +12,8 @@
 				</div>
 				<div data-v-68b558fb="" data-v-6657f7cc="" class="buy_immediate">
 					<div data-v-1643775e="" data-v-68b558fb=""
-						class="product_info_area">
-						<div data-v-1643775e="" class="product_info">
+						class="product_info_area" style="padding-bottom: 12px">
+						<div data-v-1643775e="" class="product_info" >
 							<div data-v-75e33658="" data-v-1643775e="" class="product"
 								style="background-color: rgb(235, 240, 245);">
 								<picture data-v-548c90f9="" data-v-75e33658=""
@@ -43,13 +43,14 @@
 								</div>
 							</div>
 						</div>
+						<hr>
 					</div>
 
 					<div data-v-30b23d22="" class="sell_before_select">
-						<div data-v-02c63ee6="" data-v-30b23d22="" class="select_area md">
+						<div data-v-02c63ee6="" data-v-30b23d22="" class="select_area md" style="padding: 0 32 20;">
 							<ul data-v-02c63ee6="" class="select_list">
 								<c:forEach items="sizeVO" var="size">
-									<li data-v-02c63ee6="" class="select_item active"><button
+									<li data-v-02c63ee6="" class="select_item"><button
 											data-v-02c63ee6="" role="button" aria-selected="true"
 											class="select_link sell">
 											<div data-v-02c63ee6="" class="link_inner">
@@ -72,7 +73,7 @@
 								</c:forEach>
 							</ul>
 						</div>
-						<div data-v-744cecc2="" data-v-30b23d22="" class="order_btn_area">
+						<div data-v-744cecc2="" data-v-30b23d22="" class="order_btn_area" style="padding: 20 32;">
 							<a data-v-57f23419="" data-v-744cecc2="" href="#"
 								class="btn_order order_sell sell clickable">
 								<div
