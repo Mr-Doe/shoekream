@@ -7,7 +7,7 @@
 <div data-v-3d7f7af7="" class="container my lg">
 	<div data-v-3d7f7af7="">
 		<div data-v-3d7f7af7="" class="snb_area">
-			<a data-v-3d7f7af7="" href="/member/mypage" aria-current="page"
+			<a data-v-3d7f7af7="" href="/member/mypage?email=${memberVO.email }" aria-current="page"
 				class="nuxt-link-exact-active nuxt-link-active"><h2
 					data-v-3d7f7af7="" class="snb_main_title">마이 페이지</h2></a>
 			<nav data-v-7bcac446="" data-v-3d7f7af7="" class="snb">
