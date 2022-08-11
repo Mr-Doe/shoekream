@@ -21,6 +21,6 @@ public class ProductVO {
     private int retailPrice;
     private int category;
     private int brand;
-	private String th_img;
+	private String thImg;
 
 }
