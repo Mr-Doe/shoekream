@@ -29,7 +29,6 @@ public class ItemsController {
 	@GetMapping("/detail")
 	public void detail(@RequestParam("pno") int pno, Model model) {
 		int min = 999999999;
-//		model.addAttribute("productDTO", itemsService.selectProduct(pno));
 		model.addAttribute("pdto", itemsService.selectProduct(pno));
 		model.addAttribute("recentPrice", itemsService.recentDealPrice(pno, 0));
 		List<ItemsDTO> priceList = itemsService.getBuyItemPriceList(pno);
@@ -41,7 +40,7 @@ public class ItemsController {
 				}
 			}
 		}
-		model.addAttribute("min", (min==999999999 ? "-" : min));
+		model.addAttribute("min", (min==999999999 ? "-&nbsp" : min));
 		model.addAttribute("max",  itemsService.sellPrice(pno));
 	}
 	

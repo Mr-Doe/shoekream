@@ -11,7 +11,7 @@ import com.shoekream.www.domain.filterVO.FilterSizeVO;
 public interface ItemsDAO {
 	int insertSellItem(ItemsVO itemsVO);
 	int insertBuyItem(ItemsVO itemsVO);
-	int selectSellPrice(@Param("pno") int pno, @Param("shoeSize") int shoeSize);
+	Integer selectSellPrice(@Param("pno") int pno, @Param("shoeSize") int shoeSize);
 	Integer selectBuyPrice(@Param("pno") int pno, @Param("sizeId") int sizeId);
 	Integer recentDeal(@Param("pno") int pno, @Param("shoeSize") int shoeSize);
 	ItemsVO selectBuyItem(@Param("pno") int pno, @Param("shoeSize") int shoeSize);
@@ -22,5 +22,4 @@ public interface ItemsDAO {
 	ProductVO selectProduct(int pno);
 	List<FilterSizeVO> selectSizeList();
 	String selectBrandName(int brand);
-	Integer maxSellPrice(int pno);
 }

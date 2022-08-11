@@ -17,10 +17,7 @@
 	<!-- 사이즈 리스트 -->
 	<!-- 판매 -->
 	<select id="selectSellPrice" resultType="int">
-		select max(price) from items where pno = #{pno} and shoe_size = #{shoeSize} and seller_email is null
-	</select>
-	<select id="maxSellPrice" resultType="int">
-		select max(price) from items where pno = #{pno} and seller_email is null
+		select max(price) from items where pno = #{pno} <include refid="sizeCheck" /> and seller_email is null
 	</select>
 	<!-- 구입 -->
 	<select id="selectBuyPrice" resultType="int">
@@ -36,7 +33,7 @@
 		select item_no, pno, price from items where pno = #{pno} and shoe_size = #{shoeSize} and buyer_email is null order by price, item_no limit 1
 	</select>
 	<select id="selectProduct" resultType="productVO">
-		select pno, model, e_name, k_name, reg_at, retail_price, brand brand from product where pno = #{pno}
+		select pno, model, e_name, k_name, reg_at, retail_price, brand, th_img from product where pno = #{pno}
 	</select>
 	<select id="selectSizeList" resultType="sizeVO">
 		select * from shoe_size

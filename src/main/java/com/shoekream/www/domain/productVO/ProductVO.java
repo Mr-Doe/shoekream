@@ -21,8 +21,8 @@ public class ProductVO {
 
     private String thImg;
 
-    public int getThImg() {
-        return pno;
+    public String getThImg() {
+        return thImg;
     }
     public void setThImg(String thImg) {
         this.thImg = thImg;

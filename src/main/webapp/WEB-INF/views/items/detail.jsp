@@ -16,7 +16,7 @@
 			<div data-v-44d29853="" class="column_bind">
 				<div data-v-44d29853="" class="column is_fixed">
 					<div data-v-44d29853="" class="spread">
-						<img src="/resources/dist-temp/img/banner/banner-2.jpg" height=""
+						<img src="${pdto.productVO.thImg }" height=""
 							alt="">
 					</div>
 					<div data-v-44d29853="" class="column_box" style="width: 560px;">
@@ -79,7 +79,7 @@
 										<div data-v-5943a237="" class="amount">
 											<span data-v-5943a237="" class="num">
 											<c:if test="${recentPrice!=null }">${recentPrice }</c:if>
-											<c:if test="${recentPrice==null }">ㅡ</c:if>
+											<c:if test="${recentPrice==null }">-&nbsp;</c:if>
 											</span><span
 												data-v-5943a237="" class="won">원</span>
 										</div>
@@ -92,7 +92,7 @@
 							<div data-v-5622d1e8="" class="btn_wrap">
 								<div data-v-23bbaa82="" data-v-5622d1e8=""
 									class="division_btn_box lg">
-									<a data-v-23bbaa82="" href="/items/buySelect?pno=1"
+									<a data-v-23bbaa82="" href="/items/buySelect?pno=${pdto.productVO.pno }"
 										class="btn_division buy"><strong data-v-23bbaa82=""
 										class="title">구매</strong>
 										<div data-v-23bbaa82="" class="price">
@@ -100,12 +100,12 @@
 												data-v-23bbaa82="" class="num">${min }</em><span
 												data-v-23bbaa82="" class="won">원</span></span><span
 												data-v-23bbaa82="" class="desc">즉시 구매가</span>
-										</div></a><a data-v-23bbaa82="" href="/items/sellSelect?pno="
+										</div></a><a data-v-23bbaa82="" href="/items/sellSelect?pno=${pdto.productVO.pno }"
 										class="btn_division sell"><strong data-v-23bbaa82=""
 										class="title">판매</strong>
 										<div data-v-23bbaa82="" class="price">
 											<span data-v-23bbaa82="" class="amount"><em
-												data-v-23bbaa82="" class="num"><c:if test="${max!=null }">${max }</c:if><c:if test="${max==null }">-</c:if></em><span
+												data-v-23bbaa82="" class="num"><c:if test="${max!=null }">${max }</c:if><c:if test="${max==null }">-&nbsp;</c:if></em><span
 												data-v-23bbaa82="" class="won">원</span></span><span
 												data-v-23bbaa82="" class="desc">즉시 판매가</span>
 										</div></a>

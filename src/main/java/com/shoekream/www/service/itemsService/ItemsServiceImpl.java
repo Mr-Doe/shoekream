@@ -86,6 +86,6 @@ public class ItemsServiceImpl implements ItemsService {
 
 	@Override
 	public Integer sellPrice(int pno) {
-		return itemDAO.maxSellPrice(pno);
+		return itemDAO.selectSellPrice(pno, 0);
 	}
 }
