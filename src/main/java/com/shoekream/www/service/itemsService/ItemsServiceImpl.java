@@ -1,7 +1,9 @@
 package com.shoekream.www.service.itemsService;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -12,6 +14,7 @@ import com.shoekream.www.domain.itemsDomain.ItemsVO;
 import com.shoekream.www.domain.productVO.ProductVO;
 import com.shoekream.www.repository.itemsRepository.ItemsDAO;
 
+import org.apache.commons.collections4.map.HashedMap;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -53,8 +56,11 @@ public class ItemsServiceImpl implements ItemsService {
 	}
 
 	@Override
-	public Integer recentDealPrice(int pno, int size) {
-		return itemDAO.recentDeal(pno, size);
+	public Map<String, Integer> recentandSellPrice(int pno, int size) {
+		Map<String, Integer> map = new HashMap<>();
+		map.put("recentPrice", itemDAO.recentDeal(pno, size));
+		map.put("maxSellPrice", itemDAO.selectSellPrice(pno, size));
+		return map;
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package com.shoekream.www.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -30,7 +31,7 @@ public class ItemsController {
 	public void detail(@RequestParam("pno") int pno, Model model) {
 		int min = 999999999;
 		model.addAttribute("pdto", itemsService.selectProduct(pno));
-		model.addAttribute("recentPrice", itemsService.recentDealPrice(pno, 0));
+		model.addAttribute("recentAndSellPrice", itemsService.recentandSellPrice(pno, 0));
 		List<ItemsDTO> priceList = itemsService.getBuyItemPriceList(pno);
 		model.addAttribute("list", priceList);
 		for (ItemsDTO p : priceList) {
@@ -41,17 +42,16 @@ public class ItemsController {
 			}
 		}
 		model.addAttribute("min", (min==999999999 ? "-&nbsp" : min));
-		model.addAttribute("max",  itemsService.sellPrice(pno));
 	}
-	
-	@GetMapping(value = "/{pno}/{shoeSize}", produces= {MediaType.TEXT_PLAIN_VALUE})
-	public ResponseEntity<Integer> recentPrice(@PathVariable("pno") int pno, @PathVariable("shoeSize") int shoeSize) {
-		return new ResponseEntity<Integer>(itemsService.recentDealPrice(pno, shoeSize), HttpStatus.OK);
+
+	@GetMapping(value = "/{pno}/{shoeSize}", produces= {MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<Map<String, Integer>> recentPrice(@PathVariable("pno") int pno, @PathVariable("shoeSize") int shoeSize) {
+		return new ResponseEntity<Map<String, Integer>>(itemsService.recentandSellPrice(pno, shoeSize), HttpStatus.OK);
 	}
 	
 	@GetMapping("/buySelect")
 	public void buy(@RequestParam("pno") int pno, Model model) {
-//		model.addAttribute("productDTO", productService.selectProduct(pno));
+		model.addAttribute("pdto", itemsService.selectProduct(pno));
 		model.addAttribute("list", itemsService.getBuyItemPriceList(pno));
 	}
 	

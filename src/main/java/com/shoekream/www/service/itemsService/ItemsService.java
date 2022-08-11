@@ -1,6 +1,7 @@
 package com.shoekream.www.service.itemsService;
 
 import java.util.List;
+import java.util.Map;
 
 import com.shoekream.www.domain.itemsDomain.BrandDTO;
 import com.shoekream.www.domain.itemsDomain.ItemsDTO;
@@ -11,7 +12,7 @@ public interface ItemsService {
 	int registerBuyItem(ItemsVO itemsVO);
 	List<ItemsDTO> getSellItemPriceList(int pno);
 	List<ItemsDTO> getBuyItemPriceList(int pno);
-	Integer recentDealPrice(int pno, int size);
+	Map<String, Integer> recentandSellPrice(int pno, int size);
 	ItemsVO selectbuyItem(int pno, int shoeSize);
 	int sellEnd(ItemsVO itemsVO);
 	int buyEnd(ItemsVO itemsVO);
