@@ -36,7 +36,7 @@
                                         <div class="card-body">
                                             <div class="shop__sidebar__brand" style="overflow-y: scroll; height:256px;">
                                                 <ul id="filter-brand">
-                                                    <li><a href="#" class="active">Louis Vuitton</a></li>
+                                                    <li><a href="#">Louis Vuitton</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -50,9 +50,6 @@
                                         <div class="card-body">
                                             <div class="shop__sidebar__size" id="filter-size">
                                                 <label><input type="radio">111</label>
-                                                <label><input type="radio">222</label>
-                                                <label><input type="checkbox">333</label>
-                                                <label><input type="checkbox">444</label>
                                             </div>
                                         </div>
                                     </div>

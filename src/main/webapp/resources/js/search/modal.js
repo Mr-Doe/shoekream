@@ -1,9 +1,11 @@
 function create_scroll() {
     const auto_complete_scrolling = document.querySelector('.suggest_list.lg');
 
-    auto_complete_scrolling.offsetHeight > 425
-        ? auto_complete_scrolling.style = 'overflow-y: scroll; height:420px;' 
-            : auto_complete_scrolling.style = '';
+    if(auto_complete_scrolling.offsetHeight > 425) {
+        auto_complete_scrolling.style = 'overflow-y: scroll; height:420px;' 
+    } else {
+        auto_complete_scrolling.style = '';
+    }
 }
 
 
@@ -19,13 +21,16 @@ async function searchingFromServer(keyword) {
 
 document.querySelector('.input_search.show_placeholder_on_focus').addEventListener('input', ()=> {
     const keyword = document.querySelector('.input_search.show_placeholder_on_focus').value;
-    document.querySelector('.btn_search_delete').style.display = 'block';
 
     if(keyword.length > 0) {
+        document.querySelector('.btn_search_delete').style.display = 'block';
+
         searchingFromServer(keyword).then(result => {
             if(result.searchedBrandList.length > 0) {
                 let html = '';
-                for(let i = 0; i < 3; i++) {
+                let the_length = result.searchedBrandList.length < 3 ? result.searchedBrandList.length : 3;
+                
+                for(let i = 0; i < the_length; i++) {
                     html += `
                         <div data-v-db6f0438="" data-v-589881b0="" class="suggest_title_area" data-v-1f7c6d3f="">
                             <p data-v-db6f0438="" class="suggest_title"> ${result.searchedBrandList[i].englishName}
@@ -44,12 +49,13 @@ document.querySelector('.input_search.show_placeholder_on_focus').addEventListen
 
             if(result.searchedProductList.length > 0) {
                 let html = '';
+                
                 result.searchedProductList.forEach((idx) => {
                     html += `
                         <div data-v-2741e9de="" class="suggest_item">
                             <a data-v-2741e9de="" href="/items/detail?pno=${idx.identityNumber}" class="suggest_link">
                                 <div data-v-2741e9de="" class="suggest_thumb" style="background-color: rgb(246, 238, 237);">
-                                    <img data-v-2741e9de="" src="https://kream-phinf.pstatic.net/MjAyMDEwMjJfOCAg/MDAxNjAzMzQwOTUzNzMx.nCU7Bumo43r7JZcTRjq4blFOcj33dPIxNYW-_94RtWgg.rJwsoEL3W-f7pgpwfYISb-0HBItIWL04h7p8Ixyp8CUg.PNG/p_4cedd884b4a3427ca616bc31b3bf2867.png" alt="조던 1 레트로 하이 OG 블랙 모카" class="thumb_img">
+                                    <img data-v-2741e9de="" src="${idx.imagePath}">
                                 </div>
                                 <div data-v-2741e9de="" class="suggest_info">
                                     <p data-v-2741e9de="" class="model_title">${idx.englishName}</p>
@@ -63,6 +69,9 @@ document.querySelector('.input_search.show_placeholder_on_focus').addEventListen
             }
             create_scroll();
         });
+    } else {
+        document.querySelector('div.suggest_area').innerHTML = '';
+        document.querySelector('.btn_search_delete').style.display = 'none';
     }
 });
 

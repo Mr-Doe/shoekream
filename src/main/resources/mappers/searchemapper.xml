@@ -9,6 +9,7 @@
 			pno as identityNumber
 			, e_name as englishName
 			, k_name as koreanName
+			, th_img as imagePath
 		FROM
 			product
 		WHERE model like CONCAT("%", #{keyword}, "%")

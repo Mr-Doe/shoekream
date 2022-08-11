@@ -16,6 +16,7 @@ public class SearchVO {
     private int identityNumber;
     private String englishName;
     private String koreanName;
+    private String imagePath;
 
     public SearchVO(String keyword) {
         this.keyword = keyword;
@@ -26,9 +27,10 @@ public class SearchVO {
         this.englishName = englishName;
     }
 
-    public SearchVO(int identityNumber, String englishName, String koreanName) {
+    public SearchVO(int identityNumber, String englishName, String koreanName, String imagePath) {
         this.identityNumber = identityNumber;
         this.englishName = englishName;
         this.koreanName = koreanName;
+        this.imagePath = imagePath;
     }
 }
