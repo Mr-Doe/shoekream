@@ -34,6 +34,11 @@ public class MemberController {
 
 	private final MemberService msv;
 	
+	@GetMapping("/buyHistoryDetail")
+	public void buyHistoryDetail()	{
+		log.info(">>> MemberController > buyHistoryDetail - GET");
+	}
+	
 	@GetMapping("/mypage")
 	public void mypage(@RequestParam("email") String email, Model model) {
 		log.info(">>> MemberController > MyPage - GET");

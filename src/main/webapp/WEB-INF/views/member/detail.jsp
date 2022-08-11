@@ -4,11 +4,19 @@
 <!DOCTYPE html>
 <jsp:include page="../commons/header.jsp" />
 
+<style>
+#profileBox {
+	padding-bottom: 16px;
+	border-bottom: 3px solid #222;
+}
+</style>
+
 <div data-v-3d7f7af7="" class="container my md">
 	<div data-v-3d7f7af7="">
 		<div data-v-3d7f7af7="" class="snb_area">
-			<a data-v-3d7f7af7="" href="/member/mypage?email=${memberVO.email }" class="nuxt-link-active"><h2
-					data-v-3d7f7af7="" class="snb_main_title">마이 페이지</h2></a>
+			<a data-v-3d7f7af7="" href="/member/mypage?email=${memberVO.email }"
+				class="nuxt-link-active"><h2 data-v-3d7f7af7=""
+					class="snb_main_title">마이 페이지</h2></a>
 			<nav data-v-7bcac446="" data-v-3d7f7af7="" class="snb">
 				<div data-v-7bcac446="" class="snb_list">
 					<strong data-v-7bcac446="" class="snb_title">내 정보</strong>
@@ -29,7 +37,7 @@
 	<div data-v-7fba8f8c="" data-v-3d7f7af7="" class="content_area">
 		<div data-v-7fba8f8c="" class="my_profile">
 			<div data-v-88eb18f6="" data-v-7fba8f8c=""
-				class="content_title border">
+				class="content_title board" id="profileBox">
 				<div data-v-88eb18f6="" class="title">
 					<h3 data-v-88eb18f6="">프로필 정보</h3>
 					<!---->
@@ -75,11 +83,13 @@
 						class="btn outlinegrey small">회원정보 수정</a>
 				</div>
 			</form>
-			<form action="" id="memberRmForm" style="display: none;" method="post">
-				 <input type="hidden" id="em" value="" name="email">
+			<form action="" id="memberRmForm" style="display: none;"
+				method="post">
+				<input type="hidden" id="em" value="" name="email">
 			</form>
 			<div>
-				<a data-v-7fba8f8c="" id="memberRemove" class="btn_withdrawal">회원 탈퇴</a>
+				<a data-v-7fba8f8c="" id="memberRemove" class="btn_withdrawal">회원
+					탈퇴</a>
 			</div>
 		</div>
 	</div>

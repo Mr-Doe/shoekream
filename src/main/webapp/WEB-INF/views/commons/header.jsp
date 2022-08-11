@@ -33,6 +33,13 @@
         <!-- 상세 페이지 -->
         <link rel="stylesheet" href="/resources/dist-kream/979f3ae.css">
         <link rel="stylesheet" href="/resources/dist-kream/d3a96a9.css">
+        
+        <!-- 판매&구매 내역 상세 페이지 -->
+        <link rel="stylesheet" href="/resources/dist-kream/0c0bd8f.css">
+        <link rel="stylesheet" href="/resources/dist-kream/d70e979.css">
+        <link rel="stylesheet" href="/resources/dist-kream/d78f754.css">
+        <link rel="stylesheet" href="/resources/dist-kream/4e21bd5.css">
+        <link rel="stylesheet" href="/resources/dist-kream/d550008.css">
 
 
         <!-- 마이페이지 -->
