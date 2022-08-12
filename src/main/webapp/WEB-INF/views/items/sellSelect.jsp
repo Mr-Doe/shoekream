@@ -73,7 +73,7 @@
 								</c:forEach>
 							</ul>
 						</div>
-						<div data-v-744cecc2="" data-v-30b23d22="" class="order_btn_area" style="padding: 20 32;">
+						<div data-v-744cecc2="" data-v-30b23d22="" class="order_btn_area" style="display: none; padding: 20 32;">
 							<a data-v-57f23419="" data-v-744cecc2="" href="#"
 								class="btn_order order_sell sell clickable">
 								<div
