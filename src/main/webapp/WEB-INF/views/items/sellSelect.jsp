@@ -61,7 +61,7 @@
 							</ul>
 						</div>
 						<div data-v-744cecc2="" data-v-30b23d22="" class="order_btn_area" id="order_btn_area" style="display: none; padding: 20 32;">
-							<a data-v-57f23419="" data-v-744cecc2="" href="#"
+							<a data-v-57f23419="" data-v-744cecc2="" href="/items/sellItem?pno=${pdto.productVO.pno }"
 								class="btn_order order_sell sell clickable">
 								<div
 									data-v-57f23419="" class="box">
@@ -79,8 +79,9 @@
 	</div>
 </div>
 
+
 <input type="hidden" id="pnoValue" name="pno" value="${pdto.productVO.pno }">
-<input type="hidden" id="sizeValue" name="sizeValue" value="${idto.sizeVO.sizeValue }">
+<input type="hidden" id="sizeValue" name="sizeValue" value="">
 
 <script src="/resources/js/items/itemSelect.js"></script>
 <jsp:include page="../commons/footer.jsp" />

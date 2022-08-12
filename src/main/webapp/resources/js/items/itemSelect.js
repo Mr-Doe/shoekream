@@ -6,10 +6,9 @@ document.querySelectorAll('.select_link, .size, .price').forEach((price) =>{
         if (e.target.closest('li').classList.contains('select_item')) {
             e.target.closest('li').classList.add('active');
 
-            let price = e.target.closest('li').querySelector('.price').innerText;
-            console.log(price);
-            document.getElementById('order_price').innerText = price;
+            document.getElementById('order_price').innerText = e.target.closest('li').querySelector('.price').innerText;
             document.getElementById('order_btn_area').style.display = 'block';
+            document.getElementById('sizeValue').value = e.target.closest('li').querySelector('.size').innerText;
         }
     });
 });
