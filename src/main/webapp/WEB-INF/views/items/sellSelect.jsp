@@ -19,27 +19,19 @@
 								<picture data-v-548c90f9="" data-v-75e33658=""
 									class="picture product_img">
 								<source data-v-548c90f9="" type="image/webp"
-									srcset="https://kream-phinf.pstatic.net/MjAyMjA2MTVfMjYw/MDAxNjU1MjgzNjk2Mzk3.gh8n5rs7p-pWVqzIhNh7yj_KdyjLFBeJr9QbsDumoFEg.KdvPfvgBYmjm7MKKhcbIEQIP6FGeuof_GnmcDUgrvyAg.PNG/a_baa1ccea3726495badba419dfede63f9.png?type=l_webp">
-								<source data-v-548c90f9=""
-									srcset="https://kream-phinf.pstatic.net/MjAyMjA2MTVfMjYw/MDAxNjU1MjgzNjk2Mzk3.gh8n5rs7p-pWVqzIhNh7yj_KdyjLFBeJr9QbsDumoFEg.KdvPfvgBYmjm7MKKhcbIEQIP6FGeuof_GnmcDUgrvyAg.PNG/a_baa1ccea3726495badba419dfede63f9.png?type=l">
+									srcset="${pdto.productVO.thImg }">
+								<source data-v-548c90f9="" srcset="${pdto.productVO.thImg }">
 								<img data-v-548c90f9="" alt="상품 이미지"
-									src="https://kream-phinf.pstatic.net/MjAyMjA2MTVfMjYw/MDAxNjU1MjgzNjk2Mzk3.gh8n5rs7p-pWVqzIhNh7yj_KdyjLFBeJr9QbsDumoFEg.KdvPfvgBYmjm7MKKhcbIEQIP6FGeuof_GnmcDUgrvyAg.PNG/a_baa1ccea3726495badba419dfede63f9.png?type=l"
-									class="image"></picture>
+									src="${pdto.productVO.thImg }" class="image"></picture>
 							</div>
 							<div data-v-1643775e="" class="product_detail">
 								<div data-v-299f50cf="" class="product_detail">
-									<p data-v-299f50cf="" class="code">
-										<%-- ${product.model } --%>
-										모델명
+									<p data-v-299f50cf="" class="code">${pdto.productVO.model }
 									</p>
-									<p data-v-299f50cf="" class="name">
-										<%-- ${product.eName } --%>
-										영어이름
+									<p data-v-299f50cf="" class="name">${pdto.productVO.eName }
 									</p>
 									<p data-v-299f50cf="" class="translated_name">
-										<%-- ${product.kName } --%>
-										한글이름
-									</p>
+										${pdto.productVO.kName }</p>
 								</div>
 							</div>
 						</div>
@@ -49,39 +41,33 @@
 					<div data-v-30b23d22="" class="sell_before_select">
 						<div data-v-02c63ee6="" data-v-30b23d22="" class="select_area md" style="padding: 0 32 20;">
 							<ul data-v-02c63ee6="" class="select_list">
-								<c:forEach items="sizeVO" var="size">
-									<li data-v-02c63ee6="" class="select_item"><button
+								<c:forEach items="${list }" var="idto">
+									<li data-v-02c63ee6="" class="select_item"
+										data-size="${idto.sizeVO.sizeId }"><button
 											data-v-02c63ee6="" role="button" aria-selected="true"
 											class="select_link sell">
 											<div data-v-02c63ee6="" class="link_inner">
-												<span data-v-02c63ee6="" class="size"> <!-- ${idto.sizeValue} -->
-													235
-												</span><span data-v-02c63ee6="" class="price"> <!-- ${items.price} -->270,000
+												<span data-v-02c63ee6="" class="size">
+													${idto.sizeVO.sizeValue } </span><span data-v-02c63ee6=""
+													class="price"> <c:if test="${idto.price ne null }">
+														<span data-v-02c63ee6="" class="price">${idto.price }</span>
+													</c:if> <c:if test="${idto.price eq null }">
+														<span data-v-02c63ee6="" class="price">판매입찰</span>
+													</c:if>
 												</span>
 											</div>
 										</button></li>
-									<li data-v-02c63ee6="" class="select_item "><button
-											data-v-02c63ee6="" role="button" aria-selected="true"
-											class="select_link sell">
-											<div data-v-02c63ee6="" class="link_inner">
-												<span data-v-02c63ee6="" class="size"> <!-- ${idto.sizeValue} -->
-													240
-												</span><span data-v-02c63ee6="" class="price"> <!-- ${items.price} -->310,000
-												</span>
-											</div>
-									</button></li>
 								</c:forEach>
 							</ul>
 						</div>
-						<div data-v-744cecc2="" data-v-30b23d22="" class="order_btn_area" style="display: none; padding: 20 32;">
+						<div data-v-744cecc2="" data-v-30b23d22="" class="order_btn_area" id="order_btn_area" style="display: none; padding: 20 32;">
 							<a data-v-57f23419="" data-v-744cecc2="" href="#"
 								class="btn_order order_sell sell clickable">
 								<div
 									data-v-57f23419="" class="box">
 									<!---->
 									<div data-v-57f23419="" class="order_case_info">
-										<span data-v-57f23419="" class="order_price">510,000</span><span
-											data-v-57f23419="" class="order_desc">선불발송</span>
+										<span data-v-57f23419="" class="order_price" id="order_price"></span>
 									</div>
 								</div>
 							</a>
@@ -93,8 +79,8 @@
 	</div>
 </div>
 
-<input type="hidden" id="pnoValue" name="pno" value="1">
-<input type="hidden" id="sizeValue" name="sizeValue" value="4">
+<input type="hidden" id="pnoValue" name="pno" value="${pdto.productVO.pno }">
+<input type="hidden" id="sizeValue" name="sizeValue" value="${idto.sizeVO.sizeValue }">
 
 <script src="/resources/js/items/itemSelect.js"></script>
 <jsp:include page="../commons/footer.jsp" />

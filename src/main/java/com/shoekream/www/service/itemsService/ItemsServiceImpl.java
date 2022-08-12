@@ -34,12 +34,13 @@ public class ItemsServiceImpl implements ItemsService {
 
 	@Override
 	public List<ItemsDTO> getSellItemPriceList(int pno) {
-//		List<FilterSizeVO> sizeList = sizeDAO.selectSizeList();
+		List<FilterSizeVO> sizeList = itemDAO.selectSizeList();
 		List<ItemsDTO> itemList = new ArrayList<>();
-
-//		for(FilterSizeVO sizeVO : sizeList) {
-//			itemList.add(itemDAO.selectSellPrice(pno, sizeVO.getSizeId), sizeVO);
-//		}
+		
+		for(FilterSizeVO sizeVO : sizeList) {
+			itemDAO.selectBuyPrice(pno, sizeVO.getSizeId());
+			itemList.add(new ItemsDTO(itemDAO.selectBuyPrice(pno, sizeVO.getSizeId()), sizeVO));
+		}
 		return itemList;
 	}
 
