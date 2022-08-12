@@ -59,11 +59,11 @@
 								</c:forEach>
 							</ul>
 						</div>
-						<div data-v-28c27354="" data-v-03c9a74b="" class="order_btn_area"
-							style="display: none; padding:20 32;">
-							<a data-v-57f23419="" data-v-28c27354="" href="/items/buyItem"
-								class="btn_order order_buy buy_100 clickable"><div
-									data-v-57f23419="" class="box">
+						
+						<div data-v-28c27354="" data-v-03c9a74b="" class="order_btn_area" style="display: none; padding:20 32;">
+							<a data-v-57f23419="" data-v-28c27354="" href="/items/buyItem?pno=${pdto.productVO.pno }"
+								class="btn_order order_buy buy_100 clickable" id="buyBtn">
+								<div data-v-57f23419="" class="box">
 									<div data-v-57f23419="" class="order_case_info">
 										<span data-v-57f23419="" class="order_price"></span>
 									</div>
@@ -76,7 +76,8 @@
 	</div>
 </div>
 
-<input type="hidden" name="pno" value="${pdto.productVO.pno }">
-<input type="hidden" name="shoeSize" value="">
+<span id="shoeSize" style="display: none;"></span>
+
+<script src="/resources/js/items/buySelect.js"></script>
 
 <jsp:include page="../commons/footer.jsp" />

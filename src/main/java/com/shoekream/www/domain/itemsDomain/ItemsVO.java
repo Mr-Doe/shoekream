@@ -61,4 +61,5 @@ public class ItemsVO {
 		this.price = price;
 	}
 
+
 }

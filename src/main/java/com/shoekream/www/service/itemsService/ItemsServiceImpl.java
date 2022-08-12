@@ -65,8 +65,8 @@ public class ItemsServiceImpl implements ItemsService {
 	}
 
 	@Override
-	public ItemsVO selectbuyItem(int pno, int shoeSize) {
-		return itemDAO.selectBuyItem(pno, shoeSize);
+	public ItemsVO selectbuyItem(ItemsVO itemsVO) {
+		return itemDAO.selectBuyItem(itemsVO);
 	}
 
 	@Override
@@ -94,5 +94,23 @@ public class ItemsServiceImpl implements ItemsService {
 	@Override
 	public Integer sellPrice(int pno) {
 		return itemDAO.selectSellPrice(pno, 0);
+	}
+
+	@Override
+	public ProductVO selectProductVO(int pno) {
+		return itemDAO.selectProduct(pno);
+	}
+
+	@Override
+	public String selectSize(int shoeSize) {
+		return itemDAO.selectShoeSize(shoeSize);
+	}
+
+	@Override
+	public Map<String, Integer> selectBuySell(ItemsVO itemsVO) {
+		Map<String, Integer> map = new HashMap<>();
+		map.put("buy", itemDAO.selectBuyPrice(itemsVO.getPno(), itemsVO.getShoeSize()));
+		map.put("sell", itemDAO.selectSellPrice(itemsVO.getPno(), itemsVO.getShoeSize()));
+		return map;
 	}
 }
