@@ -5,38 +5,95 @@
     
 <mapper namespace="com.shoekream.www.repository.memberDAO.MemberDAO">
 	<sql id="wh_email">
-		where email = #{email}
+		WHERE
+			email = #{email}
 	</sql>
+	
 	<insert id="insert" parameterType="memberVO">
-		insert into member (email, pwd, nick_name)
-		values (#{email}, #{pwd}, #{nickName})
+		INSERT INTO
+				member (email, pwd, nick_name)
+		VALUES
+				(#{email}, #{pwd}, #{nickName})
 	</insert>
 	<select id="selectOne" parameterType="memberVO" resultType="memberVO">
-		select mem_id, email, nick_name, grade
-		from member
+		SELECT
+			mem_id, email, nick_name, grade
+		FROM
+			member
 		<include refid="wh_email"/>
-		and pwd = #{pwd}
+		AND
+			pwd = #{pwd}
 	</select>
 	<select id="selectList" resultType="memberVO">
-		select mem_id, email, nick_name, grade
-		from member
+		SELECT 
+			mem_id, email, nick_name, grade
+		FROM
+			member
 	</select>
 	<select id="selectDetail" resultType="memberVO">
-		select * from member
+		SELECT
+			email, pwd, nick_name
+		FROM
+			member
 		<include refid="wh_email"/>
 	</select>
 	<select id="selectEmail" parameterType="string" resultType="int">
-		select count(email) from member
+		SELECT
+			COUNT(email)
+		FROM
+			member
 		<include refid="wh_email"/>
 	</select>
+	<select id="selectMysellHistory" parameterType="string" resultType="MypageVO">
+		SELECT
+			i.item_no, p.e_name, ss.size_value, p.th_img
+		FROM
+			items i
+		INNER JOIN
+			product p
+		ON
+			i.pno = p.pno
+		INNER JOIN
+			shoe_size ss
+		ON
+			i.shoe_size = ss.size_id
+		WHERE
+			i.seller_email = #{email}
+		ORDER by
+			i.reg_at DESC
+		LIMIT
+			3
+	</select>
+	<select id="selectMyBuyHistory" parameterType="string" resultType="MypageVO">
+		SELECT
+			i.item_no, p.e_name, ss.size_value, p.th_img
+		FROM
+			items i
+		INNER JOIN
+			product p
+		ON
+			i.pno = p.pno
+		INNER JOIN
+			shoe_size ss
+		ON
+			i.shoe_size = ss.size_id
+		WHERE
+			i.buyer_email = #{email}
+		ORDER by
+			i.reg_at DESC
+		LIMIT
+			3
+	</select>
 	<update id="update" parameterType="memberVO">
-		update member set
-		nick_name = #{nickName},
-		pwd = #{pwd}
+		UPDATE
+			member
+		SET
+			nick_name = #{nickName},
+			pwd = #{pwd}
 		<include refid="wh_email"/>
 	</update>
 	<delete id="delete">
-		delete from member
+		DELETE FROM member
 		<include refid="wh_email"/>
 	</delete>
 	<!-- <select id="purchaseHistoryList" parameterType="string" resultType="">

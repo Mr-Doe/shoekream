@@ -18,4 +18,5 @@ public interface MemberDAO {
 	int delete(String email);
 	
 	int selectEmail(String email);
+	
 }

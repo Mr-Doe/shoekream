@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
 <jsp:include page="../commons/header.jsp" />
 
 <style>
@@ -152,24 +151,21 @@ p {
 					<!---->
 				</div>
 			</div>
-			<div class="progress_wrap" data-v-b273706e="" data-v-d8835e88="">
-				<div class="progress" data-v-b273706e="">
-					<p><strong class="progress_title" data-v-b273706e="">진행 상황</strong></p>
-					<ol class="progress_list level-default" data-v-b273706e="" style="border: 1px solid red;">
-						<li class="progress_item past" data-v-b273706e=""><p
-								class="status" data-v-b273706e="">발송완료</p> <!----> <!----></li>
-						<li class="progress_item past" data-v-b273706e=""><p
-								class="status" data-v-b273706e="">입고완료</p> <!----> <!----></li>
-						<li class="progress_item past" data-v-b273706e=""><p
-								class="status" data-v-b273706e="">검수합격</p> <!----> <!----></li>
-						<li class="progress_item complete" data-v-b273706e=""><p
-								class="status" data-v-b273706e="">배송완료</p> <!----> <!----></li>
-					</ol>
-				</div>
-				<!---->
-				<!---->
-				<!---->
-			</div>
+			<div class="progress_wrap" data-v-b273706e="" data-v-d8835e88="" style="height: 115px;">
+            <div class="progress" data-v-b273706e="" style="display: block; overflow: visible; height: 115px;">
+               <strong class="progress_title" data-v-b273706e="">진행 상황</strong>
+               <ol class="progress_list level-default" data-v-b273706e="">
+                  <li class="progress_item past" data-v-b273706e=""><p class="status" data-v-b273706e="">발송완료</p> <!----> <!---->
+                  </li>
+                  <li class="progress_item past" data-v-b273706e=""><p class="status" data-v-b273706e="">입고완료</p> <!----> <!---->
+                  </li>
+                  <li class="progress_item past" data-v-b273706e=""><p class="status" data-v-b273706e="">검수합격</p> <!----> <!---->
+                  </li>
+                  <li class="progress_item complete" data-v-b273706e=""><p class="status" data-v-b273706e="">배송완료</p> <!----> <!---->
+                  </li>
+               </ol>
+            </div>
+         </div>
 			<div class="purchase_history_wrap" data-v-c90bb174=""
 				data-v-d8835e88="">
 				<div class="section_title" data-v-5fd118dc="" data-v-c90bb174="">
@@ -236,119 +232,6 @@ p {
 						<!---->
 						<!---->
 						<!---->
-					</div>
-					<div class="layer_point layer md" style="display: none;"
-						data-v-1f7c6d3f="" data-v-28cabbb5="" data-v-c90bb174="">
-						<div class="layer_container" data-v-1f7c6d3f="">
-							<div class="layer_header" data-v-1f7c6d3f="">
-								<h2 class="title" data-v-1f7c6d3f="" data-v-28cabbb5="">이용안내</h2>
-							</div>
-							<div class="layer_content" data-v-1f7c6d3f="">
-								<div class="usable_wrap" data-v-1f7c6d3f="" data-v-28cabbb5="">
-									<div class="usable_point" data-v-1f7c6d3f="" data-v-28cabbb5="">
-										<h3 class="title" data-v-1f7c6d3f="" data-v-28cabbb5="">사용
-											가능한 포인트</h3>
-										<p class="point_box" data-v-1f7c6d3f="" data-v-28cabbb5="">
-											<span class="point" data-v-1f7c6d3f="" data-v-28cabbb5="">0</span><span
-												class="unit" data-v-1f7c6d3f="" data-v-28cabbb5="">P</span>
-										</p>
-										<div class="point_info" data-v-1f7c6d3f="" data-v-28cabbb5="">
-											<p class="info_item" data-v-1f7c6d3f="" data-v-28cabbb5="">이번달
-												소멸 예정 포인트 0P</p>
-											<p class="info_item" data-v-1f7c6d3f="" data-v-28cabbb5="">
-												포인트 유효기간은 적립일로부터 최대 1년까지이며, 유형에 따라 달라질 수 있습니다.</p>
-										</div>
-									</div>
-									<ul class="usable_list" data-v-1f7c6d3f="" data-v-28cabbb5="">
-										<li class="usable_item" data-v-1f7c6d3f="" data-v-28cabbb5="">
-											1,000P 이상부터 구매금액 제한 없이 사용하실 수 있습니다.</li>
-										<li class="usable_item" data-v-1f7c6d3f="" data-v-28cabbb5="">
-											입찰 삭제, 거래 취소 시 사용한 포인트는 환불됩니다.</li>
-										<li class="usable_item" data-v-1f7c6d3f="" data-v-28cabbb5="">
-											먼저 적립된 포인트부터 순서대로 사용되며, 사용하지 않으실 경우 유효기간이 지나면 자동 소멸됩니다.</li>
-										<li class="usable_item" data-v-1f7c6d3f="" data-v-28cabbb5="">
-											유효기간이 지난 후 환불받은 포인트는 다시 사용하실 수 없습니다.</li>
-									</ul>
-								</div>
-								<div class="layer_btn" data-v-1f7c6d3f="" data-v-28cabbb5="">
-									<a href="#" class="btn outline medium" data-v-3d1bcc82=""
-										data-v-28cabbb5="" data-v-1f7c6d3f=""> 확인 </a>
-								</div>
-							</div>
-							<a href="#" class="btn_layer_close" data-v-1f7c6d3f=""
-								data-v-28cabbb5=""><svg xmlns="http://www.w3.org/2000/svg"
-									class="ico-close icon sprite-icons" data-v-1f7c6d3f=""
-									data-v-28cabbb5="">
-							<use
-										href="/_nuxt/1a4fefc9c245c25be8c820c7d584e4d7.svg#i-ico-close"
-										xlink:href="/_nuxt/1a4fefc9c245c25be8c820c7d584e4d7.svg#i-ico-close"
-										data-v-1f7c6d3f="" data-v-28cabbb5=""></use></svg></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="shipping_info_wrap" data-v-7b91b450="" data-v-d8835e88="">
-				<div class="section_title" data-v-5fd118dc="" data-v-7b91b450="">
-					<div class="title_box" data-v-5fd118dc="">
-						<h4 class="title" data-v-5fd118dc="">배송 정보</h4>
-					</div>
-					<!---->
-				</div>
-				<div class="shipping_info" data-v-7b91b450="">
-					<a href="#" class="btn_shipping" data-v-7b91b450="">
-						로젠택배93580102055 </a>
-				</div>
-			</div>
-			<div class="shipping_address_wrap" data-v-8c2dcbf2=""
-				data-v-d8835e88="">
-				<div class="section_title" data-v-5fd118dc="" data-v-8c2dcbf2="">
-					<div class="title_box" data-v-5fd118dc="">
-						<h4 class="title" data-v-5fd118dc="">배송 주소</h4>
-					</div>
-					<p class="noti" data-v-5fd118dc="">대기 중, 발송완료, 입고완료 상태에서만 배송지
-						변경이 가능합니다.</p>
-				</div>
-				<div class="shipping_address" data-v-8c2dcbf2="">
-					<dl class="address_item" data-v-8c2dcbf2="">
-						<dt class="address_title" data-v-8c2dcbf2="">받는 사람</dt>
-						<dd class="address_txt" data-v-8c2dcbf2="">#</dd>
-					</dl>
-					<dl class="address_item" data-v-8c2dcbf2="">
-						<dt class="address_title" data-v-8c2dcbf2="">휴대폰 번호</dt>
-						<dd class="address_txt" data-v-8c2dcbf2="">#</dd>
-					</dl>
-					<dl class="address_item" data-v-8c2dcbf2="">
-						<dt class="address_title" data-v-8c2dcbf2="">주소</dt>
-						<dd class="address_txt" data-v-8c2dcbf2="">#</dd>
-					</dl>
-				</div>
-				<!---->
-				<!---->
-			</div>
-			<div class="payment_wrap" data-v-79623caa="" data-v-d8835e88="">
-				<div class="section_title" data-v-5fd118dc="" data-v-79623caa="">
-					<div class="title_box" data-v-5fd118dc="">
-						<h4 class="title" data-v-5fd118dc="">결제 정보</h4>
-					</div>
-					<!---->
-				</div>
-				<div class="payment_info" data-v-79623caa="">
-					<div class="card_info" data-v-74cc8e24="" data-v-79623caa="">
-						<span class="card_name" data-v-74cc8e24=""> 신한</span>
-						<div class="card_num" data-v-74cc8e24="">
-							<span class="num_bind" data-v-74cc8e24=""><span
-								class="dot" data-v-74cc8e24=""><span class="dot"
-									data-v-74cc8e24=""></span></span><span class="hyphen"
-								data-v-74cc8e24=""></span><span class="dot" data-v-74cc8e24=""><span
-									class="dot" data-v-74cc8e24=""></span></span><span class="hyphen"
-								data-v-74cc8e24=""></span><span class="dot" data-v-74cc8e24=""><span
-									class="dot" data-v-74cc8e24=""></span></span><span class="hyphen"
-								data-v-74cc8e24=""></span>
-								<div class="last_num_box" data-v-74cc8e24="">
-									<span class="last_num">9086</span>
-								</div></span>
-							<!---->
-						</div>
 					</div>
 				</div>
 			</div>

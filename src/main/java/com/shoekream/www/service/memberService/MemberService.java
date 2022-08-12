@@ -18,4 +18,5 @@ public interface MemberService {
 	int remove(String email);
 
 	int dupleCheck(String email);
+
 }

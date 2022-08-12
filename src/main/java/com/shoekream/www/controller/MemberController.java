@@ -4,9 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,19 +22,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.shoekream.www.domain.memberVO.HistoryDTO;
 import com.shoekream.www.domain.memberVO.MemberVO;
 import com.shoekream.www.service.memberService.MemberService;
+import com.shoekream.www.service.mypageService.MypageService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequiredArgsConstructor
 @RequestMapping("/member/*")
 public class MemberController {
 
-	private final MemberService msv;
+	@Autowired
+	private MemberService msv;
+	
+	@Autowired
+	private MypageService mpsv;
 	
 	@GetMapping("/buyHistoryDetail")
 	public void buyHistoryDetail()	{
@@ -42,10 +49,10 @@ public class MemberController {
 	@GetMapping("/mypage")
 	public void mypage(@RequestParam("email") String email, Model model) {
 		log.info(">>> MemberController > MyPage - GET");
-		MemberVO memberVO = msv.getDetail(email);
-		String initEmail = memberVO.getEmail().substring(0, memberVO.getEmail().lastIndexOf("@"));
-		model.addAttribute("memberVO", memberVO);
-		model.addAttribute("initEmail", initEmail);
+		
+		model.addAttribute("memberVO", msv.getDetail(email));
+		model.addAttribute("buyDTO", mpsv.selectItemBuyHistory(email));
+		model.addAttribute("selDTO", mpsv.selectItemSelHistory(email));
 	}
 
 	@GetMapping("/register")

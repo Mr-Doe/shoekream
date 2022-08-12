@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.shoekream.www.repository.mypageDAO.MypageDAO">
+	<select id="getItemBuyList" parameterType="string" resultType="mypageVO">
+		SELECT
+			i.is_sold, i.item_no, p.model, p.e_name, ss.size_value AS 'shoe_size', i.price, p.th_img
+		FROM
+			items i
+		INNER JOIN
+			product p
+		ON
+			i.pno = p.pno
+		INNER JOIN
+			shoe_size ss
+		ON
+			i.shoe_size = ss.size_id
+		WHERE
+			i.buyer_email = #{email}
+		ORDER by
+			i.reg_at DESC
+	</select>
+	<select id="getItemSelList" parameterType="string" resultType="mypageVO">
+		SELECT
+			i.is_sold, i.item_no, p.model, p.e_name, ss.size_value AS 'shoe_size', i.price, p.th_img
+		FROM
+			items i
+		INNER JOIN
+			product p
+		ON
+			i.pno = p.pno
+		INNER JOIN
+			shoe_size ss
+		ON
+			i.shoe_size = ss.size_id
+		WHERE
+			i.seller_email = #{email}
+		ORDER by
+			i.reg_at DESC
+	</select>
+	<select id="getSelTotalCount" parameterType="string" resultType="int">
+		SELECT 
+			COUNT(is_sold) 
+		FROM
+			items
+		WHERE
+			seller_email = #{email}
+	</select>
+	<select id="getSelBidCount" parameterType="string" resultType="int">
+		SELECT 
+			COUNT(is_sold) 
+		FROM
+			items
+		WHERE
+			seller_email = #{email}
+		AND
+			is_sold = 0
+	</select>
+	<select id="getSelEndCount" parameterType="string" resultType="int">
+		SELECT 
+			COUNT(is_sold) 
+		FROM
+			items
+		WHERE
+			seller_email = #{email}
+		AND
+			is_sold = 1
+	</select>
+	<select id="getBuyTotalCount" parameterType="string" resultType="int">
+		SELECT 
+			COUNT(is_sold) 
+		FROM
+			items
+		WHERE
+			buyer_email = #{email}
+	</select>
+	<select id="getBuyBidCount" parameterType="string" resultType="int">
+		SELECT 
+			COUNT(is_sold) 
+		FROM
+			items
+		WHERE
+			buyer_email = #{email}
+		AND
+			is_sold = 0
+	</select>
+	<select id="getBuyEndCount" parameterType="string" resultType="int">
+		SELECT 
+			COUNT(is_sold) 
+		FROM
+			items
+		WHERE
+			buyer_email = #{email}
+		AND
+			is_sold = 1
+	</select>
+</mapper>

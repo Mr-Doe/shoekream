@@ -14,7 +14,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Inject
 	private MemberDAO mdao;
-	
+
 	@Override
 	public int register(MemberVO memberVO) {
 		int isUp = mdao.insert(memberVO);
