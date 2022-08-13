@@ -12,15 +12,18 @@ import com.shoekream.www.domain.itemsDomain.BrandDTO;
 import com.shoekream.www.domain.itemsDomain.ItemsDTO;
 import com.shoekream.www.domain.itemsDomain.ItemsVO;
 import com.shoekream.www.domain.productVO.ProductVO;
+import com.shoekream.www.repository.filterDAO.FilterSizeDAO;
 import com.shoekream.www.repository.itemsRepository.ItemsDAO;
 
-import org.apache.commons.collections4.map.HashedMap;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ItemsServiceImpl implements ItemsService {
 	@Inject
 	private ItemsDAO itemDAO;
+	
+	@Inject
+	private FilterSizeDAO sizeDAO;
 	
 	@Override
 	public int registerSellItem(ItemsVO itemsVO) {
@@ -34,7 +37,8 @@ public class ItemsServiceImpl implements ItemsService {
 
 	@Override
 	public List<ItemsDTO> getSellItemPriceList(int pno) {
-		List<FilterSizeVO> sizeList = itemDAO.selectSizeList();
+//		List<FilterSizeVO> sizeList = itemDAO.selectSizeList();
+		List<FilterSizeVO> sizeList = sizeDAO.selectSizeList();
 		List<ItemsDTO> itemList = new ArrayList<>();
 		
 		for(FilterSizeVO sizeVO : sizeList) {

@@ -11,20 +11,13 @@
 					<h3>구매하기</h3>
 				</div>
 				<div data-v-68b558fb="" data-v-6657f7cc="" class="buy_immediate">
-					<div data-v-1643775e="" data-v-68b558fb=""
-						class="product_info_area">
+					<div data-v-1643775e="" data-v-68b558fb="" class="product_info_area">
 						<div data-v-1643775e="" class="product_info">
-							<div data-v-75e33658="" data-v-1643775e="" class="product"
-								style="background-color: rgb(235, 240, 245);">
-								<picture data-v-548c90f9="" data-v-75e33658=""
-									class="picture product_img">
-								<source data-v-548c90f9="" type="image/webp"
-									srcset="${productVO.thImg }">
-								<source data-v-548c90f9=""
-									srcset="${productVO.thImg }">
-								<img data-v-548c90f9="" alt="상품 이미지"
-									src="${productVO.thImg }"
-									class="image"></picture>
+							<div data-v-75e33658="" data-v-1643775e="" class="product" style="background-color: rgb(235, 240, 245);">
+								<picture data-v-548c90f9="" data-v-75e33658="" class="picture product_img">
+								<source data-v-548c90f9="" type="image/webp" srcset="${productVO.thImg }">
+								<source data-v-548c90f9="" srcset="${productVO.thImg }">
+								<img data-v-548c90f9="" alt="상품 이미지" src="${productVO.thImg }" class="image"></picture>
 							</div>
 							<div data-v-1643775e="" class="product_detail">
 								<div data-v-299f50cf="" class="product_detail">
@@ -38,52 +31,49 @@
 					</div>
 					<div data-v-158ed304="" data-v-68b558fb="" class="price_descision_box">
 						<ul data-v-638c1354="" data-v-158ed304="" class="price_list">
-							<li data-v-638c1354="" class="list_item"><p data-v-638c1354="" class="title">즉시 구매가</p>
-							<span data-v-638c1354="" class="price" id="buyPrice">
-								<c:if test="${price.buy!=null }">${price.buy }</c:if>
-								<c:if test="${price.buy==null }">-&nbsp;</c:if>
-								</span><span
-								data-v-638c1354="" class="unit">원</span></li>
-							<li data-v-638c1354="" class="list_item"><p
-									data-v-638c1354="" class="title">즉시 판매가</p> <span
-								data-v-638c1354="" class="price">
-								<c:if test="${price.sell!=null }">${price.sell }</c:if>
-								<c:if test="${price.sell==null }">-&nbsp;</c:if>
-								</span><span
-								data-v-638c1354="" class="unit">원</span></li>
+							<li data-v-638c1354="" class="list_item">
+								<p data-v-638c1354="" class="title">즉시 구매가</p>
+								<span data-v-638c1354="" class="price" id="buyPrice">
+									<c:if test="${price.buy!=null }">${price.buy }</c:if>
+									<c:if test="${price.buy==null }">-&nbsp;</c:if>
+								</span>
+								<span data-v-638c1354="" class="unit">원</span>
+							</li>
+							<li data-v-638c1354="" class="list_item">
+								<p data-v-638c1354="" class="title">즉시 판매가</p>
+								<span data-v-638c1354="" class="price">
+									<c:if test="${price.sell!=null }">${price.sell }</c:if>
+									<c:if test="${price.sell==null }">-&nbsp;</c:if>
+								</span><span data-v-638c1354="" class="unit">원</span>
+							</li>
 						</ul>
-						<div data-v-158ed304="" class="instant_group">						
+						<div data-v-158ed304="" class="instant_group">
 							<div data-v-b6b2883e="" data-v-158ed304="" class="tab_area buy_tab">
 								<ul data-v-b6b2883e="" role="tablist" class="tab_list">
 									<li data-v-b6b2883e="" role="tab" aria-selected="false" aria-controls="panel1" class="item">
-										<a data-v-b6b2883e="" href="#" class="item_link" id="bid" data-type="0">구매 입찰</a>
+										<a data-v-b6b2883e="" href="#" class="item_link" id="bid">구매 입찰</a>
 									</li>
 									<li data-v-b6b2883e="" role="tab" aria-selected="true" aria-controls="panel2" class="item">
-										<a data-v-b6b2883e="" href="#" class="item_link" id="buy" data-type="1">즉시 구매</a>
+										<a data-v-b6b2883e="" href="#" class="item_link" id="buy">즉시 구매</a>
 									</li>
 								</ul>
 							</div>
-							<div id="area">
-						
-							</div>
+							<div id="area"></div>
 							<div data-v-158ed304="" class="price_bind">
 								<p data-v-158ed304="" class="price_bind_empty">총 결제금액은 상품과 배송비가 합쳐진 금액입니다.</p>
 							</div>
 						</div>
 					</div>
-					<div data-v-65a8cedc="" data-v-68b558fb=""
-						class="buy_total_confirm" is-instant="true">
+					<div data-v-65a8cedc="" data-v-68b558fb="" class="buy_total_confirm" is-instant="true">
 						<div data-v-679d7250="" data-v-65a8cedc="" class="price_total">
 							<dl data-v-679d7250="" class="price_box price_empty">
 								<dt data-v-679d7250="" class="price_title">총 결제금액</dt>
 								<dd data-v-679d7250="" class="price_empty_desc">누르면 바로 결제가 진행됩니다.</dd>
 							</dl>
-							<span data-v-679d7250="" class="price_warning"
-								style="display: none;"><em data-v-679d7250="">주의! </em></span>
+							<span data-v-679d7250="" class="price_warning" style="display: none;"><em data-v-679d7250="">주의! </em></span>
 						</div>
 						<div data-v-65a8cedc="" class="btn_confirm">
-							<button data-v-3d1bcc82="" data-v-65a8cedc=""
-								class="full solid" id="btn"></button>
+							<button data-v-3d1bcc82="" data-v-65a8cedc="" class="full solid" id="btn"></button>
 						</div>
 					</div>
 				</div>
@@ -91,6 +81,7 @@
 		</div>
 	</div>
 </div>
+
 <form action="" method="post">
 	<input type="hidden" name="itemNo" value="${itemsVO.itemNo }">
 	<input type="hidden" name="buyerEmail" value="${ses.email }">

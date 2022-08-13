@@ -32,3 +32,11 @@ async function recentPriceSellPice(pno, size) {
       console.log(error);
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    if(document.getElementById('email').innerText=='') {
+        document.querySelectorAll('.btn_division').forEach(a => {
+            a.href = '/member/login';
+        });
+    }
+});
