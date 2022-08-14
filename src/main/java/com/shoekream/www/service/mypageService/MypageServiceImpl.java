@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.shoekream.www.domain.memberVO.HistoryDTO;
+import com.shoekream.www.domain.memberVO.MypageVO;
 import com.shoekream.www.repository.mypageDAO.MypageDAO;
 
 @Service
@@ -27,6 +28,12 @@ public class MypageServiceImpl implements MypageService {
 		hdto.setBidCount(mypageDAO.getSelBidCount(email));
 		hdto.setEndCount(mypageDAO.getSelEndCount(email));
 		return hdto;
+	}
+
+	@Override
+	public MypageVO selectHistoryDetail(int itemNo) {
+		MypageVO mpvo = mypageDAO.gethistoryDetail(itemNo);
+		return mpvo;
 	}
 	
 }

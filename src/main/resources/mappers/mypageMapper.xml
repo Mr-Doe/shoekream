@@ -96,4 +96,21 @@
 		AND
 			is_sold = 1
 	</select>
+	<select id="gethistoryDetail" parameterType="int" resultType="mypageVO">
+		SELECT
+			i.is_sold, i.item_no, p.model, p.e_name, ss.size_value AS 'shoe_size',
+			i.price, p.th_img, i.reg_at, i.end_at, i.seller_email, i.buyer_email
+		FROM
+			items i
+		INNER JOIN
+			product p
+		ON
+			i.pno = p.pno
+		INNER JOIN
+			shoe_size ss
+		ON
+			i.shoe_size = ss.size_id
+		WHERE
+			i.item_no = #{itemNo}
+	</select>
 </mapper>

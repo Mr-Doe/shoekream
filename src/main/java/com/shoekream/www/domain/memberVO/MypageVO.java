@@ -14,6 +14,10 @@ public class MypageVO {
 	private int shoeSize;
 	private int price;
 	private String thImg;
+	private String regAt;
+	private String endAt;
+	private String sellerEmail;
+	private String buyerEmail;
 	
 	public MypageVO() {}
 
@@ -28,14 +32,15 @@ public class MypageVO {
 	}
 
 	// MyPage Detail
-	public MypageVO(int isSold, int itemNo, String model, String eName, int shoeSize, int price, String thImg) {
-		this.isSold = isSold;
-		this.itemNo = itemNo;
+	public MypageVO(int isSold, int itemNo, String model, String eName, int shoeSize, int price, String thImg, String regAt, String endAt,
+			String sellerEmail, String buyerEmail) {
+		this(isSold, itemNo, eName, shoeSize, thImg);
 		this.model = model;
-		this.eName = eName;
-		this.shoeSize = shoeSize;
 		this.price = price;
-		this.thImg = thImg;
+		this.regAt = regAt;
+		this.endAt = endAt;
+		this.sellerEmail = sellerEmail;
+		this.buyerEmail = buyerEmail;
 	}
 
 	public int getIsSold() {
@@ -92,6 +97,38 @@ public class MypageVO {
 
 	public void setThImg(String thImg) {
 		this.thImg = thImg;
+	}
+
+	public String getRegAt() {
+		return regAt;
+	}
+
+	public void setRegAt(String regAt) {
+		this.regAt = regAt;
+	}
+
+	public String getEndAt() {
+		return endAt;
+	}
+
+	public void setEndAt(String endAt) {
+		this.endAt = endAt;
+	}
+
+	public String getSellerEmail() {
+		return sellerEmail;
+	}
+
+	public void setSellerEmail(String sellerEmail) {
+		this.sellerEmail = sellerEmail;
+	}
+
+	public String getBuyerEmail() {
+		return buyerEmail;
+	}
+
+	public void setBuyerEmail(String buyerEmail) {
+		this.buyerEmail = buyerEmail;
 	}
 	
 	

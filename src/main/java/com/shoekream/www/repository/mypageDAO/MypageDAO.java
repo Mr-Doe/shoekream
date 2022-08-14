@@ -23,4 +23,6 @@ public interface MypageDAO {
 
 	int getSelEndCount(String email);
 
+	MypageVO gethistoryDetail(int itemNo);
+
 }

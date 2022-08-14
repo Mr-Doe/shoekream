@@ -54,6 +54,24 @@ public class MemberController {
 		model.addAttribute("buyDTO", mpsv.selectItemBuyHistory(email));
 		model.addAttribute("selDTO", mpsv.selectItemSelHistory(email));
 	}
+	
+	@GetMapping("/buying")
+	public void buying(@RequestParam("email") String email, Model model) {
+		log.info(">>> MemberController > Buying - GET");
+		model.addAttribute("buyDTO", mpsv.selectItemBuyHistory(email));
+	}
+	
+	@GetMapping("/selling")
+	public void selling(@RequestParam("email") String email, Model model) {
+		log.info(">>> MemberController > Selling - GET");
+		model.addAttribute("selDTO", mpsv.selectItemSelHistory(email));
+	}
+	
+	@GetMapping("/historydetail")
+	public void historydetail(@RequestParam("itemNo") int itemNo, Model model) {
+		log.info(">>> MemberController > HistoryDetail - POST");
+		model.addAttribute("mypageVO", mpsv.selectHistoryDetail(itemNo));
+	}
 
 	@GetMapping("/register")
 	public void register() {
@@ -84,9 +102,7 @@ public class MemberController {
 	public void modify(Model model, @RequestParam("email") String email) {
 		log.info(">>> MemberController > Modify - GET");
 		MemberVO memberVO = msv.getDetail(email);
-		String initEmail = memberVO.getEmail().substring(0, memberVO.getEmail().lastIndexOf("@"));
 		model.addAttribute("memberVO", memberVO);
-		model.addAttribute("initEmail", initEmail);
 	}
 
 	@PostMapping("/modify")

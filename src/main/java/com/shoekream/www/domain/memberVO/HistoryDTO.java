@@ -17,6 +17,7 @@ public class HistoryDTO {
 	private int bidCount;
 	private int endCount;
 	private List<MypageVO> history;
+	private MypageVO mpvo;
 	
 	public HistoryDTO() {}
 

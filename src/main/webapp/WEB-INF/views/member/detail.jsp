@@ -11,29 +11,8 @@
 }
 </style>
 
-<div data-v-3d7f7af7="" class="container my md">
-	<div data-v-3d7f7af7="">
-		<div data-v-3d7f7af7="" class="snb_area">
-			<a data-v-3d7f7af7="" href="/member/mypage?email=${memberVO.email }"
-				class="nuxt-link-active"><h2 data-v-3d7f7af7=""
-					class="snb_main_title">마이 페이지</h2></a>
-			<nav data-v-7bcac446="" data-v-3d7f7af7="" class="snb">
-				<div data-v-7bcac446="" class="snb_list">
-					<strong data-v-7bcac446="" class="snb_title">내 정보</strong>
-					<ul data-v-4d11470e="" data-v-7bcac446="" class="snb_menu">
-						<li data-v-4d11470e="" class="menu_item"><a
-							data-v-4d11470e="" href="#" class="menu_link"> 구매 내역 </a></li>
-						<li data-v-4d11470e="" class="menu_item"><a
-							data-v-4d11470e="" href="#" class="menu_link"> 판매 내역 </a></li>
-						<li data-v-4d11470e="" class="menu_item menu_on"><a
-							data-v-4d11470e="" href="#" aria-current="page"
-							class="menu_link nuxt-link-exact-active nuxt-link-active">
-								프로필 정보 </a></li>
-					</ul>
-				</div>
-			</nav>
-		</div>
-	</div>
+<jsp:include page="../member/mypagesidebar.jsp" />
+
 	<div data-v-7fba8f8c="" data-v-3d7f7af7="" class="content_area">
 		<div data-v-7fba8f8c="" class="my_profile">
 			<div data-v-88eb18f6="" data-v-7fba8f8c=""
