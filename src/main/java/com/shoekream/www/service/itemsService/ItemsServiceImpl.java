@@ -37,13 +37,12 @@ public class ItemsServiceImpl implements ItemsService {
 
 	@Override
 	public List<ItemsDTO> getSellItemPriceList(int pno) {
-//		List<FilterSizeVO> sizeList = itemDAO.selectSizeList();
-		List<FilterSizeVO> sizeList = sizeDAO.selectSizeList();
+		List<FilterSizeVO> sizeList = itemDAO.selectSizeList();
 		List<ItemsDTO> itemList = new ArrayList<>();
 		
 		for(FilterSizeVO sizeVO : sizeList) {
-			itemDAO.selectBuyPrice(pno, sizeVO.getSizeId());
-			itemList.add(new ItemsDTO(itemDAO.selectBuyPrice(pno, sizeVO.getSizeId()), sizeVO));
+			itemDAO.selectSellPrice(pno, sizeVO.getSizeId());
+			itemList.add(new ItemsDTO(itemDAO.selectSellPrice(pno, sizeVO.getSizeId()), sizeVO));
 		}
 		return itemList;
 	}
@@ -69,8 +68,13 @@ public class ItemsServiceImpl implements ItemsService {
 	}
 
 	@Override
-	public ItemsVO selectbuyItem(ItemsVO itemsVO) {
+	public ItemsVO selectBuyItem(ItemsVO itemsVO) {
 		return itemDAO.selectBuyItem(itemsVO);
+	}
+	
+	@Override
+	public ItemsVO selectSellItem(ItemsVO itemsVO) {
+		return itemDAO.selectSellItem(itemsVO);
 	}
 
 	@Override
@@ -96,11 +100,6 @@ public class ItemsServiceImpl implements ItemsService {
 	}
 
 	@Override
-	public Integer sellPrice(int pno) {
-		return itemDAO.selectSellPrice(pno, 0);
-	}
-
-	@Override
 	public ProductVO selectProductVO(int pno) {
 		return itemDAO.selectProduct(pno);
 	}
@@ -117,4 +116,5 @@ public class ItemsServiceImpl implements ItemsService {
 		map.put("sell", itemDAO.selectSellPrice(itemsVO.getPno(), itemsVO.getShoeSize()));
 		return map;
 	}
+
 }

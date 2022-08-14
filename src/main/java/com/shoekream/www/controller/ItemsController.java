@@ -67,13 +67,16 @@ public class ItemsController {
 	public void buyItem(ItemsVO itemsVO, Model model) {
 		model.addAttribute("productVO", itemsService.selectProductVO(itemsVO.getPno()));
 		model.addAttribute("size", new FilterSizeVO(itemsVO.getShoeSize(), itemsService.selectSize(itemsVO.getShoeSize())));
-		model.addAttribute("itemsVO", itemsService.selectbuyItem(itemsVO));
+		model.addAttribute("itemsVO", itemsService.selectBuyItem(itemsVO));
 		model.addAttribute("price", itemsService.selectBuySell(itemsVO));
 	}
 	
 	@GetMapping("/sellItem")
 	public void sellItem(ItemsVO itemsVO, Model model) {
-		model.addAttribute("itemsVO", itemsVO);
+		model.addAttribute("productVO", itemsService.selectProductVO(itemsVO.getPno()));
+		model.addAttribute("size", new FilterSizeVO(itemsVO.getShoeSize(), itemsService.selectSize(itemsVO.getShoeSize())));
+		model.addAttribute("itemsVO", itemsService.selectSellItem(itemsVO));
+		model.addAttribute("price", itemsService.selectBuySell(itemsVO));
 	}
 
 	@PostMapping("/buyBid")

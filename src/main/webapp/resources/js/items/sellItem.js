@@ -1,6 +1,10 @@
+document.addEventListener('DOMContentLoaded', function() {
+    if(document.getElementById('email').innerText=='') {
+        document.getElementById('link').click();
+    }
+});
+
 document.addEventListener('click', (e) =>{   
-    // console.log(e.target.closest('li').id);
-    // console.log(e.target.classList);
     if(e.target.classList.contains('item_link')){
         if(e.target.closest('li').id == 'panel1'){
             document.getElementById('bid').style.display = 'block';
