@@ -51,6 +51,7 @@ document.addEventListener('keyup', (e) => {
 document.getElementById('btn').addEventListener('click', () => {
     if(document.getElementById('type').innerText==0) {
         if(parseInt(document.querySelector('.input_amount').value)<parseInt(document.getElementById('buyPrice').innerText)) {
+            document.getElementById('priceValue').value = document.querySelector('.input_amount').value;
             document.querySelector('form').action = '/items/buyBid';
             document.querySelector('form').submit();
             alert('구매 입찰 시작');

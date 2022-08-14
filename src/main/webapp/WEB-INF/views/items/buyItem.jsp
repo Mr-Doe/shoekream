@@ -87,11 +87,11 @@
 	<input type="hidden" name="buyerEmail" value="${ses.email }">
 	<input type="hidden" name="pno" value="${itemsVO.pno }">
 	<input type="hidden" name="shoeSize" value="${size.sizeId }">
-	<input type="hidden" name="price" value="${itemsVO.price }">
+	<input type="hidden" name="price" id="priceValue" value="">
 </form>
 
-<span id="itemNo" style="display: none;">${itemsVO.itemNo }</span>
 <span id="email" style="display: none;">${ses.email }</span>
+<span id="itemNo" style="display: none;">${itemsVO.itemNo }</span>
 <span id="type" style="display: none;"></span>
 
 <a href="/member/login" style="display: none;" id="link"></a>
