@@ -1,3 +1,9 @@
+document.addEventListener('DOMContentLoaded', function() {
+    if(document.getElementById('email').innerText=='') {
+        document.getElementById('link').click();
+    }
+});
+
 document.addEventListener('click', (e) => {
     if(e.target.classList.contains('select_link') || e.target.classList.contains('size') || e.target.classList.contains('price')){
         e.target.closest('ul').querySelectorAll('li').forEach(li => {
@@ -18,5 +24,3 @@ document.addEventListener('click', (e) => {
         document.getElementById('buyBtn').click();
     }
 });
-
-

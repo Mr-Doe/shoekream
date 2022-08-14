@@ -70,7 +70,7 @@
 								<dt data-v-679d7250="" class="price_title">총 결제금액</dt>
 								<dd data-v-679d7250="" class="price_empty_desc">누르면 바로 결제가 진행됩니다.</dd>
 							</dl>
-							<span data-v-679d7250="" class="price_warning" style="display: none;"><em data-v-679d7250="">주의! </em></span>
+							<!-- <span data-v-679d7250="" class="price_warning" style="display: none;"><em data-v-679d7250="">주의! </em></span> -->
 						</div>
 						<div data-v-65a8cedc="" class="btn_confirm">
 							<button data-v-3d1bcc82="" data-v-65a8cedc="" class="full solid" id="btn"></button>
@@ -91,7 +91,10 @@
 </form>
 
 <span id="itemNo" style="display: none;">${itemsVO.itemNo }</span>
+<span id="email" style="display: none;">${ses.email }</span>
 <span id="type" style="display: none;"></span>
+
+<a href="/member/login" style="display: none;" id="link"></a>
 
 <script src="/resources/js/items/buyItem.js"></script>
 

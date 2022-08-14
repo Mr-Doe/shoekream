@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
+    if(document.getElementById('email').innerText=='') {
+        document.getElementById('link').click();
+    }
     if(document.getElementById('itemNo').innerText!='') {
         spreadDealArea();
     } else {
@@ -18,19 +21,40 @@ document.addEventListener('click', (e) => {
             }
         }
     }
-    if(document.getElementById('itemNo').innerText!='' && document.getElementById('type').innerText=='0') {
-        if(document.querySelector('.input_amount').value>document.getElementById('buyPrice').innerText) {
-            e.target.closest('ul').querySelector('.on').classList.remove('on');
+    if(document.getElementById('itemNo').innerText!='' && document.getElementById('type').innerText=='0' && !e.target.classList.contains('input_amount')) {
+        if(parseInt(document.querySelector('.input_amount').value)>=parseInt(document.getElementById('buyPrice').innerText)) {
+            document.querySelector('.on').classList.remove('on');
             spreadDealArea();
         }
     }
 });
 
+document.addEventListener('keyup', (e) => {
+    if(parseInt(document.querySelector('.input_amount').value)>=30000) {
+        document.querySelector('.price_now').classList.remove('has_danger');
+        document.querySelector('.price_now').classList.remove('has_warning');
+        document.querySelector('.price_warning').style.display = 'none';
+        document.getElementById('btn').disabled = false;
+    } else if(parseInt(document.querySelector('.input_amount').value)<30000) {
+        document.querySelector('.price_now').classList.add('has_danger');
+        document.querySelector('.price_now').classList.add('has_warning');
+        document.querySelector('.price_warning').style.display = 'block';
+        document.getElementById('btn').disabled = true;
+    } else if(document.querySelector('.input_amount').value=='') {
+        document.querySelector('.price_now').classList.remove('has_danger');
+        document.querySelector('.price_now').classList.remove('has_warning');
+        document.querySelector('.price_warning').style.display = 'none';
+        document.getElementById('btn').disabled = true;
+    }
+});
+
 document.getElementById('btn').addEventListener('click', () => {
     if(document.getElementById('type').innerText==0) {
-        document.querySelector('form').action = '/items/buyBid';
-        document.querySelector('form').submit();
-        alert('구매 입찰 시작');
+        if(parseInt(document.querySelector('.input_amount').value)<parseInt(document.getElementById('buyPrice').innerText)) {
+            document.querySelector('form').action = '/items/buyBid';
+            document.querySelector('form').submit();
+            alert('구매 입찰 시작');
+        }
     } else if(document.getElementById('type').innerText==1) {
         document.querySelector('form').action = '/items/buyItem';
         document.querySelector('form').submit();
@@ -55,7 +79,7 @@ function spreadBidArea() {
     let html = '<div data-v-03750f89="" data-v-158ed304="" class="price_now active_input"><dl data-v-03750f89="" class="price_now_box">';
 	html += '<dt data-v-03750f89="" class="price_now_title">구매 희망가</dt><dd data-v-03750f89="" class="price">';
     html += '<input data-v-03750f89="" type="text" pattern="([0-9]+.{0,1}[0-9]*,{0,1})*[0-9]" required="required" placeholder="희망가 입력" autocomplete="off" class="input_amount">';
-    html += '<span data-v-03750f89="" class="unit">원</span> </dd> </dl> <div data-v-03750f89="" class="price_warning"></div></div>';
+    html += '<span data-v-03750f89="" class="unit">원</span></dd></dl><div data-v-03750f89="" class="price_warning" style="display: none;"><p data-v-03750f89="" style="color: #f15746; line-height: 17px; font-size: 13px;"> 입찰 최소값은 3만원입니다. </p></div></div>';
     document.getElementById('area').innerHTML = html;
     document.getElementById('btn').innerText = '구매 입찰 계속';
     document.getElementById('btn').disabled = true;

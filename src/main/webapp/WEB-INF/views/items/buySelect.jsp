@@ -64,6 +64,9 @@
 </div>
 
 <span id="shoeSize" style="display: none;"></span>
+<span id="email" style="display: none;">${ses.email }</span>
+
+<a href="/member/login" style="display: none;" id="link"></a>
 
 <script src="/resources/js/items/buySelect.js"></script>
 
