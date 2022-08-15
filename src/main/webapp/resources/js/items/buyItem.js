@@ -58,7 +58,7 @@ document.getElementById('btn').addEventListener('click', () => {
         document.getElementById('priceValue').value = document.querySelector('.input_amount').value;
         document.querySelector('form').action = '/items/buyBid';
         document.querySelector('form').submit();
-        alert('구매 입찰 시작');
+        alert('구매 입찰 등록');
     } else if(document.getElementById('type').innerText==1) {
         document.querySelector('form').action = '/items/buyItem';
         document.querySelector('form').submit();

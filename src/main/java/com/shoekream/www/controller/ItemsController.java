@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shoekream.www.domain.filterVO.FilterSizeVO;
 import com.shoekream.www.domain.itemsDomain.ItemsDTO;
@@ -86,7 +85,7 @@ public class ItemsController {
 	}
 	
 	@PostMapping("/sellBid")
-	public String sellBid(ItemsVO itemsVO, RedirectAttributes rttr) {
+	public String sellBid(ItemsVO itemsVO) {
 		itemsService.registerSellItem(itemsVO);
 		return "redirect:/member/mypage?email="+itemsVO.getSellerEmail();
 	}
@@ -98,7 +97,7 @@ public class ItemsController {
 	}
 	
 	@PostMapping("/sellItem")
-	public String sellItem(ItemsVO itemsVO, RedirectAttributes rttr) {
+	public String sellItem(ItemsVO itemsVO) {
 		itemsService.sellEnd(itemsVO);
 		return "redirect:/member/mypage?email="+itemsVO.getSellerEmail();
 	}
