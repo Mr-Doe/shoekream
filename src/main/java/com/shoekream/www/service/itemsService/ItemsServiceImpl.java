@@ -113,4 +113,9 @@ public class ItemsServiceImpl implements ItemsService {
 		return map;
 	}
 
+	@Override
+	public Integer buyPrice(int pno, int i) {
+		return itemDAO.selectBuyPrice(pno, i);
+	}
+
 }

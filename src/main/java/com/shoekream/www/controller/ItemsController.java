@@ -32,16 +32,22 @@ public class ItemsController {
 		int min = 999999999;
 		model.addAttribute("pdto", itemsService.selectProduct(pno));
 		model.addAttribute("recentAndSellPrice", itemsService.recentandSellPrice(pno, 0));
-		List<ItemsDTO> priceList = itemsService.getBuyItemPriceList(pno);
-		model.addAttribute("list", priceList);
-		for (ItemsDTO p : priceList) {
-			if(p.getPrice()!=null) {
-				if(p.getPrice()<min) {
-					min = p.getPrice();
-				}
-			}
-		}
+//		List<ItemsDTO> priceList = itemsService.getBuyItemPriceList(pno);
+//		model.addAttribute("list", priceList);
+//		for (ItemsDTO p : priceList) {
+//			if(p.getPrice()!=null) {
+//				if(p.getPrice()<min) {
+//					min = p.getPrice();
+//				}
+//			}
+//		}
+		model.addAttribute("buyPrice", itemsService.buyPrice(pno, 0));
 		model.addAttribute("min", (min==999999999 ? "-&nbsp" : min));
+	}
+	
+	@GetMapping(value = "/{pno}", produces= {MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<List<ItemsDTO>> buyPrice(@PathVariable("pno") int pno) {
+		return new ResponseEntity<List<ItemsDTO>>(itemsService.getBuyItemPriceList(pno), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/{pno}/{shoeSize}", produces= {MediaType.APPLICATION_JSON_VALUE})

@@ -23,4 +23,5 @@ public interface ItemsService {
 	ProductVO selectProductVO(int pno);
 	String selectSize(int shoeSize);
 	Map<String, Integer> selectBuySell(ItemsVO itemsVO);
+	Integer buyPrice(int pno, int i);
 }

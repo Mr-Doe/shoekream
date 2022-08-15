@@ -87,7 +87,7 @@
 										<strong data-v-23bbaa82="" class="title">구매</strong>
 										<div data-v-23bbaa82="" class="price">
 											<span data-v-23bbaa82="" class="amount">
-												<em data-v-23bbaa82="" class="num">${min }</em>
+												<em data-v-23bbaa82="" class="num" id="buyPrice"><%-- ${min } --%>${buyPrice ne null ? buyPrice : "-&nbsp"}</em>
 												<span data-v-23bbaa82="" class="won">원</span>
 											</span>
 											<span data-v-23bbaa82="" class="desc">즉시 구매가</span>
@@ -109,7 +109,7 @@
 							</div>
 						</div>
 						<div data-v-1f7c6d3f="" class="layer lg layer_detail_size_select select_only_size" style="display: none;">
-							<div data-v-1f7c6d3f="" class="layer_container">
+							<div data-v-1f7c6d3f="" class="layer_container" id="modal">
 								<div data-v-1f7c6d3f="" class="layer_header">
 									<h2 data-v-1f7c6d3f="" class="title">
 										<span data-v-1f7c6d3f="">사이즈</span>
@@ -117,8 +117,8 @@
 								</div>
 								<div data-v-1f7c6d3f="" class="layer_content">
 									<div data-v-02c63ee6="" class="select_area lg" showlayer="true" optiontitle="사이즈" data-v-1f7c6d3f="">
-										<ul data-v-02c63ee6="" class="select_list">
-											<li data-v-02c63ee6="" class="select_item active" data-size="0">
+										<ul data-v-02c63ee6="" class="select_list">0
+											<%-- <li data-v-02c63ee6="" class="select_item active" data-size="0">
 												<button data-v-02c63ee6="" role="button" aria-selected="" class="select_link buyPrice">
 													<div data-v-02c63ee6="" class="link_inner">
 														<span data-v-02c63ee6="" class="size"> 모든 사이즈 </span>
@@ -135,7 +135,7 @@
 														</div>
 													</button>
 												</li>
-											</c:forEach>
+											</c:forEach> --%>
 										</ul>
 									</div>
 								</div>
