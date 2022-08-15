@@ -61,8 +61,10 @@
 										<span data-v-1260122e="" class="sizeTxt">사이즈</span>
 									</span>
 									<div data-v-1260122e="" class="size">
-										<span class="sizeBtn"><span data-v-6c6430ce="" class="sizeValue">모든 사이즈</span>
-										<button class="btn btn-outline-dark">사이즈 선택</button></span>
+										<span class="sizeBtn">
+											<span data-v-6c6430ce="" class="sizeValue">모든 사이즈</span>
+											<button class="btn btn-outline-dark">사이즈 선택</button>
+										</span>
 									</div>
 								</div>
 								<div data-v-5943a237="" data-v-5622d1e8="" class="detail_price">
@@ -72,8 +74,7 @@
 									<div data-v-5943a237="" class="price">
 										<div data-v-5943a237="" class="amount">
 											<span data-v-5943a237="" class="num" id="recentPriceValue">
-												<c:if test="${recentAndSellPrice.get('recentPrice')!=null }">${recentAndSellPrice.get('recentPrice') }</c:if>
-												<c:if test="${recentAndSellPrice.get('recentPrice')==null }">-&nbsp;</c:if>
+												${recentAndSellPrice.recentPrice ne null ?  recentAndSellPrice.recentPrice : "-&nbsp"}
 											</span>
 											<span data-v-5943a237="" class="won">원</span>
 										</div>
@@ -97,8 +98,7 @@
 										<div data-v-23bbaa82="" class="price">
 											<span data-v-23bbaa82="" class="amount">
 												<em data-v-23bbaa82="" class="num">
-													<c:if test="${recentAndSellPrice.get('maxSellPrice')!=null }">${recentAndSellPrice.get('maxSellPrice') }</c:if>
-													<c:if test="${recentAndSellPrice.get('maxSellPrice')==null }">-&nbsp;</c:if>
+													${recentAndSellPrice.maxSellPrice ne null ?  recentAndSellPrice.maxSellPrice : "-&nbsp"}
 												</em>
 												<span data-v-23bbaa82="" class="won">원</span>
 											</span>
@@ -130,9 +130,8 @@
 												<li data-v-02c63ee6="" class="select_item" data-size="${idto.sizeVO.sizeId }">
 													<button data-v-02c63ee6="" role="button" aria-selected="false" class="select_link buy">
 														<div data-v-02c63ee6="" class="link_inner">
-															<span data-v-02c63ee6="" class="size"> ${idto.sizeVO.sizeValue }</span>
-															<c:if test="${idto.price ne null }"><span data-v-02c63ee6="" class="price">${idto.price }</span></c:if>
-															<c:if test="${idto.price eq null }"><span data-v-02c63ee6="" class="price">구매입찰</span></c:if>
+															<span data-v-02c63ee6="" class="size">${idto.sizeVO.sizeValue }</span>
+															<span data-v-02c63ee6="" class="price">${idto.price ne null ? idto.price : "구매입찰"}</span>
 														</div>
 													</button>
 												</li>

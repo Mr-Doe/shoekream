@@ -33,18 +33,13 @@
 						<ul data-v-638c1354="" data-v-158ed304="" class="price_list">
 							<li data-v-638c1354="" class="list_item">
 								<p data-v-638c1354="" class="title">즉시 구매가</p>
-								<span data-v-638c1354="" class="price" id="buyPrice">
-									<c:if test="${price.buy!=null }">${price.buy }</c:if>
-									<c:if test="${price.buy==null }">-&nbsp;</c:if>
-								</span>
+								<span data-v-638c1354="" class="price" id="buyPrice">${price.buy ne null ? price.buy : "-&nbsp"}</span>
 								<span data-v-638c1354="" class="unit">원</span>
 							</li>
 							<li data-v-638c1354="" class="list_item">
 								<p data-v-638c1354="" class="title">즉시 판매가</p>
-								<span data-v-638c1354="" class="price">
-									<c:if test="${price.sell!=null }">${price.sell }</c:if>
-									<c:if test="${price.sell==null }">-&nbsp;</c:if>
-								</span><span data-v-638c1354="" class="unit">원</span>
+								<span data-v-638c1354="" class="price">${price.sell ne null ? price.sell : "-&nbsp"}</span>
+								<span data-v-638c1354="" class="unit">원</span>
 							</li>
 						</ul>
 						<div data-v-158ed304="" class="instant_group">
@@ -82,12 +77,7 @@
 </div>
 
 <form action="" method="post">
-	<c:if test="${itemsVO.itemNo ne null }">
-		<input type="hidden" name="itemNo" value="${itemsVO.itemNo }">
-	</c:if>
-	<c:if test="${itemsVO.itemNo eq null }">
-		<input type="hidden" name="itemNo" value="0">
-	</c:if>
+	<input type="hidden" name="itemNo" value="${itemsVO ne null ? itemsVO.itemNo : 0}">
 	<input type="hidden" name="buyerEmail" value="${ses.email }">
 	<input type="hidden" name="pno" value="${productVO.pno }">
 	<input type="hidden" name="shoeSize" value="${size.sizeId }">

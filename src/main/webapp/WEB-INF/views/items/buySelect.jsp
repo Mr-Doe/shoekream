@@ -38,8 +38,7 @@
 											<div data-v-02c63ee6="" class="link_inner">
 												<span data-v-02c63ee6="" class="size">${idto.sizeVO.sizeValue } </span>
 												<span data-v-02c63ee6="" class="price">
-													<c:if test="${idto.price ne null }"><span data-v-02c63ee6="" class="price">${idto.price }</span></c:if>
-													<c:if test="${idto.price eq null }"><span data-v-02c63ee6="" class="price">구매입찰</span></c:if>
+													<span data-v-02c63ee6="" class="price">${idto.price ne null ? idto.price : "구매입찰"}</span>
 												</span>
 											</div>
 										</button>

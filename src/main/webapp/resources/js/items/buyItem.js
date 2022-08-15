@@ -26,12 +26,6 @@ document.addEventListener('click', (e) => {
     } else {
         document.querySelector('.price_now').classList.remove('on_focus');
     }
-    // if(document.getElementById('itemNo').innerText!='' && document.getElementById('type').innerText=='0') {
-    //     if(parseInt(document.querySelector('.input_amount').value)>=parseInt(document.getElementById('buyPrice').innerText)) {
-    //         document.querySelector('.on').classList.remove('on');
-    //         spreadDealArea();
-    //     }
-    // }
 });
 
 document.addEventListener('change', () => {
@@ -63,12 +57,10 @@ document.getElementById('btn').addEventListener('click', () => {
     if(document.getElementById('type').innerText==0) {
         document.getElementById('priceValue').value = document.querySelector('.input_amount').value;
         document.querySelector('form').action = '/items/buyBid';
-        debugger;
         document.querySelector('form').submit();
         alert('구매 입찰 시작');
     } else if(document.getElementById('type').innerText==1) {
         document.querySelector('form').action = '/items/buyItem';
-        debugger;
         document.querySelector('form').submit();
         alert('즉시 구매 완료');
     }
