@@ -22,7 +22,25 @@ document.addEventListener('click', (e) => {
             }
         }
     };
-    
+
+    if(e.target.classList.contains('input_amount')) {
+        document.querySelector('.price_now').classList.add('on_focus');
+    } else {
+        document.querySelector('.price_now').classList.remove('on_focus');
+    }
+});
+
+document.getElementById('btn').addEventListener('click', () => {
+    if(document.getElementById('type').innerText==0) {
+        document.getElementById('priceValue').value = document.querySelector('.input_amount').value;
+        document.querySelector('form').action = '/items/sellBid';
+        document.querySelector('form').submit();
+        alert('판매 입찰 등록 완료');
+    } else if(document.getElementById('type').innerText==1) {
+        document.querySelector('form').action = '/items/sellItem';
+        document.querySelector('form').submit();
+        alert('즉시 판매 완료');
+    }
 });
 
 document.addEventListener('change', (e) => {
