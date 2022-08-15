@@ -17,7 +17,7 @@ document.querySelectorAll('.select_link, .size, .price').forEach((price) =>{
 
             document.getElementById('order_price').innerText = e.target.closest('li').querySelector('.price').innerText;
             document.getElementById('order_btn_area').style.display = 'block';
-            document.getElementById('shoeSize').value = e.target.closest('li').querySelector('.size').innerText;
+            document.getElementById('shoeSize').innerText = e.target.closest('li').dataset.size;
         }
     });
 });

@@ -15,24 +15,18 @@
 					<div data-v-1643775e="" data-v-68b558fb=""
 						class="product_info_area">
 						<div data-v-1643775e="" class="product_info">
-							<div data-v-75e33658="" data-v-1643775e="" class="product"
-								style="background-color: rgb(235, 240, 245);">
-								<picture data-v-548c90f9="" data-v-75e33658=""
-									class="picture product_img">
-								<source data-v-548c90f9="" type="image/webp"
-									srcset="${pdto.productVO.thImg }">
-								<source data-v-548c90f9="" srcset="${pdto.productVO.thImg }">
-								<img data-v-548c90f9="" alt="상품 이미지"
-									src="${pdto.productVO.thImg }" class="image"></picture>
+							<div data-v-75e33658="" data-v-1643775e="" class="product" style="background-color: rgb(235, 240, 245);">
+								<picture data-v-548c90f9="" data-v-75e33658="" class="picture product_img">
+								<source data-v-548c90f9="" type="image/webp" srcset="${productVO.thImg }">
+								<source data-v-548c90f9="" srcset="${productVO.thImg }">
+								<img data-v-548c90f9="" alt="상품 이미지" src="${productVO.thImg }" class="image"></picture>
 							</div>
 							<div data-v-1643775e="" class="product_detail">
 								<div data-v-299f50cf="" class="product_detail">
-									<p data-v-299f50cf="" class="code">${pdto.productVO.model }
-									</p>
-									<p data-v-299f50cf="" class="name">${pdto.productVO.eName }
-									</p>
-									<p data-v-299f50cf="" class="translated_name">
-										${pdto.productVO.kName }</p>
+									<p data-v-299f50cf="" class="code">${productVO.model }</p>
+									<p data-v-299f50cf="" class="name">${productVO.eName }</p>
+									<p data-v-299f50cf="" class="translated_name">${productVO.kName }</p>
+									<p data-v-299f50cf="" class="size">${size.sizeValue }</p>
 								</div>
 							</div>
 						</div>
@@ -63,39 +57,13 @@
 										;
 										class="item_link" id="bid">판매 입찰</a></li>
 									<li data-v-b6b2883e="" role="tab" aria-selected="true"
-										id="panel2" aria-controls="panel2" class="item on"><a
+										id="panel2" aria-controls="panel2" class="item"><a
 										data-v-b6b2883e="" href="javascript:void(0);" onclick="fn()"
 										;
 										class="item_link" id="sell">즉시 판매</a></li>
 								</ul>
 							</div>
 							<div id="area"></div>
-							<div data-v-03750f89="" data-v-158ed304="" class="price_now">
-								<dl data-v-03750f89="" class="price_now_box">
-									<dt data-v-03750f89="" class="price_now_title">즉시 판매가</dt>
-									<dd data-v-03750f89="" class="price">
-										<span data-v-03750f89="" class="amount">${document.getElementById('sellPrice').innerText }</span><span
-											data-v-03750f89="" class="unit">원</span>
-									</dd>
-								</dl>
-								<div data-v-03750f89="" class="price_warning"
-									style="display: none;"></div>
-							</div>
-							<div data-v-03750f89="" data-v-158ed304=""
-								class="price_now active_input">
-								<dl data-v-03750f89="" class="price_now_box">
-									<dt data-v-03750f89="" class="price_now_title">판매 희망가</dt>
-									<dd data-v-03750f89="" class="price">
-										<input data-v-03750f89="" type="text"
-											pattern="([0-9]+.{0,1}[0-9]*,{0,1})*[0-9]" required="required"
-											placeholder="희망가 입력" autocomplete="off" class="input_amount"
-											id="bid_price"><span data-v-03750f89="" class="unit">원</span>
-									</dd>
-								</dl>
-								<div data-v-03750f89="" class="price_warning" style="display: none;">
-								 <p data-v-03750f89="" style="color: #f15746; line-height: 17px; font-size: 13px;"> 입찰 최소값은 3만원입니다. </p>
-								</div>
-							</div>
 							<div data-v-158ed304="" class="price_bind">
 								<p data-v-158ed304="" class="price_bind_empty">배송비는 판매자의 선불로 이루어집니다.</p>
 							</div>
@@ -108,8 +76,6 @@
 								<dt data-v-679d7250="" class="price_title">총 결제금액</dt>
 								<dd data-v-679d7250="" class="price_empty_desc">누르면 바로 결제가 진행됩니다.</dd>
 							</dl>
-							<!-- <span data-v-679d7250="" class="price_warning"
-								style="display: none;"><em data-v-679d7250="">주의! </em></span> -->
 						</div>
 						<div data-v-65a8cedc="" class="btn_confirm">
 							<button data-v-3d1bcc82="" data-v-65a8cedc="" class="full solid" id="btn">
@@ -125,10 +91,10 @@
 </div>
 <form action="" method="post">
 	<input type="hidden" name="itemNo" value="${itemsVO.itemNo }">
-	<input type="hidden" name="buyerEmail" value="${ses.email }"> <input
-		type="hidden" name="pno" value="${itemsVO.pno }"> <input
-		type="hidden" name="shoeSize" value="${size.sizeId }"> <input
-		type="hidden" name="price" id="priceValue" value="">
+	<input type="hidden" name="buyerEmail" value="${ses.email }"> 
+	<input type="hidden" name="pno" value="${itemsVO.pno }"> 
+	<input type="hidden" name="shoeSize" value="${size.sizeId }"> 
+	<input type="hidden" name="price" id="priceValue" value="">
 </form>
 
 <span id="email" style="display: none;">${ses.email }</span>
