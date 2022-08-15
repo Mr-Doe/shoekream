@@ -80,26 +80,26 @@ public class ItemsController {
 	}
 
 	@PostMapping("/buyBid")
-	public String buyBid(ItemsVO itemsVO, RedirectAttributes rttr) {
+	public String buyBid(ItemsVO itemsVO) {
 		itemsService.registerBuyItem(itemsVO);
-		return "/member/mypage";
+		return "redirect:/member/mypage?email="+itemsVO.getBuyerEmail();
 	}
 	
 	@PostMapping("/sellBid")
 	public String sellBid(ItemsVO itemsVO, RedirectAttributes rttr) {
 		itemsService.registerSellItem(itemsVO);
-		return "/member/mypage";
+		return "redirect:/member/mypage";
 	}
 	
 	@PostMapping("/buyItem")
-	public String buyItem(ItemsVO itemsVO, RedirectAttributes rttr) {
+	public String buyItem(ItemsVO itemsVO) {
 		itemsService.buyEnd(itemsVO);
-		return "/member/mypage";
+		return "redirect:/member/mypage?email="+itemsVO.getBuyerEmail();
 	}
 	
 	@PostMapping("/sellItem")
 	public String sellItem(ItemsVO itemsVO, RedirectAttributes rttr) {
 		itemsService.buyEnd(itemsVO);
-		return "/member/mypage";
+		return "redirect:/member/mypage";
 	}
 }

@@ -68,6 +68,7 @@ document.getElementById('btn').addEventListener('click', () => {
         alert('구매 입찰 시작');
     } else if(document.getElementById('type').innerText==1) {
         document.querySelector('form').action = '/items/buyItem';
+        debugger;
         document.querySelector('form').submit();
         alert('즉시 구매 완료');
     }
