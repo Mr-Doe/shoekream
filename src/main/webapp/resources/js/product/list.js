@@ -47,7 +47,7 @@ function spreadList(shoe_brand, shoe_category, shoe_size, pageNo){
     if(pageHandler.prev){
       line += `<li class="page-item"><button class="page-link pageBtn" data-pageno="${pageHandler.endPage-1}">Prev</li>`;
     }
-    for(let i = pageHandler.startPage; i<pageHandler.endPage; i++){
+    for(let i = pageHandler.startPage; i<=pageHandler.endPage; i++){
     line += `<li class="page-item ${pageHandler.pgvo.pageNo == i ? 'active':'' }">`;
     line += `<button class="btn btn-success pageBtn" data-pageno="${i}">`;
     line += `${i}</li>`;
