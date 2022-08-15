@@ -19,16 +19,20 @@ async function loginToServer(loginObj) {
 
 document.getElementById('loginBtn').addEventListener('click', (e) => {
     e.preventDefault();
-    let emailVal = document.getElementById("email").value;
-    let pwdVal = document.getElementById("pwd").value;
 
     let loginObj = {
-        email: emailVal,
-        pwd: pwdVal
-    }
+        email: document.getElementById("email").value,
+        pwd: document.getElementById("pwd").value
+    };
 
     loginToServer(loginObj).then(result => {
-        alert("로그인 성공!");
-        window.location.href = "/";
+        if (result > 0) {
+            alert("로그인 성공!");
+            window.location.href = "/";
+        } else {
+            alert("로그인 실패...");
+            window.location.href = "#";
+            document.getElementById("pwd").value = '';
+        }
     });
 });

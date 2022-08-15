@@ -127,17 +127,17 @@ public class MemberController {
 	}
 
 	@PostMapping(value = "/login", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
-	public String login(@RequestBody MemberVO memberVO, HttpSession ses) {
+	public ResponseEntity<String> login(@RequestBody MemberVO memberVO, HttpSession ses) {
 		if (ses.getAttribute("ses") != null) {
 			ses.removeAttribute("ses");
 		}
 
 		if (msv.login(memberVO) != null) {
 			ses.setAttribute("ses", memberVO);
-		} else {
-			return "redirect:/member/login";
-		}
-		return "redirect:/";
+			return new ResponseEntity<String>("1", HttpStatus.OK);
+		} 
+		
+		return new ResponseEntity<String>("0", HttpStatus.OK);
 	}
 
 	@GetMapping("/logout")
