@@ -107,7 +107,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-3">
                         <div class="header__logo">
-                            <a href="/product/list">
+                            <a href="/product/listPage">
                                 <img src="../../resources/dist-temp/img/logo.png" alt="">
                             </a>
                         </div>
@@ -115,8 +115,8 @@
                     <div class="col-lg-6 col-md-6">
                         <nav class="header__menu mobile-menu" style="margin-top: 30px;">
                             <ul>
-                                <li><a href="/product/list">Home</a></li>
-                                <li class="active"><a href="/product/list">Shop</a></li>
+                                <li><a href="/product/listPage">Home</a></li>
+                                <li class="active"><a href="/product/listPage">Shop</a></li>
                                 <li><a href="">Blog</a></li>
                             </ul>
                         </nav>
