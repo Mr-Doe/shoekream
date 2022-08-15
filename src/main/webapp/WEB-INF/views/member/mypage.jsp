@@ -76,7 +76,6 @@ p {
 				</div>
 				<div data-v-5acef129="" class="user_info">
 					<div data-v-5acef129="" class="info_box">
-						<strong data-v-5acef129="" class="name">#</strong>
 						<p data-v-5acef129="" class="email">${ses.email}</p>
 						<a data-v-3d1bcc82="" data-v-5acef129=""
 							href="/member/modify?email=${ses.email}"
@@ -98,9 +97,9 @@ p {
 		</div>
 		<div data-v-6752ceb2="" data-v-5f779880="" class="my_home_title">
 			<h3 data-v-6752ceb2="" class="title">구매 내역</h3>
-			<a data-v-6752ceb2="" href="/member/buying?email=${ses.email}" class="btn_more"><span
-				data-v-6752ceb2="" class="btn_txt">더보기</span> <svg
-					data-v-6752ceb2="" xmlns="http://www.w3.org/2000/svg"
+			<a data-v-6752ceb2="" href="/member/buying?email=${ses.email}"
+				class="btn_more"><span data-v-6752ceb2="" class="btn_txt">더보기</span>
+				<svg data-v-6752ceb2="" xmlns="http://www.w3.org/2000/svg"
 					class="icon sprite-icons arr-right-gray">
 						<use data-v-6752ceb2=""
 						href="/_nuxt/1a4fefc9c245c25be8c820c7d584e4d7.svg#i-arr-right-gray"
@@ -109,21 +108,21 @@ p {
 		<div data-v-5f779880="" class="recent_purchase">
 			<div data-v-bbed98be="" data-v-5f779880="" class="purchase_list_tab">
 				<div data-v-bbed98be="" class="tab_item total">
-					<a data-v-bbed98be="" href="#" class="tab_link"><dl
+					<a data-v-bbed98be="" href="#" class="tab_link" style="pointer-events: none;"><dl
 							data-v-bbed98be="" class="tab_box">
 							<dt data-v-bbed98be="" class="title">전체</dt>
 							<dd data-v-bbed98be="" class="count">${buyDTO.totalCount}</dd>
 						</dl></a>
 				</div>
 				<div data-v-bbed98be="" class="tab_item tab_on">
-					<a data-v-bbed98be="" href="#" class="tab_link"><dl
+					<a data-v-bbed98be="" href="#" class="tab_link" style="pointer-events: none;"><dl
 							data-v-bbed98be="" class="tab_box">
 							<dt data-v-bbed98be="" class="title">입찰 중</dt>
 							<dd data-v-bbed98be="" class="count">${buyDTO.bidCount}</dd>
 						</dl></a>
 				</div>
 				<div data-v-bbed98be="" class="tab_item">
-					<a data-v-bbed98be="" href="#" class="tab_link"><dl
+					<a data-v-bbed98be="" href="#" class="tab_link" style="pointer-events: none;"><dl
 							data-v-bbed98be="" class="tab_box">
 							<dt data-v-bbed98be="" class="title">종료</dt>
 							<dd data-v-bbed98be="" class="count">${buyDTO.endCount}</dd>
@@ -142,9 +141,9 @@ p {
 							</div>
 						</c:when>
 						<c:otherwise>
-							<c:forEach items="${buyDTO.history}" var="history">
+							<c:forEach items="${buyDTO.history}" var="history" varStatus="status" begin="0" end="2">
 								<div data-v-62dace61="" data-v-21d527e4=""
-									class="purchase_item buy">
+									class="purchase_item buy" data-itemno="${history.itemNo}">
 									<div data-v-62dace61="" class="history_product">
 										<div data-v-62dace61="" class="product_box">
 											<div data-v-75e33658="" data-v-62dace61="" class="product"
@@ -169,10 +168,20 @@ p {
 										</div>
 									</div>
 									<div data-v-62dace61="" class="history_status">
-										<div data-v-62dace61="" class="status_box field_status">
-											<span data-v-62dace61="" class="status_txt text-default">#</span>
-											<!---->
-										</div>
+										<c:choose>
+											<c:when test="${history.isSold eq 1}">
+												<div data-v-62dace61="" class="status_box field_status">
+													<span data-v-62dace61="" class="status_txt text-default">거래완료</span>
+													<!---->
+												</div>
+											</c:when>
+											<c:otherwise>
+												<div data-v-62dace61="" class="status_box field_status">
+													<span data-v-62dace61="" class="status_txt text-default">거래중</span>
+													<!---->
+												</div>
+											</c:otherwise>
+										</c:choose>
 									</div>
 								</div>
 							</c:forEach>
@@ -190,9 +199,9 @@ p {
 		</div>
 		<div data-v-6752ceb2="" data-v-5f779880="" class="my_home_title">
 			<h3 data-v-6752ceb2="" class="title">판매 내역</h3>
-			<a data-v-6752ceb2="" href="/member/selling?email=${ses.email}" class="btn_more"><span
-				data-v-6752ceb2="" class="btn_txt">더보기</span> <svg
-					data-v-6752ceb2="" xmlns="http://www.w3.org/2000/svg"
+			<a data-v-6752ceb2="" href="/member/selling?email=${ses.email}"
+				class="btn_more"><span data-v-6752ceb2="" class="btn_txt">더보기</span>
+				<svg data-v-6752ceb2="" xmlns="http://www.w3.org/2000/svg"
 					class="icon sprite-icons arr-right-gray">
 						<use data-v-6752ceb2=""
 						href="/_nuxt/1a4fefc9c245c25be8c820c7d584e4d7.svg#i-arr-right-gray"
@@ -202,21 +211,21 @@ p {
 			<div data-v-bbed98be="" data-v-5f779880=""
 				class="purchase_list_tab sell">
 				<div data-v-bbed98be="" class="tab_item total">
-					<a data-v-bbed98be="" href="#" class="tab_link"><dl
+					<a data-v-bbed98be="" href="#" class="tab_link" style="pointer-events: none;"><dl
 							data-v-bbed98be="" class="tab_box">
 							<dt data-v-bbed98be="" class="title">전체</dt>
 							<dd data-v-bbed98be="" class="count">${selDTO.totalCount}</dd>
 						</dl></a>
 				</div>
 				<div data-v-bbed98be="" class="tab_item tab_on">
-					<a data-v-bbed98be="" href="#" class="tab_link"><dl
+					<a data-v-bbed98be="" href="#" class="tab_link" style="pointer-events: none;"><dl
 							data-v-bbed98be="" class="tab_box">
 							<dt data-v-bbed98be="" class="title">입찰 중</dt>
 							<dd data-v-bbed98be="" class="count">${selDTO.bidCount}</dd>
 						</dl></a>
 				</div>
 				<div data-v-bbed98be="" class="tab_item">
-					<a data-v-bbed98be="" href="#" class="tab_link"><dl
+					<a data-v-bbed98be="" href="#" class="tab_link" style="pointer-events: none;"><dl
 							data-v-bbed98be="" class="tab_box">
 							<dt data-v-bbed98be="" class="title">종료</dt>
 							<dd data-v-bbed98be="" class="count">${selDTO.endCount}</dd>
@@ -234,9 +243,9 @@ p {
 							</div>
 						</c:when>
 						<c:otherwise>
-							<c:forEach items="${selDTO.history}" var="history">
+							<c:forEach items="${selDTO.history}" var="history" varStatus="status" begin="0" end="2">
 								<div data-v-62dace61="" data-v-21d527e4=""
-									class="purchase_item buy">
+									class="purchase_item buy" data-itemno="${history.itemNo}">
 									<div data-v-62dace61="" class="history_product">
 										<div data-v-62dace61="" class="product_box">
 											<div data-v-75e33658="" data-v-62dace61="" class="product"
@@ -261,10 +270,20 @@ p {
 										</div>
 									</div>
 									<div data-v-62dace61="" class="history_status">
-										<div data-v-62dace61="" class="status_box field_status">
-											<span data-v-62dace61="" class="status_txt text-default">#</span>
-											<!---->
-										</div>
+										<c:choose>
+											<c:when test="${history.isSold eq 1}">
+												<div data-v-62dace61="" class="status_box field_status">
+													<span data-v-62dace61="" class="status_txt text-default">거래완료</span>
+													<!---->
+												</div>
+											</c:when>
+											<c:otherwise>
+												<div data-v-62dace61="" class="status_box field_status">
+													<span data-v-62dace61="" class="status_txt text-default">거래중</span>
+													<!---->
+												</div>
+											</c:otherwise>
+										</c:choose>
 									</div>
 								</div>
 							</c:forEach>
@@ -283,4 +302,5 @@ p {
 </div>
 </div>
 
+<script src="../../resources/js/member/historylist.js"></script>
 <jsp:include page="../commons/footer.jsp" />

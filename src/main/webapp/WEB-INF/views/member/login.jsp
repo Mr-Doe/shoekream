@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
+<%@ page import="java.net.URLEncoder" %>
+<%@ page import="java.security.SecureRandom" %>
+<%@ page import="java.math.BigInteger" %>
+
 <jsp:include page="../commons/header.jsp" />
 
+ 
 <div class="container login" data-v-4ec1fe02="" data-v-3007c576="">
 	<div class="content lg" data-v-4ec1fe02="">
 		<form class="login_area" data-v-4ec1fe02="" action="login" method="post">
@@ -25,28 +29,28 @@
 				</div>
 			</div>
 			<div class="login_btn_box" data-v-4ec1fe02="">
-				<button class="btn full solid" type="button" id="loginBtn"
+				<button class="full solid" type="button" id="loginBtn"
 					data-v-3d1bcc82="" data-v-4ec1fe02=""> 로그인 </button>
 			</div>
 			<ul class="look_box" data-v-4ec1fe02="">
 				<li class="look_list" data-v-4ec1fe02=""><a href="/member/register"
 					class="look_link" data-v-4ec1fe02=""> 이메일 가입 </a></li>
 			</ul>
-			<div class="social_login" data-v-4ec1fe02="">
-				<button type="button" class="btn btn_login_naver full outline"
-					data-v-3d1bcc82="" data-v-4ec1fe02="">
-					<svg xmlns="http://www.w3.org/2000/svg"
-						class="logo-social icon sprite-icons" data-v-4ec1fe02="">
-						<use
-							href="/_nuxt/1a4fefc9c245c25be8c820c7d584e4d7.svg#i-logo-naver"
-							xlink:href="/_nuxt/1a4fefc9c245c25be8c820c7d584e4d7.svg#i-logo-naver"
-							data-v-4ec1fe02=""></use></svg>
-					네이버로 로그인
-				</button>
-			</div>
+			<div class="social_login" data-v-4ec1fe02="" style="" id="naver_id_login"></div>
 		</form>
 	</div>
 </div>
+
+  <!-- //네이버 로그인 버튼 노출 영역 -->
+  <script type="text/javascript">
+  	var naver_id_login = new naver_id_login("QWAHyjmF6fq48VCT8czA", "http://localhost:8090/member/callback");
+  	var state = naver_id_login.getUniqState();
+  	naver_id_login.setButton("white", 2,40);
+  	naver_id_login.setDomain("http://localhost:8090/");
+  	naver_id_login.setState(state);
+  	// naver_id_login.setPopup();
+  	naver_id_login.init_naver_id_login();
+  </script>
 
 <script src="../../resources/js/member/login.js"></script>
 <jsp:include page="../commons/footer.jsp" />
