@@ -12,7 +12,6 @@ import com.shoekream.www.domain.itemsDomain.BrandDTO;
 import com.shoekream.www.domain.itemsDomain.ItemsDTO;
 import com.shoekream.www.domain.itemsDomain.ItemsVO;
 import com.shoekream.www.domain.productVO.ProductVO;
-import com.shoekream.www.repository.filterDAO.FilterSizeDAO;
 import com.shoekream.www.repository.itemsRepository.ItemsDAO;
 
 import org.springframework.stereotype.Service;
@@ -21,9 +20,6 @@ import org.springframework.stereotype.Service;
 public class ItemsServiceImpl implements ItemsService {
 	@Inject
 	private ItemsDAO itemDAO;
-	
-	@Inject
-	private FilterSizeDAO sizeDAO;
 	
 	@Override
 	public int registerSellItem(ItemsVO itemsVO) {

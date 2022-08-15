@@ -70,7 +70,6 @@
 								<dt data-v-679d7250="" class="price_title">총 결제금액</dt>
 								<dd data-v-679d7250="" class="price_empty_desc">누르면 바로 결제가 진행됩니다.</dd>
 							</dl>
-							<!-- <span data-v-679d7250="" class="price_warning" style="display: none;"><em data-v-679d7250="">주의! </em></span> -->
 						</div>
 						<div data-v-65a8cedc="" class="btn_confirm">
 							<button data-v-3d1bcc82="" data-v-65a8cedc="" class="full solid" id="btn"></button>
@@ -85,7 +84,7 @@
 <form action="" method="post">
 	<input type="hidden" name="itemNo" value="${itemsVO.itemNo }">
 	<input type="hidden" name="buyerEmail" value="${ses.email }">
-	<input type="hidden" name="pno" value="${itemsVO.pno }">
+	<input type="hidden" name="pno" value="${productVO.pno }">
 	<input type="hidden" name="shoeSize" value="${size.sizeId }">
 	<input type="hidden" name="price" id="priceValue" value="">
 </form>
