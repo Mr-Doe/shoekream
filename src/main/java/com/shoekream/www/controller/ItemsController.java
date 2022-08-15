@@ -51,7 +51,6 @@ public class ItemsController {
 	
 	@GetMapping("/buySelect")
 	public void buy(@RequestParam("pno") int pno, Model model) {
-		model.addAttribute("pdto", itemsService.selectProduct(pno));
 		model.addAttribute("productVO", itemsService.selectProductVO(pno));
 		model.addAttribute("list", itemsService.getBuyItemPriceList(pno));
 	}
