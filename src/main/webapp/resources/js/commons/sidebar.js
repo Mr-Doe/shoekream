@@ -148,8 +148,9 @@ document.querySelectorAll('#filter-category, #filter-brand, #filter-size')
 
             filter_category = the_button.href.substring(the_button.href.lastIndexOf('/')+1);
         }
-
-        forward_to_product_controller(filter_category, filter_brand, filter_size);
+        // spreadList(list.js) << Edit From LSH
+        // forward_to_product_controller(filter_category, filter_brand, filter_size);
+        spreadList(filter_brand, filter_category, filter_size);
         console.log(`ctgr : ${filter_category.length}, brand : ${filter_brand.length}, size : ${filter_size.length}`)
 
     });

@@ -16,8 +16,7 @@ public class PagingHandler {
 		this.totalCount = totalCount;
 		
 		// (7(pageNo) / 10.0) => 0.7 > ceil => 1.0 > int => 1 > x 10 => 10
-//		this.endPage
-//			= (int)(Math.ceil(pgvo.getPageNo() / (pgvo.getQty()*1.0))) * pgvo.getQty();
+		//	this.endPage = (int)(Math.ceil(pgvo.getPageNo() / (pgvo.getQty()*1.0))) * pgvo.getQty();
 		this.endPage = (( (pgvo.getPageNo()- 1) / 5 ) + 1 ) * 5;
 		this.startPage = endPage - 4;
 		
@@ -87,5 +86,4 @@ public class PagingHandler {
 				+ ", getTotalCount()=" + getTotalCount() + ", getPgvo()=" + getPgvo() + ", getClass()=" + getClass()
 				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
-	
 }
