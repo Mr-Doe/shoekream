@@ -88,7 +88,7 @@ public class ItemsController {
 	@PostMapping("/sellBid")
 	public String sellBid(ItemsVO itemsVO, RedirectAttributes rttr) {
 		itemsService.registerSellItem(itemsVO);
-		return "redirect:/member/mypage";
+		return "redirect:/member/mypage?email="+itemsVO.getSellerEmail();
 	}
 	
 	@PostMapping("/buyItem")
@@ -99,7 +99,7 @@ public class ItemsController {
 	
 	@PostMapping("/sellItem")
 	public String sellItem(ItemsVO itemsVO, RedirectAttributes rttr) {
-		itemsService.buyEnd(itemsVO);
-		return "redirect:/member/mypage";
+		itemsService.sellEnd(itemsVO);
+		return "redirect:/member/mypage?email="+itemsVO.getSellerEmail();
 	}
 }

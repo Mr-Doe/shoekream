@@ -84,6 +84,7 @@ function spreadDealArea() {
                 <span data-v-03750f89="" class="amount" >${document.getElementById('sellPrice').innerText }</span><span data-v-03750f89="" class="unit">원</span>
                 </dd></dl></div>`;
     document.getElementById('area').innerHTML = html;
+    document.getElementById('priceValue').value = document.querySelector('#sellPrice').innerText;
     document.getElementById('btn').innerText = '즉시 판매 계속';
     document.getElementById('btn').disabled = false;
     document.getElementById('type').innerText = '1';

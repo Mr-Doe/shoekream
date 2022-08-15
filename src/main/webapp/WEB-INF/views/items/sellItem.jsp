@@ -89,12 +89,18 @@
 		</div>
 	</div>
 </div>
+
 <form action="" method="post">
-	<input type="hidden" name="itemNo" value="${itemsVO.itemNo }">
-	<input type="hidden" name="buyerEmail" value="${ses.email }"> 
-	<input type="hidden" name="pno" value="${itemsVO.pno }"> 
-	<input type="hidden" name="shoeSize" value="${size.sizeId }"> 
-	<input type="hidden" name="price" id="priceValue" value="">
+	<c:if test="${itemsVO.itemNo ne null }">
+		<input type="hidden" name="itemNo" value="${itemsVO.itemNo }">
+	</c:if>
+	<c:if test="${itemsVO.itemNo eq null }">
+		<input type="hidden" name="itemNo" value="0">
+	</c:if>
+	<input type="hidden" name="sellerEmail" value="${ses.email }">
+	<input type="hidden" name="pno" value="${productVO.pno }">
+	<input type="hidden" name="shoeSize" value="${size.sizeId }">
+	<input type="hidden" name="price" id="priceValue" value="0">
 </form>
 
 <span id="email" style="display: none;">${ses.email }</span>
