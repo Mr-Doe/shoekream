@@ -17,7 +17,7 @@
 					주소</h3>
 				<div class="input_item" data-v-0e527ea4="">
 					<input type="text" placeholder="예) kream@kream.co.kr" id="email" name="email"
-						autocomplete="off" class="input_txt" data-v-0e527ea4="">
+						autocomplete="off" class="input_txt" data-v-0e527ea4="" required>
 				</div>
 			</div>
 			<div class="input_box has_button" data-v-0e527ea4=""
@@ -25,7 +25,7 @@
 				<h3 class="input_title" data-v-0e527ea4="" data-v-4ec1fe02="">비밀번호</h3>
 				<div class="input_item" data-v-0e527ea4="">
 					<input type="password" placeholder="" autocomplete="off" id="pwd" name="pwd"
-						class="input_txt" data-v-0e527ea4="">
+						class="input_txt" data-v-0e527ea4="" required>
 				</div>
 			</div>
 			<div class="login_btn_box" data-v-4ec1fe02="">

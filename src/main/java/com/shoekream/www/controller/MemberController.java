@@ -135,7 +135,7 @@ public class MemberController {
 		if (msv.login(memberVO) != null) {
 			ses.setAttribute("ses", memberVO);
 			return new ResponseEntity<String>("1", HttpStatus.OK);
-		} 
+		}
 		
 		return new ResponseEntity<String>("0", HttpStatus.OK);
 	}

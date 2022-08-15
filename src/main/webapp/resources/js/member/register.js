@@ -29,8 +29,16 @@ document.getElementById('registerBtn').addEventListener('click', (e) => {
         nickName: nickNameVal
     }
 
-    insertToServer(registerObj).then(result => {
-        alert("회원가입이 완료됐습니다");
-        window.location.href = "/member/login";
-    });
+    if (registerObj.email == null || registerObj.email == '') {
+        alert("이메일을 입력해 주세요!");
+    } else if (registerObj.pwd == null || registerObj.pwd == '') {
+        alert("비밀번호를 입력해 주세요!");
+    } else if (registerObj.nickName == null || registerObj.nickName == ''){
+        alert("닉네임을 입력해 주세요!");
+    } else {
+        insertToServer(registerObj).then(result => {
+            alert("회원가입이 완료됐습니다");
+            window.location.href = "/member/login";
+        }); 
+    }
 });
