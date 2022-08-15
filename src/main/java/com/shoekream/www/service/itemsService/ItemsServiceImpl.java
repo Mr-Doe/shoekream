@@ -37,7 +37,6 @@ public class ItemsServiceImpl implements ItemsService {
 		List<ItemsDTO> itemList = new ArrayList<>();
 		
 		for(FilterSizeVO sizeVO : sizeList) {
-			itemDAO.selectSellPrice(pno, sizeVO.getSizeId());
 			itemList.add(new ItemsDTO(itemDAO.selectSellPrice(pno, sizeVO.getSizeId()), sizeVO));
 		}
 		return itemList;
@@ -49,7 +48,6 @@ public class ItemsServiceImpl implements ItemsService {
 		List<ItemsDTO> itemList = new ArrayList<>();
 		
 		for(FilterSizeVO sizeVO : sizeList) {
-			itemDAO.selectBuyPrice(pno, sizeVO.getSizeId());
 			itemList.add(new ItemsDTO(itemDAO.selectBuyPrice(pno, sizeVO.getSizeId()), sizeVO));
 		}
 		return itemList;

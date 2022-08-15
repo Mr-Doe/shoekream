@@ -24,8 +24,8 @@ function spreadModal(result) {
     }
 	// html += '</ul></div></div><button data-v-1f7c6d3f="" class="btn_layer_close close"><i class="fa fa-close"></i></button>';							
 
-	document.querySelector('.select_list').innerHTML = html;						
-	// document.getElementById('modal').innerHTML = html;						
+	document.querySelector('.select_list').innerHTML = html;
+	// document.getElementById('modal').innerHTML = html;
 }
 
 // document.querySelector('.close').addEventListener('click', () => {
@@ -45,7 +45,6 @@ document.addEventListener('click', (e) => {
         });
         document.querySelector('.layer_detail_size_select').style.display = "none";
     }
-    console.log(e.target);
     if(e.target.classList.contains('fa-close')) {
         document.querySelector('.layer_detail_size_select').style.display = "none";
     }
