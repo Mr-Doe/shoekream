@@ -9,7 +9,7 @@
 		<!---->
 		<div data-v-30ee943a="" data-v-3007c576="" class="container join">
 			<div data-v-30ee943a="" class="content lg">
-				<form data-v-30ee943a="" class="login_area">
+				<div data-v-30ee943a="" class="join_area" style="width: 400px; margin: 0 auto;">
 					<h2 data-v-30ee943a="" class="join_title">회원가입</h2>
 					<div data-v-0e527ea4="" data-v-30ee943a="" class="input_box">
 						<h3 data-v-30ee943a="" data-v-0e527ea4="" class="input_title ess">이메일
@@ -42,7 +42,7 @@
 					</div>
 					<button data-v-3d1bcc82="" data-v-30ee943a="" id="registerBtn"
 						class="btn_join full solid">가입하기</button>
-				</form>
+				</div>
 			</div>
 			<!---->
 		</div>
