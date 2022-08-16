@@ -106,4 +106,10 @@ public class ItemsController {
 		itemsService.sellEnd(itemsVO);
 		return "redirect:/member/mypage?email="+itemsVO.getSellerEmail();
 	}
+	
+	@PostMapping("removeItem")
+	public String deleteItem(@RequestParam("itemNo") int itemNo, @RequestParam("email") String email) {
+		itemsService.removeItem(itemNo);
+		return "redirect:/member/mypage?email="+email;
+	}
 }
