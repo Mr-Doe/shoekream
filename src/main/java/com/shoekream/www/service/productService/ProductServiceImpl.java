@@ -12,8 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.shoekream.www.controller.HomeController;
 import com.shoekream.www.domain.PagingVO.PagingVO;
+import com.shoekream.www.domain.filterVO.FilterBrandVO;
+import com.shoekream.www.domain.filterVO.FilterCategoryVO;
 import com.shoekream.www.domain.productVO.ProductVO;
 import com.shoekream.www.repository.searchDAO.productDAO.ProductDAO;
+import com.shoekream.www.service.filterService.FilterBrandService;
+import com.shoekream.www.service.filterService.FilterCategoryService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,6 +27,10 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Inject
 	private ProductDAO pdao;
+	@Inject
+	private FilterBrandService fbService;
+	@Inject
+	private FilterCategoryService fcService;
 	
 	@Transactional
 	@Override
@@ -53,14 +61,13 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Map<String, String>> getBrandList() {
-		
-		return pdao.selectBrandList();
+	public List<FilterBrandVO> getBrandList() {
+		return fbService.getBrandList();
 	}
 
 	@Override
-	public List<Map<String, String>> getCategoryList() {
-		
-		return pdao.selectCategoryList();
+	public List<FilterCategoryVO> getCategoryList() {
+		return fcService.getCategoryList();
+	
 	}
 }

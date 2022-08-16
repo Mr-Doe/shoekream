@@ -43,19 +43,20 @@ function spreadList(shoe_brand, shoe_category, shoe_size, pageNo){
     // 상품 리스트 끝
 
     // 페이지네이션 시작
-    line += `<hr><ul class="pagination justify-content-center">`;
+    line += `<hr>`
+    line += `<div class="pagination">`
     if(pageHandler.prev){
-      line += `<li class="page-item"><button class="page-link pageBtn" data-pageno="${pageHandler.endPage-1}">Prev</li>`;
+      line += `<a class="pageBtn" href="#" onclick="return false" data-pageno="${pageHandler.startPage-1}">&laquo;</a>`;
     }
     for(let i = pageHandler.startPage; i<=pageHandler.endPage; i++){
-    line += `<li class="page-item ${pageHandler.pgvo.pageNo == i ? 'active':'' }">`;
-    line += `<button class="btn btn-success pageBtn" data-pageno="${i}">`;
-    line += `${i}</li>`;
+      line += `<a class="pageBtn" href="#" onclick="return false" data-pageno="${i}">${i}</a>`;
     }
     if(pageHandler.next){
-      line += `<li class="page-item"><button class="page-link pageBtn" data-pageno="${pageHandler.endPage+1}">Next</li>`;
+      line += `<a class="pageBtn" href="#" onclick="return false" data-pageno="${pageHandler.endPage+1}">&raquo;</a>`;
+      // line += `<li class="page-item"><button class="page-link pageBtn" data-pageno="${pageHandler.endPage+1}">Next</li>`;
     }
-    line += `</ul>`;
+    // line += `</ul>`;
+    line += `</div>`;
     div.innerHTML += line;
   });
 }
@@ -66,3 +67,15 @@ document.addEventListener('click', (e) => {
     spreadList(filter_brand, filter_category, filter_size, e.target.dataset.pageno);
   }
 });
+
+
+// <div class="pagination">
+//   <a href="#">&laquo;</a>
+//   <a href="#">1</a>
+//   <a href="#" class="active">2</a>
+//   <a href="#">3</a>
+//   <a href="#">4</a>
+//   <a href="#">5</a>
+//   <a href="#">6</a>
+//   <a href="#">&raquo;</a>
+// </div>

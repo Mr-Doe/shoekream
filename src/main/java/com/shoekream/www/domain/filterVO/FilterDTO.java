@@ -15,9 +15,9 @@ public class FilterDTO {
     private FilterSizeVO sizeVO;
     private FilterBrandVO brandVO;
 
-    private List<Object> objectList1;
-    private List<Object> objectList2;
-    private List<Object> objectList3;
+    private List<?> objectList1;
+    private List<?> objectList2;
+    private List<?> objectList3;
 
     // category + size
     public FilterDTO(FilterCategoryVO categoryVO, FilterSizeVO sizeVO) {
@@ -76,6 +76,12 @@ public class FilterDTO {
         this.objectList2 = objectList2;
     }
 
+    // any two TYPEs filtetList
+    public FilterDTO(List<Object> objectList1, List<Object> objectList2) {
+    	this.objectList1 = objectList1;
+    	this.objectList2 = objectList2;
+    }
+    
     // any three TYPEs filtetList
     public FilterDTO(List<Object> objectList1, List<Object> objectList2, List<Object> objectList3) {
         this.objectList1 = objectList1;

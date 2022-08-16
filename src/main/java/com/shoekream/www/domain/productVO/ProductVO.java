@@ -14,8 +14,44 @@ public class ProductVO {
     private int category;
     private int brand;
     private String thImg;
+    private int image;
+    private String fileName;
+    private long imageId;
+    private String imageUrl;
+    
+    public int getImage() {
+		return image;
+	}
 
-    public String getThImg() {
+	public void setImage(int image) {
+		this.image = image;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public long getImageId() {
+		return imageId;
+	}
+
+	public void setImageId(long imageId) {
+		this.imageId = imageId;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public String getThImg() {
         return thImg;
     }
 
@@ -77,19 +113,13 @@ public class ProductVO {
     public void setBrand(int brand) {
         this.brand = brand;
     }
-    @Override
-    public String toString() {
-        return "ProductVO{" +
-                "pno=" + pno +
-                ", model='" + model + '\'' +
-                ", eName='" + eName + '\'' +
-                ", kName='" + kName + '\'' +
-                ", readCount=" + readCount +
-                ", regAt='" + regAt + '\'' +
-                ", retailPrice=" + retailPrice +
-                ", category=" + category +
-                ", brand=" + brand +
-                ", thImg='" + thImg + '\'' +
-                '}';
-    }
+
+	@Override
+	public String toString() {
+		return "ProductVO [pno=" + pno + ", model=" + model + ", eName=" + eName + ", kName=" + kName + ", readCount="
+				+ readCount + ", regAt=" + regAt + ", retailPrice=" + retailPrice + ", category=" + category
+				+ ", brand=" + brand + ", thImg=" + thImg + ", image=" + image + ", fileName=" + fileName + ", imageId="
+				+ imageId + ", imageUrl=" + imageUrl + "]";
+	}
+    
 }

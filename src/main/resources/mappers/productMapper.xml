@@ -43,49 +43,90 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				or replace(sb.brand_name, ' ', '') <include refid="keyword"/>)  
 		</if>
 	</sql>
-	
-	<insert id="insert" parameterType="productVO">
-		insert into product(model, brand, e_name, k_name, retail_price, category)
-		values (#{model}, #{brand}, #{eName}, #{kName}, #{retailPrice}, #{category})
+
+	<insert id="insertProduct" parameterType="shopVO">
+		INSERT INTO product (
+			e_name
+			, k_name
+			, retail_price
+			, model
+			, brand
+		) VALUES (
+			#{englishName}
+			, #{koreanName}
+			, #{sellerPrice}
+			, #{modelNumber}
+			, #{brandName}
+		)
 	</insert>
 
 	<select id="selectList" parameterType="pageVO" resultType="HashMap">
-		select p.pno, e_name, k_name, sb.brand_name, sc.category_name, th_img
-		from product p
-			left join shoe_brand sb
-				on p.brand = sb.brand_id
-			join shoe_category sc
-				on p.category = sc.category_id
-		where 1=1
+		SELECT
+			p.pno
+			, e_name
+			, k_name
+			, sb.brand_name
+			, sc.category_name
+			, th_img
+		FROM
+			product p
+		LEFT JOIN
+			shoe_brand sb
+		ON
+			p.brand = sb.brand_id
+		JOIN
+			shoe_category sc
+		ON
+			p.category = sc.category_id
+		WHERE
+			1=1
 		<include refid="whereBrandCategory" />
 		<include refid="search"/>
-		order by pno desc
-		limit #{pageStart}, #{qty}
+		ORDER BY
+			pno desc
+		LIMIT
+			#{pageStart}, #{qty}
 	</select>
 	<select id="selectMinPrice" parameterType="pageVO" resultType="HashMap">
-		select pno, min(price) as min_price
-		from items i
-			join shoe_size ss
-				on i.shoe_size = ss.size_id
-		where 1=1 and buyer_email is null
+		SELECT
+			pno
+			, min(price) as min_price
+		FROM
+			items i
+		JOIN
+			shoe_size ss
+		ON
+			i.shoe_size = ss.size_id
+		WHERE
+			1=1
+		AND
+			buyer_email is null
 		<include refid="whereSize" />
-		group by pno
+		GROUP BY
+			pno
 	</select>
 	<select id="totalCount" parameterType="pageVO" resultType="int">
-		select count(pno)
-		from product p
-			join shoe_brand sb
-				on p.brand = sb.brand_id
-			join shoe_category sc
-				on p.category = sc.category_id
-		where 1=1
+		SELECT
+			count(pno)
+		FROM
+			product p
+		JOIN
+			shoe_brand sb
+		ON
+			p.brand = sb.brand_id
+		JOIN
+			shoe_category sc
+		ON
+			p.category = sc.category_id
+		WHERE
+			1=1
 		<include refid="whereBrandCategory"/>
 		<include refid="search"/>
 	</select>
-	<select id="selectBrandList" resultType="HashMap">
+	<select id="selectBrandList" resultType="brandVO">
 		select * from shoe_brand
 	</select>
-	<select id="selectCategoryList" resultType="HashMap">
+	<select id="selectCategoryList" resultType="categoryVO">
 		select * from
 		shoe_category
 	</select>

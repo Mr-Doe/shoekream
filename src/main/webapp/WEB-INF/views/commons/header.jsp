@@ -142,7 +142,7 @@
                         <div class="breadcrumb__text">
                             <h4>Shop</h4>
                             <div class="breadcrumb__links">
-                                <a href="/product/list">Home</a>
+                                <a href="/product/listPage">Home</a>
                                 <span>Shop</span>
                             </div>
                         </div>

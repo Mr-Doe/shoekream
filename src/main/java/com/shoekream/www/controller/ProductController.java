@@ -20,13 +20,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shoekream.www.domain.PagingVO.PagingVO;
+import com.shoekream.www.domain.filterVO.FilterBrandVO;
+import com.shoekream.www.domain.filterVO.FilterDTO;
 import com.shoekream.www.domain.productVO.ProductVO;
+import com.shoekream.www.domain.shopVO.ShopVO;
 import com.shoekream.www.handler.PagingHandler;
+import com.shoekream.www.service.filterService.FilterBrandService;
+import com.shoekream.www.service.filterService.FilterCategoryService;
 import com.shoekream.www.service.productService.ProductService;
+import com.shoekream.www.service.shopService.ShopService;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.web.multipart.MultipartFile;
 
 @RequestMapping("/product/*")
 @Controller
@@ -36,51 +42,47 @@ public class ProductController {
 	
 	@Inject
 	private ProductService psv;
+	@Inject
+	private FilterCategoryService fcService;
+	
+	@Inject
+	private FilterBrandService fbService;
 	
 	@GetMapping("/listPage")
 	public void list(Model model, PagingVO pgvo) {
 		
 	}
-	
+
 	@ResponseBody
 	@GetMapping(value = "list", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Map<String, Object>> searchList(Model model, PagingVO pgvo) {
-		log.info("기본 pgvo : {}", pgvo);
-		List<Map<String, String>> voList = psv.getList(pgvo);
-		log.info("voList 확인 : {}", voList);
-		PagingHandler pageHandler = new PagingHandler(pgvo, psv.getTotalCount(pgvo));
-		log.info("pgHdr 확인 : {} " , pageHandler);
 		Map<String, Object> map = new HashMap();
-		map.put("pageHandler", pageHandler);
-		map.put("voList", voList);
+		map.put("pageHandler", new PagingHandler(pgvo, psv.getTotalCount(pgvo)));
+		map.put("voList", psv.getList(pgvo));
 		return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
 	}
 	@GetMapping("/originalList")
 	public void originalList(Model model, PagingVO pgvo) {
-		log.info("기본 pgvo : {}", pgvo);
 		List<Map<String, String>> map = psv.getList(pgvo);
-		log.info("map 확인 : {}", map);
 		PagingHandler pgn = new PagingHandler(pgvo, psv.getTotalCount(pgvo));
-		log.info("pgn 확인 : {} " , pgn);
 		model.addAttribute("map", map);
 		model.addAttribute("pgn", pgn);
 	}
-}
-
-// 미구현 밑 맵 대신 카테고리와 합쳐지면 vo사용하기
-//	@GetMapping("/register")
-//	public void register(Model model) {
-//		List<Map<String, String>> brandList= psv.getBrandList();
-//		List<Map<String, String>> categoryList = psv.getCategoryList();
-//		model.addAttribute("brandList", brandList);
-//		model.addAttribute("categoryList", categoryList);
-//	}
-//	
+	@GetMapping("/register")
+	public void registerPage(Model model) {
+		FilterDTO filterDTO = new FilterDTO();
+		filterDTO.setObjectList1(fbService.getBrandList());
+        filterDTO.setObjectList2(fcService.getCategoryList());
+		model.addAttribute("FilterDTO", filterDTO);
+	}
+	
 //	@PostMapping("/register")
-//	public String register (ProductVO pvo) {
-//		log.info("생성된 프로덕트 : {}", pvo);
-//		return "redirect:/product/list";
-//	}
-
-
-// 예상 url : www.shoekream.com/list?shoe_brand=31,33,41&shoe_size=55,60&pageNo=1&qty=10
+//	public void register(ProductVO pvo, @RequestParam(name = "fileAttached") MultipartFile[] files) {
+//		try {
+//            return String.valueOf(psv.register(pvo, files)); // retrun = INSERT한 쿼리 ID
+//        }catch (Exception e) {
+//            System.err.println(e.getMessage());
+//            return "0";
+//        }
+//   }
+}

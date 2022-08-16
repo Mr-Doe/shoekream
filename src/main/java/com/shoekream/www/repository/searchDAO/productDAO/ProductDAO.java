@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.shoekream.www.domain.PagingVO.PagingVO;
+import com.shoekream.www.domain.filterVO.FilterBrandVO;
+import com.shoekream.www.domain.filterVO.FilterCategoryVO;
 import com.shoekream.www.domain.productVO.ProductVO;
 
 @Repository
@@ -15,7 +17,7 @@ public interface ProductDAO {
 	List<Map<String, String>> selectMinPrice(PagingVO pgvo);
 	int totalCount(PagingVO pgvo);
 	int insert(ProductVO pvo);
-	List<Map<String, String>> selectBrandList();	
-	List<Map<String, String>> selectCategoryList();
+	List<FilterBrandVO> selectBrandList();	
+	List<FilterCategoryVO> selectCategoryList();
 	
 }
