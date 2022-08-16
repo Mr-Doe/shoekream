@@ -215,11 +215,6 @@ p {
 				data-v-3d1bcc82="" data-v-d8835e88=""> 입찰취소 </button></span>
 		</c:if>
 		</div>
-		
-		<input type="hidden"  id="itemNo" value="<c:out value="${mypageVO.itemNo}"/>">
-		<input type="hidden"  id="sesEmail" value="<c:out value="${ses.email}"/>">
-		<input type="hidden"  id="buyerEmail" value="<c:out value="${mypageVO.buyerEmail}"/>">
-		<input type="hidden"  id="sellerEmail" value="<c:out value="${mypageVO.sellerEmail}"/>">
 		<!---->
 		<!---->
 		<!---->
@@ -233,6 +228,10 @@ p {
 <form action="" method="post" id="itemsRmForm">
 	<input type="hidden" name="email" value="${ses.email }">
 	<input type="hidden" name="itemNo" value="${mypageVO.itemNo}">
+	<input type="hidden"  id="itemNo" value="<c:out value="${mypageVO.itemNo}"/>">
+	<input type="hidden"  id="sesEmail" value="<c:out value="${ses.email}"/>">
+	<input type="hidden"  id="buyerEmail" value="<c:out value="${mypageVO.buyerEmail}"/>">
+	<input type="hidden"  id="sellerEmail" value="<c:out value="${mypageVO.sellerEmail}"/>">
 </form>
 
 <script src="../../resources/js/member/historydetail.js"></script>
