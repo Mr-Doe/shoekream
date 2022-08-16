@@ -45,7 +45,7 @@ document.addEventListener('click', (e) => {
         });
         document.querySelector('.layer_detail_size_select').style.display = "none";
     }
-    if(e.target.classList.contains('fa-close')) {
+    if(e.target.classList.contains('fa-close') || e.target.classList.contains('layer_detail_size_select')) {
         document.querySelector('.layer_detail_size_select').style.display = "none";
     }
 });
