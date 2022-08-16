@@ -33,7 +33,10 @@
 		select item_no, pno, price from items where pno = #{pno} and shoe_size = #{shoeSize} and buyer_email is null order by price, item_no limit 1
 	</select>
 	<select id="selectProduct" resultType="productVO">
-		select pno, model, e_name, k_name, reg_at, retail_price, brand, th_img from product where pno = #{pno}
+		select pno, model, e_name, k_name, reg_at, retail_price, brand from product where pno = #{pno}
+	</select>
+	<select id="selectImg" resultType="string">
+		select model_image_url from product p left join model_image i on p.model = i.model_number where pno = #{pno}
 	</select>
 	<select id="selectSizeList" resultType="sizeVO">
 		select * from shoe_size

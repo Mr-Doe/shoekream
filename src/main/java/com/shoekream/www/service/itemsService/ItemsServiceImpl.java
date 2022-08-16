@@ -9,6 +9,7 @@ import javax.inject.Inject;
 
 import com.shoekream.www.domain.filterVO.FilterSizeVO;
 import com.shoekream.www.domain.itemsDomain.BrandDTO;
+import com.shoekream.www.domain.itemsDomain.IDTO;
 import com.shoekream.www.domain.itemsDomain.ItemsDTO;
 import com.shoekream.www.domain.itemsDomain.ItemsVO;
 import com.shoekream.www.domain.productVO.ProductVO;
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Service;
 public class ItemsServiceImpl implements ItemsService {
 	@Inject
 	private ItemsDAO itemDAO;
-	
+
 	@Override
 	public int registerSellItem(ItemsVO itemsVO) {
 		return itemDAO.insertSellItem(itemsVO);
@@ -35,8 +36,8 @@ public class ItemsServiceImpl implements ItemsService {
 	public List<ItemsDTO> getSellItemPriceList(int pno) {
 		List<FilterSizeVO> sizeList = itemDAO.selectSizeList();
 		List<ItemsDTO> itemList = new ArrayList<>();
-		
-		for(FilterSizeVO sizeVO : sizeList) {
+
+		for (FilterSizeVO sizeVO : sizeList) {
 			itemList.add(new ItemsDTO(itemDAO.selectSellPrice(pno, sizeVO.getSizeId()), sizeVO));
 		}
 		return itemList;
@@ -46,8 +47,8 @@ public class ItemsServiceImpl implements ItemsService {
 	public List<ItemsDTO> getBuyItemPriceList(int pno) {
 		List<FilterSizeVO> sizeList = itemDAO.selectSizeList();
 		List<ItemsDTO> itemList = new ArrayList<>();
-		
-		for(FilterSizeVO sizeVO : sizeList) {
+
+		for (FilterSizeVO sizeVO : sizeList) {
 			itemList.add(new ItemsDTO(itemDAO.selectBuyPrice(pno, sizeVO.getSizeId()), sizeVO));
 		}
 		return itemList;
@@ -61,11 +62,11 @@ public class ItemsServiceImpl implements ItemsService {
 		return map;
 	}
 
-	@Override
-	public ItemsVO selectBuyItem(ItemsVO itemsVO) {
-		return itemDAO.selectBuyItem(itemsVO);
-	}
-	
+//	@Override
+//	public ItemsVO selectBuyItem(ItemsVO itemsVO) {
+//		return itemDAO.selectBuyItem(itemsVO);
+//	}
+
 	@Override
 	public ItemsVO selectSellItem(ItemsVO itemsVO) {
 		return itemDAO.selectSellItem(itemsVO);
@@ -86,34 +87,59 @@ public class ItemsServiceImpl implements ItemsService {
 		return itemDAO.deleteItem(itemNo);
 	}
 
+//	@Override
+//	public BrandDTO selectProduct(int pno) {
+//		ProductVO pvo = itemDAO.selectProduct(pno);
+//		pvo.setRegAt(pvo.getRegAt().substring(0, pvo.getRegAt().indexOf(" ")));
+//		return new BrandDTO(pvo, itemDAO.selectBrandName(pvo.getBrand()), null);
+//	}
+
 	@Override
-	public BrandDTO selectProduct(int pno) {
+	public IDTO selectProduct(int pno) {
+		ProductVO pvo = itemDAO.selectProduct(pno);
+		return new IDTO(pvo, null, itemDAO.selectImg(pno), null, null, null);
+	}
+
+//	@Override
+//	public String selectSize(int shoeSize) {
+//		return itemDAO.selectShoeSize(shoeSize);
+//	}
+
+//	@Override
+//	public Map<String, Integer> selectBuySell(ItemsVO itemsVO) {
+//		Map<String, Integer> map = new HashMap<>();
+//		map.put("buy", itemDAO.selectBuyPrice(itemsVO.getPno(), itemsVO.getShoeSize()));
+//		map.put("sell", itemDAO.selectSellPrice(itemsVO.getPno(), itemsVO.getShoeSize()));
+//		return map;
+//	}
+
+//	@Override
+//	public Integer buyPrice(int pno, int i) {
+//		return itemDAO.selectBuyPrice(pno, i);
+//	}
+
+	@Override
+	public IDTO selectPdto(int pno) {
 		ProductVO pvo = itemDAO.selectProduct(pno);
 		pvo.setRegAt(pvo.getRegAt().substring(0, pvo.getRegAt().indexOf(" ")));
-		return new BrandDTO(pvo, itemDAO.selectBrandName(pvo.getBrand()));
+		IDTO idto = new IDTO(pvo, null, itemDAO.selectImg(pno), itemDAO.selectBrandName(pvo.getBrand()), null, null);
+		Map<String, Integer> map = new HashMap<>();
+		map.put("recentPrice", itemDAO.recentDeal(pno, 0));
+		map.put("maxSellPrice", itemDAO.selectSellPrice(pno, 0));
+		map.put("minBuyPrice", itemDAO.selectBuyPrice(pno, 0));
+		idto.setMap(map);
+		return idto;
 	}
 
 	@Override
-	public ProductVO selectProductVO(int pno) {
-		return itemDAO.selectProduct(pno);
-	}
-
-	@Override
-	public String selectSize(int shoeSize) {
-		return itemDAO.selectShoeSize(shoeSize);
-	}
-
-	@Override
-	public Map<String, Integer> selectBuySell(ItemsVO itemsVO) {
+	public IDTO selectIdto(ItemsVO itemsVO) {
+		IDTO idto = new IDTO(itemDAO.selectProduct(itemsVO.getPno()), itemDAO.selectBuyItem(itemsVO),
+				itemDAO.selectImg(itemsVO.getPno()), null, itemDAO.selectShoeSize(itemsVO.getShoeSize()), null);
 		Map<String, Integer> map = new HashMap<>();
 		map.put("buy", itemDAO.selectBuyPrice(itemsVO.getPno(), itemsVO.getShoeSize()));
 		map.put("sell", itemDAO.selectSellPrice(itemsVO.getPno(), itemsVO.getShoeSize()));
-		return map;
-	}
-
-	@Override
-	public Integer buyPrice(int pno, int i) {
-		return itemDAO.selectBuyPrice(pno, i);
+		idto.setMap(map);
+		return idto;
 	}
 
 }

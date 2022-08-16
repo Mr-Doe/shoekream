@@ -29,9 +29,9 @@ public class ItemsController {
 	
 	@GetMapping("/detail")
 	public void detail(@RequestParam("pno") int pno, Model model) {
-		int min = 999999999;
-		model.addAttribute("pdto", itemsService.selectProduct(pno));
-		model.addAttribute("recentAndSellPrice", itemsService.recentandSellPrice(pno, 0));
+//		int min = 999999999;
+//		model.addAttribute("pdto", itemsService.selectProduct(pno));
+//		model.addAttribute("recentAndSellPrice", itemsService.recentandSellPrice(pno, 0));
 //		List<ItemsDTO> priceList = itemsService.getBuyItemPriceList(pno);
 //		model.addAttribute("list", priceList);
 //		for (ItemsDTO p : priceList) {
@@ -41,8 +41,9 @@ public class ItemsController {
 //				}
 //			}
 //		}
-		model.addAttribute("buyPrice", itemsService.buyPrice(pno, 0));
-		model.addAttribute("min", (min==999999999 ? "-&nbsp" : min));
+//		model.addAttribute("buyPrice", itemsService.buyPrice(pno, 0));
+//		model.addAttribute("min", (min==999999999 ? "-&nbsp" : min));
+		model.addAttribute("idto", itemsService.selectPdto(pno));
 	}
 	
 	@GetMapping(value = "/{pno}", produces= {MediaType.APPLICATION_JSON_VALUE})
@@ -57,7 +58,7 @@ public class ItemsController {
 	
 	@GetMapping("/buySelect")
 	public void buy(@RequestParam("pno") int pno, Model model) {
-		model.addAttribute("productVO", itemsService.selectProductVO(pno));
+		model.addAttribute("idto", itemsService.selectProduct(pno));
 		model.addAttribute("list", itemsService.getBuyItemPriceList(pno));
 	}
 	
@@ -69,10 +70,12 @@ public class ItemsController {
 
 	@GetMapping("/buyItem")
 	public void buyItem(ItemsVO itemsVO, Model model) {
-		model.addAttribute("productVO", itemsService.selectProductVO(itemsVO.getPno()));
-		model.addAttribute("size", new FilterSizeVO(itemsVO.getShoeSize(), itemsService.selectSize(itemsVO.getShoeSize())));
-		model.addAttribute("itemsVO", itemsService.selectBuyItem(itemsVO));
-		model.addAttribute("price", itemsService.selectBuySell(itemsVO));
+//		model.addAttribute("productVO", itemsService.selectProductVO(itemsVO.getPno()));
+//		model.addAttribute("size", new FilterSizeVO(itemsVO.getShoeSize(), itemsService.selectSize(itemsVO.getShoeSize())));
+//		model.addAttribute("itemsVO", itemsService.selectBuyItem(itemsVO));
+//		model.addAttribute("price", itemsService.selectBuySell(itemsVO));
+		
+		model.addAttribute("idto", itemsService.selectIdto(itemsVO));
 	}
 	
 	@GetMapping("/sellItem")

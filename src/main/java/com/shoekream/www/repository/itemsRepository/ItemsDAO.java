@@ -23,4 +23,5 @@ public interface ItemsDAO {
 	List<FilterSizeVO> selectSizeList();
 	String selectBrandName(int brand);
 	String selectShoeSize(int shoeSize);
+	String selectImg(int pno);
 }
