@@ -15,9 +15,9 @@
 						<div data-v-1643775e="" class="product_info">
 							<div data-v-75e33658="" data-v-1643775e="" class="product" style="background-color: rgb(235, 240, 245);">
 								<picture data-v-548c90f9="" data-v-75e33658="" class="picture product_img">
-								<source data-v-548c90f9="" type="image/webp" srcset="${idto.pvo.thImg }">
-								<source data-v-548c90f9="" srcset="${idto.pvo.thImg }">
-								<img data-v-548c90f9="" alt="상품 이미지" src="${idto.pvo.thImg }" class="image"></picture>
+								<source data-v-548c90f9="" type="image/webp" srcset="${idto.img }">
+								<source data-v-548c90f9="" srcset="${idto.img }">
+								<img data-v-548c90f9="" alt="상품 이미지" src="${idto.img }" class="image"></picture>
 							</div>
 							<div data-v-1643775e="" class="product_detail">
 								<div data-v-299f50cf="" class="product_detail">
