@@ -177,6 +177,14 @@
 			<version>1.28.4</version>
 		</dependency>
 
+		<!--		FTP client-->
+		<dependency>
+			<groupId>commons-net</groupId>
+			<artifactId>commons-net</artifactId>
+			<version>3.8.0</version>
+		</dependency>
+
+
 		<!-- scheduler -->
 		<dependency>
 			<groupId>org.quartz-scheduler</groupId>

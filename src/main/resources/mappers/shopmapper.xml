@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.shoekream.www.repository.shopDAO.ShopDAO">
+	<select id="selectItems" resultType="shopVO">
+		SELECT
+			brand as brandName
+			, e_name as englishName
+			, k_name koreanName
+			, (SELECT
+					MIN(vi.price)
+				FROM
+					items vi
+				WHERE vi.pno = p.pno
+					AND vi.seller_email is not null
+			) as sellerPrice
+		FROM
+			product p INNER JOIN shoe_brand sb
+				ON p.brand = sb.brand_id
+	</select>
+	<select id="checkModelNumberDuple" parameterType="String" resultType="int">
+		SELECT
+			COUNT(pno)
+		FROM
+			product
+		WHERE
+			model = #{modelNumber}
+	</select>
+	<select id="selectModelNumber" parameterType="int" resultType="string">
+		SELECT
+			model
+		FROM
+			product
+		WHERE
+			pno = #{pno}
+	</select>
+	<select id="selectImageId" parameterType="string" resultType="shopVO">
+		SELECT
+			image_id
+			, model_image_url as imageUrl
+		FROM
+			model_image
+		WHERE
+			model_number = #{modelNumber}
+	</select>
+
+	<insert id="insertProduct" parameterType="shopVO">
+		INSERT INTO product (
+			e_name
+			, k_name
+			, retail_price
+			, model
+			, brand
+		) VALUES (
+			#{englishName}
+			, #{koreanName}
+			, #{sellerPrice}
+			, #{modelNumber}
+			, #{brandName}
+		)
+	</insert>
+	<insert id="insertImage" parameterType="shopVO">
+		INSERT INTO model_image (
+			model_number
+			, model_image_url
+		) VALUES (
+			#{modelNumber}
+			, #{fileName}
+		)
+	</insert>
+
+	<delete id="deleteAllImage" parameterType="shopVO">
+		DELETE FROM model_image
+		WHERE image_id IN
+			<foreach item="item" index="index" collection="list"
+					 open="(" separator="," close=")">
+				#{item.imageId}
+			</foreach>
+	</delete>
+	<delete id="deleteItem" parameterType="int">
+		DELETE FROM product
+		WHERE pno = #{pno}
+	</delete>
+</mapper>

@@ -19,7 +19,7 @@ async function searchingFromServer(keyword) {
     }
 }
 
-document.querySelector('.input_search.show_placeholder_on_focus').addEventListener('input', ()=> {
+document.querySelector('.input_search.show_placeholder_on_focus').addEventListener('input', (e)=> {
     const keyword = document.querySelector('.input_search.show_placeholder_on_focus').value;
 
     if(keyword.length > 0) {
@@ -44,8 +44,10 @@ document.querySelector('.input_search.show_placeholder_on_focus').addEventListen
                         </div>
                     `
                 }
-                document.querySelector('div.suggest_area').innerHTML = html + '<div data-v-2741e9de="" data-v-589881b0="" class="suggest_list lg" data-v-1f7c6d3f="">';
+                document.querySelector('div.suggest_area').innerHTML = html;
             }
+
+            document.querySelector('div.suggest_area').innerHTML += '<div data-v-2741e9de="" data-v-589881b0="" class="suggest_list lg" data-v-1f7c6d3f="">';
 
             if(result.searchedProductList.length > 0) {
                 let html = '';
@@ -94,26 +96,10 @@ document.querySelector('.btn_search_delete').addEventListener('click', (e)=> {
     document.querySelector('.btn_search_delete').style.display = 'none';
 });
 
-// async function getTheItemFromServer(href_value) {
-//     try {
-//         const resp = await fetch(href_value);
-//     } catch (error) {
-//         console.log(error);
-//     }
-// };
-
-// document.addEventListener('click', (e)=> {
-//     e.preventDefault();
-//     const clicked = e.target;
-//     let href_value = null;
-
-//     if(clicked.tagName == 'A' && clicked.getAttribute('class') == 'suggest_link') href_value = clicked.getAttribute('href');
-//     if(clicked.tagName == 'svg' && clicked.parentNode.getAttribute('class') == 'more_link') href_value = clicked.parentNode.getAttribute('href');
-//     if(clicked.tagName == 'IMG' && clicked.parentNode.parentNode.getAttribute('class') == 'suggest_link') href_value = clicked.parentNode.parentNode.getAttribute('href');
-//     if(clicked.tagName == 'P' && clicked.parentNode.parentNode.getAttribute('class') == 'suggest_link') href_value = clicked.parentNode.parentNode.getAttribute('href');
-
-//     if(href_value != null || clicked.getAttribute('href') != null) {
-//         getTheItemFromServer(href_value).then();
-//         console.log(href_value);
-//     }
-// });
+document.querySelector('.input_search.show_placeholder_on_focus').addEventListener('keydown', (e)=> {
+    const items = document.querySelector('.suggest_list.lg');
+    
+    if(e.code === 'Enter' && items.children.length > 0) {
+        location.href = items.children[0].querySelector('a').href;
+    }
+});

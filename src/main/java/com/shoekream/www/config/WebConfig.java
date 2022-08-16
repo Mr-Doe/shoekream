@@ -35,12 +35,12 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 	@Override
 	protected void customizeRegistration(ServletRegistration.Dynamic registration) {
 		registration.setInitParameter("throwExceptionIfNoHandlerFound", "true");
-		
-		String uploadLocation = "/Users/mr.doe/Develop/_java/lec/_spring/uploaded/";
-		int maxFileSize = 2 * 1024 * 1024; // 2MB
-		int maxReqSize = maxFileSize * 5; // 파일 전송
+
+		String uploadLocation = null;
+		int maxFileSize = 30 * 1024 * 1024; // 30MB
+		int maxReqSize = maxFileSize * 3; // 파일 전송
 		int fileSizeThreshold = maxFileSize; // 메모리에서 파일을 전송할 때 만들어지는 임시저장공간의 크기
-		
+
 		MultipartConfigElement configElement = new MultipartConfigElement(uploadLocation, maxFileSize, maxReqSize, fileSizeThreshold);
 		registration.setMultipartConfig(configElement);
 	}
