@@ -13,25 +13,18 @@
 				<div data-v-68b558fb="" data-v-6657f7cc="" class="buy_immediate">
 					<div data-v-1643775e="" data-v-68b558fb=""
 						class="product_info_area" style="padding-bottom: 12px">
-						<div data-v-1643775e="" class="product_info" >
-							<div data-v-75e33658="" data-v-1643775e="" class="product"
-								style="background-color: rgb(235, 240, 245);">
-								<picture data-v-548c90f9="" data-v-75e33658=""
-									class="picture product_img">
-								<source data-v-548c90f9="" type="image/webp"
-									srcset="${pdto.productVO.thImg }">
-								<source data-v-548c90f9="" srcset="${pdto.productVO.thImg }">
-								<img data-v-548c90f9="" alt="상품 이미지"
-									src="${pdto.productVO.thImg }" class="image"></picture>
+						<div data-v-1643775e="" class="product_info">
+							<div data-v-75e33658="" data-v-1643775e="" class="product" style="background-color: rgb(235, 240, 245);">
+								<picture data-v-548c90f9="" data-v-75e33658="" class="picture product_img">
+								<source data-v-548c90f9="" type="image/webp" srcset="${idto.pvo.thImg }">
+								<source data-v-548c90f9="" srcset="${idto.pvo.thImg }">
+								<img data-v-548c90f9="" alt="상품 이미지" src="${idto.pvo.thImg }" class="image"></picture>
 							</div>
 							<div data-v-1643775e="" class="product_detail">
 								<div data-v-299f50cf="" class="product_detail">
-									<p data-v-299f50cf="" class="code">${pdto.productVO.model }
-									</p>
-									<p data-v-299f50cf="" class="name">${pdto.productVO.eName }
-									</p>
-									<p data-v-299f50cf="" class="translated_name">
-										${pdto.productVO.kName }</p>
+									<p data-v-299f50cf="" class="code">${idto.pvo.model }</p>
+									<p data-v-299f50cf="" class="name">${idto.pvo.eName }</p>
+									<p data-v-299f50cf="" class="translated_name">${idto.pvo.kName }</p>
 								</div>
 							</div>
 						</div>
@@ -61,7 +54,7 @@
 							</ul>
 						</div>
 						<div data-v-744cecc2="" data-v-30b23d22="" class="order_btn_area" id="order_btn_area" style="display: none; padding: 20 32;">
-							<a data-v-57f23419="" data-v-744cecc2="" href="/items/sellItem?pno=${pdto.productVO.pno }"
+							<a data-v-57f23419="" data-v-744cecc2="" href="/items/sellItem?pno=${idto.pvo.pno }"
 								class="btn_order order_sell sell clickable" id="sellBtn">
 								<div data-v-57f23419="" class="box">
 									<div data-v-57f23419="" class="order_case_info">

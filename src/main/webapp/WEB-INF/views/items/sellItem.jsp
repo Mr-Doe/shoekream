@@ -17,16 +17,15 @@
 						<div data-v-1643775e="" class="product_info">
 							<div data-v-75e33658="" data-v-1643775e="" class="product" style="background-color: rgb(235, 240, 245);">
 								<picture data-v-548c90f9="" data-v-75e33658="" class="picture product_img">
-								<source data-v-548c90f9="" type="image/webp" srcset="${productVO.thImg }">
-								<source data-v-548c90f9="" srcset="${productVO.thImg }">
-								<img data-v-548c90f9="" alt="상품 이미지" src="${productVO.thImg }" class="image"></picture>
+								<source data-v-548c90f9="" type="image/webp" srcset="${idto.pvo.thImg }">
+								<source data-v-548c90f9="" srcset="${idto.pvo.thImg }">
+								<img data-v-548c90f9="" alt="상품 이미지" src="${idto.pvo.thImg }" class="image"></picture>
 							</div>
 							<div data-v-1643775e="" class="product_detail">
 								<div data-v-299f50cf="" class="product_detail">
-									<p data-v-299f50cf="" class="code">${productVO.model }</p>
-									<p data-v-299f50cf="" class="name">${productVO.eName }</p>
-									<p data-v-299f50cf="" class="translated_name">${productVO.kName }</p>
-									<p data-v-299f50cf="" class="size">${size.sizeValue }</p>
+									<p data-v-299f50cf="" class="code">${idto.pvo.model }</p>
+									<p data-v-299f50cf="" class="name">${idto.pvo.eName }</p>
+									<p data-v-299f50cf="" class="translated_name">${idto.pvo.kName }</p>
 								</div>
 							</div>
 						</div>
@@ -37,14 +36,14 @@
 							<li data-v-638c1354="" class="list_item">
 								<p data-v-638c1354="" class="title">즉시 구매가</p> 
 								<span data-v-638c1354="" class="price"> 
-									<c:if test="${price.buy!=null }">${price.buy }</c:if> 
-									<c:if test="${price.buy==null }">-&nbsp;</c:if>
+									<c:if test="${idto.map.buy!=null }">${idto.map.buy }</c:if> 
+									<c:if test="${idto.map.buy==null }">-&nbsp;</c:if>
 								</span><span data-v-638c1354="" class="unit">원</span></li>
 							<li data-v-638c1354="" class="list_item">
 								<p data-v-638c1354="" class="title">즉시 판매가</p> 
 								<span data-v-638c1354="" class="price" id="sellPrice"> 
-									<c:if test="${price.sell!=null }">${price.sell }</c:if> 
-									<c:if test="${price.sell==null }">-&nbsp;</c:if>
+									<c:if test="${idto.map.sell!=null }">${idto.map.sell }</c:if> 
+									<c:if test="${idto.map.sell==null }">-&nbsp;</c:if>
 								</span><span data-v-638c1354="" class="unit">원</span></li>
 						</ul>
 						<div data-v-158ed304="" class="instant_group">
@@ -91,20 +90,20 @@
 </div>
 
 <form action="" method="post">
-	<c:if test="${itemsVO.itemNo ne null }">
-		<input type="hidden" name="itemNo" value="${itemsVO.itemNo }">
+	<c:if test="${idto.ivo.itemNo ne null }">
+		<input type="hidden" name="itemNo" value="${idto.ivo.itemNo }">
 	</c:if>
-	<c:if test="${itemsVO.itemNo eq null }">
+	<c:if test="${idto.ivo.itemNo eq null }">
 		<input type="hidden" name="itemNo" value="0">
 	</c:if>
-	<input type="hidden" name="sellerEmail" value="${ses.email }">
-	<input type="hidden" name="pno" value="${productVO.pno }">
-	<input type="hidden" name="shoeSize" value="${size.sizeId }">
+	<input type="hidden" name="buyerEmail" value="${ses.email }">
+	<input type="hidden" name="pno" value="${idto.pvo.pno }">
+	<input type="hidden" name="shoeSize" value="${idto.size }">
 	<input type="hidden" name="price" id="priceValue" value="0">
 </form>
 
 <span id="email" style="display: none;">${ses.email }</span>
-<span id="itemNo" style="display: none;">${itemsVO.itemNo }</span>
+<span id="itemNo" style="display: none;">${idto.ivo.itemNo }</span>
 <span id="type" style="display: none;"></span>
 
 <a href="/member/login" style="display: none;" id="link"></a>

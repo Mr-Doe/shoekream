@@ -14,3 +14,11 @@ if (sesEmail === buyerEmail) {
     document.getElementById('listBtn').href = "";
     document.getElementById('listBtn').href = "/member/selling?email=" + sesEmail;
 }
+
+document.getElementById('delBtn').addEventListener('click', (e) =>{
+    e.preventDefault();
+
+    const delForm = document.getElementById('itemsRmForm');
+    delForm.setAttribute('action', '/items/removeItem');
+    delForm.submit();
+});
