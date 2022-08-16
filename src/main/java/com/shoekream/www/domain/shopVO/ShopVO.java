@@ -13,6 +13,7 @@ import org.apache.ibatis.type.Alias;
 public class ShopVO {
 
     private int itemNo;
+    private int categoryName;
     private int brandName;
     private String englishName;
     private String koreanName;
@@ -21,6 +22,6 @@ public class ShopVO {
     private String fileName;
     private long imageId;
     private String imageUrl;
-    private String deleteImages;
+    private String deleteImagesId;
 
 }

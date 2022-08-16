@@ -12,9 +12,10 @@ public interface ShopDAO {
     String selectModelNumber(int pno);
     int selectItemsCount(int pno);
     List<ShopVO> selectImageIdAndUrl(String modelNumber);
-    List<ShopVO> selectImageUrlWithId(long ItemId);
 
+    int deleteImageWithImageId(List<Long> list);
     int deleteImageWithModelNumber(List<ShopVO> list);
-    int deleteImageWithImageId(ShopVO shopVO);
     int deleteItem(int pno);
+
+    int updateItem(ShopVO shopVO);
 }

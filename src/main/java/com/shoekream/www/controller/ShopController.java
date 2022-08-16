@@ -42,15 +42,14 @@ public class ShopController {
     @PutMapping("/put")
     public String updateItem(ShopVO shopVO, @RequestParam(required = false) MultipartFile[] files) {
         try {
-            System.out.println(files);
-            return "";
+            return String.valueOf(sService.putItems(shopVO, files));
         }catch (Exception e) {
             System.err.println(e.getMessage());
             return "0";
         }
     }
 
-    @DeleteMapping("del/{pno}")
+    @DeleteMapping("/del/{pno}")
     public String deleteItem(@PathVariable("pno")int pno) {
         try {
             return String.valueOf(sService.removeItem(pno));

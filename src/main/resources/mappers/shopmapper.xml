@@ -45,15 +45,19 @@
 		WHERE
 			model_number = #{modelNumber}
 	</select>
-	<select id="selectImageUrlWithId" parameterType="long" resultType="shopVO">
+	<select id="selectImageUrlWithId" parameterType="int" resultType="shopVO">
 		SELECT
 			model_image_url as imageUrl
 		FROM
 			model_image
 		WHERE
-			image_id IN (#{deleteImages})
+			image_id IN
+				<foreach item="item" index="index" collection="list"
+						 open="(" separator="," close=")">
+					#{item}
+				</foreach>
 	</select>
-	<select id="selectItemsCount" parameterType="String" resultType="int">
+	<select id="selectItemsCount" parameterType="int" resultType="int">
 		SELECT
 			COUNT(item_no)
 		FROM
@@ -69,12 +73,14 @@
 			, retail_price
 			, model
 			, brand
+			, category
 		) VALUES (
 			#{englishName}
 			, #{koreanName}
 			, #{sellerPrice}
 			, #{modelNumber}
 			, #{brandName}
+			, #{categoryName}
 		)
 	</insert>
 	<insert id="insertImage" parameterType="shopVO">
@@ -89,18 +95,34 @@
 
 	<delete id="deleteImageWithModelNumber" parameterType="shopVO">
 		DELETE FROM model_image
-		WHERE image_id IN
-			<foreach item="item" index="index" collection="list"
-					 open="(" separator="," close=")">
-				#{item.imageId}
-			</foreach>
+		WHERE model_image_url IN
+				<foreach item="item" index="index" collection="list"
+						 open="(" separator="," close=")">
+					#{item.imageUrl}
+				</foreach>
 	</delete>
 	<delete id="deleteItem" parameterType="int">
 		DELETE FROM product
 		WHERE pno = #{pno}
 	</delete>
-	<delete id="deleteImageWithImageId" parameterType="shopVO">
+	<delete id="deleteImageWithImageId" parameterType="long">
 		DELETE FROM model_image
-		WHERE image_id IN (#{deleteImages})
+		WHERE image_id IN
+			<foreach item="item" index="index" collection="list"
+					 open="(" separator="," close=")">
+				#{item}
+			</foreach>
 	</delete>
+	
+	<update id="updateItem" parameterType="shopVO">
+		UPDATE product SET
+			category = #{categoryName}
+			, brand = #{brandName}
+			, model = #{modelNumber}
+			, e_name = #{englishName}
+			, k_name = #{koreanName}
+			, retail_price = #{sellerPrice}
+		WHERE
+			pno = #{itemNo}
+	</update>
 </mapper>
