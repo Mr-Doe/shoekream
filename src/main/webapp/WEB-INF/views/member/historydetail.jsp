@@ -208,16 +208,13 @@ p {
 		</div>
 		<div data-v-d8835e88=""></div>
 		<div class="detail_btn_box" data-v-d8835e88="">
-			<a href="#" class="btn btn_view_list outlinegrey medium" id="listBtn"
-				data-v-3d1bcc82="" data-v-d8835e88=""> 목록보기 </a>
-		</div>
-		
+			<span><a href="#" class="btn btn_view_list outlinegrey medium" id="listBtn"
+				data-v-3d1bcc82="" data-v-d8835e88=""> 목록보기 </a></span>
 		<c:if test="${mypageVO.isSold eq 0 && mypageVO.isSold eq '' }">
-			<div class="detail_btn_box" data-v-d8835e88="">
-				<button class=" btn_view_list outlinegrey medium" id="delBtn"
-					data-v-3d1bcc82="" data-v-d8835e88=""> 입찰취소 </button>
-			</div>
+			<span><button class=" btn_view_list outlinegrey medium" id="delBtn"
+				data-v-3d1bcc82="" data-v-d8835e88=""> 입찰취소 </button></span>
 		</c:if>
+		</div>
 		
 		<input type="hidden"  id="itemNo" value="<c:out value="${mypageVO.itemNo}"/>">
 		<input type="hidden"  id="sesEmail" value="<c:out value="${ses.email}"/>">
@@ -235,7 +232,6 @@ p {
 
 <form action="" method="post" id="itemsRmForm">
 	<input type="hidden" name="email" value="${ses.email }">
-	<!-- 얘 중복이라 위에 얘 없애는 식으로 하시면 될 것 같습니당  -->
 	<input type="hidden" name="itemNo" value="${mypageVO.itemNo}">
 </form>
 
