@@ -3,7 +3,6 @@ package com.shoekream.www.controller;
 import com.shoekream.www.domain.shopVO.ShopVO;
 import com.shoekream.www.repository.shopDAO.ShopDAO;
 import com.shoekream.www.service.shopService.ShopService;
-import org.apache.poi.ss.usermodel.IconMultiStateFormatting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,8 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.File;
 import java.util.List;
 
 @Controller
@@ -43,8 +40,9 @@ public class ShopController {
     }
 
     @PutMapping("/put")
-    public String updateItem(ShopVO shopVO, @RequestParam MultipartFile[] files) {
+    public String updateItem(ShopVO shopVO, @RequestParam(required = false) MultipartFile[] files) {
         try {
+            System.out.println(files);
             return "";
         }catch (Exception e) {
             System.err.println(e.getMessage());

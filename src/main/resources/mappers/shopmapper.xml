@@ -36,7 +36,7 @@
 		WHERE
 			pno = #{pno}
 	</select>
-	<select id="selectImageId" parameterType="string" resultType="shopVO">
+	<select id="selectImageIdAndUrl" parameterType="String" resultType="shopVO">
 		SELECT
 			image_id
 			, model_image_url as imageUrl
@@ -44,6 +44,22 @@
 			model_image
 		WHERE
 			model_number = #{modelNumber}
+	</select>
+	<select id="selectImageUrlWithId" parameterType="long" resultType="shopVO">
+		SELECT
+			model_image_url as imageUrl
+		FROM
+			model_image
+		WHERE
+			image_id IN (#{deleteImages})
+	</select>
+	<select id="selectItemsCount" parameterType="String" resultType="int">
+		SELECT
+			COUNT(item_no)
+		FROM
+			items
+		WHERE
+			pno = #{pno}
 	</select>
 
 	<insert id="insertProduct" parameterType="shopVO">
@@ -71,7 +87,7 @@
 		)
 	</insert>
 
-	<delete id="deleteAllImage" parameterType="shopVO">
+	<delete id="deleteImageWithModelNumber" parameterType="shopVO">
 		DELETE FROM model_image
 		WHERE image_id IN
 			<foreach item="item" index="index" collection="list"
@@ -82,5 +98,9 @@
 	<delete id="deleteItem" parameterType="int">
 		DELETE FROM product
 		WHERE pno = #{pno}
+	</delete>
+	<delete id="deleteImageWithImageId" parameterType="shopVO">
+		DELETE FROM model_image
+		WHERE image_id IN (#{deleteImages})
 	</delete>
 </mapper>

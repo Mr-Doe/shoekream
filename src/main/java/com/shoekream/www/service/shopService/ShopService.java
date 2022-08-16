@@ -8,5 +8,6 @@ import java.util.List;
 public interface ShopService {
     List<ShopVO> getItems();
     int postItem(ShopVO shopVO, MultipartFile[] files) throws Exception;
+    int putItems(ShopVO shopVO, MultipartFile[] files) throws Exception;
     int removeItem(int pno) throws Exception;
 }

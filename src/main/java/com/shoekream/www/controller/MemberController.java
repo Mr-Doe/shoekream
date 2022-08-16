@@ -132,8 +132,9 @@ public class MemberController {
 			ses.removeAttribute("ses");
 		}
 
-		if (msv.login(memberVO) != null) {
-			ses.setAttribute("ses", memberVO);
+		MemberVO loginSession = msv.login((memberVO)); // 정희도가 변경 추가 수정 함
+		if (loginSession != null) {
+			ses.setAttribute("ses", loginSession);
 			return new ResponseEntity<String>("1", HttpStatus.OK);
 		}
 		

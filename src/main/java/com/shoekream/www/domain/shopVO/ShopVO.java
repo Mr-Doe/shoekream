@@ -21,5 +21,6 @@ public class ShopVO {
     private String fileName;
     private long imageId;
     private String imageUrl;
+    private String deleteImages;
 
 }
