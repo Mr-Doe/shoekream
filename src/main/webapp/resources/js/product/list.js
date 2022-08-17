@@ -33,10 +33,10 @@ function spreadList(shoe_brand, shoe_category, shoe_size, pageNo){
       line += `<p id="title">${pvo.brandName }</p>`;
       line += `<p id="name" style="line-height: 16px; font-size: 13px;">${pvo.eName }</p>`;
       line += `<p id="translated_name" style="line-height: 14px; font-size: 12px; letter-spacing: -.06px; color: rgba(34,34,34,.5);">${pvo.kName }</p>`;
-      if(pvo.minPrice != null || pvo.minPrice != "0"){
-        line += `<p style="padding-top: 11px; line-height: 17px; font-size: 14px; font-weight: 700;">${pvo.minPrice}원</p>`;
+      if(pvo.minPrice == 0){
+        line += `<p style="padding-top: 11px; line-height: 17px; font-size: 14px; font-weight: 700;"> - </p>`
       }  else {
-        line += `<p style="padding-top: 11px; line-height: 17px; font-size: 14px; font-weight: 700;">-</p>`
+        line += `<p style="padding-top: 11px; line-height: 17px; font-size: 14px; font-weight: 700;">${pvo.minPrice}원</p>`;
       }
       line += `<p style="line-height: 13px; font-size: 11px; color: rgba(34,34,34,.5);">즉시 구매가</p>`;
       line += `</div></div></div>`;
