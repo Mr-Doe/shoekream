@@ -13,11 +13,13 @@ import com.shoekream.www.domain.productVO.ProductVO;
 @Repository
 public interface ProductDAO {
 	
-	List<Map<String, String>> selectList(PagingVO pgvo);
-	List<Map<String, String>> selectMinPrice(PagingVO pgvo);
+	List<ProductVO> selectList(PagingVO pgvo);
+	List<ProductVO> selectMinPrice(PagingVO pgvo);
 	int totalCount(PagingVO pgvo);
 	int insert(ProductVO pvo);
 	List<FilterBrandVO> selectBrandList();	
 	List<FilterCategoryVO> selectCategoryList();
-	
+	int checkModelDuple(String model);
+	int insertImage(ProductVO productVO);
+	int selectLastPno();
 }

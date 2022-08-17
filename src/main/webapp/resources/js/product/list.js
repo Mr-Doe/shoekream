@@ -19,24 +19,26 @@ async function getListFromServer(shoe_brand=null, shoe_category=null, shoe_size=
 function spreadList(shoe_brand, shoe_category, shoe_size, pageNo){
   getListFromServer(shoe_brand, shoe_category, shoe_size, pageNo).then(result => {
     console.log(result);
-    let pageHandler = result.pageHandler;
+    let pageHandler = result.pagehdlr;
 
-    // 리스트 시작 
+    // 상품 리스트 시작 
     let div = document.getElementById('printZone');
     div.innerHTML = '';
     let line = '<div class="row">';
-    result.voList.forEach(pvo => {
+    result.productList.forEach(pvo => {
       line +=`<div class="col-lg-3 col-md-6" style="padding-top: 20px; padding-top: 20px;"><div OnClick="location.href ='/items/detail?pno=${pvo.pno}'" style="cursor:pointer;">`;
       line += `<div class="product" style="background-color: #ebf0f5;" data-v-75e33658="" data-v-6a8ef390="">`;
-      line += `<picture class="picture product_img"  data-v-75e33658=""><img alt="shoe_image" src="${pvo.th_img }" class="image"></picture></div>`;
+      line += `<picture class="picture product_img"  data-v-75e33658=""><img alt="shoe_image" src="${pvo.imageUrl }" class="image"></picture></div>`;
       line += `<div class="product__item__text">`;
-      line += `<p id="title">${pvo.brand_name }</p>`;
-      line += `<p id="name" style="line-height: 16px; font-size: 13px;">${pvo.e_name }</p>`;
-      line += `<p id="translated_name" style="line-height: 14px; font-size: 12px; letter-spacing: -.06px; color: rgba(34,34,34,.5);">${pvo.k_name }</p>`;
-      if(pvo.min_price != null){
-        line += `<p style="padding-top: 11px; line-height: 17px; font-size: 14px; font-weight: 700;">${pvo.min_price}원</p>`;
-        line += `<p style="line-height: 13px; font-size: 11px; color: rgba(34,34,34,.5);">즉시 구매가</p>`;
+      line += `<p id="title">${pvo.brandName }</p>`;
+      line += `<p id="name" style="line-height: 16px; font-size: 13px;">${pvo.eName }</p>`;
+      line += `<p id="translated_name" style="line-height: 14px; font-size: 12px; letter-spacing: -.06px; color: rgba(34,34,34,.5);">${pvo.kName }</p>`;
+      if(pvo.minPrice != null || pvo.minPrice != "0"){
+        line += `<p style="padding-top: 11px; line-height: 17px; font-size: 14px; font-weight: 700;">${pvo.minPrice}원</p>`;
+      }  else {
+        line += `<p style="padding-top: 11px; line-height: 17px; font-size: 14px; font-weight: 700;">-</p>`
       }
+      line += `<p style="line-height: 13px; font-size: 11px; color: rgba(34,34,34,.5);">즉시 구매가</p>`;
       line += `</div></div></div>`;
     });  
     line+=`</div>`;
@@ -44,11 +46,11 @@ function spreadList(shoe_brand, shoe_category, shoe_size, pageNo){
 
     // 페이지네이션 시작
     line += `<hr>`
-    line += `<div class="pagination">`
+    line += `<div class="pagination center">`
     if(pageHandler.prev){
       line += `<a class="pageBtn" href="#" onclick="return false" data-pageno="${pageHandler.startPage-1}">&laquo;</a>`;
     }
-    for(let i = pageHandler.startPage; i<=pageHandler.endPage; i++){
+    for(let i = pageHandler.startPage; i <= pageHandler.endPage; i++){
       line += `<a class="pageBtn" href="#" onclick="return false" data-pageno="${i}">${i}</a>`;
     }
     if(pageHandler.next){
@@ -67,15 +69,3 @@ document.addEventListener('click', (e) => {
     spreadList(filter_brand, filter_category, filter_size, e.target.dataset.pageno);
   }
 });
-
-
-// <div class="pagination">
-//   <a href="#">&laquo;</a>
-//   <a href="#">1</a>
-//   <a href="#" class="active">2</a>
-//   <a href="#">3</a>
-//   <a href="#">4</a>
-//   <a href="#">5</a>
-//   <a href="#">6</a>
-//   <a href="#">&raquo;</a>
-// </div>

@@ -37,60 +37,78 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<sql id="search">
 		<if test="keyword != null">
-			and (replace(e_name, ' ', '') <include refid="keyword"/>
-				or replace(k_name, ' ', '') <include refid="keyword"/>
-				or replace(model, ' ', '') <include refid="keyword"/>
-				or replace(sb.brand_name, ' ', '') <include refid="keyword"/>)  
+			AND (REPLACE(e_name, ' ', '') <include refid="keyword"/>
+				or REPLACE(k_name, ' ', '') <include refid="keyword"/>
+				or REPLACE(model, ' ', '') <include refid="keyword"/>
+				or REPLACE(sb.brand_name, ' ', '') <include refid="keyword"/>)  
 		</if>
 	</sql>
-
-	<insert id="insertProduct" parameterType="shopVO">
+	<insert id="insert" parameterType="productVO">
 		INSERT INTO product (
-			e_name
-			, k_name
-			, retail_price
+			pno
 			, model
-			, brand
-		) VALUES (
-			#{englishName}
-			, #{koreanName}
-			, #{sellerPrice}
-			, #{modelNumber}
-			, #{brandName}
-		)
-	</insert>
-
-	<select id="selectList" parameterType="pageVO" resultType="HashMap">
-		SELECT
-			p.pno
 			, e_name
 			, k_name
-			, sb.brand_name
-			, sc.category_name
-			, th_img
+			, brand
+			, category
+			, retail_price
+		) VALUES (
+			#{pno}
+			, #{model}
+			, #{eName}
+			, #{kName}
+			, #{brand}
+			, #{category}
+			, #{retailPrice}
+		)
+	</insert>
+	<insert id="insertImage" parameterType="productVO">
+		INSERT INTO model_image (
+			model_number
+			, model_image_url
+		) VALUES (
+			#{model}
+			, #{fileName}
+		)
+	</insert>
+	
+	<select id="selectList" parameterType="pageVO" resultType="productVO">
+		SELECT
+    		p.pno as pno
+    		, e_name as eName
+    		, k_name as kName
+    		, sb.brand_name as brandName
+    		, sc.category_name as categoryName
+    		, model_image_url as imageUrl
 		FROM
-			product p
-		LEFT JOIN
-			shoe_brand sb
-		ON
-			p.brand = sb.brand_id
-		JOIN
-			shoe_category sc
-		ON
-			p.category = sc.category_id
+    		product p 
+    	JOIN
+    		shoe_brand sb
+        ON
+        	p.brand = sb.brand_id
+    	JOIN
+    		shoe_category sc
+        ON
+        	p.category = sc.category_id
+    	LEFT JOIN
+    		model_image mi
+        ON
+        	p.model = mi.model_number
 		WHERE
-			1=1
+			activate = 'y'
 		<include refid="whereBrandCategory" />
 		<include refid="search"/>
+		GROUP BY
+			pno
 		ORDER BY
 			pno desc
 		LIMIT
 			#{pageStart}, #{qty}
 	</select>
-	<select id="selectMinPrice" parameterType="pageVO" resultType="HashMap">
+	<select id="selectMinPrice" parameterType="pageVO" resultType="productVO">
 		SELECT
 			pno
-			, min(price) as min_price
+			, min(price) as minPrice
 		FROM
 			items i
 		JOIN
@@ -107,27 +125,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<select id="totalCount" parameterType="pageVO" resultType="int">
 		SELECT
-			count(pno)
+    		COUNT(p.pno)
 		FROM
-			product p
-		JOIN
-			shoe_brand sb
-		ON
-			p.brand = sb.brand_id
-		JOIN
-			shoe_category sc
-		ON
-			p.category = sc.category_id
+    		product p 
+    	JOIN
+    		shoe_brand sb
+        ON 
+        	p.brand = sb.brand_id
+    	JOIN 
+    		shoe_category sc
+        ON 
+        	p.category = sc.category_id
 		WHERE
-			1=1
+			activate = 'y';
 		<include refid="whereBrandCategory"/>
 		<include refid="search"/>
 	</select>
-	<select id="selectBrandList" resultType="brandVO">
-		select * from shoe_brand
+	<select id="checkModelDuple" parameterType="String" resultType="int">
+		SELECT
+			COUNT(pno)
+		FROM
+			product
+		WHERE
+			model = #{model}
 	</select>
-	<select id="selectCategoryList" resultType="categoryVO">
-		select * from
-		shoe_category
+	<select id="selectLastPno" resultType="int">
+		SELECT
+			max(pno)
+		FROM
+			product
 	</select>
 </mapper>

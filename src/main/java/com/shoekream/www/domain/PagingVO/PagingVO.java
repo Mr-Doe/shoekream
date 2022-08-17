@@ -8,7 +8,6 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 @Alias("pageVO")
 public class PagingVO {
     private int pageNo; // 현재 화면에 출력된 페이지네이션의 인덱스번호
