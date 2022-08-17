@@ -6,7 +6,7 @@
 <mapper namespace="com.shoekream.www.repository.mypageDAO.MypageDAO">
 	<select id="getItemBuyList" parameterType="string" resultType="mypageVO">
 		SELECT
-			i.is_sold, i.item_no, p.model, p.e_name, ss.size_value AS 'shoe_size', i.price
+			i.is_sold, i.item_no, p.model, p.e_name, ss.size_value AS 'shoe_size', i.price, model_image_url as thImg
 		FROM
 			items i
 		INNER JOIN
@@ -17,6 +17,10 @@
 			shoe_size ss
 		ON
 			i.shoe_size = ss.size_id
+		INNER JOIN
+			model_image mi
+		ON
+			p.model = mi.model_number
 		WHERE
 			i.buyer_email = #{email}
 		ORDER by
@@ -24,7 +28,7 @@
 	</select>
 	<select id="getItemSelList" parameterType="string" resultType="mypageVO">
 		SELECT
-			i.is_sold, i.item_no, p.model, p.e_name, ss.size_value AS 'shoe_size', i.price
+			i.is_sold, i.item_no, p.model, p.e_name, ss.size_value AS 'shoe_size', i.price, model_image_url as thImg
 		FROM
 			items i
 		INNER JOIN
@@ -35,6 +39,10 @@
 			shoe_size ss
 		ON
 			i.shoe_size = ss.size_id
+		INNER JOIN
+			model_image mi
+		ON
+			p.model = mi.model_number
 		WHERE
 			i.seller_email = #{email}
 		ORDER by

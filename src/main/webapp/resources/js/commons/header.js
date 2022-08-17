@@ -27,10 +27,7 @@ function show_page_path() {
 }
 
 function session_check() {
-    console.log(session.length);
-    console.log(session.email);
-
-    if(path.includes('/member/') && session == undefined) {
-        console.log('test');
+    if(session == undefined && path.includes('/member/')) {
+        // console.log('test');
     }
 }
