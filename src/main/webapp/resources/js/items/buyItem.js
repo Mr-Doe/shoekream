@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if(document.getElementById('email').innerText=='') {
         document.getElementById('link').click();
     }
-    if(document.getElementById('itemNo').innerText!='') {
+    if(document.getElementById('itemNo').innerText!=0) {
         spreadDealArea();
     } else {
         spreadBidArea();
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('click', (e) => {
     if(e.target.classList.contains('item_link')) {
         e.preventDefault();
-        if(document.getElementById('itemNo').innerText!='') {
+        if(document.getElementById('itemNo').innerText!=0) {
             e.target.closest('ul').querySelector('.on').classList.remove('on');
             if(e.target.id=='bid') {
                 spreadBidArea();
@@ -29,7 +29,7 @@ document.addEventListener('click', (e) => {
 });
 
 document.addEventListener('change', () => {
-    if(document.getElementById('itemNo').innerText!='' && document.getElementById('type').innerText=='0') {
+    if(document.getElementById('itemNo').innerText!=0 && document.getElementById('type').innerText=='0') {
         if(parseInt(document.querySelector('.input_amount').value)>=parseInt(document.getElementById('buyPrice').innerText)) {
             document.querySelector('.on').classList.remove('on');
             spreadDealArea();

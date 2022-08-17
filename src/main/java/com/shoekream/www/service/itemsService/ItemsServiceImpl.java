@@ -8,7 +8,6 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import com.shoekream.www.domain.filterVO.FilterSizeVO;
-import com.shoekream.www.domain.itemsDomain.BrandDTO;
 import com.shoekream.www.domain.itemsDomain.IDTO;
 import com.shoekream.www.domain.itemsDomain.ItemsDTO;
 import com.shoekream.www.domain.itemsDomain.ItemsVO;
@@ -100,10 +99,10 @@ public class ItemsServiceImpl implements ItemsService {
 		return new IDTO(pvo, null, itemDAO.selectImg(pno), null, null, null);
 	}
 
-	@Override
-	public String selectSize(int shoeSize) {
-		return itemDAO.selectShoeSize(shoeSize);
-	}
+//	@Override
+//	public String selectSize(int shoeSize) {
+//		return itemDAO.selectShoeSize(shoeSize);
+//	}
 
 //	@Override
 //	public Map<String, Integer> selectBuySell(ItemsVO itemsVO) {
@@ -133,8 +132,14 @@ public class ItemsServiceImpl implements ItemsService {
 
 	@Override
 	public IDTO selectBuyIdto(ItemsVO itemsVO) {
-		IDTO idto = new IDTO(itemDAO.selectProduct(itemsVO.getPno()), itemDAO.selectBuyItem(itemsVO),
+		IDTO idto = new IDTO(itemDAO.selectProduct(itemsVO.getPno()), null,
 				itemDAO.selectImg(itemsVO.getPno()), null, itemDAO.selectShoeSize(itemsVO.getShoeSize()), null);
+		ItemsVO ivo = itemDAO.selectBuyItem(itemsVO);
+		if(ivo==null) {
+			ivo = new ItemsVO();
+		}
+		ivo.setShoeSize(itemsVO.getShoeSize());
+		idto.setIvo(ivo);
 		Map<String, Integer> map = new HashMap<>();
 		map.put("buy", itemDAO.selectBuyPrice(itemsVO.getPno(), itemsVO.getShoeSize()));
 		map.put("sell", itemDAO.selectSellPrice(itemsVO.getPno(), itemsVO.getShoeSize()));

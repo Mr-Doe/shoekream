@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.shoekream.www.domain.filterVO.FilterSizeVO;
 import com.shoekream.www.domain.itemsDomain.ItemsDTO;
 import com.shoekream.www.domain.itemsDomain.ItemsVO;
 import com.shoekream.www.service.itemsService.ItemsService;
@@ -71,17 +70,16 @@ public class ItemsController {
 	@GetMapping("/buyItem")
 	public void buyItem(ItemsVO itemsVO, Model model) {
 //		model.addAttribute("productVO", itemsService.selectProductVO(itemsVO.getPno()));
-		model.addAttribute("size", new FilterSizeVO(itemsVO.getShoeSize(), itemsService.selectSize(itemsVO.getShoeSize())));
+//		model.addAttribute("size", new FilterSizeVO(itemsVO.getShoeSize(), itemsService.selectSize(itemsVO.getShoeSize())));
 //		model.addAttribute("itemsVO", itemsService.selectBuyItem(itemsVO));
 //		model.addAttribute("price", itemsService.selectBuySell(itemsVO));
-		
 		model.addAttribute("idto", itemsService.selectBuyIdto(itemsVO));
 	}
 	
 	@GetMapping("/sellItem")
 	public void sellItem(ItemsVO itemsVO, Model model) {
 //		model.addAttribute("productVO", itemsService.selectProductVO(itemsVO.getPno()));
-		model.addAttribute("size", new FilterSizeVO(itemsVO.getShoeSize(), itemsService.selectSize(itemsVO.getShoeSize())));
+//		model.addAttribute("size", new FilterSizeVO(itemsVO.getShoeSize(), itemsService.selectSize(itemsVO.getShoeSize())));
 //		model.addAttribute("itemsVO", itemsService.selectSellItem(itemsVO));
 //		model.addAttribute("price", itemsService.selectBuySell(itemsVO));
 		model.addAttribute("idto", itemsService.selectSellIdto(itemsVO));

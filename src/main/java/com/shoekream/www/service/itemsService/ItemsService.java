@@ -20,7 +20,7 @@ public interface ItemsService {
 	int removeItem(int itemNo);
 //	BrandDTO selectProduct(int pno);
 	IDTO selectProduct(int pno);
-	String selectSize(int shoeSize);
+//	String selectSize(int shoeSize);
 //	Map<String, Integer> selectBuySell(ItemsVO itemsVO);
 //	Integer buyPrice(int pno, int i);
 	IDTO selectPdto(int pno);

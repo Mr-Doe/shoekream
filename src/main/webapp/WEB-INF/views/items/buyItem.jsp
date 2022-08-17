@@ -24,7 +24,7 @@
 							</div>
 							<div data-v-1643775e="" class="product_detail">
 								<div data-v-299f50cf="" class="product_detail">
-									<p data-v-299f50cf="" class="code"><%-- ${productVO.model } --%>${idto.pvo.model }</p>
+ 									<p data-v-299f50cf="" class="code"><%-- ${productVO.model } --%>${idto.pvo.model }</p>
 									<p data-v-299f50cf="" class="name"><%-- ${productVO.eName } --%>${idto.pvo.eName }</p>
 									<p data-v-299f50cf="" class="translated_name"><%-- ${productVO.kName } --%>${idto.pvo.kName }</p>
 									<p data-v-299f50cf="" class="size"><%-- ${size.sizeValue } --%>${idto.size }</p>
@@ -89,8 +89,7 @@
 	<input type="hidden" name="itemNo" value="${idto.ivo ne null ? idto.ivo.itemNo : 0}">
 	<input type="hidden" name="buyerEmail" value="${ses.email }">
 	<input type="hidden" name="pno" value="${idto.pvo.pno }">
-	<%-- <input type="hidden" name="shoeSize" value="${idto.size }"> --%>
-	<input type="hidden" name="shoeSize" value="${size.sizeId }">
+	<input type="hidden" name="shoeSize" value="${idto.ivo.shoeSize }">
 	<input type="hidden" name="price" id="priceValue" value="0">
 </form>
 
