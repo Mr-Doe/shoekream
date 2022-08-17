@@ -24,7 +24,7 @@
 	</select>
 	<select id="getItemSelList" parameterType="string" resultType="mypageVO">
 		SELECT
-			i.is_sold, i.item_no, p.model, p.e_name, ss.size_value AS 'shoe_size', i.price, p.th_img
+			i.is_sold, i.item_no, p.model, p.e_name, ss.size_value AS 'shoe_size', i.price
 		FROM
 			items i
 		INNER JOIN
