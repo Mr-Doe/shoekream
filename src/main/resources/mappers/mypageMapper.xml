@@ -23,6 +23,7 @@
 			p.model = mi.model_number
 		WHERE
 			i.buyer_email = #{email}
+		GROUP BY i.item_no
 		ORDER by
 			i.reg_at DESC
 	</select>
@@ -45,6 +46,7 @@
 			p.model = mi.model_number
 		WHERE
 			i.seller_email = #{email}
+		GROUP BY i.item_no
 		ORDER by
 			i.reg_at DESC
 	</select>
