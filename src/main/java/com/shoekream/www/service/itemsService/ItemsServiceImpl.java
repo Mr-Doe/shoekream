@@ -132,8 +132,19 @@ public class ItemsServiceImpl implements ItemsService {
 	}
 
 	@Override
-	public IDTO selectIdto(ItemsVO itemsVO) {
+	public IDTO selectBuyIdto(ItemsVO itemsVO) {
 		IDTO idto = new IDTO(itemDAO.selectProduct(itemsVO.getPno()), itemDAO.selectBuyItem(itemsVO),
+				itemDAO.selectImg(itemsVO.getPno()), null, itemDAO.selectShoeSize(itemsVO.getShoeSize()), null);
+		Map<String, Integer> map = new HashMap<>();
+		map.put("buy", itemDAO.selectBuyPrice(itemsVO.getPno(), itemsVO.getShoeSize()));
+		map.put("sell", itemDAO.selectSellPrice(itemsVO.getPno(), itemsVO.getShoeSize()));
+		idto.setMap(map);
+		return idto;
+	}
+	
+	@Override
+	public IDTO selectSellIdto(ItemsVO itemsVO) {
+		IDTO idto = new IDTO(itemDAO.selectProduct(itemsVO.getPno()), itemDAO.selectSellItem(itemsVO),
 				itemDAO.selectImg(itemsVO.getPno()), null, itemDAO.selectShoeSize(itemsVO.getShoeSize()), null);
 		Map<String, Integer> map = new HashMap<>();
 		map.put("buy", itemDAO.selectBuyPrice(itemsVO.getPno(), itemsVO.getShoeSize()));

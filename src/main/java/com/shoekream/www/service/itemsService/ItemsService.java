@@ -24,5 +24,6 @@ public interface ItemsService {
 //	Map<String, Integer> selectBuySell(ItemsVO itemsVO);
 //	Integer buyPrice(int pno, int i);
 	IDTO selectPdto(int pno);
-	IDTO selectIdto(ItemsVO itemsVO);
+	IDTO selectBuyIdto(ItemsVO itemsVO);
+	IDTO selectSellIdto(ItemsVO itemsVO);
 }

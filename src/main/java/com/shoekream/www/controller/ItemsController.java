@@ -75,7 +75,7 @@ public class ItemsController {
 //		model.addAttribute("itemsVO", itemsService.selectBuyItem(itemsVO));
 //		model.addAttribute("price", itemsService.selectBuySell(itemsVO));
 		
-		model.addAttribute("idto", itemsService.selectIdto(itemsVO));
+		model.addAttribute("idto", itemsService.selectBuyIdto(itemsVO));
 	}
 	
 	@GetMapping("/sellItem")
@@ -84,7 +84,7 @@ public class ItemsController {
 //		model.addAttribute("size", new FilterSizeVO(itemsVO.getShoeSize(), itemsService.selectSize(itemsVO.getShoeSize())));
 //		model.addAttribute("itemsVO", itemsService.selectSellItem(itemsVO));
 //		model.addAttribute("price", itemsService.selectBuySell(itemsVO));
-		model.addAttribute("idto", itemsService.selectIdto(itemsVO));
+		model.addAttribute("idto", itemsService.selectSellIdto(itemsVO));
 	}
 
 	@PostMapping("/buyBid")
