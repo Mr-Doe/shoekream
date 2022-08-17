@@ -137,7 +137,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         ON 
         	p.category = sc.category_id
 		WHERE
-			activate = 'y';
+			activate = 'y'
 		<include refid="whereBrandCategory"/>
 		<include refid="search"/>
 	</select>
