@@ -60,6 +60,10 @@ p {
 	letter-spacing: -.06px;
 	color: rgba(34, 34, 34, .5);
 }
+.list-group .list-group-item a:hover {
+	color: blue;
+	font-weight: 700;
+}
 </style>
 
 <jsp:include page="../member/mypagesidebar.jsp" />

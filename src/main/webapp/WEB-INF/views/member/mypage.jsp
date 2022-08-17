@@ -101,9 +101,10 @@ p {
 				class="btn_more"><span data-v-6752ceb2="" class="btn_txt">더보기</span>
 				<svg data-v-6752ceb2="" xmlns="http://www.w3.org/2000/svg"
 					class="icon sprite-icons arr-right-gray">
-						<use data-v-6752ceb2=""
+						<!-- <use data-v-6752ceb2=""
 						href="/_nuxt/1a4fefc9c245c25be8c820c7d584e4d7.svg#i-arr-right-gray"
-						xlink:href="/_nuxt/1a4fefc9c245c25be8c820c7d584e4d7.svg#i-arr-right-gray"></use></svg></a>
+						xlink:href="/_nuxt/1a4fefc9c245c25be8c820c7d584e4d7.svg#i-arr-right-gray"></use> -->
+					</svg></a>
 		</div>
 		<div data-v-5f779880="" class="recent_purchase">
 			<div data-v-bbed98be="" data-v-5f779880="" class="purchase_list_tab">
@@ -203,9 +204,10 @@ p {
 				class="btn_more"><span data-v-6752ceb2="" class="btn_txt">더보기</span>
 				<svg data-v-6752ceb2="" xmlns="http://www.w3.org/2000/svg"
 					class="icon sprite-icons arr-right-gray">
-						<use data-v-6752ceb2=""
+						<!-- <use data-v-6752ceb2=""
 						href="/_nuxt/1a4fefc9c245c25be8c820c7d584e4d7.svg#i-arr-right-gray"
-						xlink:href="/_nuxt/1a4fefc9c245c25be8c820c7d584e4d7.svg#i-arr-right-gray"></use></svg></a>
+						xlink:href="/_nuxt/1a4fefc9c245c25be8c820c7d584e4d7.svg#i-arr-right-gray"></use> -->
+					</svg></a>
 		</div>
 		<div data-v-5f779880="" class="recent_purchase">
 			<div data-v-bbed98be="" data-v-5f779880=""

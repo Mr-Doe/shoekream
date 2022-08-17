@@ -2,6 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<style>
+	.list-group a:hover {
+		color: black;
+		font-weight: 700;
+	}
+</style>
+
 <div data-v-3d7f7af7="" class="container my lg">
 	<div data-v-3d7f7af7="">
 		<div data-v-3d7f7af7="" class="snb_area">
@@ -22,7 +29,7 @@
 
 						<c:if test = "${ses.grade eq '99'}">
 							<li data-v-4d11470e="" class="menu_item">
-								<a data-v-4d11470e="" href="" class="menu_link"> 설정 </a>
+								<a data-v-4d11470e="" href="" class="menu_link" id="operation_config"> 설정 </a>
 							</li>
 						</c:if>
 					</ul>
@@ -30,3 +37,5 @@
 			</nav>
 		</div>
 	</div>
+
+	<script src="../../resources/js/member/mypagesidebar.js"></script>
