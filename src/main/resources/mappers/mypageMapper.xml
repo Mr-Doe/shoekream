@@ -23,7 +23,8 @@
 			p.model = mi.model_number
 		WHERE
 			i.buyer_email = #{email}
-		GROUP BY i.item_no
+		GROUP BY
+			i.item_no
 		ORDER by
 			i.reg_at DESC
 	</select>
@@ -46,7 +47,8 @@
 			p.model = mi.model_number
 		WHERE
 			i.seller_email = #{email}
-		GROUP BY i.item_no
+		GROUP BY
+			i.item_no
 		ORDER by
 			i.reg_at DESC
 	</select>
@@ -109,7 +111,7 @@
 	<select id="gethistoryDetail" parameterType="int" resultType="mypageVO">
 		SELECT
 			i.is_sold, i.item_no, p.model, p.e_name, ss.size_value AS 'shoe_size',
-			i.price, i.reg_at, i.end_at, i.seller_email, i.buyer_email
+			i.price, i.reg_at, i.end_at, i.seller_email, i.buyer_email, model_image_url as thImg
 		FROM
 			items i
 		INNER JOIN
@@ -120,6 +122,10 @@
 			shoe_size ss
 		ON
 			i.shoe_size = ss.size_id
+		INNER JOIN
+			model_image mi
+		ON
+			p.model = mi.model_number
 		WHERE
 			i.item_no = #{itemNo}
 	</select>
