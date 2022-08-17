@@ -25,3 +25,12 @@ function show_page_path() {
 
     mkae_link_path.innerHTML = html;
 }
+
+function session_check() {
+    console.log(session.length);
+    console.log(session.email);
+
+    if(path.includes('/member/') && session == undefined) {
+        console.log('test');
+    }
+}

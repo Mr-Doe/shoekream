@@ -9,7 +9,7 @@
                 <div data-v-589881b0="" data-v-1f7c6d3f="" class="search_wrap" style="width: 800px; margin: auto;">
                     <div data-v-63326639="" data-v-589881b0="" class="search_area" value="" data-v-1f7c6d3f="">
                         <div data-v-63326639="" class="search">
-                            <input data-v-63326639="" type="text" placeholder="브랜드명, 모델명, 모델번호 등" title="검색창" class="input_search show_placeholder_on_focus" style="width: auto;">
+                            <input data-v-63326639="" type="text" placeholder="브랜드명, 모델명, 모델번호 등 (2글자 이상)" title="검색창" class="input_search show_placeholder_on_focus" style="width: 90%;">
                             <button data-v-63326639="" class="btn_search_delete" style="display: none;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
                                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>

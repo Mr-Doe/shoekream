@@ -22,9 +22,7 @@ async function searchingFromServer(keyword) {
 document.querySelector('.input_search.show_placeholder_on_focus').addEventListener('input', (e)=> {
     const keyword = document.querySelector('.input_search.show_placeholder_on_focus').value;
 
-    if(keyword.length > 0) {
-        document.querySelector('.btn_search_delete').style.display = 'block';
-
+    if(keyword.length > 1) {
         searchingFromServer(keyword).then(result => {
             if(result.searchedBrandList.length > 0) {
                 let html = '';
@@ -71,6 +69,8 @@ document.querySelector('.input_search.show_placeholder_on_focus').addEventListen
             }
             create_scroll();
         });
+    } else if(keyword.length > 0) {
+        document.querySelector('.btn_search_delete').style.display = 'block';
     } else {
         document.querySelector('div.suggest_area').innerHTML = '';
         document.querySelector('.btn_search_delete').style.display = 'none';

@@ -152,7 +152,11 @@
         </section>
         <!-- Breadcrumb Section End -->
 
+<script>
+    var session =  '<c:out value="${ses.email}"/>';
+</script>
 <script src="../../../resources/js/commons/header.js"></script>
 <script>
+    session_check();
     show_page_path();
 </script>
