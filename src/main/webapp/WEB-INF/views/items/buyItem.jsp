@@ -89,7 +89,8 @@
 	<input type="hidden" name="itemNo" value="${idto.ivo ne null ? idto.ivo.itemNo : 0}">
 	<input type="hidden" name="buyerEmail" value="${ses.email }">
 	<input type="hidden" name="pno" value="${idto.pvo.pno }">
-	<input type="hidden" name="shoeSize" value="${idto.size }">
+	<%-- <input type="hidden" name="shoeSize" value="${idto.size }"> --%>
+	<input type="hidden" name="shoeSize" value="${size.sizeId }">
 	<input type="hidden" name="price" id="priceValue" value="0">
 </form>
 

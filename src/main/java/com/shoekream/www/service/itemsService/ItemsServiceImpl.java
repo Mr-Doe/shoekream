@@ -100,10 +100,10 @@ public class ItemsServiceImpl implements ItemsService {
 		return new IDTO(pvo, null, itemDAO.selectImg(pno), null, null, null);
 	}
 
-//	@Override
-//	public String selectSize(int shoeSize) {
-//		return itemDAO.selectShoeSize(shoeSize);
-//	}
+	@Override
+	public String selectSize(int shoeSize) {
+		return itemDAO.selectShoeSize(shoeSize);
+	}
 
 //	@Override
 //	public Map<String, Integer> selectBuySell(ItemsVO itemsVO) {

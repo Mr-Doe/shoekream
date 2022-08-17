@@ -98,7 +98,8 @@
 	</c:if>
 	<input type="hidden" name="sellerEmail" value="${ses.email }">
 	<input type="hidden" name="pno" value="${idto.pvo.pno }">
-	<input type="hidden" name="shoeSize" value="${idto.size }">
+	<%-- <input type="hidden" name="shoeSize" value="${idto.size }"> --%>
+	<input type="hidden" name="shoeSize" value="${size.sizeId }">
 	<input type="hidden" name="price" id="priceValue" value="0">
 </form>
 
