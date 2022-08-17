@@ -9,12 +9,14 @@
 			pno as identityNumber
 			, e_name as englishName
 			, k_name as koreanName
-			, th_img as imagePath
+			, model_image_url as imagePath
 		FROM
-			product
+			product p INNER JOIN model_image i
+				ON i.model_number = p.model
 		WHERE model like CONCAT("%", #{keyword}, "%")
 			OR e_name like CONCAT("%", #{keyword}, "%")
 			OR k_name like CONCAT("%", #{keyword}, "%")
+		GROUP BY pno
 	</select>
 	<select id="selectToBrands" parameterType="String" resultType="searchVO">
 		SELECT

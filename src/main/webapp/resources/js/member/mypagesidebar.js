@@ -18,6 +18,17 @@
         `;
 
     content.innerHTML = html;
+
+    document.querySelectorAll('.snb_menu .menu_link').forEach((idx)=> {
+        idx.style.color = '';
+        idx.style.fontSize = '';
+        idx.style.fontWeight = '';
+    });
+
+    const here = document.getElementById('operation_config');
+    here.style.color = 'black';
+    here.style.fontSize = '18px';
+    here.style.fontWeight = 700;
 });
 
 document.addEventListener('click', (e)=> {
@@ -25,7 +36,33 @@ document.addEventListener('click', (e)=> {
 
     if(clicked.tagName == 'A') {
         if(clicked.closest('ul').classList.contains('list-group')) {
-            console.log('tets');
+            console.log(clicked.style);
         }
     }
 });
+
+function selected_tab_menu() {
+    const location = window.location.pathname;
+
+    if(location.includes('/mypage')) {
+        const here = document.getElementById('mypage');
+        here.style.color = 'black';
+        here.style.fontSize = '18px';
+        here.style.fontWeight = 700;
+    } else if(location.includes('/buying')) {
+        const here = document.getElementById('buying');
+        here.style.color = 'black';
+        here.style.fontSize = '18px';
+        here.style.fontWeight = 700;
+    } else if(location.includes('/selling')) {
+        const here = document.getElementById('selling');
+        here.style.color = 'black';
+        here.style.fontSize = '18px';
+        here.style.fontWeight = 700;
+    } else if(location.includes('/detail')) {
+        const here = document.getElementById('detail');
+        here.style.color = 'black';
+        here.style.fontSize = '18px';
+        here.style.fontWeight = 700;
+    }
+}

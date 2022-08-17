@@ -99,7 +99,7 @@ document.querySelector('.btn_search_delete').addEventListener('click', (e)=> {
 document.querySelector('.input_search.show_placeholder_on_focus').addEventListener('keydown', (e)=> {
     const items = document.querySelector('.suggest_list.lg');
     
-    if(e.code === 'Enter' && items.children.length > 0) {
+    if(e.key == 'Enter' && items.children.length > 0) {
         location.href = items.children[0].querySelector('a').href;
     }
 });
