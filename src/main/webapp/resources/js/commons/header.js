@@ -18,22 +18,9 @@ function show_page_path() {
         html = `<a href="/product/list">Home</a>
                 <a href="/product/list">Shop</a>
                 <span>Item</span>`;
-    } else if(path.includes('/member/register')) {
-        html = `<a href="/product/list">Home</a>`;
-        if(session.email != null) {html += `<a href="/member/mypage?email=${session.email }">Member</a>`;}
-        else {html += `<a href="/member/login">Member</a>`;}
-        html += `<span>Join</span>`;
-    } else if(path.includes('/member/login')) {
-        html = `<a href="/product/list">Home</a>`;
-        if(session.email != null) {html += `<a href="/member/mypage?email=${session.email }">Member</a>`;}
-        else {html += `<a href="/member/login">Member</a>`;}
-        html += `<span>Login</span>`;
-
-    } else if(path.includes('/member/mypage')) {
-        html = `<a href="/product/list">Home</a>`;
-        if(session.email != null) {html += `<a href="/member/mypage?email=${session.email }">Member</a>`;}
-        else {html += `<a href="/member/login">Member</a>`;}
-        html += `<span>My page</span>`;
+    } else if(path.includes('/member/')) {
+        html = `<a href="/product/list">Home</a>
+                <span>Member</span>`;
     }
 
     mkae_link_path.innerHTML = html;
