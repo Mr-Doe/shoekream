@@ -96,7 +96,7 @@
 	<c:if test="${idto.ivo.itemNo eq null }">
 		<input type="hidden" name="itemNo" value="0">
 	</c:if>
-	<input type="hidden" name="buyerEmail" value="${ses.email }">
+	<input type="hidden" name="sellerEmail" value="${ses.email }">
 	<input type="hidden" name="pno" value="${idto.pvo.pno }">
 	<input type="hidden" name="shoeSize" value="${idto.size }">
 	<input type="hidden" name="price" id="priceValue" value="0">

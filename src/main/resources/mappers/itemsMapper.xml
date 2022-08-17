@@ -54,6 +54,6 @@
 		update items set end_at = now(), is_sold = 1, buyer_email = #{buyerEmail} where item_no = #{itemNo}
 	</update>
 	<delete id="deleteItem">
-		delete from items from item_no = #{itemNo}
+		delete from items where item_no = #{itemNo} and is_sold != 1
 	</delete>
 </mapper>
