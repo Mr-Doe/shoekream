@@ -103,3 +103,15 @@ document.querySelector('.input_search.show_placeholder_on_focus').addEventListen
         location.href = items.children[0].querySelector('a').href;
     }
 });
+
+document.querySelector('.layer_search').addEventListener('click', (e)=> {
+
+    if(e.target.classList == 'layer layer_search') {
+        document.querySelector('.input_search.show_placeholder_on_focus').value = '';
+        document.querySelector('.btn_search_delete').style.display = 'none';
+        document.querySelector('div.suggest_area').innerHTML = '';
+
+        const searching_table = document.getElementById('display-modal');
+        if(searching_table.style.display == 'block') searching_table.style.display = 'none';
+    }
+});

@@ -3,42 +3,52 @@
  * mypagesidebar.jsp 에 추가된 '설정'을 클릭시 발생하는 이벤트 추가.
  */
 
- document.getElementById('operation_config').addEventListener('click', (e)=> {
-    e.preventDefault();
+document.querySelectorAll('.snb_menu .menu_link').forEach((idx)=>{
+    idx.addEventListener('click', (e)=> {
+        const clicked = e.target;
 
-    const content = document.querySelector('.content_area');
+        if(clicked.tagName == 'A') {
+            if(clicked.closest('ul').classList.contains('list-group')) {
+                console.log(clicked.style);
+            }
+        }
 
-    html = `
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><a href="#">First item</a></li>
-                <li class="list-group-item"><a href="#">Second item</a></li>
-                <li class="list-group-item"><a href="#">Third item</a></li>
-                <li class="list-group-item"><a href="#">Fourth item</a></li>
-            </ul>
-        `;
+        if(clicked.id == 'operation_config') {
+            e.preventDefault();
+            const content = document.querySelector('.content_area');
 
-    content.innerHTML = html;
+            html = `
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="#">First item</a></li>
+                        <li class="list-group-item"><a href="#">Second item</a></li>
+                        <li class="list-group-item"><a href="#">Third item</a></li>
+                        <li class="list-group-item"><a href="#">Fourth item</a></li>
+                    </ul>
+                `;
 
-    document.querySelectorAll('.snb_menu .menu_link').forEach((idx)=> {
-        idx.style.color = '';
-        idx.style.fontSize = '';
-        idx.style.fontWeight = '';
+            content.innerHTML = html;
+
+            document.querySelectorAll('.snb_menu .menu_link').forEach((idx)=> {
+                idx.style.color = '';
+                idx.style.fontSize = '';
+                idx.style.fontWeight = '';
+            });
+
+            const here = document.getElementById('operation_config');
+            here.style.color = 'black';
+            here.style.fontSize = '18px';
+            here.style.fontWeight = 700;
+        }
     });
-
-    const here = document.getElementById('operation_config');
-    here.style.color = 'black';
-    here.style.fontSize = '18px';
-    here.style.fontWeight = 700;
 });
 
-document.addEventListener('click', (e)=> {
-    const clicked = e.target;
-
-    if(clicked.tagName == 'A') {
-        if(clicked.closest('ul').classList.contains('list-group')) {
-            console.log(clicked.style);
-        }
-    }
+document.querySelectorAll('.list-group .list-group-item a').forEach((idx)=>{
+    idx.addEventListener('click', (e)=> {
+        e.preventDefault();
+        const clicked = e.target;
+        console.log(clicked.tagName, clicked.innerText);
+        console.log('test');
+    });
 });
 
 function selected_tab_menu() {

@@ -115,9 +115,9 @@
                     <div class="col-lg-6 col-md-6">
                         <nav class="header__menu mobile-menu" style="margin-top: 30px;">
                             <ul>
-                                <li><a href="/product/listPage">Home</a></li>
-                                <li class="active"><a href="/product/listPage">Shop</a></li>
-                                <li><a href="">Blog</a></li>
+                                <li id="hdeaer_home"><a href="/product/listPage">Home</a></li>
+                                <li id="header_shop"><a href="/product/listPage">Shop</a></li>
+                                <li id="header_blog"><a href="/blog/home">Blog</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -126,7 +126,7 @@
                             <button class="search-switch" id="search-button"><img src="../../resources/dist-temp/img/icon/search.png" alt=""></button>
                         </div>
                     </div>
-                    <div id="display-modal" style="float: left; display: none;">
+                    <div id="display-modal" class="container" style="float: left; display: none;">
                         <jsp:include page="../search/modal.jsp" />
                     </div>
                 </div>
@@ -153,10 +153,11 @@
         <!-- Breadcrumb Section End -->
 
 <script>
-    var session =  '<c:out value="${ses.email}"/>';
+    var session = '<c:out value="${ses.email}"/>';
 </script>
 <script src="../../../resources/js/commons/header.js"></script>
 <script>
     session_check();
+    header_menu_check()
     show_page_path();
 </script>
