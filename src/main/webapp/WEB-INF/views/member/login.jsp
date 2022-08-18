@@ -36,7 +36,6 @@
 				<li class="look_list" data-v-4ec1fe02=""><a href="/member/register"
 					class="look_link" data-v-4ec1fe02="" style="color: black;"> 이메일 가입 </a></li>
 			</ul>
-			<div class="social_login" data-v-4ec1fe02="" style="" id="naver_id_login"></div>
 		</form>
 	</div>
 </div>

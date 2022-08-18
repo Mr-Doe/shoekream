@@ -17,6 +17,11 @@ async function loginToServer(loginObj) {
    
 }
 
+document.getElementById('registerBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = "/member/register";
+});
+
 document.getElementById('loginBtn').addEventListener('click', (e) => {
     e.preventDefault();
     
