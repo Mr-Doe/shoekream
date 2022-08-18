@@ -20,7 +20,7 @@ document.addEventListener('click', (e) => {
 
     if(e.target.classList.contains('box') || e.target.classList.contains('order_price')) {
         e.preventDefault();
-        document.getElementById('buyBtn').href += `&shoeSize=${document.getElementById('shoeSize').innerText}`;
+        document.getElementById('buyBtn').href = `/items/buyItem?pno=${document.getElementById('pno').innerText}&email=${document.getElementById('email').innerText}&shoeSize=${document.getElementById('shoeSize').innerText}`;
         document.getElementById('buyBtn').click();
     }
 });

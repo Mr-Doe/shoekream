@@ -11,7 +11,7 @@ public interface ItemsService {
 	int registerSellItem(ItemsVO itemsVO);
 	int registerBuyItem(ItemsVO itemsVO);
 	List<ItemsDTO> getSellItemPriceList(int pno, String email);
-	List<ItemsDTO> getBuyItemPriceList(int pno);
+	List<ItemsDTO> getBuyItemPriceList(int pno, String email);
 	Map<String, Integer> recentandSellPrice(int pno, int size);
 //	ItemsVO selectBuyItem(ItemsVO itemsVO);
 //	ItemsVO selectSellItem(ItemsVO itemsVO);
@@ -24,6 +24,6 @@ public interface ItemsService {
 //	Map<String, Integer> selectBuySell(ItemsVO itemsVO);
 //	Integer buyPrice(int pno, int i);
 	IDTO selectPdto(int pno);
-	IDTO selectBuyIdto(ItemsVO itemsVO);
+	IDTO selectBuyIdto(ItemsVO itemsVO, String email);
 	IDTO selectSellIdto(ItemsVO itemsVO, String email);
 }

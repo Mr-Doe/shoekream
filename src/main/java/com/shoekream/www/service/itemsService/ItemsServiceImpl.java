@@ -43,12 +43,12 @@ public class ItemsServiceImpl implements ItemsService {
 	}
 
 	@Override
-	public List<ItemsDTO> getBuyItemPriceList(int pno) {
+	public List<ItemsDTO> getBuyItemPriceList(int pno, String email) {
 		List<FilterSizeVO> sizeList = itemDAO.selectSizeList();
 		List<ItemsDTO> itemList = new ArrayList<>();
 
 		for (FilterSizeVO sizeVO : sizeList) {
-			itemList.add(new ItemsDTO(itemDAO.selectBuyPrice(pno, sizeVO.getSizeId()), sizeVO));
+			itemList.add(new ItemsDTO(itemDAO.selectBuyPrice(pno, sizeVO.getSizeId(), email), sizeVO));
 		}
 		return itemList;
 	}
@@ -125,23 +125,23 @@ public class ItemsServiceImpl implements ItemsService {
 		Map<String, Integer> map = new HashMap<>();
 		map.put("recentPrice", itemDAO.recentDeal(pno, 0));
 		map.put("maxSellPrice", itemDAO.selectSellPrice(pno, 0, null));
-		map.put("minBuyPrice", itemDAO.selectBuyPrice(pno, 0));
+		map.put("minBuyPrice", itemDAO.selectBuyPrice(pno, 0, null));
 		idto.setMap(map);
 		return idto;
 	}
 
 	@Override
-	public IDTO selectBuyIdto(ItemsVO itemsVO) {
+	public IDTO selectBuyIdto(ItemsVO itemsVO, String email) {
 		IDTO idto = new IDTO(itemDAO.selectProduct(itemsVO.getPno()), null,
 				itemDAO.selectImg(itemsVO.getPno()), null, itemDAO.selectShoeSize(itemsVO.getShoeSize()), null);
-		ItemsVO ivo = itemDAO.selectBuyItem(itemsVO);
+		ItemsVO ivo = itemDAO.selectBuyItem(itemsVO, email);
 		if(ivo==null) {
 			ivo = new ItemsVO();
 		}
 		ivo.setShoeSize(itemsVO.getShoeSize());
 		idto.setIvo(ivo);
 		Map<String, Integer> map = new HashMap<>();
-		map.put("buy", itemDAO.selectBuyPrice(itemsVO.getPno(), itemsVO.getShoeSize()));
+		map.put("buy", itemDAO.selectBuyPrice(itemsVO.getPno(), itemsVO.getShoeSize(), null));
 		map.put("sell", itemDAO.selectSellPrice(itemsVO.getPno(), itemsVO.getShoeSize(), null));
 		idto.setMap(map);
 		return idto;
@@ -158,8 +158,8 @@ public class ItemsServiceImpl implements ItemsService {
 		ivo.setShoeSize(itemsVO.getShoeSize());
 		idto.setIvo(ivo);
 		Map<String, Integer> map = new HashMap<>();
-		map.put("buy", itemDAO.selectBuyPrice(itemsVO.getPno(), itemsVO.getShoeSize()));
-		map.put("sell", itemDAO.selectSellPrice(itemsVO.getPno(), itemsVO.getShoeSize(), email));
+		map.put("buy", itemDAO.selectBuyPrice(itemsVO.getPno(), itemsVO.getShoeSize(), null));
+		map.put("sell", itemDAO.selectSellPrice(itemsVO.getPno(), itemsVO.getShoeSize(), null));
 		idto.setMap(map);
 		return idto;
 	}

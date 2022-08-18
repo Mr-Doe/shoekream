@@ -24,6 +24,7 @@
 									<p data-v-299f50cf="" class="code">${idto.pvo.model }</p>
 									<p data-v-299f50cf="" class="name">${idto.pvo.eName }</p>
 									<p data-v-299f50cf="" class="translated_name">${idto.pvo.kName }</p>
+									<p data-v-299f50cf="" style="color: red;">※자신이 입찰한 상품을 제외한 가격만 표시됩니다※</p>
 								</div>
 							</div>
 						</div>
@@ -47,7 +48,7 @@
 							</ul>
 						</div>
 						<div data-v-28c27354="" data-v-03c9a74b="" class="order_btn_area" style="display: none; padding: 20 32;">
-							<a data-v-57f23419="" data-v-28c27354="" href="/items/buyItem?pno=${idto.pvo.pno }" class="btn_order order_buy buy_100 clickable" id="buyBtn">
+							<a data-v-57f23419="" data-v-28c27354="" href="" class="btn_order order_buy buy_100 clickable" id="buyBtn">
 								<div data-v-57f23419="" class="box">
 									<div data-v-57f23419="" class="order_case_info">
 										<span data-v-57f23419="" class="order_price"></span>
@@ -62,6 +63,7 @@
 	</div>
 </div>
 
+<span id="pno" style="display: none;">${idto.pvo.pno }</span>
 <span id="shoeSize" style="display: none;"></span>
 <span id="email" style="display: none;">${ses.email }</span>
 

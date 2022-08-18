@@ -47,7 +47,7 @@ public class ItemsController {
 	
 	@GetMapping(value = "/{pno}", produces= {MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<List<ItemsDTO>> buyPrice(@PathVariable("pno") int pno) {
-		return new ResponseEntity<List<ItemsDTO>>(itemsService.getBuyItemPriceList(pno), HttpStatus.OK);
+		return new ResponseEntity<List<ItemsDTO>>(itemsService.getBuyItemPriceList(pno, null), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/{pno}/{shoeSize}", produces= {MediaType.APPLICATION_JSON_VALUE})
@@ -56,9 +56,9 @@ public class ItemsController {
 	}
 	
 	@GetMapping("/buySelect")
-	public void buy(@RequestParam("pno") int pno, Model model) {
+	public void buy(@RequestParam("pno") int pno, Model model, @RequestParam("email") String email) {
 		model.addAttribute("idto", itemsService.selectProduct(pno));
-		model.addAttribute("list", itemsService.getBuyItemPriceList(pno));
+		model.addAttribute("list", itemsService.getBuyItemPriceList(pno, email));
 	}
 	
 	@GetMapping("/sellSelect")
@@ -68,12 +68,12 @@ public class ItemsController {
 	}
 
 	@GetMapping("/buyItem")
-	public void buyItem(ItemsVO itemsVO, Model model) {
+	public void buyItem(ItemsVO itemsVO, Model model, @RequestParam("email") String email) {
 //		model.addAttribute("productVO", itemsService.selectProductVO(itemsVO.getPno()));
 //		model.addAttribute("size", new FilterSizeVO(itemsVO.getShoeSize(), itemsService.selectSize(itemsVO.getShoeSize())));
 //		model.addAttribute("itemsVO", itemsService.selectBuyItem(itemsVO));
 //		model.addAttribute("price", itemsService.selectBuySell(itemsVO));
-		model.addAttribute("idto", itemsService.selectBuyIdto(itemsVO));
+		model.addAttribute("idto", itemsService.selectBuyIdto(itemsVO, email));
 	}
 	
 	@GetMapping("/sellItem")

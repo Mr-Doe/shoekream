@@ -30,7 +30,8 @@ document.addEventListener('click', (e) => {
 
 document.addEventListener('change', () => {
     if(document.getElementById('itemNo').innerText!=0 && document.getElementById('type').innerText=='0') {
-        if(parseInt(document.querySelector('.input_amount').value)>=parseInt(document.getElementById('buyPrice').innerText)) {
+        // if(parseInt(document.querySelector('.input_amount').value)>=parseInt(document.getElementById('buyPrice').innerText)) {
+        if(parseInt(document.querySelector('.input_amount').value)>=parseInt(document.getElementById('price').innerText)) {
             document.querySelector('.on').classList.remove('on');
             spreadDealArea();
         }
@@ -41,7 +42,8 @@ document.addEventListener('keyup', (e) => {
     if(parseInt(document.querySelector('.input_amount').value)>=30000) {
         document.querySelector('.price_now').classList.remove('has_danger', 'has_warning');
         document.querySelector('.price_warning').style.display = 'none';
-        document.getElementById('btn').disabled = (parseInt(document.querySelector('.input_amount').value)>=parseInt(document.getElementById('buyPrice').innerText)) ? true : false;
+        document.getElementById('btn').disabled = parseInt(document.getElementById('price').innerText)==0 ? false : (parseInt(document.querySelector('.input_amount').value)>=parseInt(document.getElementById('price').innerText)) ? true : false;
+        // document.getElementById('btn').disabled = (parseInt(document.querySelector('.input_amount').value)>=parseInt(document.getElementById('buyPrice').innerText)) ? true : false;
     } else if(parseInt(document.querySelector('.input_amount').value)<30000) {
         document.querySelector('.price_now').classList.add('has_danger', 'has_warning');
         document.querySelector('.price_warning').style.display = 'block';
@@ -70,7 +72,7 @@ function spreadDealArea() {
     document.querySelector('.tab_list').querySelectorAll('li')[1].classList.add('on');
     let html = '<div data-v-03750f89="" data-v-158ed304="" class="price_now"><dl data-v-03750f89="" class="price_now_box">';
     html += '<dt data-v-03750f89="" class="price_now_title">즉시 구매가</dt><dd data-v-03750f89="" class="price">';
-    html += `<span data-v-03750f89="" class="amount">${document.getElementById('buyPrice').innerText }</span><span data-v-03750f89="" class="unit">원</span></dd></dl>`;
+    html += `<span data-v-03750f89="" class="amount">${document.getElementById('price').innerText }</span><span data-v-03750f89="" class="unit">원</span></dd></dl>`;
     html += '<div data-v-03750f89="" class="price_warning"></div></div>';
     document.getElementById('area').innerHTML = html;
     document.getElementById('btn').innerText = '즉시 구매 계속';

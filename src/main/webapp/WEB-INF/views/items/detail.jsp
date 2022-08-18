@@ -85,7 +85,7 @@
 							</div>
 							<div data-v-5622d1e8="" class="btn_wrap">
 								<div data-v-23bbaa82="" data-v-5622d1e8="" class="division_btn_box lg">
-									<a data-v-23bbaa82="" href="/items/buySelect?pno=${idto.pvo.pno }" class="btn_division buy">
+									<a data-v-23bbaa82="" href="/items/buySelect?pno=${idto.pvo.pno }&email=${ses.email}" class="btn_division buy">
 <%-- 									<a data-v-23bbaa82="" href="/items/buySelect?pno=${pdto.productVO.pno }" class="btn_division buy"> --%>
 										<strong data-v-23bbaa82="" class="title">구매</strong>
 										<div data-v-23bbaa82="" class="price">

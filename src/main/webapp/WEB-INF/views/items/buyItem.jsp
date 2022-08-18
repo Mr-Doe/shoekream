@@ -58,7 +58,8 @@
 							</div>
 							<div id="area"></div>
 							<div data-v-158ed304="" class="price_bind">
-								<p data-v-158ed304="" class="price_bind_empty">총 결제금액은 상품과 배송비가 합쳐진 금액입니다.</p>
+								<p data-v-158ed304="" class="price_bind_empty" style="color: red;">※자신이 입찰한 상품은 제외됩니다.※</p>
+								<p data-v-158ed304="" class="price_bind_empty" style="color: red;">※즉시 구매가 불가능하거나 즉시 구매가가 다르게 표기될 수 있습니다.※</p>
 							</div>
 						</div>
 					</div>
@@ -86,7 +87,8 @@
 	<input type="hidden" name="shoeSize" value="${size.sizeId }">
 	<input type="hidden" name="price" id="priceValue" value="0"> --%>
 	
-	<input type="hidden" name="itemNo" value="${idto.ivo ne null ? idto.ivo.itemNo : 0}">
+<%-- 	<input type="hidden" name="itemNo" value="${idto.ivo ne null ? idto.ivo.itemNo : 0}"> --%>
+	<input type="hidden" name="itemNo" value="${idto.ivo.itemNo}">
 	<input type="hidden" name="buyerEmail" value="${ses.email }">
 	<input type="hidden" name="pno" value="${idto.pvo.pno }">
 	<input type="hidden" name="shoeSize" value="${idto.ivo.shoeSize }">
@@ -95,6 +97,7 @@
 
 <span id="email" style="display: none;">${ses.email }</span>
 <span id="itemNo" style="display: none;">${idto.ivo.itemNo }</span>
+<span id="price" style="display: none;">${idto.ivo.price }</span>
 <span id="type" style="display: none;"></span>
 
 <a href="/member/login" style="display: none;" id="link"></a>

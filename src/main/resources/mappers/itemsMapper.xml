@@ -31,7 +31,7 @@
 	</select>
 	<!-- 구입 -->
 	<select id="selectBuyPrice" resultType="int">
-		select min(price) from items where pno = #{pno} <include refid="sizeCheck" /> and buyer_email is null
+		select min(price) from items where pno = #{pno} <include refid="sizeCheck" /> and buyer_email is null <include refid="sellerEmailCheck"/>
 	</select>
 	<select id="recentDeal" resultType="int">
 		select price from items where pno = #{pno} and is_sold = 1 <include refid="sizeCheck" /> order by item_no desc limit 1
@@ -40,7 +40,7 @@
 		select item_no, pno, price from items where pno = #{itemsVO.pno} and shoe_size = #{itemsVO.shoeSize} and seller_email is null <include refid="buyerEmailCheck"/> order by price desc, item_no limit 1
 	</select>
 	<select id="selectBuyItem" resultType="itemsVO">
-		select item_no, pno, price from items where pno = #{pno} and shoe_size = #{shoeSize} and buyer_email is null order by price, item_no limit 1
+		select item_no, pno, price from items where pno = #{itemsVO.pno} and shoe_size = #{itemsVO.shoeSize} and buyer_email is null <include refid="sellerEmailCheck"/> order by price, item_no limit 1
 	</select>
 	<select id="selectProduct" resultType="productVO">
 		select pno, model, e_name, k_name, reg_at, retail_price, brand from product where pno = #{pno}

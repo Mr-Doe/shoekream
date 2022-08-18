@@ -12,9 +12,9 @@ public interface ItemsDAO {
 	int insertSellItem(ItemsVO itemsVO);
 	int insertBuyItem(ItemsVO itemsVO);
 	Integer selectSellPrice(@Param("pno") int pno, @Param("shoeSize") int sizeSize, @Param("email") String email);
-	Integer selectBuyPrice(@Param("pno") int pno, @Param("shoeSize") int shoeSize);
+	Integer selectBuyPrice(@Param("pno") int pno, @Param("shoeSize") int shoeSize, @Param("email") String email);
 	Integer recentDeal(@Param("pno") int pno, @Param("shoeSize") int shoeSize);
-	ItemsVO selectBuyItem(ItemsVO itemsVO);
+	ItemsVO selectBuyItem(@Param("itemsVO") ItemsVO itemsVO, @Param("email") String email);
 	ItemsVO selectSellItem(@Param("itemsVO") ItemsVO itemsVO, @Param("email") String email);
 	int sellUpdate(ItemsVO itemsVO);
 	int buyUpdate(ItemsVO itemsVO);
