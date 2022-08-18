@@ -32,7 +32,9 @@ function show_page_path() {
 function session_check() {
     if(session.length == 0 && path.includes('/member/login')) {
         
-    } else if(session.length == 0 && path.includes('/member/')) {
+    } else if(session.length == 0 && path.includes('/member/register')) {
+        
+    } else if (session.length == 0 && path.includes('/member/')){
         window.location.href = '/member/login';
     }
 }
