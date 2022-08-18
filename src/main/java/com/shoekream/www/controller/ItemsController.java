@@ -62,9 +62,9 @@ public class ItemsController {
 	}
 	
 	@GetMapping("/sellSelect")
-	public void sell(@RequestParam("pno") int pno, Model model) {
+	public void sell(@RequestParam("pno") int pno, Model model, @RequestParam("email") String email) {
 		model.addAttribute("idto", itemsService.selectProduct(pno));
-		model.addAttribute("list", itemsService.getSellItemPriceList(pno));
+		model.addAttribute("list", itemsService.getSellItemPriceList(pno, email));
 	}
 
 	@GetMapping("/buyItem")
@@ -77,12 +77,12 @@ public class ItemsController {
 	}
 	
 	@GetMapping("/sellItem")
-	public void sellItem(ItemsVO itemsVO, Model model) {
+	public void sellItem(ItemsVO itemsVO, Model model, @RequestParam("email") String email) {
 //		model.addAttribute("productVO", itemsService.selectProductVO(itemsVO.getPno()));
 //		model.addAttribute("size", new FilterSizeVO(itemsVO.getShoeSize(), itemsService.selectSize(itemsVO.getShoeSize())));
 //		model.addAttribute("itemsVO", itemsService.selectSellItem(itemsVO));
 //		model.addAttribute("price", itemsService.selectBuySell(itemsVO));
-		model.addAttribute("idto", itemsService.selectSellIdto(itemsVO));
+		model.addAttribute("idto", itemsService.selectSellIdto(itemsVO, email));
 	}
 
 	@PostMapping("/buyBid")

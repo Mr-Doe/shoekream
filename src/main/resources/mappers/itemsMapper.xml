@@ -8,6 +8,16 @@
 			and shoe_size = #{shoeSize}
 		</if>
 	</sql>
+	<sql id="buyerEmailCheck">
+		<if test="email != null">
+			and buyer_email != #{email}
+		</if>
+	</sql>
+	<sql id="sellerEmailCheck">
+		<if test="email != null">
+			and seller_email != #{email}
+		</if>
+	</sql>
 	<insert id="insertSellItem" parameterType="itemsVO">
 		insert into items(pno, shoe_size, price, seller_email) values(#{pno}, #{shoeSize}, #{price}, #{sellerEmail})
 	</insert>
@@ -17,7 +27,7 @@
 	<!-- 사이즈 리스트 -->
 	<!-- 판매 -->
 	<select id="selectSellPrice" resultType="int">
-		select max(price) from items where pno = #{pno} <include refid="sizeCheck" /> and seller_email is null
+		select max(price) from items where pno = #{pno} <include refid="sizeCheck" /> and seller_email is null <include refid="buyerEmailCheck"/>
 	</select>
 	<!-- 구입 -->
 	<select id="selectBuyPrice" resultType="int">
@@ -27,7 +37,7 @@
 		select price from items where pno = #{pno} and is_sold = 1 <include refid="sizeCheck" /> order by item_no desc limit 1
 	</select>
 	<select id="selectSellItem" resultType="itemsVO">
-		select item_no, pno, price from items where pno = #{pno} and shoe_size = #{shoeSize} and seller_email is null order by price desc, item_no limit 1
+		select item_no, pno, price from items where pno = #{pno} and shoe_size = #{shoeSize} and seller_email is null <include refid="buyerEmailCheck"/> order by price desc, item_no limit 1
 	</select>
 	<select id="selectBuyItem" resultType="itemsVO">
 		select item_no, pno, price from items where pno = #{pno} and shoe_size = #{shoeSize} and buyer_email is null order by price, item_no limit 1
@@ -54,6 +64,6 @@
 		update items set end_at = now(), is_sold = 1, buyer_email = #{buyerEmail} where item_no = #{itemNo}
 	</update>
 	<delete id="deleteItem">
-		delete from items where item_no = #{itemNo} and is_sold != 1
+		delete from items where item_no = #{itemNo} and is_sold = 0
 	</delete>
 </mapper>

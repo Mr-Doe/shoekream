@@ -10,11 +10,11 @@ import com.shoekream.www.domain.itemsDomain.ItemsVO;
 public interface ItemsService {
 	int registerSellItem(ItemsVO itemsVO);
 	int registerBuyItem(ItemsVO itemsVO);
-	List<ItemsDTO> getSellItemPriceList(int pno);
+	List<ItemsDTO> getSellItemPriceList(int pno, String email);
 	List<ItemsDTO> getBuyItemPriceList(int pno);
 	Map<String, Integer> recentandSellPrice(int pno, int size);
 //	ItemsVO selectBuyItem(ItemsVO itemsVO);
-	ItemsVO selectSellItem(ItemsVO itemsVO);
+//	ItemsVO selectSellItem(ItemsVO itemsVO);
 	int sellEnd(ItemsVO itemsVO);
 	int buyEnd(ItemsVO itemsVO);
 	int removeItem(int itemNo);
@@ -25,5 +25,5 @@ public interface ItemsService {
 //	Integer buyPrice(int pno, int i);
 	IDTO selectPdto(int pno);
 	IDTO selectBuyIdto(ItemsVO itemsVO);
-	IDTO selectSellIdto(ItemsVO itemsVO);
+	IDTO selectSellIdto(ItemsVO itemsVO, String email);
 }

@@ -25,7 +25,7 @@ document.querySelectorAll('.select_link, .size, .price').forEach((price) =>{
 document.addEventListener('click', (e) => {
     if(e.target.classList.contains('box') || e.target.classList.contains('order_price')) {
         e.preventDefault();
-        document.getElementById('sellBtn').href += `&shoeSize=${document.getElementById('shoeSize').innerText}`;
+        document.getElementById('sellBtn').href = `/items/sellItem?pno=${document.getElementById('pno').innerText}&email=${document.getElementById('email').innerText}&shoeSize=${document.getElementById('shoeSize').innerText}`;
         document.getElementById('sellBtn').click();
     }
 });

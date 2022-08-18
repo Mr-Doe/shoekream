@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('link').click();
     }
 
-    if (document.getElementById('itemNo').innerText != '') {
+    if (document.getElementById('itemNo').innerText != 0) {
         spreadDealArea();
     } else {
         spreadBidArea();
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('item_link')) {
         e.preventDefault();
-        if (document.getElementById('itemNo').innerText != '') {
+        if (document.getElementById('itemNo').innerText != 0) {
             e.target.closest('ul').querySelector('.on').classList.remove('on');
             if (e.target.id == 'bid') {
                 spreadBidArea();
@@ -45,7 +45,7 @@ document.getElementById('btn').addEventListener('click', () => {
 
 document.addEventListener('change', (e) => {
     if(e.target.id == 'bid_price'){
-        if (document.getElementById('itemNo').innerText != '' && document.getElementById('type').innerText == '0') {
+        if (document.getElementById('itemNo').innerText != 0 && document.getElementById('type').innerText == '0') {
             if (parseInt(e.target.value) >= 30000 && parseInt(e.target.value) <= parseInt(document.getElementById('sellPrice').innerText)) {
                 document.querySelector('.on').classList.remove('on');
                 spreadDealArea();
@@ -67,7 +67,7 @@ document.addEventListener('keyup', (e) => {
             if(document.getElementById('type').innerText == '0'){
                 if(document.getElementById('itemNo').innerText == ''){
                     document.getElementById('btn').disabled = false;
-                } else if(document.getElementById('itemNo').innerText != '' && parseInt(e.target.value) > parseInt(document.getElementById('sellPrice').innerText)){
+                } else if(document.getElementById('itemNo').innerText != 0 && parseInt(e.target.value) > parseInt(document.getElementById('sellPrice').innerText)){
                     document.getElementById('btn').disabled = false;
                 }
             }

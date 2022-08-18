@@ -70,6 +70,7 @@
 	</div>
 </div>
 
+<span id="pno" style="display: none;">${idto.pvo.pno }</span>
 <span id="shoeSize" style="display: none;"></span>
 <span id="email" style="display: none;">${ses.email }</span>
 
