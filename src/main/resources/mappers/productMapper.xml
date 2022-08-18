@@ -108,7 +108,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectMinPrice" parameterType="pageVO" resultType="productVO">
 		SELECT
 			pno
-			, min(price) as minPrice
+			, MIN(price) as minPrice
 		FROM
 			items i
 		JOIN
@@ -155,4 +155,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM
 			product
 	</select>
+	<select id="selectModelNumber" parameterType="int" resultType="String">
+		SELECT
+			model
+		FROM
+			product
+		WHERE
+			pno = #{pno}
+	</select>
+	<select id="selectImageIdAndUrl" parameterType="String" resultType="productVO">
+		SELECT
+			image_id
+			, model_image_url as imageUrl
+		FROM
+			model_image
+		WHERE
+			model_number = #{modelNumber}
+	</select>
+	
+	<delete id="deleteProduct" parameterType="int">
+		DELETE FROM product
+		WHERE pno = #{pno}
+	</delete>
 </mapper>

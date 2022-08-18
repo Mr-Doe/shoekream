@@ -1,5 +1,6 @@
 package com.shoekream.www.handler;
 
+import com.shoekream.www.domain.productVO.ProductVO;
 import com.shoekream.www.domain.shopVO.ShopVO;
 import com.shoekream.www.repository.shopDAO.ShopDAO;
 import org.apache.commons.net.ftp.FTP;
@@ -113,6 +114,24 @@ public class FTPhandler {
                 if(url.contains("https://")) {
                     result = true;
                 } else if(url.contains("http://")) {
+                    String ftpFilePath = url.replace("http://mrdoe.ddns.net:62121", "");
+                    result = ftpClient.deleteFile(ftpFilePath);
+                } else {
+                    return false;
+                }
+            }
+        }
+        return result;
+    }
+    public boolean deleteImageFile(List<ProductVO> list) throws Exception {
+        boolean result = false;
+        if(list.size() > 0) {
+            for (ProductVO idx : list) {
+                String url = idx.getImageUrl();
+                if(url.contains("https://")) {
+                    result = true;
+                } else if(url.contains("http://")) {
+                	// http://mrdoe.ddns.net:62121/shoekream_img/e9a47e18-e6e2-43f6-8b5d-64279b611827.png  -->  /shoekream_img/e9a47e18-e6e2-43f6-8b5d-64279b611827.png(경로 + uuid + 파일확장자)
                     String ftpFilePath = url.replace("http://mrdoe.ddns.net:62121", "");
                     result = ftpClient.deleteFile(ftpFilePath);
                 } else {

@@ -9,8 +9,8 @@ async function getListFromServer(shoe_brand=null, shoe_category=null, shoe_size=
 
     const final_url = url.length == 0 ? `${path}?pageNo=${pageNo}&qty=12` : `${path}?${url}&pageNo=${pageNo}&qty=12`;
     const resp = await fetch(final_url);
-    const map = await resp.json();
-    return map;
+    const productDTO = await resp.json();
+    return productDTO;
   } catch (error) {
     console.log(error);
   }
@@ -40,32 +40,33 @@ function spreadList(shoe_brand, shoe_category, shoe_size, pageNo){
       }
       line += `<p style="line-height: 13px; font-size: 11px; color: rgba(34,34,34,.5);">즉시 구매가</p>`;
       line += `</div></div></div>`;
-    });  
+    });
     line+=`</div>`;
     // 상품 리스트 끝
 
     // 페이지네이션 시작
     line += `<hr>`
-    line += `<div class="pagination center">`
+    line += `<div class="pagination">`
     if(pageHandler.prev){
       line += `<a class="pageBtn" href="#" onclick="return false" data-pageno="${pageHandler.startPage-1}">&laquo;</a>`;
     }
     for(let i = pageHandler.startPage; i <= pageHandler.endPage; i++){
-      line += `<a class="pageBtn" href="#" onclick="return false" data-pageno="${i}">${i}</a>`;
+      line += `<a class="pageBtn" href="#" style="${pageHandler.pgvo.pageNo == i ? 'background-color: rgb(235, 240, 245); border-radius: 5px;' : ''} " onclick="return false" data-pageno="${i}">${i}</a>`;
     }
     if(pageHandler.next){
       line += `<a class="pageBtn" href="#" onclick="return false" data-pageno="${pageHandler.endPage+1}">&raquo;</a>`;
-      // line += `<li class="page-item"><button class="page-link pageBtn" data-pageno="${pageHandler.endPage+1}">Next</li>`;
     }
-    // line += `</ul>`;
     line += `</div>`;
     div.innerHTML += line;
+    // 페이지네이션 끝    
   });
 }
-// 페이지 버튼 클릭 이벤트
+
+
+
 document.addEventListener('click', (e) => {
+  // 페이지 버튼 클릭 이벤트
   if(e.target.classList.contains('pageBtn')){
-    console.log('brnd : '+filter_brand+ 'ctgr : ' + filter_category+ 'size : ' + filter_size + 'dataset : '+ e.target.dataset.pageno);
     spreadList(filter_brand, filter_category, filter_size, e.target.dataset.pageno);
   }
 });

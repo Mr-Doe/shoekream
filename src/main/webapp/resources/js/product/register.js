@@ -1,6 +1,6 @@
 
 const regExpPrevent = new RegExp("\.(exe|sh|bat|js|msi|dll)$"); // 실행파일 막기
-const regExpImage = new RegExp("\.(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$"); // 이미지 파일만 허용
+const regExpImage = new RegExp("\.(png)$"); // 이미지 파일만 허용
 const maxSize = 3 * 1024 * 1024; // 3MB
 function fileSizeAndTypeValidation(fileName, fileSize){
     if(regExpPrevent.test(fileName)){
@@ -38,6 +38,7 @@ document.addEventListener('change', (e) => {
         div.innerHTML = ul;
         if(!isOk){
             document.getElementById('registerBtn').disabled = true;
+            alert('이미지 파일을 확인하세요');
         }
     }
 });

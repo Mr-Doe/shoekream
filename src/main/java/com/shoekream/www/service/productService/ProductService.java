@@ -17,4 +17,7 @@ public interface ProductService {
 	int register(ProductVO productVO, MultipartFile[] files) throws Exception;
 	List<FilterBrandVO> getBrandList();
 	List<FilterCategoryVO> getCategoryList();
+	int removeProduct(int pno) throws Exception;
+	void toCheckImageFileValidation(MultipartFile[] files) throws Exception;
+	void toCheckFileLengthValidation(String value, int maxLength) throws Exception;
 }

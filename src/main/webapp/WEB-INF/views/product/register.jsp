@@ -12,7 +12,7 @@
 				<input type="hidden" name="brand" value="">
 				<input type="hidden" name="category" value="">
 				<div data-v-30ee943a="" class="join_area" style="width: 400px; margin: 0 auto;">
-					<h2 data-v-30ee943a="" class="join_title">product register</h2>
+					<h2 data-v-30ee943a="" class="join_title">관리자 상품 등록 페이지</h2>
 					<div data-v-0e527ea4="" data-v-30ee943a="" class="input_box">
 						<h3 data-v-30ee943a="" data-v-0e527ea4="" class="input_title ess">English Name</h3>
 						<div data-v-0e527ea4="" class="input_item">

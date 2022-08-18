@@ -153,7 +153,6 @@ public class ShopServiceImpl implements ShopService {
         return 0;
     }
 
-
     private void toCheckImageFileValidation(MultipartFile[] files) throws Exception {
         for (MultipartFile file : files) {
             if(!file.getContentType().contains("image/")) {

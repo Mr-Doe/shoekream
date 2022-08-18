@@ -9,7 +9,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,10 +39,9 @@ public class ProductController {
 	private static final Logger log = LoggerFactory.getLogger(HomeController.class);
 	
 	@Inject
-	private ProductService psv;
+	private ProductService productService;
 	@Inject
 	private FilterCategoryService categoryService;
-	
 	@Inject
 	private FilterBrandService brandService;
 	
@@ -52,7 +53,7 @@ public class ProductController {
 	@ResponseBody
 	@GetMapping(value = "list", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ProductDTO> searchList(Model model, PagingVO pgvo) {
-		ProductDTO productDTO = new ProductDTO(new PagingHandler(pgvo, psv.getTotalCount(pgvo)), psv.getList(pgvo));
+		ProductDTO productDTO = new ProductDTO(new PagingHandler(pgvo, productService.getTotalCount(pgvo)), productService.getList(pgvo));
 		return new ResponseEntity<ProductDTO>(productDTO, HttpStatus.OK);
 	}
 	@GetMapping("/register")
@@ -65,17 +66,19 @@ public class ProductController {
 	@PostMapping("/register")
 	public String register(ProductVO productVO, @RequestParam(name = "fileAttached") MultipartFile[] files) {
 		try {
-			return "redirect:/items/detail?pno="+psv.register(productVO, files);
+			return "redirect:/items/detail?pno="+productService.register(productVO, files);
 		}catch (Exception e) {
 			System.err.println(e.getMessage());
 			return "0";
 		}
 	}
-//	@GetMapping("/originalList")
-//	public void originalList(Model model, PagingVO pgvo) {
-//		List<Map<String, String>> map = psv.getList(pgvo);
-//		PagingHandler pgn = new PagingHandler(pgvo, psv.getTotalCount(pgvo));
-//		model.addAttribute("map", map);
-//		model.addAttribute("pgn", pgn);
-//	}
+    @DeleteMapping("/delete/{pno}")
+    public String deleteItem(@PathVariable("pno")int pno) {
+        try {
+            return String.valueOf(productService.removeProduct(pno));
+        }catch (Exception e) {
+            System.err.println(e.getMessage());
+            return "0";
+        }
+    }
 }

@@ -22,4 +22,9 @@ public interface ProductDAO {
 	int checkModelDuple(String model);
 	int insertImage(ProductVO productVO);
 	int selectLastPno();
+	int selectProductCount(int pno);
+	String selectModelNumber(int pno);
+	List<ProductVO> selectImageIdAndUrl(String model);
+	int deleteImageWithModelNumber(List<ProductVO> imageList);
+	int deleteProduct(int pno);
 }

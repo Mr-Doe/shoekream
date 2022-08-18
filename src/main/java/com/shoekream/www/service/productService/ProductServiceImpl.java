@@ -16,6 +16,7 @@ import com.shoekream.www.domain.PagingVO.PagingVO;
 import com.shoekream.www.domain.filterVO.FilterBrandVO;
 import com.shoekream.www.domain.filterVO.FilterCategoryVO;
 import com.shoekream.www.domain.productVO.ProductVO;
+import com.shoekream.www.domain.shopVO.ShopVO;
 import com.shoekream.www.handler.FTPhandler;
 import com.shoekream.www.repository.searchDAO.productDAO.ProductDAO;
 import com.shoekream.www.service.filterService.FilterBrandService;
@@ -33,7 +34,7 @@ public class ProductServiceImpl implements ProductService {
 	private FilterCategoryService categoryService;
 	
 	@Transactional
-	@Override
+	@Override 
 	public List<ProductVO> getList(PagingVO pgvo) {
 		// min_price제외 productVO list
 		List<ProductVO> productVO = productDAO.selectList(pgvo);
@@ -57,10 +58,14 @@ public class ProductServiceImpl implements ProductService {
 	@Transactional
 	@Override
 	public int register(ProductVO productVO, MultipartFile[] files) throws Exception {
+		if(productVO == null) {
+            throw new Exception("[ERROR - POST] ShopVO = Null");
+        }
 		if(productDAO.checkModelDuple(productVO.getModel()) > 0) {
 			throw new Exception("[ERROR - POST] 이미 존재하는 모델번호");
 		}
-		
+		this.toCheckFileLengthValidation(productVO.getModel(), 500);
+		this.toCheckImageFileValidation(files);
 		FTPhandler ftp = new FTPhandler();
 		// FTP 서버에 이미지 업로드 후 리스트에 경로 넣기
 		ArrayList<String> urlList = new ArrayList<>();
@@ -104,4 +109,43 @@ public class ProductServiceImpl implements ProductService {
 		return categoryService.getCategoryList();
 	
 	}
+	
+	@Override
+	public int removeProduct(int pno) throws Exception {
+		
+        // todo /진행 중/ data validation
+        if(productDAO.selectProductCount(pno) > 0){
+            throw new Exception("거래 내역이 있는 Product");
+        }
+
+        // 프로덕트 삭제시 서버에 저장된 이미지 + 디비 url 동시 삭제
+        FTPhandler ftp = new FTPhandler();
+        String model = productDAO.selectModelNumber(pno);
+        if(model != null) {
+            List<ProductVO> imageList = productDAO.selectImageIdAndUrl(model);
+            if(imageList.size() > 0) {
+                if(ftp.deleteImageFile(imageList)) {
+                    if(productDAO.deleteImageWithModelNumber(imageList) > 0) {
+                        return productDAO.deleteProduct(pno);
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+
+	@Override
+	public void toCheckImageFileValidation(MultipartFile[] files) throws Exception {
+		for (MultipartFile file : files) {
+            if(!file.getContentType().contains("image/")) {
+                throw new Exception("[ERROR] 이미지 파일이 아님");
+            }
+        }
+	}
+	@Override
+	public void toCheckFileLengthValidation(String value, int maxLength) throws Exception {
+    	if(value != null && value.length() > maxLength) {
+            throw new Exception();
+        }
+    }
 }
