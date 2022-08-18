@@ -65,7 +65,7 @@ document.addEventListener('keyup', (e) => {
             document.querySelector('.price_warning').style.display = 'none';
 
             if(document.getElementById('type').innerText == '0'){
-                if(document.getElementById('itemNo').innerText == ''){
+                if(document.getElementById('itemNo').innerText == 0){
                     document.getElementById('btn').disabled = false;
                 } else if(document.getElementById('itemNo').innerText != 0 && parseInt(e.target.value) > parseInt(document.getElementById('sellPrice').innerText)){
                     document.getElementById('btn').disabled = false;

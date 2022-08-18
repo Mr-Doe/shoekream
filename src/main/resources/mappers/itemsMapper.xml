@@ -37,7 +37,7 @@
 		select price from items where pno = #{pno} and is_sold = 1 <include refid="sizeCheck" /> order by item_no desc limit 1
 	</select>
 	<select id="selectSellItem" resultType="itemsVO">
-		select item_no, pno, price from items where pno = #{pno} and shoe_size = #{shoeSize} and seller_email is null <include refid="buyerEmailCheck"/> order by price desc, item_no limit 1
+		select item_no, pno, price from items where pno = #{itemsVO.pno} and shoe_size = #{itemsVO.shoeSize} and seller_email is null <include refid="buyerEmailCheck"/> order by price desc, item_no limit 1
 	</select>
 	<select id="selectBuyItem" resultType="itemsVO">
 		select item_no, pno, price from items where pno = #{pno} and shoe_size = #{shoeSize} and buyer_email is null order by price, item_no limit 1

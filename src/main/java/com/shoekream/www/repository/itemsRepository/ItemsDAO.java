@@ -15,7 +15,7 @@ public interface ItemsDAO {
 	Integer selectBuyPrice(@Param("pno") int pno, @Param("shoeSize") int shoeSize);
 	Integer recentDeal(@Param("pno") int pno, @Param("shoeSize") int shoeSize);
 	ItemsVO selectBuyItem(ItemsVO itemsVO);
-	ItemsVO selectSellItem(ItemsVO itemsVO, @Param("email") String email);
+	ItemsVO selectSellItem(@Param("itemsVO") ItemsVO itemsVO, @Param("email") String email);
 	int sellUpdate(ItemsVO itemsVO);
 	int buyUpdate(ItemsVO itemsVO);
 	int deleteItem(int itemNo);

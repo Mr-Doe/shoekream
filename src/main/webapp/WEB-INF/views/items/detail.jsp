@@ -96,7 +96,7 @@
 											<span data-v-23bbaa82="" class="desc">즉시 구매가</span>
 										</div>
 									</a>
-									<a data-v-23bbaa82="" href="/items/sellSelect?pno=${idto.pvo.pno }" class="btn_division sell">
+									<a data-v-23bbaa82="" href="/items/sellSelect?pno=${idto.pvo.pno }&email=${ses.email}" class="btn_division sell">
 <%-- 									<a data-v-23bbaa82="" href="/items/sellSelect?pno=${pdto.productVO.pno }" class="btn_division sell"> --%>
 										<strong data-v-23bbaa82="" class="title">판매</strong>
 										<div data-v-23bbaa82="" class="price">
