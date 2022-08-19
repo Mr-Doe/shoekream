@@ -72,9 +72,15 @@ document.getElementById('btn').addEventListener('click', () => {
         document.querySelector('form').submit();
         alert('구매 입찰 등록');
     } else if(document.getElementById('type').innerText==1) {
-        document.querySelector('form').action = '/items/buyItem';
-        document.querySelector('form').submit();
-        alert('즉시 구매 완료');
+        if(document.getElementById('sellerEmail').innerText!=document.getElementById('email').innerText) {
+            document.querySelector('form').action = '/items/buyItem';
+            document.querySelector('form').submit();
+            alert('즉시 구매 완료');
+        } else {
+            document.getElementById('link').href = `/items/detail?pno=${document.getElementsByName('pno')[0].value}`;
+            document.getElementById('link').click();
+            alert('즉시 구매 실패 \n사유 \nerror: 자신의 아이템과 매칭이 되었습니다');
+        }
     }
 });
 

@@ -96,6 +96,7 @@
 </form>
 
 <span id="email" style="display: none;">${ses.email }</span>
+<span id="sellerEmail" style="display: none;">${idto.ivo.sellerEmail }</span>
 <span id="itemNo" style="display: none;">${idto.ivo.itemNo }</span>
 <span id="price" style="display: none;">${idto.ivo.price }</span>
 <span id="type" style="display: none;"></span>
