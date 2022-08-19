@@ -219,8 +219,8 @@ p {
 			<span><a href="#" class="btn btn_view_list outlinegrey medium" id="listBtn"
 				data-v-3d1bcc82="" data-v-d8835e88=""> 목록보기 </a></span>
 		<c:if test="${mypageVO.isSold eq 0 && mypageVO.isSold eq '' }">
-			<span><button class=" btn_view_list outlinegrey medium" id="delBtn" style="color: #f15746;"
-				data-v-3d1bcc82="" data-v-d8835e88=""> 입찰취소 </button></span>
+			<span><a class="btn btn_view_list outlinegrey medium" id="delBtn" style="color: #f15746;"
+				data-v-3d1bcc82="" data-v-d8835e88=""> 입찰취소 </a></span>
 		</c:if>
 		</div>
 		<!---->
