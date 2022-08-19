@@ -58,8 +58,8 @@
 							</div>
 							<div id="area"></div>
 							<div data-v-158ed304="" class="price_bind">
-								<p data-v-158ed304="" class="price_bind_empty" style="color: red;">※자신이 입찰한 상품은 제외됩니다.※</p>
-								<p data-v-158ed304="" class="price_bind_empty" style="color: red;">※즉시 구매가 불가능하거나 즉시 구매가가 다르게 표기될 수 있습니다.※</p>
+								<p data-v-158ed304="" class="price_bind_empty" style="color: #f15746;">※자신이 입찰한 상품은 제외됩니다.※</p>
+								<p data-v-158ed304="" class="price_bind_empty" style="color: #f15746;">※즉시 구매가 불가능하거나 즉시 구매가가 다르게 표기될 수 있습니다.※</p>
 							</div>
 						</div>
 					</div>

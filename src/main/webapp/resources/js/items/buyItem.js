@@ -1,7 +1,16 @@
+let bidPriceRange = '';
+let price = parseInt(document.getElementById('price').innerText);
+
 document.addEventListener('DOMContentLoaded', function() {
     if(document.getElementById('email').innerText=='') {
         document.getElementById('link').click();
     }
+    if(price==0 || price==30000) {
+        bidPriceRange = '입찰 최소값은 30000원입니다.';
+    } else {
+        bidPriceRange = `입찰가는 30000원 이상 ${price}원 미만입니다.`
+    }
+    console.log(bidPriceRange);
     if(document.getElementById('itemNo').innerText!=0) {
         spreadDealArea();
     } else {
@@ -39,20 +48,21 @@ document.addEventListener('change', () => {
 });
 
 document.addEventListener('keyup', (e) => {
-    if(parseInt(document.querySelector('.input_amount').value)>=30000) {
+    if(parseInt(document.querySelector('.input_amount').value)<30000 || document.querySelector('.input_amount').value=='' || parseInt(document.querySelector('.input_amount').value)>=price) {
+        document.querySelector('.price_now').classList.add('has_danger', 'has_warning');
+        document.querySelector('.price_warning').style.display = 'block';
+        document.getElementById('btn').disabled = true;
+    } else if(parseInt(document.querySelector('.input_amount').value)>=30000) {
         document.querySelector('.price_now').classList.remove('has_danger', 'has_warning');
         document.querySelector('.price_warning').style.display = 'none';
         document.getElementById('btn').disabled = parseInt(document.getElementById('price').innerText)==0 ? false : (parseInt(document.querySelector('.input_amount').value)>=parseInt(document.getElementById('price').innerText)) ? true : false;
         // document.getElementById('btn').disabled = (parseInt(document.querySelector('.input_amount').value)>=parseInt(document.getElementById('buyPrice').innerText)) ? true : false;
-    } else if(parseInt(document.querySelector('.input_amount').value)<30000) {
-        document.querySelector('.price_now').classList.add('has_danger', 'has_warning');
-        document.querySelector('.price_warning').style.display = 'block';
-        document.getElementById('btn').disabled = true;
-    } else if(document.querySelector('.input_amount').value=='') {
-        document.querySelector('.price_now').classList.add('has_danger', 'has_warning');
-        document.querySelector('.price_warning').style.display = 'block';
-        document.getElementById('btn').disabled = true;
     }
+    // else if(document.querySelector('.input_amount').value=='') {
+    //     document.querySelector('.price_now').classList.add('has_danger', 'has_warning');
+    //     document.querySelector('.price_warning').style.display = 'block';
+    //     document.getElementById('btn').disabled = true;
+    // }
 });
 
 document.getElementById('btn').addEventListener('click', () => {
@@ -86,7 +96,7 @@ function spreadBidArea() {
 	html += '<dt data-v-03750f89="" class="price_now_title">구매 희망가</dt><dd data-v-03750f89="" class="price">';
     html += '<input data-v-03750f89="" type="text" pattern="([0-9]+.{0,1}[0-9]*,{0,1})*[0-9]" required="required" placeholder="희망가 입력" autocomplete="off" class="input_amount">';
     html += '<span data-v-03750f89="" class="unit">원</span></dd></dl><div data-v-03750f89="" class="price_warning" style="display: block;">'
-    html += '<p data-v-03750f89="" style="color: #f15746; line-height: 17px; font-size: 13px;"> 입찰 최소값은 3만원입니다. </p></div></div>';
+    html += `<p data-v-03750f89="" style="color: #f15746; line-height: 17px; font-size: 13px;">${bidPriceRange}</p></div></div>`;
     document.getElementById('area').innerHTML = html;
     document.getElementById('btn').innerText = '구매 입찰 계속';
     document.getElementById('btn').disabled = true;

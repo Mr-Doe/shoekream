@@ -24,7 +24,7 @@
 									<p data-v-299f50cf="" class="code">${idto.pvo.model }</p>
 									<p data-v-299f50cf="" class="name">${idto.pvo.eName }</p>
 									<p data-v-299f50cf="" class="translated_name">${idto.pvo.kName }</p>
-									<p data-v-299f50cf="" style="color: red;">※자신이 입찰한 상품을 제외한 가격만 표시됩니다※</p>
+									<p data-v-299f50cf="" style="color: #f15746;">※자신이 입찰한 상품을 제외한 가격만 표시됩니다※</p>
 								</div>
 							</div>
 						</div>
