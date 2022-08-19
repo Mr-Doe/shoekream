@@ -78,8 +78,8 @@ p {
 					<div data-v-5acef129="" class="info_box">
 						<p data-v-5acef129="" class="email">${ses.email}</p>
 						<a data-v-3d1bcc82="" data-v-5acef129=""
-							href="/member/modify?email=${ses.email}"
-							class="btn btn outlinegrey small" type="button"> 프로필 수정 </a> <a
+							href="/member/detail?email=${ses.email}"
+							class="btn btn outlinegrey small" type="button"> 프로필 정보 </a> <a
 							data-v-3d1bcc82="" data-v-5acef129="" href="#"
 							class="btn btn btn_my_style outlinegrey small" type="button">
 							내 스타일 </a>
@@ -177,7 +177,7 @@ p {
 												</div>
 											</c:when>
 											<c:otherwise>
-												<div data-v-62dace61="" class="status_box field_status">
+												<div data-v-62dace61="" class="status_box field_status" style="color: red;">
 													<span data-v-62dace61="" class="status_txt text-default">거래중</span>
 													<!---->
 												</div>
@@ -280,7 +280,7 @@ p {
 												</div>
 											</c:when>
 											<c:otherwise>
-												<div data-v-62dace61="" class="status_box field_status">
+												<div data-v-62dace61="" class="status_box field_status" style="color: green;">
 													<span data-v-62dace61="" class="status_txt text-default">거래중</span>
 													<!---->
 												</div>

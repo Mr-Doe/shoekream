@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', emailCheckForAccess(session));
+
 async function goToDetail(itemNoVal) {
     try {
         const url = '/member/historydetail';
@@ -54,3 +56,25 @@ document.querySelectorAll('.tab_link, .title, .count').forEach((list) =>{
         }
     });
 });
+
+function emailCheckForAccess(session) {
+    let pathEmail = window.location.href;
+    let hrefEmail = '';
+
+    if (pathEmail.includes('?')) {
+        hrefEmail = pathEmail.substring(pathEmail.lastIndexOf('=')+1, pathEmail.length);
+    }
+
+    console.log(hrefEmail);
+
+    if (hrefEmail != '') {
+        if (session != hrefEmail) {
+            if (window.location.pathname == "adminList") {
+                window.location.href = "/product/adminList";
+            } else {
+                alert('잘못된 접근입니다!')
+                window.location.href = "/";
+            }
+        }
+    }
+}

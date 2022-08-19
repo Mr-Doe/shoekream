@@ -70,7 +70,9 @@
 		</div>
 	</div>
 </div>
+<span id="grade" style="display: none;">${ses.grade}</span>
 
+<script src="../../resources/js/product/adminlist.js"></script>
 <script src="../../resources/js/product/register.js"></script>
 <script>
 	document.getElementById('attachTrigger').addEventListener('click', () => {

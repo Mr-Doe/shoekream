@@ -302,6 +302,5 @@ p {
 		</div>
 	</div>
 
-<jsp:include page="../commons/footer.jsp" />
-
 <script src="../../resources/js/member/historylist.js"></script>
+<jsp:include page="../commons/footer.jsp" />

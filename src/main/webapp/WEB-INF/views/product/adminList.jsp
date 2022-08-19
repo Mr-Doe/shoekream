@@ -74,22 +74,25 @@ p {
 			<div data-v-bbed98be="" data-v-5f779880=""
 				class="purchase_list_tab sell">
 				<div data-v-bbed98be="" class="tab_item total">
-					<a data-v-bbed98be="" href="#" class="tab_link" style="pointer-events: none;"><dl
-							data-v-bbed98be="" class="tab_box">
+					<a data-v-bbed98be="" href="#" class="tab_link"
+						style="pointer-events: none;"><dl data-v-bbed98be=""
+							class="tab_box">
 							<dt data-v-bbed98be="" class="title">전체</dt>
-							<dd data-v-bbed98be="" class="count">	${selDTO.totalCount}</dd>
+							<dd data-v-bbed98be="" class="count">${selDTO.totalCount}</dd>
 						</dl></a>
 				</div>
 				<div data-v-bbed98be="" class="tab_item tab_on">
-					<a data-v-bbed98be="" href="#" class="tab_link" style="pointer-events: none;"><dl
-							data-v-bbed98be="" class="tab_box">
+					<a data-v-bbed98be="" href="#" class="tab_link"
+						style="pointer-events: none;"><dl data-v-bbed98be=""
+							class="tab_box">
 							<dt data-v-bbed98be="" class="title">활성</dt>
 							<dd data-v-bbed98be="" class="count">${selDTO.bidCount}</dd>
 						</dl></a>
 				</div>
 				<div data-v-bbed98be="" class="tab_item">
-					<a data-v-bbed98be="" href="#" class="tab_link" style="pointer-events: none;"><dl
-							data-v-bbed98be="" class="tab_box">
+					<a data-v-bbed98be="" href="#" class="tab_link"
+						style="pointer-events: none;"><dl data-v-bbed98be=""
+							class="tab_box">
 							<dt data-v-bbed98be="" class="title">비활성</dt>
 							<dd data-v-bbed98be="" class="count">${selDTO.endCount}</dd>
 						</dl></a>
@@ -106,7 +109,8 @@ p {
 							</div>
 						</c:when>
 						<c:otherwise>
-							<c:forEach items="${selDTO.history}" var="history" varStatus="status" begin="0" end="2">
+							<c:forEach items="${selDTO.history}" var="history"
+								varStatus="status" begin="0" end="2">
 								<div data-v-62dace61="" data-v-21d527e4=""
 									class="purchase_item buy" data-itemno="${history.itemNo}">
 									<div data-v-62dace61="" class="history_product">
@@ -164,6 +168,14 @@ p {
 	</div>
 </div>
 </div>
+<span id="grade" style="display: none;">${ses.grade}</span>
 
+<script>
+	let pagehdlr = '<c:out value="${productDTO.pagehdlr.totalCount}"/>';
+	console.log('pageHandler : ' + pagehdlr);
+	let productList = '<c:out value="${productDTO.productList}"/>';
+	console.log('productList : ' + productList);
+</script>
+<script src="../../resources/js/product/adminlist.js"></script>
 <script src="../../resources/js/member/historylist.js"></script>
 <jsp:include page="../commons/footer.jsp" />

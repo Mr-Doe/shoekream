@@ -25,7 +25,7 @@
 			</div>
 			<div data-v-6dea036d="" data-v-7fba8f8c="" class="user_profile">
 				<div data-v-6dea036d="" class="profile_detail">
-					<strong data-v-6dea036d="" class="name">#</strong>
+					<strong data-v-6dea036d="" class="name">${ses.email}</strong>
 				</div>
 			</div>
 			<input data-v-7fba8f8c="" type="file" accept="image/jpeg,image/png"
