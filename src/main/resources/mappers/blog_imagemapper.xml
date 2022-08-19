@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.shoekream.www.repository.blogDAO.ImageDAO">
+	<insert id="insertBlogImage" parameterType="imageVO" useGeneratedKeys="true" keyColumn="image_id" keyProperty="imageId">
+		INSERT INTO blog_image (
+			image_url
+		) VALUES (
+			#{imageUrl}
+		)
+	</insert>
+
+	<select id="getImagesListWithIDsList" parameterType="String" resultType="imageVO">
+		SELECT
+			image_id
+			, image_url
+		FROM
+			blog_image
+		WHERE image_id IN
+				<foreach item="item" index="index" collection="list"
+						 open="(" separator="," close=")">
+					#{item}
+				</foreach>
+	</select>
+</mapper>

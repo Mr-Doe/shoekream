@@ -19,4 +19,6 @@ public interface MemberService {
 
 	int dupleCheck(String email);
 
+
+	String getFollowersList(String email);
 }

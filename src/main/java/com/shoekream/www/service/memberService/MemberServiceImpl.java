@@ -51,4 +51,15 @@ public class MemberServiceImpl implements MemberService {
 		return mdao.selectEmail(email);
 	}
 
+
+	/**
+	 * Author : Mr.doe
+	 * @param email
+	 * @return "abc@.abc.com", "qwe@qwe.com" ...
+	 */
+	@Override
+	public String getFollowersList(String email) {
+		return mdao.selectFollwers(email);
+	}
+
 }

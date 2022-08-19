@@ -84,6 +84,14 @@
 		LIMIT
 			3
 	</select>
+	<select id="selectFollwers" parameterType="String" resultType="String">
+		SELECT
+			followers
+		FROM
+			member
+		WHERE
+			email = #{email}
+	</select>
 	<update id="update" parameterType="memberVO">
 		UPDATE
 			member

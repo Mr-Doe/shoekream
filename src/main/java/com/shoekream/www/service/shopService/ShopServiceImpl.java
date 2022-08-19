@@ -54,7 +54,7 @@ public class ShopServiceImpl implements ShopService {
         if(ftpUploadFailed == true) {
             ftp.deleteUnfinishedFiles();
             ftp.disconnect();
-            return 0;
+            throw new Exception("FTP 파일 업로드 실패");
         }
 
         ftp.disconnect();

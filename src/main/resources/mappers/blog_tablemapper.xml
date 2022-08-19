@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.shoekream.www.repository.blogDAO.BlogDAO">
+	<select id="selectBlog" resultType="blogVO" parameterType="int">
+
+	</select>
+	<select id="selectPopList" resultType="blogVO" parameterType="int">
+		SELECT
+			blog_id
+			, own_email
+			, blog_images_path
+			, item_id
+			, item_image
+			, item_name
+			, (
+				SELECT
+					MIN(price)
+				FROM
+					items
+				WHERE is_sold = 0
+						AND seller_email IS NOT NULL
+						AND pno = m.item_id
+			) as minPrice
+			, likes_count
+			, (
+				SELECT
+					COUNT(cmt_id)
+				FROM
+					blog_comment s
+				WHERE
+					s.blog_id = m.blog_id
+			)as commentsCount
+		FROM
+			blog_table m
+		ORDER BY
+			likes_count DESC
+		LIMIT 20 OFFSET ${(page - 1) * 20}
+	</select>
+	<select id="selectCurrList"  resultType="blogVO" parameterType="int">
+		SELECT
+			blog_id
+			, own_email
+			, blog_images_path
+			, item_id
+			, item_image
+			, item_name
+			, (
+				SELECT
+					MIN(price)
+				FROM
+					items
+				WHERE is_sold = 0
+						AND seller_email IS NOT NULL
+						AND pno = m.item_id
+			) as minPrice
+			, likes_count
+			, (
+				SELECT
+					COUNT(cmt_id)
+				FROM
+					blog_comment s
+				WHERE
+					s.blog_id = m.blog_id
+			)as commentsCount
+		FROM
+			blog_table m
+		ORDER BY
+			reg_at DESC
+		LIMIT 20 OFFSET ${(page - 1) * 20}
+	</select>
+	<select id="getfollowers" resultType="String" parameterType="int">
+		SELECT
+			followers
+		FROM
+			member
+		WHERE
+			email = #{email}
+	</select>
+	<select id="selectFollowList" resultType="blogVO" parameterType="blogVO">
+		SELECT
+			blog_id
+			, own_email
+			, blog_images_path
+			, item_id
+			, item_image
+			, item_name
+			, (
+				SELECT
+					MIN(price)
+				FROM
+					items
+				WHERE is_sold = 0
+						AND seller_email IS NOT NULL
+						AND pno = blog_table.item_id
+			) as minPrice
+			, likes_count
+			, (
+				SELECT
+					COUNT(cmt_id)
+				FROM
+					blog_comment
+				WHERE
+					blog_comment.blog_id = blog_table.blog_id
+			)as commentsCount
+		FROM
+			blog_table
+		WHERE
+			own_email IN (#{followers})
+		ORDER BY
+			reg_at DESC
+		LIMIT 20 OFFSET ${(page - 1) * 20}
+	</select>
+	<select id="selectBlogOwner" parameterType="blogVO" resultType="int">
+		SELECT
+			COUNT(blog_id)
+		FROM
+			blog_table
+		WHERE blog_id = #{blogId}
+				AND own_email = #{ownEmail}
+	</select>
+
+	<insert id="insertBlog" parameterType="blogVO" useGeneratedKeys="true" keyColumn="blog_id" keyProperty="blogId">
+		INSERT INTO blog_table(
+			own_email
+			, blog_image_id
+			, blog_images_path
+			, item_id
+			, item_image
+			, item_name
+		) VALUES (
+			#{ownEmail}
+			, #{blogImageId}
+			, #{blogImagePath}
+			, #{itemId}
+			, #{itemImage}
+			, #{itemName}
+		)
+	</insert>
+</mapper>

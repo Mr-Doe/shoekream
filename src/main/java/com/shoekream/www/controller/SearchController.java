@@ -18,10 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SearchController {
 
     @Autowired private SearchService sService;
-
-    @GetMapping("/modal")
-    public void searchModalWindow() {}
-
     @GetMapping(value = "/{keyword}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<SearchDTO> getSearchingWithKeyword(@PathVariable("keyword")String keyword) {
         return new ResponseEntity<SearchDTO>(sService.searchToProductAndBrand(keyword), HttpStatus.OK);
