@@ -98,7 +98,7 @@
 		<input type="hidden" name="itemNo" value="0">
 	</c:if>
 	<input type="hidden" name="sellerEmail" value="${ses.email }">
-	<input type="hidden" name="pno" value="${idto.pvo.pno }">
+	<input type="hidden" id="pno" name="pno" value="${idto.pvo.pno }">
 	<%-- <input type="hidden" name="shoeSize" value="${idto.size }"> --%>
 	<input type="hidden" name="shoeSize" value="${idto.ivo.shoeSize }">
 	<input type="hidden" name="price" id="priceValue" value="0">
@@ -108,6 +108,7 @@
 <span id="email" style="display: none;">${ses.email }</span>
 <span id="itemNo" style="display: none;">${idto.ivo.itemNo }</span>
 <span id="type" style="display: none;"></span>
+<span id="buyer" style="display: none;">${idto.ivo.buyerEmail }</span>
 
 <a href="/member/login" style="display: none;" id="link"></a>
 

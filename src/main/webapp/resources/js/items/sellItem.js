@@ -37,9 +37,16 @@ document.getElementById('btn').addEventListener('click', () => {
         document.querySelector('form').submit();
         alert('판매 입찰 등록');
     } else if(document.getElementById('type').innerText==1) {
-        document.querySelector('form').action = '/items/sellItem';
-        document.querySelector('form').submit();
-        alert('즉시 판매 완료');
+        if(document.getElementById('buyer').innerText != document.getElementById('email').innerText){
+            document.querySelector('form').action = '/items/sellItem';
+            document.querySelector('form').submit();
+            alert('즉시 판매 완료');
+        } else if(document.getElementById('buyer').innerText == document.getElementById('email').innerText){
+            document.querySelector('form').action = `/items/detail?pno=${document.getElementById('pno').innerText}`;
+            document.querySelector('form').method = 'get';
+            document.querySelector('form').submit();
+            alert('즉시 판매 실패 \n사유 \nerror: 자신의 아이템과 매칭이 되었습니다');
+        }
     }
 });
 
