@@ -87,15 +87,40 @@ async function forward_to_product_controller(filter_category, filter_brand, filt
 }
 
 let filter_size = '', filter_brand = '', filter_category = '';
-document.querySelectorAll('#filter-category, #filter-brand, #filter-size')
+document.querySelectorAll('#filter-category, #filter-brand, #filter-size, .filter_status .btn_delete')
 .forEach((filter) => {
     filter.addEventListener('click', (e)=> {
         e.preventDefault();
         const the_button = e.target;
 
+        if(the_button.classList.contains('btn_delete')) {
+            // 카테고리
+            const category_children = document.querySelectorAll('#filter-category li a');
+            category_children.forEach((idx)=> {
+                idx.style.color = '';
+                idx.fontWeight = '';
+                filter_category = '';
+            });
+            // 브랜드
+            const brand_children = document.querySelectorAll('#filter-brand li a');
+            brand_children.forEach((idx)=> {
+                idx.style.color = '';
+                idx.fontWeight = '';
+                filter_brand = '';
+            });
+            // 사이즈
+            const size_children = document.querySelectorAll('#filter-size label');
+            size_children.forEach((idx)=> {
+                console.log(idx.tagName);
+                idx.classList.remove('active');
+                filter_size = '';
+            });
+        }
+
         // 사이즈 필터 체크
         if(the_button.parentNode.getAttribute('id') === 'filter-size') {
             const the_size_button = the_button.childNodes[0];
+            console.log(the_size_button.tagName);
             if(!the_button.classList.contains('active')) {
                 the_button.classList.add('active');
 
@@ -151,7 +176,19 @@ document.querySelectorAll('#filter-category, #filter-brand, #filter-size')
         // spreadList(list.js) << Edit From LSH
         // forward_to_product_controller(filter_category, filter_brand, filter_size);
         spreadList(filter_brand, filter_category, filter_size);
-        console.log(`ctgr : ${filter_category.length}, brand : ${filter_brand.length}, size : ${filter_size.length}`)
+        // console.log(`ctgr : ${filter_category.length}, brand : ${filter_brand.length}, size : ${filter_size.length}`)
 
+        let list = filter_category.split(',');
+        list += filter_brand.split(',');
+        list += filter_size.split(',');
+        if(list.length > 0) {
+            document.querySelector('.filter_status .status_num').style.display = 'block';
+            document.querySelector('.filter_status .btn_delete').style.display = 'block';
+        } else {
+            document.querySelector('.filter_status .status_num').style.display = 'none';
+            document.querySelector('.filter_status .btn_delete').style.display = 'none';
+        }
+        document.querySelector('.filter_status .status_num').innerText = '\u00A0\u00A0' + list.length;
     });
 });
+

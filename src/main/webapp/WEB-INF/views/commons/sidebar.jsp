@@ -15,11 +15,20 @@
                     <div class="shop__sidebar">
                         <div class="shop__sidebar__accordion">
                             <div class="accordion" id="accordionExample">
+
+                                <div data-v-9c60e4ec="" data-v-75a99100="" class="filter_status" count="0">
+                                    <div data-v-9c60e4ec="" class="status_box">
+                                        <span data-v-9c60e4ec="" class="status_txt">필터</span>
+                                        <span data-v-9c60e4ec="" class="status_num" style="display: none;">1</span>
+                                    </div>
+                                    <a data-v-9c60e4ec="" href="#" class="btn_delete" style="display: none;">모두 삭제</a>
+                                </div>
+
                                 <div class="card">
                                     <div class="card-heading">
                                         <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
                                     </div>
-                                    <div id="collapseOne" class="collapse show" style="height:100px;">
+                                    <div id="collapseOne" class="collapse show" style="height:130px;">
                                         <div class="card-body">
                                             <div class="shop__sidebar__categories">
                                                 <ul class="nice-scroll" id="filter-category">
