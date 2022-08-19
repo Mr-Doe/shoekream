@@ -14,8 +14,10 @@ import com.shoekream.www.domain.productVO.ProductVO;
 public interface ProductDAO {
 	
 	List<ProductVO> selectList(PagingVO pgvo);
+	List<ProductVO> selectAdminList(PagingVO pgvo);
 	List<ProductVO> selectMinPrice(PagingVO pgvo);
 	int totalCount(PagingVO pgvo);
+	int adminListTotalCount(PagingVO pgvo);
 	int insert(ProductVO pvo);
 	List<FilterBrandVO> selectBrandList();	
 	List<FilterCategoryVO> selectCategoryList();

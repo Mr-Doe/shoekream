@@ -50,11 +50,21 @@ public class ProductServiceImpl implements ProductService {
 		}
 		return productVO;
 	}
-
+	
+	@Override
+	public List<ProductVO> getAdminList(PagingVO pgvo) {
+		return productDAO.selectAdminList(pgvo);
+	}
+	
+	@Override
 	public int getTotalCount(PagingVO pgvo) {
 		return productDAO.totalCount(pgvo);
 	}
-
+	
+	@Override
+	public int getAdminListTotalCount(PagingVO pgvo) {
+		return productDAO.adminListTotalCount(pgvo);
+	}
 	@Transactional
 	@Override
 	public int register(ProductVO productVO, MultipartFile[] files) throws Exception {
@@ -148,4 +158,8 @@ public class ProductServiceImpl implements ProductService {
             throw new Exception();
         }
     }
+
+	
+
+	
 }

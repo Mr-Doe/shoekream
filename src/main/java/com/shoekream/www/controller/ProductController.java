@@ -56,6 +56,13 @@ public class ProductController {
 		ProductDTO productDTO = new ProductDTO(new PagingHandler(pgvo, productService.getTotalCount(pgvo)), productService.getList(pgvo));
 		return new ResponseEntity<ProductDTO>(productDTO, HttpStatus.OK);
 	}
+	// todo - activate요소를 pageVO에 넣기
+	@ResponseBody
+	@GetMapping(value = "adminList", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ProductDTO> adminList(Model model, PagingVO pgvo) {
+		ProductDTO productDTO = new ProductDTO(new PagingHandler(pgvo, productService.getTotalCount(pgvo)), productService.getAdminList(pgvo));
+		return new ResponseEntity<ProductDTO>(productDTO, HttpStatus.OK);
+	}
 	@GetMapping("/register")
 	public void registerPage(Model model) {
 		FilterDTO filterDTO = new FilterDTO();
@@ -72,6 +79,7 @@ public class ProductController {
 			return "0";
 		}
 	}
+	
     @DeleteMapping("/delete/{pno}")
     public String deleteItem(@PathVariable("pno")int pno) {
         try {

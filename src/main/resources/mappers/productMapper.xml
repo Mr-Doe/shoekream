@@ -95,9 +95,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         ON
         	p.model = mi.model_number
 		WHERE
+			1=1
+		AND
 			activate = 'y'
 		<include refid="whereBrandCategory" />
 		<include refid="search"/>
+		GROUP BY
+			pno
+		ORDER BY
+			pno desc
+		LIMIT
+			#{pageStart}, #{qty}
+	</select>
+	<select id="selectAdminList" parameterType="pageVO" resultType="productVO">
+		SELECT
+    		p.pno as pno
+    		, e_name as eName
+    		, k_name as kName
+    		, sb.brand_name as brandName
+    		, sc.category_name as categoryName
+    		, activate
+		FROM
+    		product p 
+    	JOIN
+    		shoe_brand sb
+        ON
+        	p.brand = sb.brand_id
+    	JOIN
+    		shoe_category sc
+        ON
+        	p.category = sc.category_id
 		GROUP BY
 			pno
 		ORDER BY
@@ -141,6 +168,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="whereBrandCategory"/>
 		<include refid="search"/>
 	</select>
+	<select id="adminListTotalCount" parameterType="pageVO" resultType="int">
+		SELECT
+    		COUNT(p.pno)
+		FROM
+    		product p 
+    	JOIN
+    		shoe_brand sb
+        ON 
+        	p.brand = sb.brand_id
+    	JOIN 
+    		shoe_category sc
+        ON 
+        	p.category = sc.category_id
+	</select>
 	<select id="checkModelDuple" parameterType="String" resultType="int">
 		SELECT
 			COUNT(pno)
@@ -174,7 +215,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<delete id="deleteProduct" parameterType="int">
-		DELETE FROM product
-		WHERE pno = #{pno}
+		DELETE
+		FROM
+			product
+		WHERE
+			pno = #{pno}
 	</delete>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </mapper>
