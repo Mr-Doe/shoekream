@@ -195,10 +195,14 @@ p {
 								<span data-v-3a2a7b6b="">거래 일시</span>
 								<!---->
 							</dt>
-								<dd class="price_text" data-v-3a2a7b6b="">${mypageVO.regAt}</dd>
-							<c:if test="${mypageVO.isSold eq 1 && mypageVO.isSold ne ''}">
+							<c:choose>
+							<c:when test="${mypageVO.isSold eq 1 && mypageVO.isSold ne ''}">
 								<dd class="price_text" data-v-3a2a7b6b="">${mypageVO.endAt}</dd>
-							</c:if>
+							</c:when>
+							<c:otherwise>
+								<dd class="price_text" data-v-3a2a7b6b="">${mypageVO.regAt}</dd>
+							</c:otherwise>
+							</c:choose>
 						</dl>
 					</div>
 				</div>
