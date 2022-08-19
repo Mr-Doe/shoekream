@@ -1,3 +1,19 @@
+let filter_size = '', filter_brand = '', filter_category = '';
+let getSize, getBrand, getCategory;
+
+const urlParams = new URLSearchParams(window.location.search);
+if(urlParams.has('shoe_category') || urlParams.has('shoe_brand') || urlParams.has('shoe_size')) {
+    for(entry of urlParams.entries()) {
+        if(entry[0] == 'shoe_size') {
+            getSize =  entry[1];
+        } else if(entry[0] == 'shoe_brand') {
+            getBrand = entry[1];
+        } else if(entry[0] == 'shoe_category') {
+            getCategory = entry[1];
+        }
+    }
+}
+
 // CALL CATEGORY-filter-list from SERVER
 async function callFilter_Category() {
     try {
@@ -35,16 +51,33 @@ async function callFilter_Brand() {
 
 function getFilter_Brand() {
     callFilter_Brand().then(result => {
+        const list = getBrand.split(',');
+
         let html = '';
         if(result.length > 0) {
             result.forEach((index) => {
-                html += `<li><a href="${index.brandId}">${index.brandName}</a></li>`;
+                let result;
+                for(const value of list) {
+                    if(value == index.brandId) {
+                        result = value;
+                        break;
+                    }
+                }
+                if(index.brandId == result) {
+                    html += `<li><a style="color: black; font-weight: 700;" href="${index.brandId}">${index.brandName}</a></li>`;
+                    if(filter_brand.length == 0) {
+                        filter_brand = result;
+                    } else {
+                        filter_brand = "," + result;
+                    }
+                } else {
+                    html += `<li><a href="${index.brandId}">${index.brandName}</a></li>`;
+                }
             });
         }
         document.getElementById('filter-brand').innerHTML = html;
     });
 }
-
 
 // CALL SIZE-filter-list from SERVER
 async function callFilter_Size() {
@@ -69,25 +102,22 @@ function getFilter_Size() {
     });
 }
 
-async function forward_to_product_controller(filter_category, filter_brand, filter_size) {
-    try {
-        const path = `/product/list`;
-        let url = '';
+// async function forward_to_product_controller(filter_category, filter_brand, filter_size) {
+//     try {
+//         const path = `/product/listPage`;
+//         let url = '';
 
-        if(filter_category.length > 0) url += url.length == 0 ? `shoe_category=${filter_category}` : `&shoe_category=${filter_category}`;
-        if(filter_brand.length > 0) url += url.length == 0 ? `shoe_brand=${filter_brand}` : `&shoe_brand=${filter_brand}`;
-        if(filter_size.length > 0) url += url.length == 0 ? `shoe_size=${filter_size}` : `&shoe_size=${filter_size}`;
+//         if(filter_category.length > 0) url += url.length == 0 ? `shoe_category=${filter_category}` : `&shoe_category=${filter_category}`;
+//         if(filter_brand.length > 0) url += url.length == 0 ? `shoe_brand=${filter_brand}` : `&shoe_brand=${filter_brand}`;
+//         if(filter_size.length > 0) url += url.length == 0 ? `shoe_size=${filter_size}` : `&shoe_size=${filter_size}`;
 
-        const final_url = url.length == 0 ? `${path}&pageNo=1&qty=12` : `${path}?${url}&pageNo=1&qty=12`;
-        console.log(final_url);
-        await fetch(final_url);
-    } catch (error) {
-        console.log(error);
-    }
-}
+//         const final_url = url.length == 0 ? `${path}&pageNo=1&qty=12` : `${path}?${url}&pageNo=1&qty=12`;
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
 
-let filter_size = '', filter_brand = '', filter_category = '';
-document.querySelectorAll('#filter-category, #filter-brand, #filter-size, .filter_status .btn_delete')
+document.querySelectorAll('#filter-category, #filter-brand, #filter-size, .filter_status .btn_delete, .force_click')
 .forEach((filter) => {
     filter.addEventListener('click', (e)=> {
         e.preventDefault();
@@ -105,7 +135,7 @@ document.querySelectorAll('#filter-category, #filter-brand, #filter-size, .filte
             const brand_children = document.querySelectorAll('#filter-brand li a');
             brand_children.forEach((idx)=> {
                 idx.style.color = '';
-                idx.fontWeight = '';
+                idx.style.fontWeight = '';
                 filter_brand = '';
             });
             // 사이즈
@@ -176,11 +206,24 @@ document.querySelectorAll('#filter-category, #filter-brand, #filter-size, .filte
         // spreadList(list.js) << Edit From LSH
         // forward_to_product_controller(filter_category, filter_brand, filter_size);
         spreadList(filter_brand, filter_category, filter_size);
-        // console.log(`ctgr : ${filter_category.length}, brand : ${filter_brand.length}, size : ${filter_size.length}`)
+        console.log(`ctgr : ${filter_category}, brand : ${filter_brand}, size : ${filter_size}`)
 
-        let list = filter_category.split(',');
-        list += filter_brand.split(',');
-        list += filter_size.split(',');
+        const categoryList = filter_category.split(',');
+        const brandList = filter_brand.split(',');
+        const sizeList = filter_size.split(',');
+        let list = [];
+        for(const value of categoryList) {
+            if(value.length > 0) list.push(value);
+        }
+        for(const value of brandList) {
+            if(value.length > 0) list.push(value);
+        }
+        for(const value of sizeList) {
+            if(value.length > 0) list.push(value);
+        }
+
+
+        console.dir(list);
         if(list.length > 0) {
             document.querySelector('.filter_status .status_num').style.display = 'block';
             document.querySelector('.filter_status .btn_delete').style.display = 'block';
@@ -191,4 +234,3 @@ document.querySelectorAll('#filter-category, #filter-brand, #filter-size, .filte
         document.querySelector('.filter_status .status_num').innerText = '\u00A0\u00A0' + list.length;
     });
 });
-

@@ -82,7 +82,14 @@ p {
 
 <script src="../../resources/js/product/list.js"></script>
 <script>
-	spreadList();
+  // spreadList();
+  
+  /**
+   * Author : Mr.Doe
+   **/
+  setTimeout(function() {
+    document.querySelector('.force_click').click();
+  }, 300);
 </script>
 
 <jsp:include page="../commons/footer.jsp" />

@@ -63,6 +63,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div style="display: none;">
+                                    <button class="force_click"></button>
+                                </div>
                             </div>
                         </div>
                     </div>

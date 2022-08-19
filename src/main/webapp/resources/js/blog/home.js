@@ -3,7 +3,7 @@ async function getListFromServer(url) {
 }
 
 function feed_cards() {
-    if(document.querySelector('.tab_item.tab_on').innerHTML.includes('팔로잉') && session.length == 0) {
+    if(document.querySelector('.tab_item.tab_on').innerHTML.includes('Follwers') && session.length == 0) {
         console.log('test');
     }
 
@@ -21,12 +21,12 @@ function feed_cards() {
 
         let html = '';
         html += `
-                <div data-v-0066c9b3="" data-v-57a33098="" class="feed_card item${i}" style="position: absolute; left: ${left}px; top: ${top}px;">
+                <div data-v-0066c9b3="" data-v-57a33098="" class="feed_card item" style="position: absolute; left: ${left}px; top: ${top}px;">
                     <a data-v-0066c9b3="" href="#">
                         <div data-v-0066c9b3="" class="card_box">
-                            <div data-v-0066c9b3="" class="social_img_box vertical">
+                            <div data-v-0066c9b3="" class="social_img_box vertical" style="">
                                 <img data-v-0066c9b3=""
-                                    src="https://kream-phinf.pstatic.net/MjAyMjA4MTdfMTc0/MDAxNjYwNzIyMDk2MjE4.V8_cCO2XViWGw9oTgQ4vtPnvH9lWtyL9BEERuxZ4gaEg.qqpodVytIg4EsAmEIzL5SBZQt5r9t6Vs2hDFaFd9P30g.JPEG/p_40ea535e99c84d7b840c42a31db9afd9.jpeg?type=m" class="social_img">
+                                    src="https://kream-phinf.pstatic.net/MjAyMjA4MTlfMjQ3/MDAxNjYwODk1MzUwNjc0.6Ld6IgOuAitdBPkEmcUZj1OLUj3q28njVyK79lnp57Ag.6F8ax_tysR1mu4u-SSbBzZE5BGUXZbFKLKOvLKKK8KUg.JPEG/p_b587f77cecf64b87bdd413a9d131717d.jpeg?type=m" class="social_img">
                                 </div>
                             <div data-v-0066c9b3="" class="card_detail">
                                 <div data-v-0066c9b3="" class="user_box">
@@ -95,11 +95,12 @@ const tab_menu = document.querySelectorAll('.style_tab_list a')
 
 function which_memu() {
     tab_menu.forEach((idx)=> {
-        if(idx.classList.contains('tab_on') && idx.innerHTML.includes('인기')) {
+        if(idx.classList.contains('tab_on') && idx.innerHTML.includes('Popular')) {
             console.log(1, idx.innerHTML);
-        } else if(idx.classList.contains('tab_on') && idx.innerHTML.includes('최신')) {
+            const url = '/blog/pop_blog/';
+        } else if(idx.classList.contains('tab_on') && idx.innerHTML.includes('Lastest')) {
             console.log(2, idx.innerHTML);
-        } else if(idx.classList.contains('tab_on') && idx.innerHTML.includes('팔로잉')) {
+        } else if(idx.classList.contains('tab_on') && idx.innerHTML.includes('Follwers')) {
             console.log(3, idx.innerHTML);
             feed_cards();
         }
@@ -119,6 +120,5 @@ tab_menu.forEach((idx)=> {
         e.target.classList.add('tab_on');
         which_memu();
 
-        
     });
 });

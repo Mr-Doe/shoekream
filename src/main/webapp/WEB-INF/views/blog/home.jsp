@@ -23,9 +23,9 @@
 <div data-v-1a4d0c2e="" data-v-7606896d="" class="social_feed_header" style="margin-top: 50px; margin-bottom: 30px;">
     <div data-v-1a4d0c2e="" class="content_title">
         <div data-v-0bd1a56f="" data-v-1a4d0c2e="" class="style_tab_list">
-            <a data-v-0bd1a56f="" href="#" class="tab_item tab_on"> 인기 </a>
-            <a data-v-0bd1a56f="" href="#" class="tab_item"> 최신 </a>
-            <a data-v-0bd1a56f="" href="#" class="tab_item"> 팔로잉 </a>
+            <a data-v-0bd1a56f="" href="#" class="tab_item tab_on"> Popular </a>
+            <a data-v-0bd1a56f="" href="#" class="tab_item"> Lastest </a>
+            <a data-v-0bd1a56f="" href="#" class="tab_item"> Follwers </a>
         </div>
     </div>
 </div>
