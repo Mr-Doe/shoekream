@@ -15,6 +15,8 @@ public interface ProductService {
 	List<ProductVO> getList(PagingVO pgvo);
 	List<ProductVO> getAdminList(PagingVO pgvo);
 	int getTotalCount(PagingVO pgvo);
+	int getActiveCount(PagingVO pgvo);
+	int getNonActiveCount(PagingVO pgvo);
 	int getAdminListTotalCount(PagingVO pgvo);
 	int register(ProductVO productVO, MultipartFile[] files) throws Exception;
 	List<FilterBrandVO> getBrandList();

@@ -163,12 +163,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     		shoe_category sc
         ON 
         	p.category = sc.category_id
-		WHERE
-			activate = 'y'
-		<include refid="whereBrandCategory"/>
-		<include refid="search"/>
 	</select>
-	<select id="adminListTotalCount" parameterType="pageVO" resultType="int">
+	<select id="activeCount" parameterType="pageVO" resultType="int">
 		SELECT
     		COUNT(p.pno)
 		FROM
@@ -181,7 +177,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     		shoe_category sc
         ON 
         	p.category = sc.category_id
+        WHERE
+			activate = 'y'
+		<include refid="whereBrandCategory"/>
+		<include refid="search"/>
 	</select>
+	<select id="nonActiveCount" parameterType="pageVO" resultType="int">
+		SELECT
+    		COUNT(p.pno)
+		FROM
+    		product p 
+    	JOIN
+    		shoe_brand sb
+        ON 
+        	p.brand = sb.brand_id
+    	JOIN 
+    		shoe_category sc
+        ON 
+        	p.category = sc.category_id
+        WHERE
+			activate = 'n'
+	</select>
+	
 	<select id="checkModelDuple" parameterType="String" resultType="int">
 		SELECT
 			COUNT(pno)

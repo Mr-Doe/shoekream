@@ -9,8 +9,11 @@ public class PagingHandler {
 	private boolean prev, next; // 이전, 다음 버튼 존재 여부
 	
 	private int totalCount; // 총 게시글의 수
+	private int activateCount; // 총 게시글의 수
+	private int nonActivateCount; // 총 게시글의 수	
 	private PagingVO pgvo; // 사용자가 입력하거나 전달되는 페이징 정보값을 갖고 있는 객체
 	
+	// product list
 	public PagingHandler(PagingVO pgvo, int totalCount) {
 		this.pgvo = pgvo;
 		this.totalCount = totalCount;
@@ -29,7 +32,26 @@ public class PagingHandler {
 		this.prev = startPage > 1;
 		this.next = endPage < realEndPage;
 	}
-
+	// admin list
+	public PagingHandler(PagingVO pgvo, int activeCount, int nonActivateCount, int totalCount) {
+		this.pgvo = pgvo;
+		this.activateCount = activeCount;
+		this.nonActivateCount = nonActivateCount;
+		this.totalCount = totalCount;
+		this.endPage = (( (pgvo.getPageNo()- 1) / 5 ) + 1 ) * 5;
+		this.startPage = endPage - 4;
+		
+		int realEndPage = (int)(Math.ceil((totalCount * 1.0) / pgvo.getQty()));
+		
+		if(realEndPage < this.endPage) {
+			this.endPage = realEndPage;
+		}
+		
+		this.prev = startPage > 1;
+		this.next = endPage < realEndPage;
+	}
+	
+	
 	public int getStartPage() {
 		return startPage;
 	}
@@ -78,12 +100,19 @@ public class PagingHandler {
 		this.pgvo = pgvo;
 	}
 
-	@Override
-	public String toString() {
-		return "PagingHandler [startPage=" + startPage + ", endPage=" + endPage + ", prev=" + prev + ", next=" + next
-				+ ", totalCount=" + totalCount + ", pgvo=" + pgvo + ", getStartPage()=" + getStartPage()
-				+ ", getEndPage()=" + getEndPage() + ", isPrev()=" + isPrev() + ", isNext()=" + isNext()
-				+ ", getTotalCount()=" + getTotalCount() + ", getPgvo()=" + getPgvo() + ", getClass()=" + getClass()
-				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+	public int getActivateCount() {
+		return activateCount;
+	}
+
+	public void setActivateCount(int activateCount) {
+		this.activateCount = activateCount;
+	}
+
+	public int getNonActivateCount() {
+		return nonActivateCount;
+	}
+
+	public void setNonActivateCount(int nonActivateCount) {
+		this.nonActivateCount = nonActivateCount;
 	}
 }

@@ -20,7 +20,6 @@ public class ProductVO {
     private int minPrice;
     private String activate;
     
-    
 	public String getActivate() {
 		return activate;
 	}

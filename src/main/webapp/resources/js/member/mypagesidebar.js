@@ -69,10 +69,18 @@ function selected_tab_menu() {
 
 // edit by sang hyun 08/19
 document.addEventListener('click', (e) => {
-    if(e.target.id('delBtn')){
-
+    if(e.target.id == 'delBtn'){
+        console.log(e.target.dataset.pno);
+        isDel = remove(e.target.dataset.pno);
+        if(isDel){
+            alert('삭제되었습니다');
+        }
+        else {
+            alert('삭제에 실패 하였습니다');
+        }
     }
 });
+
 async function getListFromServer(pageNo=1){
     try {
       const resp = await fetch('/product/adminList');
@@ -96,10 +104,23 @@ function spreadAdminList(pageNo){
             <div class="btn-group float-right" role="group" aria-label="Basic mixed styles example">
             <button type="button" class="btn btn-${productVO.activate == 'Y' ? 'warning' : 'outline-warning' }" id="activeBtn">${productVO.activate == 'Y' ? '비활성화' : '활성화' }</button>
             <button type="button" class="btn btn-secondary">수정</button>
-            <button class="btn btn-danger" id="delBtn">삭제</button>
-          </div></li>`;
+            <button class="btn btn-danger" id="delBtn" data-pno="${productVO.pno}">삭제</button>
+            </div></li>`;
         });
         html += `</ul>`;
         content.innerHTML = html;
     });
+}
+
+async function remove(pno){
+    try {
+        const url = '/product/delete/'+pno;
+        const config = {
+            method : 'DELETE'
+        }
+        const resp = await fetch(url, config);
+        return resp.text();
+    } catch (error) {
+        console.log(error);
+    }
 }

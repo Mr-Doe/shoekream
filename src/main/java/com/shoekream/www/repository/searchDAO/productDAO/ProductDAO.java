@@ -17,6 +17,8 @@ public interface ProductDAO {
 	List<ProductVO> selectAdminList(PagingVO pgvo);
 	List<ProductVO> selectMinPrice(PagingVO pgvo);
 	int totalCount(PagingVO pgvo);
+	int activeCount(PagingVO pgvo);
+	int nonActiveCount(PagingVO pgvo);
 	int adminListTotalCount(PagingVO pgvo);
 	int insert(ProductVO pvo);
 	List<FilterBrandVO> selectBrandList();	

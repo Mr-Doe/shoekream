@@ -65,6 +65,7 @@ public class ProductServiceImpl implements ProductService {
 	public int getAdminListTotalCount(PagingVO pgvo) {
 		return productDAO.adminListTotalCount(pgvo);
 	}
+	
 	@Transactional
 	@Override
 	public int register(ProductVO productVO, MultipartFile[] files) throws Exception {
@@ -158,6 +159,16 @@ public class ProductServiceImpl implements ProductService {
             throw new Exception();
         }
     }
+
+	@Override
+	public int getActiveCount(PagingVO pgvo) {
+		return 0;
+	}
+
+	@Override
+	public int getNonActiveCount(PagingVO pgvo) {
+		return 0;
+	}
 
 	
 
