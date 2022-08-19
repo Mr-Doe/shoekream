@@ -119,7 +119,13 @@ public class ProductServiceImpl implements ProductService {
         }
         return productVO.getPno();
 	}
-//
+
+	@Override
+	public int putProduct(ProductVO productVO, MultipartFile[] files) throws Exception {
+		return 0;
+	}
+
+	//
 //	@Override
 //	public int putProduct(ProductVO productVO, MultipartFile[] files) throws Exception {
 //		// todo /진행 중/ data validation

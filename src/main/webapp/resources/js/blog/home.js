@@ -8,12 +8,15 @@ function feed_cards() {
     }
 
     const card_box = document.querySelector('.masonry_posts');
+    let card_box_default_height = 1500;
+    card_box.style.height = card_box_default_height;
     card_box.innerHTML = '';
     let location_width = 307 , left = 0;
     let location_height = 552, top = 0;
+    let card_box_height = 1700; // height = +1700
 
     
-    for(var i = 0; i < 16; i++) {
+    for(var i = 0; i < 12; i++) {
         if(card_box.offsetWidth < left) {
             left = 0;
             top += location_height;

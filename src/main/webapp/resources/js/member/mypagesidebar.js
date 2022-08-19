@@ -1,4 +1,4 @@
-/**
+/*
  * Author : Mr.Doe
  * mypagesidebar.jsp 에 추가된 '설정'을 클릭시 발생하는 이벤트 추가.
  */
