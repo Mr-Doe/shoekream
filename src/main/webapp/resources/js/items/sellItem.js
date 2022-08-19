@@ -46,7 +46,7 @@ document.getElementById('btn').addEventListener('click', () => {
 document.addEventListener('change', (e) => {
     if(e.target.id == 'bid_price'){
         if (document.getElementById('itemNo').innerText != 0 && document.getElementById('type').innerText == '0') {
-            if (parseInt(e.target.value) >= 30000 && parseInt(e.target.value) <= parseInt(document.getElementById('sellPrice').innerText)) {
+            if (parseInt(e.target.value) >= 30000 && parseInt(e.target.value) <= parseInt(document.getElementById('price').innerText)) {
                 document.querySelector('.on').classList.remove('on');
                 spreadDealArea();
             } 
@@ -67,7 +67,7 @@ document.addEventListener('keyup', (e) => {
             if(document.getElementById('type').innerText == '0'){
                 if(document.getElementById('itemNo').innerText == 0){
                     document.getElementById('btn').disabled = false;
-                } else if(document.getElementById('itemNo').innerText != 0 && parseInt(e.target.value) > parseInt(document.getElementById('sellPrice').innerText)){
+                } else if(document.getElementById('itemNo').innerText != 0 && parseInt(e.target.value) > parseInt(document.getElementById('price').innerText)){
                     document.getElementById('btn').disabled = false;
                 }
             }
@@ -81,10 +81,9 @@ function spreadDealArea() {
                 <dl data-v-03750f89="" class="price_now_box">
                 <dt data-v-03750f89="" class="price_now_title">즉시 판매가</dt>
                 <dd data-v-03750f89="" class="price">
-                <span data-v-03750f89="" class="amount" >${document.getElementById('sellPrice').innerText }</span><span data-v-03750f89="" class="unit">원</span>
+                <span data-v-03750f89="" class="amount" >${document.getElementById('price').innerText }</span><span data-v-03750f89="" class="unit">원</span>
                 </dd></dl></div>`;
     document.getElementById('area').innerHTML = html;
-    document.getElementById('priceValue').value = document.querySelector('#sellPrice').innerText;
     document.getElementById('btn').innerText = '즉시 판매 계속';
     document.getElementById('btn').disabled = false;
     document.getElementById('type').innerText = '1';
@@ -99,8 +98,14 @@ function spreadBidArea() {
                 <input data-v-03750f89="" type="text" required="required" placeholder="희망가 입력" autocomplete="off" class="input_amount"
                 id="bid_price">
                 <span data-v-03750f89="" class="unit">원</span></dd></dl>
-                <div data-v-03750f89="" class="price_warning">
-                <p data-v-03750f89="" style="color: #f15746; line-height: 17px; font-size: 13px;"> 입찰 최소값은 3만원입니다. </p></div></div>`;
+                <div data-v-03750f89="" class="price_warning">`;
+    if(document.getElementById('itemNo').innerText != 0){
+        html += `<p data-v-03750f89="" style="color: #f15746; line-height: 17px; font-size: 13px;"> 
+                입찰 가격은 ${document.getElementById('price').innerText}원 보다 커야합니다</p></div></div>`;
+    } else if(document.getElementById('itemNo').innerText == 0){
+        html += `<p data-v-03750f89="" style="color: #f15746; line-height: 17px; font-size: 13px;"> 입찰 최솟값은 3만원입니다. </p></div></div>`;
+    }
+            
     document.getElementById('area').innerHTML = html;
     document.getElementById('btn').innerText = '판매 입찰 계속';
     document.getElementById('btn').disabled = true;
