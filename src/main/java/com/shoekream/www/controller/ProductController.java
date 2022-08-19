@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -56,11 +57,10 @@ public class ProductController {
 		return new ResponseEntity<ProductDTO>(productDTO, HttpStatus.OK);
 	}
 	// todo - activate요소를 pageVO에 넣기
-	@ResponseBody
 	@GetMapping(value = "adminList", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ProductDTO> adminList(Model model, PagingVO pgvo) {
+	public void adminList(Model model, PagingVO pgvo) {
 		ProductDTO productDTO = new ProductDTO(new PagingHandler(pgvo, productService.getActiveCount(pgvo), productService.getNonActiveCount(pgvo), productService.getTotalCount(pgvo)), productService.getAdminList(pgvo));
-		return new ResponseEntity<ProductDTO>(productDTO, HttpStatus.OK);
+		model.addAttribute("productDTO", productDTO);
 	}
 	
 	@GetMapping("/register")
@@ -80,7 +80,15 @@ public class ProductController {
 			return "0";
 		}
 	}
-	
+//	@PutMapping("/modify")
+//	public String modify(ProductVO productVO, @RequestParam(name = "fileAttached") MultipartFile[] files) {
+//		try {
+//			return "redirect:/items/detail?pno="+productService.putProduct(productVO, files);
+//		}catch (Exception e) {
+//			System.err.println(e.getMessage());
+//			return "0";
+//		}
+//	}
     @DeleteMapping("/delete/{pno}")
     public String deleteItem(@PathVariable("pno")int pno) {
         try {
