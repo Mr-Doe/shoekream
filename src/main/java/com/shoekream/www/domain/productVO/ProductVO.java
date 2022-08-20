@@ -19,7 +19,14 @@ public class ProductVO {
     private String imageUrl;
     private int minPrice;
     private String activate;
+    private String deleteImagesId;
     
+	public String getDeleteImagesId() {
+		return deleteImagesId;
+	}
+	public void setDeleteImagesId(String deleteImagesId) {
+		this.deleteImagesId = deleteImagesId;
+	}
 	public String getActivate() {
 		return activate;
 	}
@@ -115,6 +122,8 @@ public class ProductVO {
 		return "ProductVO [pno=" + pno + ", model=" + model + ", eName=" + eName + ", kName=" + kName + ", regAt="
 				+ regAt + ", retailPrice=" + retailPrice + ", category=" + category + ", categoryName=" + categoryName
 				+ ", brand=" + brand + ", brandName=" + brandName + ", fileName=" + fileName + ", imageId=" + imageId
-				+ ", imageUrl=" + imageUrl + ", minPrice=" + minPrice + ", activate=" + activate + "]";
+				+ ", imageUrl=" + imageUrl + ", minPrice=" + minPrice + ", activate=" + activate + ", deleteImagesId="
+				+ deleteImagesId + "]";
 	}
+	
 }

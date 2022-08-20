@@ -55,25 +55,17 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductVO> getAdminList(PagingVO pgvo) {
 		return productDAO.selectAdminList(pgvo);
 	}
-	
 	@Override
 	public int getTotalCount(PagingVO pgvo) {
 		return productDAO.totalCount(pgvo);
 	}
-
 	@Override
 	public int getActiveCount(PagingVO pgvo) {
 		return productDAO.activeCount(pgvo);
 	}
-
 	@Override
 	public int getNonActiveCount(PagingVO pgvo) {
 		return productDAO.nonActiveCount(pgvo);
-	}
-
-	@Override
-	public int getAdminListTotalCount(PagingVO pgvo) {
-		return productDAO.adminListTotalCount(pgvo);
 	}
 
 	@Transactional
@@ -119,89 +111,67 @@ public class ProductServiceImpl implements ProductService {
         }
         return productVO.getPno();
 	}
+	
 
 	@Override
 	public int putProduct(ProductVO productVO, MultipartFile[] files) throws Exception {
-		return 0;
-	}
+		// data validation
+        if (productVO == null) {
+            throw new Exception("[ERROR - PUT] ProductVO = Null");
+        }
 
-	//
-//	@Override
-//	public int putProduct(ProductVO productVO, MultipartFile[] files) throws Exception {
-//		// todo /진행 중/ data validation
-//        if (productVO == null) {
-//            throw new Exception("[ERROR - PUT] ProductVO = Null");
-//        }
-//
-//        FTPhandler ftp = new FTPhandler();
-//        ArrayList<String> urlList = new ArrayList<>(); // 새로운 이미지 url
-//        List<Long> list = new ArrayList<>(); // 삭제될 이미지 ID
-//
-//        /**
-//         * todo 1. deleteImages != null 디비 url 삭제 : 완료
-//         * todo 2. ShopVO 내용 디비에 update로 덮어씌우기 : 완료
-//         * todo 3. 스케줄러로 ftp 서버 미사용 이미지 일괄 삭제
-//         */
-//
-//        if (shopVO.getDeleteImagesId() != null) {
-//            String[] arr = shopVO.getDeleteImagesId().split(",");
-//            for (String idx : arr) {
-//                list.add(Long.parseLong(idx));
-//            }
-//        }
-//
-//        // todo /완료/ 수정된 페이지에서 새로 업로드된 이미지 파일 ftp 전송 로직
-//        if (files != null) {
-//            this.toCheckImageFileValidation(files);
-//
-//            boolean ftpUploadFailed = true;
-//            for (MultipartFile file : files) {
-//                String fileUrl = ftp.upload(file);
-//                if (fileUrl != null) {
-//                    urlList.add(fileUrl);
-//                    ftpUploadFailed = false;
-//                } else {
-//                    ftpUploadFailed = true;
-//                    break;
-//                }
-//            }
-//            // todo /완료/ 이미지 업로드 도중 실패했을 경우 앞에서 업로드 된 파일 삭제 로직
-//            if (ftpUploadFailed == true) {
-//                ftp.deleteUnfinishedFiles();
-//                ftp.disconnect();
-//                return 0;
-//            }
-//
-//            if (shopDAO.deleteImageWithImageId(list) > 0) { // 이미지 url 디비 이미지_테이블에서 삭제
-//                ftp.disconnect();
-//                for (String url : urlList) {
-//                    ShopVO tmp = new ShopVO();
-//                    tmp.setModelNumber(shopVO.getModelNumber());
-//                    tmp.setFileName(url);
-//                    shopDAO.insertImage(tmp);
-//                }
-//            }
-//        }
-//
-//        shopDAO.updateItem(shopVO);
-//        return shopVO.getItemNo();
-//	}
-	@Override
-	public List<FilterBrandVO> getBrandList() {
-		return brandService.getBrandList();
-	}
+        FTPhandler ftp = new FTPhandler();
+        ArrayList<String> urlList = new ArrayList<>(); // 새로운 이미지 url
+        List<Long> list = new ArrayList<>(); // 삭제될 이미지 ID
+        
+        if (productVO.getDeleteImagesId() != null) {
+            String[] arr = productVO.getDeleteImagesId().split(",");	// 가져온 productVO 안의 deleteImageId
+            for (String idx : arr) {
+                list.add(Long.parseLong(idx));
+            }
+        }
 
-	@Override
-	public List<FilterCategoryVO> getCategoryList() {
-		return categoryService.getCategoryList();
-	
+        // 수정된 페이지에서 새로 업로드된 이미지 파일 ftp 전송 로직
+        if (files != null) {
+            this.toCheckImageFileValidation(files);
+
+            boolean ftpUploadFailed = true;
+            for (MultipartFile file : files) {
+                String fileUrl = ftp.upload(file);
+                if (fileUrl != null) {
+                    urlList.add(fileUrl);
+                    ftpUploadFailed = false;
+                } else {
+                    ftpUploadFailed = true;
+                    break;
+                }
+            }
+            // 이미지 업로드 도중 실패했을 경우 앞에서 업로드 된 파일 삭제 로직
+            if (ftpUploadFailed == true) {
+                ftp.deleteUnfinishedFiles();
+                ftp.disconnect();
+                return 0;
+            }
+
+            if (productDAO.deleteImageWithImageId(list) > 0) { // 이미지 url 디비 이미지_테이블에서 삭제
+                ftp.disconnect();
+                for (String url : urlList) {
+                    ProductVO tmp = new ProductVO();
+                    tmp.setModel(productVO.getModel());
+                    tmp.setFileName(url);
+                    productDAO.insertImage(tmp);
+                }
+            }
+        }
+        productDAO.updateProduct(productVO);
+        return productVO.getPno();
 	}
 	
 	@Override
 	public int removeProduct(int pno) throws Exception {
 		
-        // todo /진행 중/ data validation
-        if(productDAO.selectProductCount(pno) > 0){
+        // data validation
+        if(productDAO.selectItemsCount(pno) > 0){
             throw new Exception("거래 내역이 있는 Product");
         }
 
@@ -209,6 +179,7 @@ public class ProductServiceImpl implements ProductService {
         FTPhandler ftp = new FTPhandler();
         String model = productDAO.selectModelNumber(pno);
         if(model != null) {
+        	// 먼저 존재하는 image_id 와 image_url을 리스트로 받기
             List<ProductVO> imageList = productDAO.selectImageIdAndUrl(model);
             if(imageList.size() > 0) {
                 if(ftp.deleteImageFile(imageList)) {
@@ -221,6 +192,17 @@ public class ProductServiceImpl implements ProductService {
         return 0;
     }
 
+	@Override
+	public List<FilterBrandVO> getBrandList() {
+		return brandService.getBrandList();
+	}
+
+	@Override
+	public List<FilterCategoryVO> getCategoryList() {
+		return categoryService.getCategoryList();
+	
+	}
+	
 	@Override
 	public void toCheckImageFileValidation(MultipartFile[] files) throws Exception {
 		for (MultipartFile file : files) {

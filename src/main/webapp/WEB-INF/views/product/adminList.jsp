@@ -68,7 +68,7 @@ p {
 <div data-v-5f779880="" data-v-3d7f7af7="" class="content_area">
 	<div data-v-5f779880="" class="my_home">
 		<div data-v-6752ceb2="" data-v-5f779880="" class="my_home_title">
-			<h3 data-v-6752ceb2="" class="title">관리자 모드</h3>
+			<h3 data-v-6752ceb2="" class="title">관리자 페이지</h3>
 		</div>
 		<div data-v-5f779880="" class="recent_purchase">
 			<div data-v-bbed98be="" data-v-5f779880=""
@@ -78,7 +78,7 @@ p {
 						style="pointer-events: none;"><dl data-v-bbed98be=""
 							class="tab_box">
 							<dt data-v-bbed98be="" class="title">전체</dt>
-							<dd data-v-bbed98be="" class="count">${selDTO.totalCount}</dd>
+							<dd data-v-bbed98be="" class="count">${productDTO.pagehdlr.totalCount}</dd>
 						</dl></a>
 				</div>
 				<div data-v-bbed98be="" class="tab_item tab_on">
@@ -86,7 +86,7 @@ p {
 						style="pointer-events: none;"><dl data-v-bbed98be=""
 							class="tab_box">
 							<dt data-v-bbed98be="" class="title">활성</dt>
-							<dd data-v-bbed98be="" class="count">${selDTO.bidCount}</dd>
+							<dd data-v-bbed98be="" class="count">${productDTO.pagehdlr.activateCount}</dd>
 						</dl></a>
 				</div>
 				<div data-v-bbed98be="" class="tab_item">
@@ -94,7 +94,7 @@ p {
 						style="pointer-events: none;"><dl data-v-bbed98be=""
 							class="tab_box">
 							<dt data-v-bbed98be="" class="title">비활성</dt>
-							<dd data-v-bbed98be="" class="count">${selDTO.endCount}</dd>
+							<dd data-v-bbed98be="" class="count">${productDTO.pagehdlr.nonActivateCount}</dd>
 						</dl></a>
 				</div>
 			</div>
@@ -103,16 +103,16 @@ p {
 					class="purchase_list all ask">
 
 					<c:choose>
-						<c:when test="${selDTO.totalCount eq 0}">
+						<c:when test="${productDTO.pagehdlr.totalCount eq 0}">
 							<div data-v-e2f6767a="" data-v-21d527e4="" class="empty_area">
-								<p data-v-e2f6767a="" class="desc">거래 내역이 없습니다.</p>
+								<p data-v-e2f6767a="" class="desc">등록된 제품이 없습니다.</p>
 							</div>
 						</c:when>
 						<c:otherwise>
-							<c:forEach items="${selDTO.history}" var="history"
-								varStatus="status" begin="0" end="2">
+							<c:forEach items="${productDTO.productList}" var="productVO"
+								varStatus="status">
 								<div data-v-62dace61="" data-v-21d527e4=""
-									class="purchase_item buy" data-itemno="${history.itemNo}">
+									class="purchase_item buy" data-itemno="${productVO.pno}">
 									<div data-v-62dace61="" class="history_product">
 										<div data-v-62dace61="" class="product_box">
 											<div data-v-75e33658="" data-v-62dace61="" class="product"
@@ -120,7 +120,7 @@ p {
 
 												<picture data-v-548c90f9="" data-v-75e33658=""
 													class="picture product_img"> <img
-													data-v-548c90f9="" alt="#" src="${history.thImg }"
+													<%-- data-v-548c90f9="" alt="#" src="${productVO. }" --%>
 													class="image"> </picture>
 
 												<!---->
@@ -130,9 +130,9 @@ p {
 										</div>
 										<div data-v-62dace61="" class="product_detail">
 											<!---->
-											<p data-v-62dace61="" class="name">${history.eName}</p>
+											<p data-v-62dace61="" class="name">${productVO.eName}</p>
 											<p data-v-62dace61="" class="size">
-												<span data-v-62dace61="" class="size_text">${history.shoeSize}</span>
+												<span data-v-62dace61="" class="size_text">${productVO.kName}</span>
 											</p>
 										</div>
 									</div>
@@ -140,13 +140,13 @@ p {
 										<c:choose>
 											<c:when test="${history.isSold eq 1}">
 												<div data-v-62dace61="" class="status_box field_status">
-													<span data-v-62dace61="" class="status_txt text-default">거래완료</span>
+													<span data-v-62dace61="" class="status_txt text-default">삭제</span>
 													<!---->
 												</div>
 											</c:when>
 											<c:otherwise>
 												<div data-v-62dace61="" class="status_box field_status">
-													<span data-v-62dace61="" class="status_txt text-default">거래중</span>
+													<span data-v-62dace61="" class="status_txt text-default">삭제</span>
 													<!---->
 												</div>
 											</c:otherwise>

@@ -43,6 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				or REPLACE(sb.brand_name, ' ', '') <include refid="keyword"/>)  
 		</if>
 	</sql>
+	
 	<insert id="insert" parameterType="productVO">
 		INSERT INTO product (
 			pno
@@ -230,7 +231,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE
 			model_number = #{modelNumber}
 	</select>
+	<select id="selectItemsCount" parameterType="int" resultType="int">
+		SELECT
+			COUNT(item_no)
+		FROM
+			items
+		WHERE
+			pno = #{pno}
+	</select>
 	
+	<update id="updateProduct" parameterType="productVO">
+		UPDATE product SET
+			category = #{categoryName}
+			, brand = #{brand}
+			, model = #{model}
+			, e_name = #{eName}
+			, k_name = #{kName}
+			, retail_price = #{retailPrice}
+		WHERE
+			pno = #{pno}
+	</update>
+	
+	<delete id="deleteImageWithModelNumber" parameterType="productVO">
+		DELETE FROM model_image
+		WHERE model_image_url IN
+				<foreach item="productVO" index="index" collection="list"
+						 open="(" separator="," close=")">
+					#{productVO.imageUrl}
+				</foreach>
+	</delete>
 	<delete id="deleteProduct" parameterType="int">
 		DELETE
 		FROM
@@ -238,15 +267,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE
 			pno = #{pno}
 	</delete>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	<delete id="deleteImageWithImageId" parameterType="long">
+		DELETE FROM model_image
+		WHERE image_id IN
+			<foreach item="imageId" index="index" collection="list"
+					 open="(" separator="," close=")">
+				#{imageId}
+			</foreach>
+	</delete>
 	
 </mapper>

@@ -56,10 +56,13 @@ public class ProductController {
 		ProductDTO productDTO = new ProductDTO(new PagingHandler(pgvo, productService.getActiveCount(pgvo)), productService.getList(pgvo));
 		return new ResponseEntity<ProductDTO>(productDTO, HttpStatus.OK);
 	}
-	// todo - activate요소를 pageVO에 넣기
+	
 	@GetMapping(value = "adminList", produces = MediaType.APPLICATION_JSON_VALUE)
 	public void adminList(Model model, PagingVO pgvo) {
-		ProductDTO productDTO = new ProductDTO(new PagingHandler(pgvo, productService.getActiveCount(pgvo), productService.getNonActiveCount(pgvo), productService.getTotalCount(pgvo)), productService.getAdminList(pgvo));
+		ProductDTO productDTO = new ProductDTO(new PagingHandler(pgvo, productService.getActiveCount(pgvo), 
+											productService.getNonActiveCount(pgvo), 
+											productService.getTotalCount(pgvo)), 
+											productService.getAdminList(pgvo));
 		model.addAttribute("productDTO", productDTO);
 	}
 	
@@ -80,15 +83,15 @@ public class ProductController {
 			return "0";
 		}
 	}
-//	@PutMapping("/modify")
-//	public String modify(ProductVO productVO, @RequestParam(name = "fileAttached") MultipartFile[] files) {
-//		try {
-//			return "redirect:/items/detail?pno="+productService.putProduct(productVO, files);
-//		}catch (Exception e) {
-//			System.err.println(e.getMessage());
-//			return "0";
-//		}
-//	}
+	@PutMapping("/modify")
+	public String modify(ProductVO productVO, @RequestParam(name = "fileAttached") MultipartFile[] files) {
+		try {
+			return "redirect:/items/detail?pno="+productService.putProduct(productVO, files);
+		}catch (Exception e) {
+			System.err.println(e.getMessage());
+			return "0";
+		}
+	}
     @DeleteMapping("/delete/{pno}")
     public String deleteItem(@PathVariable("pno")int pno) {
         try {
