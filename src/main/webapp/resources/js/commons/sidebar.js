@@ -50,20 +50,25 @@ async function callFilter_Brand() {
 }
 
 function getFilter_Brand() {
+    let list;
     callFilter_Brand().then(result => {
-        const list = getBrand.split(',');
+        if(getBrand != undefined) {
+            list = getBrand.split(',');
+        }
 
         let html = '';
         if(result.length > 0) {
             result.forEach((index) => {
                 let result;
-                for(const value of list) {
-                    if(value == index.brandId) {
-                        result = value;
-                        break;
+                if(list != undefined) {
+                    for(const value of list) {
+                        if(value == index.brandId) {
+                            result = value;
+                            break;
+                        }
                     }
                 }
-                if(index.brandId == result) {
+                if(result != undefined && index.brandId == result) {
                     html += `<li><a style="color: black; font-weight: 700;" href="${index.brandId}">${index.brandName}</a></li>`;
                     if(filter_brand.length == 0) {
                         filter_brand = result;
