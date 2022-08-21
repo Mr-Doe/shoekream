@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shoekream.www.domain.PagingVO.PagingVO;
-
 import com.shoekream.www.domain.filterVO.FilterDTO;
 import com.shoekream.www.domain.productVO.ProductDTO;
 import com.shoekream.www.domain.productVO.ProductVO;
@@ -81,7 +81,7 @@ public class ProductController {
 			return "redirect:/items/detail?pno="+productService.register(productVO, files);
 		}catch (Exception e) {
 			System.err.println(e.getMessage());
-			return "0";
+			return "redirect:/product/adminList";
 		}
 	}
 	
@@ -95,24 +95,31 @@ public class ProductController {
 		model.addAttribute("productDTO", productDTO);
 	}
 	
-	@PutMapping("/put")
-	public String put(ProductVO productVO, @RequestParam(name = "fileAttached") MultipartFile[] files) {
+	@PostMapping("/modify")
+	public String put(ProductVO productVO, @RequestParam(name="fileAttached", required = false) MultipartFile[] files) {
+		log.info(">>> modify POST > productVO : {}", productVO);
+		log.info(">>> modify POST > fileVO : {}", files.toString());
 		try {
-			return "redirect:/items/detail?pno="+productService.putProduct(productVO, files);
+			int isUp = productService.putProduct(productVO, files);
+			if(isUp > 0) {
+				return "redirect:/product/adminList";				
+			}
 		}catch (Exception e) {
 			System.err.println(e.getMessage());
-			return "0";
+			return "redirect:/product/adminList";
 		}
+		return "redirect:/product/adminList";
 	}
 	
-    @DeleteMapping("/delete/{pno}")
-    public String deleteItem(@PathVariable("pno")int pno) {
-        try {
-            return String.valueOf(productService.removeProduct(pno));
-        }catch (Exception e) {
-            System.err.println(e.getMessage());
-            return "0";
-        }
+	@DeleteMapping(value = "/{pno}", produces = {MediaType.TEXT_PLAIN_VALUE})
+    public ResponseEntity<String> erase(@PathVariable("pno") int pno){
+            try {
+				return productService.removeProduct(pno) > 0 ?
+						new ResponseEntity<String>("1", HttpStatus.OK)
+						: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+			} catch (Exception e) {
+				return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+			}
     }
     
 }

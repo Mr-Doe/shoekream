@@ -53,6 +53,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, brand
 			, category
 			, retail_price
+			, model_id
 		) VALUES (
 			#{pno}
 			, #{model}
@@ -61,15 +62,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, #{brand}
 			, #{category}
 			, #{retailPrice}
+			, #{modelId}
 		)
 	</insert>
 	<insert id="insertImage" parameterType="productVO">
 		INSERT INTO model_image (
-			model_number
+			image_id
+			, model_number
 			, model_image_url
+			, model_id
 		) VALUES (
-			#{model}
+			#{imageId}
+			, #{model}
 			, #{fileName}
+			, #{modelId}
 		)
 	</insert>
 	
@@ -246,6 +252,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, category
 			, brand
 			, activate
+			, model_id
 		FROM
 			product
 		WHERE
@@ -259,15 +266,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE
 			pno = #{pno}
 	</select>
-	
+	<select id="getLastImageId" resultType="int">
+		SELECT
+			MAX(image_id)
+		FROM
+			model_image
+	</select>
+	<select id="getLastModelId" resultType="int">
+		SELECT
+			MAX(model_id)
+		FROM
+			product
+	</select>
 	<update id="updateProduct" parameterType="productVO">
 		UPDATE product SET
-			category = #{categoryName}
+			category = #{category}
 			, brand = #{brand}
 			, model = #{model}
 			, e_name = #{eName}
 			, k_name = #{kName}
 			, retail_price = #{retailPrice}
+			, activate = #{activate}
 		WHERE
 			pno = #{pno}
 	</update>

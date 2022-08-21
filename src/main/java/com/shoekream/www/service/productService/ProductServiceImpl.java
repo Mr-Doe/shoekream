@@ -57,14 +57,6 @@ public class ProductServiceImpl implements ProductService {
 		List<ProductVO> list= productDAO.selectImageIdAndUrl(productVO.getModel());
 		return new ProductDTO(list, productVO);
 	}
-//	@Override
-//	public List<ProductVO> getImageList(String modelNumber) {
-//		return productDAO.selectImageIdAndUrl(modelNumber);
-//	}
-//	@Override
-//	public ProductVO getProductVO(int pno) {
-//		return productDAO.selectProductVO(pno);
-//	}
 	@Override
 	public List<ProductVO> getAdminList(PagingVO pgvo) {
 		return productDAO.selectAdminList(pgvo);
@@ -114,12 +106,15 @@ public class ProductServiceImpl implements ProductService {
         }
         ftp.disconnect();
         
-        productVO.setPno(productDAO.selectLastPno() + 1);
+        productVO.setPno(productDAO.selectLastPno()+1);
+        productVO.setModelId(productDAO.getLastModelId()+1);
 		productDAO.insert(productVO);
 		for (String url : urlList) {
             ProductVO tmp = new ProductVO();
+            tmp.setImageId(productDAO.getLastImageId()+1);
             tmp.setModel(productVO.getModel());
             tmp.setFileName(url);
+            tmp.setModelId(productVO.getModelId());
             productDAO.insertImage(tmp);
         }
         return productVO.getPno();
@@ -127,11 +122,16 @@ public class ProductServiceImpl implements ProductService {
 	@Transactional
 	@Override
 	public int putProduct(ProductVO productVO, MultipartFile[] files) throws Exception {
+		log.info(">>> Product Service Implements >>> putProduct METHOD");
 		// data validation
         if (productVO == null) {
             throw new Exception("[ERROR - PUT] ProductVO = Null");
         }
-
+        // 이미지 파일이 변화가 없다면 product만 바꾼다 
+        if(productVO.getDeleteImagesId().length() == 0) {
+        	return productDAO.updateProduct(productVO);
+        }
+        
         FTPhandler ftp = new FTPhandler();
         ArrayList<String> urlList = new ArrayList<>(); // 새로운 이미지 url
         List<Long> list = new ArrayList<>(); // 삭제될 이미지 ID
@@ -145,7 +145,7 @@ public class ProductServiceImpl implements ProductService {
         // 수정된 페이지에서 새로 업로드된 이미지 파일 ftp 전송 로직
         if (files != null) {
             this.toCheckImageFileValidation(files);
-
+            
             boolean ftpUploadFailed = true;
             for (MultipartFile file : files) {
                 String fileUrl = ftp.upload(file);
@@ -170,12 +170,12 @@ public class ProductServiceImpl implements ProductService {
                     ProductVO tmp = new ProductVO();
                     tmp.setModel(productVO.getModel());
                     tmp.setFileName(url);
+                    tmp.setModelId(productVO.getModelId());
                     productDAO.insertImage(tmp);
                 }
             }
         }
-        productDAO.updateProduct(productVO);
-        return productVO.getPno();
+        return productDAO.updateProduct(productVO);
 	}
 	@Transactional
 	@Override

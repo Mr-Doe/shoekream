@@ -30,7 +30,8 @@ public interface ProductDAO {
 	String selectModelNumber(int pno);
 	List<ProductVO> selectImageIdAndUrl(String model);
 	int selectItemCount(int pno);
-	
+	int getLastImageId();
+	int getLastModelId();
 	int updateProduct(ProductVO productVO);
 	
 	int deleteImageWithModelNumber(List<ProductVO> imageList);

@@ -85,6 +85,13 @@ p {
   background-color: #ddd;
   border-radius: 5px;
 }
+.purchase_item {
+	border-radius: 15px;
+} 
+.itemsHover :hover{
+	background-color: #e8e8e8;
+}
+
 </style>
 
 <jsp:include page="../member/mypagesidebar.jsp" />
@@ -138,7 +145,8 @@ p {
 						</c:when>
 						<c:otherwise>
 							<c:forEach items="${productDTO.productList}" var="productVO" varStatus="status">
-								<div data-v-62dace61="" data-v-21d527e4="" class="purchase_item buy" onclick="window.location.href='/product/modify?pno=${productVO.pno}'" data-itemno="${productVO.pno}">
+							<div class="itemsHover">
+								<div data-v-62dace61="" data-v-21d527e4="" class="purchase_item buy" data-pno="${productVO.pno}">
 									<div data-v-62dace61="" class="history_product">
 										<div data-v-62dace61="" class="product_box">
 											<div data-v-75e33658="" data-v-62dace61="" class="product" style="background-color: rgb(235, 240, 245);">
@@ -158,6 +166,7 @@ p {
 										</div>
 									</div>
 								</div>
+							</div>
 							</c:forEach>
 							<div class="pagination">
 								<c:if test="${productDTO.totalCountPageHandler.prev eq true}">
@@ -183,6 +192,5 @@ p {
 </div>
 <span id="grade" style="display: none;">${ses.grade}</span>
 <script src="../../resources/js/product/adminlist.js"></script>
-
 
 <jsp:include page="../commons/footer_product.jsp" />

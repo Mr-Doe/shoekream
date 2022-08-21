@@ -15,12 +15,19 @@ public class ProductVO {
     private int brand;
     private String brandName;
     private String fileName;
+    private int modelId;
     private long imageId;
     private String imageUrl;
     private int minPrice;
     private String activate;
     private String deleteImagesId;
     
+	public int getModelId() {
+		return modelId;
+	}
+	public void setModelId(int modelId) {
+		this.modelId = modelId;
+	}
 	public String getDeleteImagesId() {
 		return deleteImagesId;
 	}
@@ -121,9 +128,9 @@ public class ProductVO {
 	public String toString() {
 		return "ProductVO [pno=" + pno + ", model=" + model + ", eName=" + eName + ", kName=" + kName + ", regAt="
 				+ regAt + ", retailPrice=" + retailPrice + ", category=" + category + ", categoryName=" + categoryName
-				+ ", brand=" + brand + ", brandName=" + brandName + ", fileName=" + fileName + ", imageId=" + imageId
-				+ ", imageUrl=" + imageUrl + ", minPrice=" + minPrice + ", activate=" + activate + ", deleteImagesId="
-				+ deleteImagesId + "]";
+				+ ", brand=" + brand + ", brandName=" + brandName + ", fileName=" + fileName + ", modelId=" + modelId
+				+ ", imageId=" + imageId + ", imageUrl=" + imageUrl + ", minPrice=" + minPrice + ", activate="
+				+ activate + ", deleteImagesId=" + deleteImagesId + "]";
 	}
 	
 }
