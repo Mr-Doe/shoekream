@@ -130,8 +130,10 @@ p {
 				</div>
 			</div>
 			<div data-v-5f779880="">
-				<!-- <div data-v-21d527e4="" data-v-5f779880=""
-					class="purchase_list all ask"> -->
+				<div>
+					<button class="btn btn-success" style="margin-top: 20px" onclick="window.location.href='/product/register'">상품등록</button>
+				</div>
+				
 				<div data-v-21d527e4="" data-v-5f779880="" class="printZone" style="padding-top: 2em;">
 					<!---->
 					<!---->
