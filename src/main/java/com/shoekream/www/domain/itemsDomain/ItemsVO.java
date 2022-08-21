@@ -25,41 +25,35 @@ public class ItemsVO {
 	
 	public ItemsVO() {}
 
-	// sell register
-	public ItemsVO(int pno, int shoeSize, int price, String sellerEmail) {
-		this.pno = pno;
-		this.shoeSize = shoeSize;
-		this.price = price;
-		this.sellerEmail = sellerEmail;
-	}
-
-	// buy register
-	public ItemsVO(String buyerEmail, int pno, int shoeSize, int price) {
-		this.buyerEmail = buyerEmail;
-		this.pno = pno;
-		this.shoeSize = shoeSize;
-		this.price = price;
-	}
-	
-	// sell end
-	public ItemsVO(String buyerEmail, int itemNo) {
-		this.buyerEmail = buyerEmail;
-		this.itemNo = itemNo;
-	}
-
-	// buy end
-	public ItemsVO(int itemNo, String buyerEmail) {
-		this.itemNo = itemNo;
-		this.buyerEmail = buyerEmail;
-	}
-
-	// item detail
-	public ItemsVO(int itemNo, int pno, int shoeSize, int price) {
-		this.itemNo = itemNo;
-		this.pno = pno;
-		this.shoeSize = shoeSize;
-		this.price = price;
-	}
-
+//	public ItemsVO(int pno, int shoeSize, int price, String sellerEmail) {
+//		this.pno = pno;
+//		this.shoeSize = shoeSize;
+//		this.price = price;
+//		this.sellerEmail = sellerEmail;
+//	}
+//
+//	public ItemsVO(String buyerEmail, int pno, int shoeSize, int price) {
+//		this.buyerEmail = buyerEmail;
+//		this.pno = pno;
+//		this.shoeSize = shoeSize;
+//		this.price = price;
+//	}
+//	
+//	public ItemsVO(String buyerEmail, int itemNo) {
+//		this.buyerEmail = buyerEmail;
+//		this.itemNo = itemNo;
+//	}
+//
+//	public ItemsVO(int itemNo, String buyerEmail) {
+//		this.itemNo = itemNo;
+//		this.buyerEmail = buyerEmail;
+//	}
+//
+//	public ItemsVO(int itemNo, int pno, int shoeSize, int price) {
+//		this.itemNo = itemNo;
+//		this.pno = pno;
+//		this.shoeSize = shoeSize;
+//		this.price = price;
+//	}
 
 }

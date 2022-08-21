@@ -18,16 +18,13 @@
 								<source data-v-548c90f9="" type="image/webp" srcset="${idto.img }">
 								<source data-v-548c90f9="" srcset="${idto.img }">
 								<img data-v-548c90f9="" alt="상품 이미지" src="${idto.img }" class="image"></picture>
-<%-- 								<source data-v-548c90f9="" type="image/webp" srcset="${productVO.thImg }">
-								<source data-v-548c90f9="" srcset="${productVO.thImg }">
-								<img data-v-548c90f9="" alt="상품 이미지" src="${productVO.thImg }" class="image"></picture> --%>
 							</div>
 							<div data-v-1643775e="" class="product_detail">
 								<div data-v-299f50cf="" class="product_detail">
- 									<p data-v-299f50cf="" class="code"><%-- ${productVO.model } --%>${idto.pvo.model }</p>
-									<p data-v-299f50cf="" class="name"><%-- ${productVO.eName } --%>${idto.pvo.eName }</p>
-									<p data-v-299f50cf="" class="translated_name"><%-- ${productVO.kName } --%>${idto.pvo.kName }</p>
-									<p data-v-299f50cf="" class="size"><%-- ${size.sizeValue } --%>${idto.size }</p>
+ 									<p data-v-299f50cf="" class="code">${idto.pvo.model }</p>
+									<p data-v-299f50cf="" class="name">${idto.pvo.eName }</p>
+									<p data-v-299f50cf="" class="translated_name">${idto.pvo.kName }</p>
+									<p data-v-299f50cf="" class="size">${idto.size }</p>
 								</div>
 							</div>
 						</div>
@@ -36,12 +33,12 @@
 						<ul data-v-638c1354="" data-v-158ed304="" class="price_list">
 							<li data-v-638c1354="" class="list_item">
 								<p data-v-638c1354="" class="title">즉시 구매가</p>
-								<span data-v-638c1354="" class="price" id="buyPrice"><%-- ${price.buy ne null ? price.buy : "-&nbsp"} --%>${idto.map.buy ne null ? idto.map.buy : "-&nbsp"}</span>
+								<span data-v-638c1354="" class="price" id="buyPrice">${idto.map.buy ne null ? idto.map.buy : "-&nbsp"}</span>
 								<span data-v-638c1354="" class="unit">원</span>
 							</li>
 							<li data-v-638c1354="" class="list_item">
 								<p data-v-638c1354="" class="title">즉시 판매가</p>
-								<span data-v-638c1354="" class="price"><%-- ${price.sell ne null ? price.sell : "-&nbsp"} --%>${idto.map.sell ne null ? idto.map.sell : "-&nbsp"}</span>
+								<span data-v-638c1354="" class="price">${idto.map.sell ne null ? idto.map.sell : "-&nbsp"}</span>
 								<span data-v-638c1354="" class="unit">원</span>
 							</li>
 						</ul>
@@ -81,13 +78,6 @@
 </div>
 
 <form action="" method="post">
-<%-- 	<input type="hidden" name="itemNo" value="${itemsVO ne null ? itemsVO.itemNo : 0}">
-	<input type="hidden" name="buyerEmail" value="${ses.email }">
-	<input type="hidden" name="pno" value="${productVO.pno }">
-	<input type="hidden" name="shoeSize" value="${size.sizeId }">
-	<input type="hidden" name="price" id="priceValue" value="0"> --%>
-	
-<%-- 	<input type="hidden" name="itemNo" value="${idto.ivo ne null ? idto.ivo.itemNo : 0}"> --%>
 	<input type="hidden" name="itemNo" value="${idto.ivo.itemNo}">
 	<input type="hidden" name="buyerEmail" value="${ses.email }">
 	<input type="hidden" name="pno" value="${idto.pvo.pno }">

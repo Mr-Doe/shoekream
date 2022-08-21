@@ -18,23 +18,17 @@
 			<div data-v-44d29853="" class="column_bind">
 				<div data-v-44d29853="" class="column is_fixed">
 					<div data-v-44d29853="" class="spread">
-						<%-- <img src="${pdto.productVO.thImg }"> --%>
 						<img src="${idto.img }">
 					</div>
-					<!-- <div data-v-44d29853="" class="column_box">
-						<div data-v-505b03f6="" data-v-44d29853="" class="detail_banner_area lg">
-							<div data-v-3d1a4f76="" data-v-505b03f6="" dir="ltr" class="banner_slide detail_slide slick-slider slick-initialized"> </div>
-						</div>
-					</div> -->
 				</div>
 				<div data-v-44d29853="" class="column">
 					<div data-v-5622d1e8="" data-v-44d29853="" class="column_box">
 						<div data-v-5622d1e8="" class="column_top">
 							<div data-v-22fed681="" data-v-5622d1e8="" class="detail_main_title lg">
 								<div data-v-22fed681="" class="main_title_box">
-									<div data-v-22fed681="" class="brand"><%-- ${pdto.brandName } --%>${idto.brand }</div>
-									<p data-v-22fed681="" class="title"><%-- ${pdto.productVO.eName } --%>${idto.pvo.eName }</p>
-									<p data-v-22fed681="" class="sub_title"><%-- ${pdto.productVO.kName } --%>${idto.pvo.kName }</p>
+									<div data-v-22fed681="" class="brand">${idto.brand }</div>
+									<p data-v-22fed681="" class="title">${idto.pvo.eName }</p>
+									<p data-v-22fed681="" class="sub_title">${idto.pvo.kName }</p>
 								</div>
 							</div>
 							<div data-v-5622d1e8="" class="product_info_wrap">
@@ -43,15 +37,15 @@
 									<dl data-v-b809b0a6="" class="detail_product">
 										<div data-v-b809b0a6="" class="detail_box model_num">
 											<dt data-v-b809b0a6="" class="product_title">모델번호</dt>
-											<dd data-v-b809b0a6="" class="product_info"><%-- ${pdto.productVO.model } --%>${idto.pvo.model }</dd>
+											<dd data-v-b809b0a6="" class="product_info">${idto.pvo.model }</dd>
 										</div>
 										<div data-v-b809b0a6="" class="detail_box">
 											<dt data-v-b809b0a6="" class="product_title">출시일</dt>
-											<dd data-v-b809b0a6="" class="product_info"><%-- ${pdto.productVO.regAt } --%>${idto.pvo.regAt }</dd>
+											<dd data-v-b809b0a6="" class="product_info">${idto.pvo.regAt }</dd>
 										</div>
 										<div data-v-b809b0a6="" class="detail_box">
 											<dt data-v-b809b0a6="" class="product_title">발매가</dt>
-											<dd data-v-b809b0a6="" class="product_info"><%-- ${pdto.productVO.retailPrice }원 --%>${idto.pvo.retailPrice }원</dd>
+											<dd data-v-b809b0a6="" class="product_info">${idto.pvo.retailPrice }원</dd>
 										</div>
 									</dl>
 								</div>
@@ -75,7 +69,6 @@
 									<div data-v-5943a237="" class="price">
 										<div data-v-5943a237="" class="amount">
 											<span data-v-5943a237="" class="num" id="recentPriceValue">
-												<%-- ${recentAndSellPrice.recentPrice ne null ?  recentAndSellPrice.recentPrice : "-&nbsp"} --%>
 												${idto.map.recentPrice ne null ?  idto.map.recentPrice : "-&nbsp"}
 											</span>
 											<span data-v-5943a237="" class="won">원</span>
@@ -86,25 +79,20 @@
 							<div data-v-5622d1e8="" class="btn_wrap">
 								<div data-v-23bbaa82="" data-v-5622d1e8="" class="division_btn_box lg">
 									<a data-v-23bbaa82="" href="/items/buySelect?pno=${idto.pvo.pno }&email=${ses.email}" class="btn_division buy">
-<%-- 									<a data-v-23bbaa82="" href="/items/buySelect?pno=${pdto.productVO.pno }" class="btn_division buy"> --%>
 										<strong data-v-23bbaa82="" class="title">구매</strong>
 										<div data-v-23bbaa82="" class="price">
 											<span data-v-23bbaa82="" class="amount">
-												<em data-v-23bbaa82="" class="num" id="buyPrice"><%-- ${buyPrice ne null ? buyPrice : "-&nbsp"} --%>${idto.map.minBuyPrice ne null ?  idto.map.minBuyPrice : "-&nbsp"}</em>
+												<em data-v-23bbaa82="" class="num" id="buyPrice">${idto.map.minBuyPrice ne null ?  idto.map.minBuyPrice : "-&nbsp"}</em>
 												<span data-v-23bbaa82="" class="won">원</span>
 											</span>
 											<span data-v-23bbaa82="" class="desc">즉시 구매가</span>
 										</div>
 									</a>
 									<a data-v-23bbaa82="" href="/items/sellSelect?pno=${idto.pvo.pno }&email=${ses.email}" class="btn_division sell">
-<%-- 									<a data-v-23bbaa82="" href="/items/sellSelect?pno=${pdto.productVO.pno }" class="btn_division sell"> --%>
 										<strong data-v-23bbaa82="" class="title">판매</strong>
 										<div data-v-23bbaa82="" class="price">
 											<span data-v-23bbaa82="" class="amount">
-												<em data-v-23bbaa82="" class="num">
-													<%-- ${recentAndSellPrice.maxSellPrice ne null ?  recentAndSellPrice.maxSellPrice : "-&nbsp"} --%>
-													${idto.map.maxSellPrice ne null ?  idto.map.maxSellPrice : "-&nbsp"}
-												</em>
+												<em data-v-23bbaa82="" class="num">${idto.map.maxSellPrice ne null ?  idto.map.maxSellPrice : "-&nbsp"}</em>
 												<span data-v-23bbaa82="" class="won">원</span>
 											</span>
 											<span data-v-23bbaa82="" class="desc">즉시 판매가</span>
@@ -122,26 +110,7 @@
 								</div>
 								<div data-v-1f7c6d3f="" class="layer_content">
 									<div data-v-02c63ee6="" class="select_area lg" showlayer="true" optiontitle="사이즈" data-v-1f7c6d3f="">
-										<ul data-v-02c63ee6="" class="select_list">0
-											<%-- <li data-v-02c63ee6="" class="select_item active" data-size="0">
-												<button data-v-02c63ee6="" role="button" aria-selected="" class="select_link buyPrice">
-													<div data-v-02c63ee6="" class="link_inner">
-														<span data-v-02c63ee6="" class="size"> 모든 사이즈 </span>
-														<span data-v-02c63ee6="" class="price">${min }</span>원
-													</div>
-												</button>
-											</li>
-											<c:forEach items="${list }" var="idto">
-												<li data-v-02c63ee6="" class="select_item" data-size="${idto.sizeVO.sizeId }">
-													<button data-v-02c63ee6="" role="button" aria-selected="false" class="select_link buy">
-														<div data-v-02c63ee6="" class="link_inner">
-															<span data-v-02c63ee6="" class="size">${idto.sizeVO.sizeValue }</span>
-															<span data-v-02c63ee6="" class="price">${idto.price ne null ? idto.price : "구매입찰"}</span>
-														</div>
-													</button>
-												</li>
-											</c:forEach> --%>
-										</ul>
+										<ul data-v-02c63ee6="" class="select_list">0</ul>
 									</div>
 								</div>
 								<button data-v-1f7c6d3f="" class="btn_layer_close close"><i class="fa fa-close"></i></button>

@@ -61,16 +61,6 @@ public class ItemsServiceImpl implements ItemsService {
 		return map;
 	}
 
-//	@Override
-//	public ItemsVO selectBuyItem(ItemsVO itemsVO) {
-//		return itemDAO.selectBuyItem(itemsVO);
-//	}
-
-//	@Override
-//	public ItemsVO selectSellItem(ItemsVO itemsVO) {
-//		return itemDAO.selectSellItem(itemsVO, null);
-//	}
-
 	@Override
 	public int sellEnd(ItemsVO itemsVO) {
 		return itemDAO.sellUpdate(itemsVO);
@@ -86,36 +76,11 @@ public class ItemsServiceImpl implements ItemsService {
 		return itemDAO.deleteItem(itemNo);
 	}
 
-//	@Override
-//	public BrandDTO selectProduct(int pno) {
-//		ProductVO pvo = itemDAO.selectProduct(pno);
-//		pvo.setRegAt(pvo.getRegAt().substring(0, pvo.getRegAt().indexOf(" ")));
-//		return new BrandDTO(pvo, itemDAO.selectBrandName(pvo.getBrand()), null);
-//	}
-
 	@Override
 	public IDTO selectProduct(int pno) {
 		ProductVO pvo = itemDAO.selectProduct(pno);
 		return new IDTO(pvo, null, itemDAO.selectImg(pno), null, null, null);
 	}
-
-//	@Override
-//	public String selectSize(int shoeSize) {
-//		return itemDAO.selectShoeSize(shoeSize);
-//	}
-
-//	@Override
-//	public Map<String, Integer> selectBuySell(ItemsVO itemsVO) {
-//		Map<String, Integer> map = new HashMap<>();
-//		map.put("buy", itemDAO.selectBuyPrice(itemsVO.getPno(), itemsVO.getShoeSize()));
-//		map.put("sell", itemDAO.selectSellPrice(itemsVO.getPno(), itemsVO.getShoeSize()));
-//		return map;
-//	}
-
-//	@Override
-//	public Integer buyPrice(int pno, int i) {
-//		return itemDAO.selectBuyPrice(pno, i);
-//	}
 
 	@Override
 	public IDTO selectPdto(int pno) {

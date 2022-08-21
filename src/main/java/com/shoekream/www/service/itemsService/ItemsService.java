@@ -13,16 +13,10 @@ public interface ItemsService {
 	List<ItemsDTO> getSellItemPriceList(int pno, String email);
 	List<ItemsDTO> getBuyItemPriceList(int pno, String email);
 	Map<String, Integer> recentandSellPrice(int pno, int size);
-//	ItemsVO selectBuyItem(ItemsVO itemsVO);
-//	ItemsVO selectSellItem(ItemsVO itemsVO);
 	int sellEnd(ItemsVO itemsVO);
 	int buyEnd(ItemsVO itemsVO);
 	int removeItem(int itemNo);
-//	BrandDTO selectProduct(int pno);
 	IDTO selectProduct(int pno);
-//	String selectSize(int shoeSize);
-//	Map<String, Integer> selectBuySell(ItemsVO itemsVO);
-//	Integer buyPrice(int pno, int i);
 	IDTO selectPdto(int pno);
 	IDTO selectBuyIdto(ItemsVO itemsVO, String email);
 	IDTO selectSellIdto(ItemsVO itemsVO, String email);

@@ -24,12 +24,9 @@
 	<insert id="insertBuyItem" parameterType="itemsVO">
 		insert into items(pno, shoe_size, price, buyer_email) values(#{pno}, #{shoeSize}, #{price}, #{buyerEmail})
 	</insert>
-	<!-- 사이즈 리스트 -->
-	<!-- 판매 -->
 	<select id="selectSellPrice" resultType="int">
 		select max(price) from items where pno = #{pno} <include refid="sizeCheck" /> and seller_email is null <include refid="buyerEmailCheck"/>
 	</select>
-	<!-- 구입 -->
 	<select id="selectBuyPrice" resultType="int">
 		select min(price) from items where pno = #{pno} <include refid="sizeCheck" /> and buyer_email is null <include refid="sellerEmailCheck"/>
 	</select>

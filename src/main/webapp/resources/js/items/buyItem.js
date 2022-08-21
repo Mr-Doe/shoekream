@@ -39,7 +39,6 @@ document.addEventListener('click', (e) => {
 
 document.addEventListener('change', () => {
     if(document.getElementById('itemNo').innerText!=0 && document.getElementById('type').innerText=='0') {
-        // if(parseInt(document.querySelector('.input_amount').value)>=parseInt(document.getElementById('buyPrice').innerText)) {
         if(parseInt(document.querySelector('.input_amount').value)>=parseInt(document.getElementById('price').innerText)) {
             document.querySelector('.on').classList.remove('on');
             spreadDealArea();
@@ -48,7 +47,7 @@ document.addEventListener('change', () => {
 });
 
 document.addEventListener('keyup', (e) => {
-    if(parseInt(document.querySelector('.input_amount').value)<30000 || document.querySelector('.input_amount').value=='' || parseInt(document.querySelector('.input_amount').value)>=price) {
+    if(parseInt(document.querySelector('.input_amount').value)<30000 || document.querySelector('.input_amount').value=='' || (parseInt(document.querySelector('.input_amount').value)>=price && price!=0)) {
         document.querySelector('.price_now').classList.add('has_danger', 'has_warning');
         document.querySelector('.price_warning').style.display = 'block';
         document.getElementById('btn').disabled = true;
@@ -56,13 +55,7 @@ document.addEventListener('keyup', (e) => {
         document.querySelector('.price_now').classList.remove('has_danger', 'has_warning');
         document.querySelector('.price_warning').style.display = 'none';
         document.getElementById('btn').disabled = parseInt(document.getElementById('price').innerText)==0 ? false : (parseInt(document.querySelector('.input_amount').value)>=parseInt(document.getElementById('price').innerText)) ? true : false;
-        // document.getElementById('btn').disabled = (parseInt(document.querySelector('.input_amount').value)>=parseInt(document.getElementById('buyPrice').innerText)) ? true : false;
     }
-    // else if(document.querySelector('.input_amount').value=='') {
-    //     document.querySelector('.price_now').classList.add('has_danger', 'has_warning');
-    //     document.querySelector('.price_warning').style.display = 'block';
-    //     document.getElementById('btn').disabled = true;
-    // }
 });
 
 document.getElementById('btn').addEventListener('click', () => {
