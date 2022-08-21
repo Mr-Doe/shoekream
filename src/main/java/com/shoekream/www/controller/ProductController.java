@@ -50,19 +50,20 @@ public class ProductController {
 	public void list(Model model, PagingVO pgvo) {
 		
 	}
+	
 	@ResponseBody
 	@GetMapping(value = "list", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ProductDTO> searchList(Model model, PagingVO pgvo) {
-		ProductDTO productDTO = new ProductDTO(new PagingHandler(pgvo, productService.getActiveCount(pgvo)), productService.getList(pgvo));
+		ProductDTO productDTO = new ProductDTO(new PagingHandler(pgvo, productService.getActiveCount(pgvo), 5), productService.getList(pgvo));
 		return new ResponseEntity<ProductDTO>(productDTO, HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "adminList", produces = MediaType.APPLICATION_JSON_VALUE)
-	public void adminList(Model model, PagingVO pgvo) {
-		ProductDTO productDTO = new ProductDTO(new PagingHandler(pgvo, productService.getActiveCount(pgvo), 
-											productService.getNonActiveCount(pgvo), 
-											productService.getTotalCount(pgvo)), 
-											productService.getAdminList(pgvo));
+	@GetMapping("/adminList")
+	public void getAdminList(Model model, PagingVO pgvo) {
+		ProductDTO productDTO = new ProductDTO(new PagingHandler(productService.getTotalCount(pgvo), pgvo, 10), 
+												new PagingHandler(pgvo, productService.getActiveCount(pgvo), 10), 
+												new PagingHandler(productService.getNonActiveCount(pgvo), 10, pgvo), 
+												productService.getAdminList(pgvo));
 		model.addAttribute("productDTO", productDTO);
 	}
 	
@@ -83,8 +84,19 @@ public class ProductController {
 			return "0";
 		}
 	}
-	@PutMapping("/modify")
-	public String modify(ProductVO productVO, @RequestParam(name = "fileAttached") MultipartFile[] files) {
+	
+	@GetMapping("/modify/{pno}")
+	public void modify(@PathVariable("pno")int pno, Model model) {
+		FilterDTO filterDTO = new FilterDTO();
+		filterDTO.setObjectList1(brandService.getBrandList());
+        filterDTO.setObjectList2(categoryService.getCategoryList());
+		model.addAttribute("FilterDTO", filterDTO);
+		ProductDTO productDTO = productService.getModifyProductVO(pno);
+		model.addAttribute("productDTO", productDTO);
+	}
+	
+	@PutMapping("/put")
+	public String put(ProductVO productVO, @RequestParam(name = "fileAttached") MultipartFile[] files) {
 		try {
 			return "redirect:/items/detail?pno="+productService.putProduct(productVO, files);
 		}catch (Exception e) {
@@ -92,6 +104,7 @@ public class ProductController {
 			return "0";
 		}
 	}
+	
     @DeleteMapping("/delete/{pno}")
     public String deleteItem(@PathVariable("pno")int pno) {
         try {

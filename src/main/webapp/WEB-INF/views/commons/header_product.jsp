@@ -70,7 +70,13 @@
 		<link rel="stylesheet" href="/resources/dist-kream/19dbfc1.css">
 		
 		<!-- 프로덕트 등록 -->
-  		  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  		<style>
+  			a {
+  				color: black;
+    			text-decoration: none;
+			}
+  		</style>
     </head>
 
     <body>

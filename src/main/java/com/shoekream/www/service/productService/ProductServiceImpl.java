@@ -15,6 +15,7 @@ import com.shoekream.www.controller.HomeController;
 import com.shoekream.www.domain.PagingVO.PagingVO;
 import com.shoekream.www.domain.filterVO.FilterBrandVO;
 import com.shoekream.www.domain.filterVO.FilterCategoryVO;
+import com.shoekream.www.domain.productVO.ProductDTO;
 import com.shoekream.www.domain.productVO.ProductVO;
 import com.shoekream.www.domain.shopVO.ShopVO;
 import com.shoekream.www.handler.FTPhandler;
@@ -25,7 +26,6 @@ import com.shoekream.www.service.filterService.FilterCategoryService;
 @Service
 public class ProductServiceImpl implements ProductService {
 	private static final Logger log = LoggerFactory.getLogger(HomeController.class);
-	
 	@Inject
 	private ProductDAO productDAO;
 	@Inject
@@ -50,7 +50,21 @@ public class ProductServiceImpl implements ProductService {
 		}
 		return productVO;
 	}
-
+	@Transactional
+	@Override
+	public ProductDTO getModifyProductVO(int pno) {
+		ProductVO productVO = productDAO.selectProductVO(pno);
+		List<ProductVO> list= productDAO.selectImageIdAndUrl(productVO.getModel());
+		return new ProductDTO(list, productVO);
+	}
+//	@Override
+//	public List<ProductVO> getImageList(String modelNumber) {
+//		return productDAO.selectImageIdAndUrl(modelNumber);
+//	}
+//	@Override
+//	public ProductVO getProductVO(int pno) {
+//		return productDAO.selectProductVO(pno);
+//	}
 	@Override
 	public List<ProductVO> getAdminList(PagingVO pgvo) {
 		return productDAO.selectAdminList(pgvo);
@@ -67,7 +81,6 @@ public class ProductServiceImpl implements ProductService {
 	public int getNonActiveCount(PagingVO pgvo) {
 		return productDAO.nonActiveCount(pgvo);
 	}
-
 	@Transactional
 	@Override
 	public int register(ProductVO productVO, MultipartFile[] files) throws Exception {
@@ -111,8 +124,7 @@ public class ProductServiceImpl implements ProductService {
         }
         return productVO.getPno();
 	}
-	
-
+	@Transactional
 	@Override
 	public int putProduct(ProductVO productVO, MultipartFile[] files) throws Exception {
 		// data validation
@@ -130,7 +142,6 @@ public class ProductServiceImpl implements ProductService {
                 list.add(Long.parseLong(idx));
             }
         }
-
         // 수정된 페이지에서 새로 업로드된 이미지 파일 ftp 전송 로직
         if (files != null) {
             this.toCheckImageFileValidation(files);
@@ -166,7 +177,7 @@ public class ProductServiceImpl implements ProductService {
         productDAO.updateProduct(productVO);
         return productVO.getPno();
 	}
-	
+	@Transactional
 	@Override
 	public int removeProduct(int pno) throws Exception {
 		
@@ -196,13 +207,10 @@ public class ProductServiceImpl implements ProductService {
 	public List<FilterBrandVO> getBrandList() {
 		return brandService.getBrandList();
 	}
-
 	@Override
 	public List<FilterCategoryVO> getCategoryList() {
 		return categoryService.getCategoryList();
-	
 	}
-	
 	@Override
 	public void toCheckImageFileValidation(MultipartFile[] files) throws Exception {
 		for (MultipartFile file : files) {
@@ -211,11 +219,11 @@ public class ProductServiceImpl implements ProductService {
             }
         }
 	}
-	
 	@Override
 	public void toCheckFileLengthValidation(String value, int maxLength) throws Exception {
     	if(value != null && value.length() > maxLength) {
             throw new Exception();
         }
     }
+	
 }

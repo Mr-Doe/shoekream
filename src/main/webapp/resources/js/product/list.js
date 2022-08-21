@@ -19,7 +19,7 @@ async function getListFromServer(shoe_brand=null, shoe_category=null, shoe_size=
 function spreadList(shoe_brand, shoe_category, shoe_size, pageNo){
   getListFromServer(shoe_brand, shoe_category, shoe_size, pageNo).then(result => {
     console.log(result);
-    let pageHandler = result.pagehdlr;
+    let pageHandler = result.activateCountPageHandler;
 
     // 상품 리스트 시작 
     let div = document.getElementById('printZone');

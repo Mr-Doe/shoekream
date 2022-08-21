@@ -115,6 +115,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     		, k_name as kName
     		, sb.brand_name as brandName
     		, sc.category_name as categoryName
+    		, model_image_url as imageUrl
     		, activate
 		FROM
     		product p 
@@ -126,6 +127,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     		shoe_category sc
         ON
         	p.category = sc.category_id
+        LEFT JOIN
+    		model_image mi
+        ON
+        	p.model = mi.model_number
 		GROUP BY
 			pno
 		ORDER BY
@@ -230,6 +235,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			model_image
 		WHERE
 			model_number = #{modelNumber}
+	</select>
+	<select id="selectProductVO" parameterType="int" resultType="productVO">
+		SELECT
+			pno
+			, e_name
+			, k_name
+			, retail_price
+			, activate
+		FROM
+			product
+		WHERE
+			pno = #{pno}
 	</select>
 	<select id="selectItemsCount" parameterType="int" resultType="int">
 		SELECT

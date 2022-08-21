@@ -18,6 +18,8 @@ public interface ProductDAO {
 	List<ProductVO> selectList(PagingVO pgvo);
 	List<ProductVO> selectAdminList(PagingVO pgvo);
 	List<ProductVO> selectMinPrice(PagingVO pgvo);
+	
+	ProductVO selectProductVO(int pno);
 	int totalCount(PagingVO pgvo);
 	int activeCount(PagingVO pgvo);
 	int nonActiveCount(PagingVO pgvo);
@@ -34,7 +36,5 @@ public interface ProductDAO {
 	int deleteImageWithModelNumber(List<ProductVO> imageList);
 	int deleteProduct(int pno);
 	int deleteImageWithImageId(List<Long> imageId);
-	
-	
 
 }

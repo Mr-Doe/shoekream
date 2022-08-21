@@ -48,7 +48,7 @@
 	</div>
 
 	
-	<script src="../../resources/js/product/list.js"></script>
+	
 	<script src="../../resources/js/member/mypagesidebar.js"></script>
 	<script>
 		selected_tab_menu();
