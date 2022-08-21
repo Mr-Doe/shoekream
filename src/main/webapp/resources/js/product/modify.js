@@ -1,3 +1,4 @@
+// 페이지로딩시 브랜드 카테고리 셀렉트박스 생성
 function setBrandCategoryId(){
     let brandId = document.getElementById('hiddenBrandId').value;
     let categoryId = document.getElementById('hiddenCategoryId').value;
@@ -14,7 +15,7 @@ function setBrandCategoryId(){
         }
     }
 }
-
+// 이미지 파일 체크
 const regExpPrevent = new RegExp("\.(exe|sh|bat|js|msi|dll)$"); // 실행파일 막기
 const regExpImage = new RegExp("\.(png)$"); // 이미지 파일만 허용
 const maxSize = 3 * 1024 * 1024; // 3MB
@@ -29,6 +30,7 @@ function fileSizeAndTypeValidation(fileName, fileSize){
         return 1;
     }
 }
+
 document.addEventListener('change', (e) => {    
     if(e.target.id == 'files') {
         document.getElementById('modBtn').disabled = false;
@@ -55,6 +57,7 @@ document.addEventListener('change', (e) => {
             document.getElementById('modBtn').disabled = true;
             alert('이미지 파일을 확인하세요');
         }
+        // 지워질 imageId 가져오기
         else{
             const originalImageIdList = document.querySelectorAll('.originalImageList');
             let imageIdListToArray = '';
@@ -75,7 +78,7 @@ document.addEventListener('change', (e) => {
         
     }
 });
-
+// 셀렉트박스 브랜드, 카테고리 값 적용하기
 var selectBrandId = document.getElementById('selectBrand');
 var selectCategoryId = document.getElementById('selectCategory');
 document.addEventListener('change', (e) => {
@@ -89,3 +92,31 @@ document.addEventListener('change', (e) => {
     }
 });
 
+document.addEventListener('click', (e) => {
+    if(e.target.id == 'delBtn'){
+        const pnoVal = document.getElementsByName('pno')[0].value;
+        removeProduct(pnoVal).then(result => {
+            if(result){
+                alert('상품이 정상적으로 삭제되었습니다.');
+                window.location.href = '/product/adminList';
+            } else {
+                alert('상품 거래내역이 있어서 삭제가 불가합니다.');
+                window.location.href = '/product/adminList';
+            }
+        });
+    }
+});
+
+async function removeProduct(pno) {
+    try {
+        const url = "/product/"+pno;
+        const config = {
+            method : 'DELETE'
+        };
+        const resp = await fetch(url, config);
+        const result = await resp.text();
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+}

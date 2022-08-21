@@ -3,12 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <jsp:include page="../commons/header_product.jsp" />
-<style>
-image{
-	height: auto;
-	width : auto;
-}
-</style>
+
 <div class="container login" data-v-4ec1fe02="" data-v-3007c576="">
 	<div tabindex="0" class="wrap win_os lg" data-v-3007c576="">
 		
@@ -75,7 +70,7 @@ image{
     					<label for="attach">기존 사진 :</label>
     					<div class="my-3" id="originalFileZone">
     						<c:forEach items="${productDTO.productList }" var="imageList">
-    							<input type="image" class="originalImageList" src="${imageList.imageUrl }" style="max-height: 100px; max-width : 100px;" data-imageid=${imageList.imageId }>
+    							<input type="image" class="originalImageList" onclick="return false" src="${imageList.imageUrl }" style="max-height: 100px; max-width : 100px; cursor: auto;" data-imageid=${imageList.imageId }>
     						</c:forEach>
     					</div>
  				    	<input type="file" class="form-control" style="display: none;" id="files" name="fileAttached" value="" multiple>
@@ -87,6 +82,9 @@ image{
 					<button type="submit" data-v-3d1bcc82="" data-v-30ee943a="" id="modBtn" class="btn_join full solid">수정하기</button>
 				</div>
 			</form>
+			<div style="width: 400px; margin: 50 auto 0 auto;">
+				<button type="submit" data-v-3d1bcc82="" data-v-30ee943a="" id="delBtn" class="btn btn-outline-danger" style="width: 400px;">삭제하기</button>
+			</div>
 		</div>
 	</div>
 </div>
@@ -94,7 +92,7 @@ image{
 <input type="hidden" value="${productDTO.productVO.category}" id="hiddenCategoryId">
 
 <span id="grade" style="display: none;">${ses.grade}</span>
-
+<script src="../../resources/js/product/adminlist.js"></script>
 <script src="../../resources/js/product/modify.js"></script>
 <script>
 	document.getElementById('attachTrigger').addEventListener('click', () => {

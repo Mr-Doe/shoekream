@@ -113,10 +113,11 @@ public class ProductController {
 	
 	@DeleteMapping(value = "/{pno}", produces = {MediaType.TEXT_PLAIN_VALUE})
     public ResponseEntity<String> erase(@PathVariable("pno") int pno){
+		log.info(">>> Controller Delete");
             try {
 				return productService.removeProduct(pno) > 0 ?
 						new ResponseEntity<String>("1", HttpStatus.OK)
-						: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+						: new ResponseEntity<String>("0", HttpStatus.INTERNAL_SERVER_ERROR);
 			} catch (Exception e) {
 				return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}

@@ -62,7 +62,7 @@ p {
 	color: rgba(34, 34, 34, .5);
 }
 .purchase_item[data-v-62dace61] {
-	cursor: auto;
+	cursor: pointer;
 }
 .pagination {
   display: inline-block;
