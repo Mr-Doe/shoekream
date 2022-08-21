@@ -24,4 +24,13 @@
 					#{item}
 				</foreach>
 	</select>
+	<select id="getImageeList" parameterType="String" resultType="imageVO">
+		SELECT
+			image_id
+			, image_url
+		FROM
+			blog_image
+		WHERE
+			image_id IN (#{imageId})
+	</select>
 </mapper>

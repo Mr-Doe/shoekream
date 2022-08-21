@@ -33,4 +33,5 @@ public class BlogVO {
     private List<ImageVO> blogImagesList;
 
     private int page;
+    private int blogCount;
 }

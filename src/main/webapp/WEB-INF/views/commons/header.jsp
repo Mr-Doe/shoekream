@@ -129,6 +129,9 @@
                     <div id="display-modal" class="container" style="float: left; display: none;">
                         <jsp:include page="../search/modal.jsp" />
                     </div>
+                    <div  style="display: none; position: absolute;">
+                        <jsp:include page="../member/blog_modal.jsp" />
+                    </div>
                 </div>
             </div>
         </header>

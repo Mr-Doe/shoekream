@@ -3,6 +3,11 @@
  * mypagesidebar.jsp 에 추가된 '설정'을 클릭시 발생하는 이벤트 추가.
  */
 
+document.querySelector('#blog').addEventListener('click', (e)=> {
+    e.preventDefault();
+    location.href = '/blog/page';
+});
+
 document.querySelectorAll('.snb_menu .menu_link').forEach((idx)=>{
     idx.addEventListener('click', (e)=> {
         const clicked = e.target;
@@ -52,9 +57,13 @@ function selected_tab_menu() {
         here.style.color = 'black';
         here.style.fontSize = '18px';
         here.style.fontWeight = 700;
+    } else if (location.includes('/blog')) {
+        const here = document.getElementById('blog');
+        here.style.color = 'black';
+        here.style.fontSize = '18px';
+        here.style.fontWeight = 700;
     }
 }
-
 
 // edit by sang hyun 08/19
 document.addEventListener('click', (e) => {
@@ -92,3 +101,4 @@ async function remove(pno){
         console.log(error);
     }
 }
+

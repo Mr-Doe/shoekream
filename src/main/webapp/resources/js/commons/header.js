@@ -18,10 +18,10 @@ function show_page_path() {
         html = `<a href="/product/listPage">Home</a>
                 <a href="/product/listPage">Shop</a>
                 <span>Item</span>`;
-    } else if(path.includes('/member/')) {
+    } else if(path.includes('/member/') || path.includes('/blog/page')) {
         html = `<a href="/product/listPage">Home</a>
                 <span>Member</span>`;
-    } else if(path.includes('/blog/')) {
+    } else if(path.includes('/blog/') && !path.includes('/blog/page')) {
         html = `<a href="/product/listPage">Home</a>
                 <span>Blog</span>`;
     }
@@ -34,7 +34,9 @@ function session_check() {
         
     } else if(session.length == 0 && path.includes('/member/register')) {
         
-    } else if (session.length == 0 && path.includes('/member/')){
+    } else if (session.length == 0 && path.includes('/member/')) {
+        window.location.href = '/member/login';
+    } else if (session.length == 0 && path.includes('/blog/page')) {
         window.location.href = '/member/login';
     }
 }
@@ -42,7 +44,7 @@ function session_check() {
 function header_menu_check() {
     if(path.includes('/product/')) {
         document.getElementById('header_shop').className = 'active';
-    } else if(path.includes('/blog/')) {
+    } else if(path.includes('/blog/') && !path.includes('/blog/page')) {
         document.getElementById('header_blog').className = 'active';
     }
 }

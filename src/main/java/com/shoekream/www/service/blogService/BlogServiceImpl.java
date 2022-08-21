@@ -23,6 +23,20 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    public List<BlogVO> getSearchItems(String keywords) {
+        return blogDAO.selectSearchItems(keywords);
+    }
+
+    @Override
+    public List<BlogVO> getBlogPageImage(BlogVO blogVO) {
+        List<BlogVO> result = blogDAO.selectOwnImageList(blogVO);
+        for (BlogVO idx : result) {
+            idx.setBlogImagesList(iService.getImageeList(idx.getBlogImageId()));
+        }
+        return result;
+    }
+
+    @Override
     public List<BlogVO> getPopularBlogList(int page) {
         return blogDAO.selectPopList(page);
     }
@@ -33,7 +47,7 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public List<BlogVO> getFlowerBlogList(BlogVO blogVO) throws Exception {
+    public List<BlogVO> getFollowerBlogList(BlogVO blogVO) throws Exception {
         String followers = mService.getFollowersList(blogVO.getOwnEmail());
         if(followers == null) {
             throw new Exception("followers IS NULL");
@@ -43,12 +57,16 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    public BlogVO getOwnPostingCount(String ownEmail) {
+        return blogDAO.selectOwnPostingCount(ownEmail);
+    }
+
+    @Override
     public int postBlog(BlogVO blogVO, MultipartFile[] files) throws Exception {
 
         if(this.checkObjectNull(blogVO) == false) { throw new Exception("OBJECT = NULL"); }
         if(this.checkImageFile(files) == false) { throw new Exception("이미지 파일이 아님"); }
 
-        // todo blog 이미지 imageService로 넘겨서 ftp 처리
         List<ImageVO> convert2String = iService.postImages(files);
 
         String imageId = "";

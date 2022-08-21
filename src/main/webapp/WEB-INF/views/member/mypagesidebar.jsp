@@ -31,7 +31,7 @@
 							<a data-v-4d11470e="" href="/member/detail?email=${ses.email}" class="menu_link" id="detail"> 프로필 정보 </a>
 						</li>
 						<li data-v-4d11470e="" class="menu_item">
-							<a data-v-4d11470e="" href="#" class="menu_link" id="detail"> 블로그 </a>
+							<a data-v-4d11470e="" href="#" class="menu_link" id="blog"> 블로그 </a>
 						</li>
 						<c:if test = "${ses.grade eq '99'}">
 							<li data-v-4d11470e="" class="menu_item">

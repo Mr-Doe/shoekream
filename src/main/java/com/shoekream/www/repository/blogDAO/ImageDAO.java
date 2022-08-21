@@ -9,6 +9,7 @@ import java.util.List;
 public interface ImageDAO {
 
     List<ImageVO> getImagesListWithIDsList(List<String> imageIDsList);
+    List<ImageVO> getImageeList(String imageId);
 
     int insertBlogImage(ImageVO imageVO);
 

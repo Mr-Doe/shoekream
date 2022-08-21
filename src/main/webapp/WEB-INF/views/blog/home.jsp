@@ -32,7 +32,7 @@
 
 <div data-v-7606896d="" class="content">
     <div data-v-57a33098="" data-v-7606896d="" class="social_feeds">
-        <div data-v-57a33098="" transition-duration="0" item-selector=".item" gutter=".gutter_item" horizontal-order="true" class="masonry_posts" style="position: relative; height: ;">
+        <div data-v-57a33098="" transition-duration="0" item-selector=".item" gutter=".gutter_item" horizontal-order="true" class="masonry_posts" style="position: relative; height: 0;">
 
             <div data-v-0066c9b3="" data-v-57a33098="" class="feed_card item" style="position: absolute; left: 0px; top: 0px;">
                 <a data-v-0066c9b3="" href="#">
@@ -93,7 +93,6 @@
 
 <script src="/resources/js/blog/home.js"></script>
 <script>
-    feed_cards();
     which_memu();
 </script>
 

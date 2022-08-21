@@ -21,7 +21,9 @@
                     </div>
 
                     <div data-v-589881b0="" data-v-1f7c6d3f="" class="suggest_wrap" style="width: 800px; margin: auto;">
-                        <div data-v-589881b0="" data-v-1f7c6d3f="" class="suggest_area"> </div>
+                        <div data-v-589881b0="" data-v-1f7c6d3f="" class="suggest_area">
+                            
+                        </div>
                     </div>
                 </div>
             </div>

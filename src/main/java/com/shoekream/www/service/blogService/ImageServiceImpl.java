@@ -18,7 +18,7 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public List<ImageVO> getImageeList(String imageId) {
-        return null;
+        return imageDAO.getImageeList(imageId);
     }
 
     @Override

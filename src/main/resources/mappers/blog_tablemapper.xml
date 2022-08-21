@@ -5,13 +5,73 @@
     
 <mapper namespace="com.shoekream.www.repository.blogDAO.BlogDAO">
 	<select id="selectBlog" resultType="blogVO" parameterType="int">
-
+		SELECT
+			blog_id
+			, own_email
+			, blog_images_path as blogImagePath
+			, item_id
+			, item_image
+			, item_name
+			, (
+				SELECT
+					MIN(price)
+				FROM
+					items
+				WHERE is_sold = 0
+						AND seller_email IS NOT NULL
+						AND pno = blog_table.item_id
+			) as minPrice
+			, likes_count
+			, (
+				SELECT
+					COUNT(cmt_id)
+				FROM
+					blog_comment
+				WHERE
+					blog_comment.blog_id = blog_table.blog_id
+			) as commentsCount
+		FROM
+			blog_table
+		WHERE
+			blog_id = #{blogId}
+	</select>
+	<select id="selectSearchItems" resultType="blogVO" parameterType="String">
+		SELECT
+			pno as itemId
+			, e_name as itemName
+			, (
+				SELECT
+					model_image_url
+				FROM
+					model_image
+				WHERE
+					model_image.model_number = product.model
+				ORDER BY image_id DESC
+				LIMIT 1
+			) as itemImage
+		FROM
+			product
+		WHERE
+			e_name like CONCAT("%", #{keywords}, "%")
+			OR k_name like CONCAT("%", #{keywords}, "%")
+	</select>
+	<select id="selectOwnImageList" resultType="blogVO" parameterType="blogVO">
+		SELECT
+			blog_id
+			, blog_image_id
+		FROM
+			blog_table bt
+		WHERE
+			own_email = #{ownEmail}
+		ORDER BY
+			blog_id DESC
+		LIMIT 12 OFFSET ${(page - 1) * 12}
 	</select>
 	<select id="selectPopList" resultType="blogVO" parameterType="int">
 		SELECT
 			blog_id
 			, own_email
-			, blog_images_path
+			, blog_images_path as blogImagePath
 			, item_id
 			, item_image
 			, item_name
@@ -43,7 +103,7 @@
 		SELECT
 			blog_id
 			, own_email
-			, blog_images_path
+			, blog_images_path as blogImagePath
 			, item_id
 			, item_image
 			, item_name
@@ -83,7 +143,7 @@
 		SELECT
 			blog_id
 			, own_email
-			, blog_images_path
+			, blog_images_path as blogImagePath
 			, item_id
 			, item_image
 			, item_name
@@ -120,6 +180,14 @@
 			blog_table
 		WHERE blog_id = #{blogId}
 				AND own_email = #{ownEmail}
+	</select>
+	<select id="selectOwnPostingCount" parameterType="String" resultType="blogVO">
+		SELECT
+			COUNT(blog_id) as blogCount
+		FROM
+			blog_table
+		WHERE
+			own_email = #{ownEmail}
 	</select>
 
 	<insert id="insertBlog" parameterType="blogVO" useGeneratedKeys="true" keyColumn="blog_id" keyProperty="blogId">

@@ -6,7 +6,7 @@
         </div>
 
         <!-- Footer Section Begin -->
-        <footer class="footer" style="margin-top: 100px;">
+        <footer class="footer" style="margin-top: 50px;">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
