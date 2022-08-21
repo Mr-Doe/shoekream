@@ -138,7 +138,7 @@ p {
 						</c:when>
 						<c:otherwise>
 							<c:forEach items="${productDTO.productList}" var="productVO" varStatus="status">
-								<div data-v-62dace61="" data-v-21d527e4="" class="purchase_item buy" data-itemno="${productVO.pno}">
+								<div data-v-62dace61="" data-v-21d527e4="" class="purchase_item buy" onclick="window.location.href='/product/modify?pno=${productVO.pno}'" data-itemno="${productVO.pno}">
 									<div data-v-62dace61="" class="history_product">
 										<div data-v-62dace61="" class="product_box">
 											<div data-v-75e33658="" data-v-62dace61="" class="product" style="background-color: rgb(235, 240, 245);">

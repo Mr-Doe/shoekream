@@ -16,7 +16,7 @@
 					<div data-v-0e527ea4="" data-v-30ee943a="" class="input_box">
 						<h3 data-v-30ee943a="" data-v-0e527ea4="" class="input_title ess">English Name</h3>
 						<div data-v-0e527ea4="" class="input_item">
-							<input data-v-0e527ea4="" type="text" name="eName" id="eName" placeholder="englishName" autocomplete="off" class="input_txt" required>
+							<input data-v-0e527ea4="" type="text" name="eName" id="eName" placeholder="englishName" value="${productDTO.productVO.eName}"autocomplete="off" class="input_txt" required>
 						</div>
 						<p data-v-30ee943a="" data-v-0e527ea4="" class="input_error"></p>
 					</div>
@@ -24,13 +24,13 @@
 					<div data-v-0e527ea4="" data-v-30ee943a="" class="input_box has_button">
 						<h3 data-v-30ee943a="" data-v-0e527ea4="" class="input_title ess">Korean Name</h3>
 						<div data-v-0e527ea4="" class="input_item">
-							<input data-v-0e527ea4="" type="text" name="kName" id="kName" placeholder="koreanName" autocomplete="off" class="input_txt" required>
+							<input data-v-0e527ea4="" type="text" name="kName" id="kName" placeholder="koreanName" value="${productDTO.productVO.kName }" autocomplete="off" class="input_txt" required>
 						</div>
 					</div>
 					<div data-v-0e527ea4="" data-v-30ee943a="" class="input_box has_button">
 						<h3 data-v-30ee943a="" data-v-0e527ea4="" class="input_title ess">Model Number</h3>
 						<div data-v-0e527ea4="" class="input_item">
-							<input data-v-0e527ea4="" type="text" name="model" id="model" placeholder="model" autocomplete="off" class="input_txt" required>
+							<input data-v-0e527ea4="" type="text" name="model" id="model" value="${productDTO.productVO.model }" placeholder="model" autocomplete="off" class="input_txt" required>
 						</div>
 					</div>
 					<div data-v-0e527ea4="" data-v-30ee943a="" class="input_box has_button">
@@ -53,7 +53,7 @@
 						class="input_box has_button">
 						<h3 data-v-30ee943a="" data-v-0e527ea4="" class="input_title ess">Retail Price</h3>
 						<div data-v-0e527ea4="" class="input_item">
-							<input data-v-0e527ea4="" type="number" name="retailPrice" id="price" placeholder="price" autocomplete="off" class="input_txt" required>
+							<input data-v-0e527ea4="" type="number" name="retailPrice" value="${productDTO.productVO.retailPrice}" id="price" placeholder="price" autocomplete="off" class="input_txt" required>
 						</div>
 					</div>
 					<div class="mb-3">

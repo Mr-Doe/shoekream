@@ -85,8 +85,8 @@ public class ProductController {
 		}
 	}
 	
-	@GetMapping("/modify/{pno}")
-	public void modify(@PathVariable("pno")int pno, Model model) {
+	@GetMapping("/modify")
+	public void modify(@RequestParam("pno")int pno, Model model) {
 		FilterDTO filterDTO = new FilterDTO();
 		filterDTO.setObjectList1(brandService.getBrandList());
         filterDTO.setObjectList2(categoryService.getCategoryList());
@@ -114,4 +114,5 @@ public class ProductController {
             return "0";
         }
     }
+    
 }

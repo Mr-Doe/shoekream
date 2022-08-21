@@ -242,6 +242,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, e_name
 			, k_name
 			, retail_price
+			, model
+			, category
+			, brand
 			, activate
 		FROM
 			product

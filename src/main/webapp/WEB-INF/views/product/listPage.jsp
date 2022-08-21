@@ -77,7 +77,6 @@ p {
 
 </style>
 
-
 <div class="col-lg-9 search_result_item" id="printZone"></div>
 
 <script src="../../resources/js/product/list.js"></script>
