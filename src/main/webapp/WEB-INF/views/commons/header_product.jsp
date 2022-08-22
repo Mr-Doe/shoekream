@@ -125,7 +125,7 @@
                             <ul>
                                 <li><a href="/product/listPage">Home</a></li>
                                 <li class="active"><a href="/product/listPage">Shop</a></li>
-                                <li><a href="">Blog</a></li>
+                                <li><a href="/blog/home">Blog</a></li>
                             </ul>
                         </nav>
                     </div>
