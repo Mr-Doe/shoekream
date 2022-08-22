@@ -34,9 +34,6 @@
 							<li data-v-4d11470e="" class="menu_item">
 								<a data-v-4d11470e="" href="/product/adminList" class="menu_link" id="adminList"> 설정 </a>
 							</li>
-							<li data-v-4d11470e="" class="menu_item">
-								<a data-v-4d11470e="" href="/product/register" class="menu_link" id=""> 상품등록</a>
-							</li>
 						</c:if>
 					</ul>
 				</div>
