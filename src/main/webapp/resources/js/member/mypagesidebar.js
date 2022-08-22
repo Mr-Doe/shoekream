@@ -47,11 +47,6 @@ function selected_tab_menu() {
         here.style.color = 'black';
         here.style.fontSize = '18px';
         here.style.fontWeight = 700;
-    } else if(location.includes('/detail')) {
-        const here = document.getElementById('detail');
-        here.style.color = 'black';
-        here.style.fontSize = '18px';
-        here.style.fontWeight = 700;
     } else if (location.includes('/adminList')) {
         const here = document.getElementById('adminList');
         here.style.color = 'black';
